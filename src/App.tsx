@@ -1,10 +1,10 @@
-import React, { useRef } from 'react'
-import './App.css'
+import React, { useRef } from 'react';
+import './App.css';
 
-import EmailEditor from 'react-email-editor'
+import EmailEditor from 'react-email-editor';
 
 const App: React.FC = () => {
-  const emailEditorRef = useRef(null)
+  const emailEditorRef = useRef(null);
 
   // const exportHtml = () => {
   //   emailEditorRef.current.editor.exportHtml((data: any) => {
@@ -17,16 +17,13 @@ const App: React.FC = () => {
     // you can load your template here;
     // const templateJson = {};
     // emailEditorRef.current.editor.loadDesign(templateJson);
-  }
+  };
 
   return (
-        <div className="App">
-            <EmailEditor
-                ref={emailEditorRef}
-                onLoad={onLoad}
-            />
-        </div>
-  )
-}
+    <div className="App">
+      <EmailEditor ref={emailEditorRef} onLoad={onLoad} />
+    </div>
+  );
+};
 
-export default App
+export default App;
