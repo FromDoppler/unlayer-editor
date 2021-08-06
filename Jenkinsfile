@@ -6,11 +6,6 @@ pipeline {
         sh 'sh ./gitlint.sh'
       }
     }
-    stage('Verify Format') {
-      steps {
-        sh 'docker build --target verify-format .'
-      }
-    }
     stage('Verify .sh files') {
       steps {
         sh 'docker build --target verify-sh .'
@@ -21,16 +16,21 @@ pipeline {
         sh 'docker build --target restore .'
       }
     }
+    stage('Verify Format') {
+      steps {
+        sh 'docker build --target verify-format .'
+      }
+    }
     stage('Build') {
       steps {
         sh 'docker build --target build .'
       }
     }
-    /*stage('Test') {
+    stage('Test') {
       steps {
         sh 'docker build --target test .'
       }
-    }*/
+    }
     stage('Publish in CDN') {
       stages {
         // TODO: Inject CDN SFTP credentials here

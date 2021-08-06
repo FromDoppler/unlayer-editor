@@ -1,4 +1,4 @@
-  # All files as text by default
+# All files as text by default
 * text eol=lf
 
 # Generated encrypted secret files (SOPS)
