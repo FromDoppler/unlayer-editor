@@ -22,8 +22,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "verify-format": "yarn eslint-check",
-    "eslint-check": "eslint --ext .ts --ext .tsx ."
+    "verify-format": "yarn eslint-check & yarn prettier-check",
+    "eslint-check": "eslint --ext .ts --ext .tsx .",
+    "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css}\"",
+    "prettier-check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,css}\""
   },
   "eslintConfig": {
     "extends": [
@@ -53,7 +55,9 @@
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-promise": "4.2.1",
-    "eslint-plugin-react": "^7.24.0"
+    "eslint-plugin-react": "^7.24.0",
+    "prettier": "^2.3.2"
   }
 }
