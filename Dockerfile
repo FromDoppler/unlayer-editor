@@ -22,10 +22,10 @@ COPY . .
 ARG baseUrl=https//cdn.fromdoppler.com
 ARG pkgName=unlayer-editor
 ARG version=v0.0.0-build0
-RUN npm build --cdn "${baseUrl}/${pkgName}/${version}"
+RUN yarn build --cdn "${baseUrl}/${pkgName}/${version}"
 
 FROM build AS test
-RUN npm test
+RUN yarn test
 
 # Using specific digest (f7f7607...) to avoid unwanted changes in the non-oficial image
 FROM ttionya/openssh-client@sha256:f7f7607d56f09a7c42e246e9c256ff51cf2f0802e3b2d88da6537bea516fe142 as final
