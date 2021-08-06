@@ -12,14 +12,12 @@ COPY . .
 FROM restore AS verify-format
 RUN yarn verify-format
 
-FROM restore as build
-ARG baseUrl=https//cdn.fromdoppler.com
-ARG pkgName=unlayer-editor
-ARG version=v0.0.0-build0
-RUN yarn build
+FROM restore AS test
+ENV CI=true
+RUN yarn test
 
-FROM build AS test
-RUN yarn test:ci
+FROM restore as build
+RUN yarn build
 
 # Using specific digest (f7f7607...) to avoid unwanted changes in the non-oficial image
 FROM ttionya/openssh-client@sha256:f7f7607d56f09a7c42e246e9c256ff51cf2f0802e3b2d88da6537bea516fe142 as final

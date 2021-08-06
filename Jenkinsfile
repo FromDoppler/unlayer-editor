@@ -21,14 +21,14 @@ pipeline {
         sh 'docker build --target verify-format .'
       }
     }
-    stage('Build') {
-      steps {
-        sh 'docker build --target build .'
-      }
-    }
     stage('Test') {
       steps {
         sh 'docker build --target test .'
+      }
+    }
+    stage('Build') {
+      steps {
+        sh 'docker build --target build .'
       }
     }
     stage('Publish in CDN') {
