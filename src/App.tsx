@@ -20,8 +20,12 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="App">
-      <EmailEditor ref={emailEditorRef} onLoad={onLoad} />
+    <div className="App" data-testid="email-editor-test">
+      <EmailEditor
+        key="email-editor-test"
+        ref={emailEditorRef}
+        onLoad={onLoad}
+      />
     </div>
   );
 };
