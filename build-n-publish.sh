@@ -2,7 +2,7 @@
 
 # constants
 pkgName="unlayer-editor"
-cdnBaseUrl="https//cdn.fromdoppler.com"
+cdnBaseUrl="https://cdn.fromdoppler.com"
 
 # parameters
 pkgVersion=${1:-"v0.0.0-build0"}
