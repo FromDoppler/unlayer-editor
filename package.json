@@ -10,6 +10,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "eclint": "^2.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-email-editor": "^1.3.0",
@@ -22,7 +23,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "verify-format": "yarn eslint-check & yarn prettier-check",
+    "verify-format": "yarn eslint-check & yarn prettier-check & yarn eclint-check",
+    "eclint-fix": "eclint fix",
+    "eclint-check": "eclint check",
     "eslint-check": "eslint --ext .ts --ext .tsx .",
     "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css}\"",
     "prettier-check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,css}\""
