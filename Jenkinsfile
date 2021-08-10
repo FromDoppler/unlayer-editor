@@ -39,7 +39,7 @@ pipeline {
             changeRequest target: 'main'
           }
           steps {
-            sh 'sh ./build-n-publish.sh --version=pr-${CHANGE_ID}_${BUILD_NUMBER}'
+            sh 'sh ./build-n-publish.sh --name=pr-${CHANGE_ID}_${BUILD_NUMBER}'
           }
         }
         stage('Publish pre-release images from main') {
@@ -47,7 +47,7 @@ pipeline {
             branch 'main'
           }
           steps {
-            sh 'sh build-n-publish.sh --version=main-${BUILD_NUMBER}'
+            sh 'sh build-n-publish.sh --name=main-${BUILD_NUMBER}'
           }
         }
         stage('Publish final version images') {
