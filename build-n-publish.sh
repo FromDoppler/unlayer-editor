@@ -5,7 +5,7 @@ pkgName="unlayer-editor"
 cdnBaseUrl="https://cdn.fromdoppler.com"
 
 # parameters
-pkgVersion=${1:-"v0.0.0-build0"}
+version=${1:?}
 
 # Stop script on NZEC
 set -e
@@ -22,12 +22,12 @@ cd "$(dirname "$0")"
 export MSYS_NO_PATHCONV=1
 export MSYS2_ARG_CONV_EXCL="*"
 
-tag="${pkgName}-${pkgVersion}-$(date +%Y%m%d%H%M%S)"
+tag="${pkgName}-${version}-$(date +%Y%m%d%H%M%S)"
 
 docker build . \
   --build-arg baseUrl="${cdnBaseUrl}" \
   --build-arg pkgName="${pkgName}" \
-  --build-arg version="${pkgVersion}" \
+  --build-arg version="${version}" \
   --tag "${tag}"
 
 docker run --rm \
@@ -36,4 +36,4 @@ docker run --rm \
   /bin/sh -c "\
     scp -P \"${CDN_SFTP_PORT}\" -r \"/source/${pkgName}\" \"${CDN_SFTP_USERNAME}@${CDN_SFTP_HOSTNAME}:/${CDN_SFTP_BASE}/\""
 
-echo "Files ready in ${cdnBaseUrl}/${pkgName}/${pkgVersion}"
+echo "Files ready in ${cdnBaseUrl}/${pkgName}/${version}"
