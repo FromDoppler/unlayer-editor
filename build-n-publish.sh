@@ -1,8 +1,11 @@
 #!/bin/sh
 
+# constants
 pkgName="unlayer-editor"
+cdnBaseUrl="https//cdn.fromdoppler.com"
+
+# parameters
 pkgVersion=${1:-"v0.0.0-build0"}
-cdnBaseUrl=${2:-"https//cdn.fromdoppler.com"}
 
 # Stop script on NZEC
 set -e
