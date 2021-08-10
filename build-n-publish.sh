@@ -5,8 +5,10 @@ pkgName="unlayer-editor"
 cdnBaseUrl="https://cdn.fromdoppler.com"
 
 # parameters
+commit=""
 name=""
 version=""
+versionPre=""
 
 print_help () {
     echo ""
@@ -15,24 +17,34 @@ print_help () {
     echo "Use Docker to build project's bundle files and publish them to our CDN"
     echo ""
     echo "Options:"
+    echo "  -c, --commit (mandatory)"
     echo "  -n, --name, version name"
     echo "  -v, --version, version number"
+    echo "  -s, --pre-version-suffix (optional, only with version)"
     echo "  -h, --help"
     echo "Only one of name or version parameters is required, and cannot be included together."
     echo
     echo "Examples:"
-    echo "  sh build-n-publish.sh --version=v1.2.11"
-    echo "  sh build-n-publish.sh -v=v1.2.11"
-    echo "  sh build-n-publish.sh --name=main"
+    echo "  sh build-n-publish.sh --commit=aee25c286a7c8265e2b32ccc293f5ab0bd7a9d57 --version=v1.2.11"
+    echo "  sh build-n-publish.sh --c=aee25c286a7c8265e2b32ccc293f5ab0bd7a9d57 -v=v1.2.11"
+    echo "  sh build-n-publish.sh --c=aee25c286a7c8265e2b32ccc293f5ab0bd7a9d57 -v=v1.2.11 -s=beta1"
+    echo "  sh build-n-publish.sh --commit=aee25c286a7c8265e2b32ccc293f5ab0bd7a9d57 --version=v1.2.11 --pre-version-suffix=beta1"
+    echo "  sh build-n-publish.sh --commit=aee25c286a7c8265e2b32ccc293f5ab0bd7a9d57 --name=main"
 }
 
 for i in "$@" ; do
 case $i in
+    -c=*|--commit=*)
+    commit="${i#*=}"
+    ;;
     -n=*|--name=*)
     name="${i#*=}"
     ;;
     -v=*|--version=*)
     version="${i#*=}"
+    ;;
+    -s=*|--pre-version-suffix=*)
+    versionPre="${i#*=}"
     ;;
     -h|--help)
     print_help
@@ -41,6 +53,12 @@ case $i in
 esac
 done
 
+if [ -z "${commit}" ]
+then
+  echo "Error: commit parameter is mandatory"
+  print_help
+  exit 1
+fi
 
 if [ -n "${version}" ] && [ -n "${name}" ]
 then
@@ -55,6 +73,16 @@ then
   print_help
   exit 1
 fi
+
+if [ -z "${version}" ] && [ -n "${versionPre}" ]
+then
+  echo "Error: pre-version-suffix parameter is only accepted along with version parameter"
+  print_help
+  exit 1
+fi
+
+# TODO: validate commit format
+# TODO: validate version format (if it is included)
 
 # Stop script on NZEC
 set -e
@@ -81,6 +109,8 @@ if [ -n "${name}" ]
 then
   tag="${pkgName}-${name}-$(date +%Y%m%d%H%M%S)"
 fi
+
+# TODO: use commit and pre-version-suffix
 
 docker build . \
   --build-arg baseUrl="${cdnBaseUrl}" \
