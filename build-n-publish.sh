@@ -5,7 +5,41 @@ pkgName="unlayer-editor"
 cdnBaseUrl="https://cdn.fromdoppler.com"
 
 # parameters
-version=${1:?}
+version=""
+
+print_help () {
+    echo ""
+    echo "Usage: sh build-n-publish.sh [OPTIONS]"
+    echo ""
+    echo "Use Docker to build project's bundle files and publish them to our CDN"
+    echo ""
+    echo "Options:"
+    echo "  -v, --version, version number (mandatory)"
+    echo "  -h, --help"
+    echo
+    echo "Examples:"
+    echo "  sh build-n-publish.sh --version=v1.2.11"
+    echo "  sh build-n-publish.sh -v=v1.2.11"
+}
+
+for i in "$@" ; do
+case $i in
+    -v=*|--version=*)
+    version="${i#*=}"
+    ;;
+    -h|--help)
+    print_help
+    exit 0
+    ;;
+esac
+done
+
+if [ -z "${version}" ]
+then
+  echo "Error: version parameter is mandatory"
+  print_help
+  exit 1
+fi
 
 # Stop script on NZEC
 set -e
