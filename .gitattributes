@@ -10,6 +10,7 @@
 *.jpg   binary
 *.png   binary
 *.gif   binary
+*.ico   binary
 
 # JS generated files
 yarn.lock linguist-generated=true
