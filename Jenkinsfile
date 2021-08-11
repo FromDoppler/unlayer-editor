@@ -50,6 +50,14 @@ pipeline {
             sh 'sh build-n-publish.sh --commit=${GIT_COMMIT} --name=main-${BUILD_NUMBER}'
           }
         }
+        stage('Publish pre-release images from INT') {
+          when {
+            branch 'INT'
+          }
+          steps {
+            sh 'sh build-n-publish.sh --commit=${GIT_COMMIT} --name=INT-${BUILD_NUMBER}'
+          }
+        }
         stage('Publish final version images') {
           when {
             expression {
