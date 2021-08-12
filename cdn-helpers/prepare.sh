@@ -172,20 +172,21 @@ then
   canonicalTag=${versionFull}
 fi
 
-# TODO: implement the desired behavior described in the following echo lines
-echo We should copy "${build}/static" to "${ready}/static"
+mkdir "${ready}" -p
 
-echo We should copy "${build}/asset-manifest.json" to "${ready}/asset-manifest-${canonicalTag}.json"
+cp -R "${build}/static/." "${ready}/static"
+
+cp "${build}/asset-manifest.json" "${ready}/asset-manifest-${canonicalTag}.json"
 
 if [ -n "${version}" ]
 then
-  echo We should copy "${build}/asset-manifest.json" to "${ready}/asset-manifest-${versionMayor}.json"
-  echo We should copy "${build}/asset-manifest.json" to "${ready}/asset-manifest-${versionMayorMinor}.json"
-  echo We should copy "${build}/asset-manifest.json" to "${ready}/asset-manifest-${versionMayorMinorPatch}.json"
-  echo We should copy "${build}/asset-manifest.json" to "${ready}/asset-manifest-${versionMayorMinorPatchPre}.json"
+  cp "${build}/asset-manifest.json" "${ready}/asset-manifest-${versionMayor}.json"
+  cp "${build}/asset-manifest.json" "${ready}/asset-manifest-${versionMayorMinor}.json"
+  cp "${build}/asset-manifest.json" "${ready}/asset-manifest-${versionMayorMinorPatch}.json"
+  cp "${build}/asset-manifest.json" "${ready}/asset-manifest-${versionMayorMinorPatchPre}.json"
 fi
 
 if [ -n "${name}" ]
 then
-  echo We should copy "${build}/asset-manifest.json" to "${ready}/asset-manifest-${name}.json"
+  cp "${build}/asset-manifest.json" "${ready}/asset-manifest-${name}.json"
 fi
