@@ -114,3 +114,30 @@ For example, currently for tag `v1.0.0`:
 ### Static files
 
 All the static files referenced in the `asset-manifest-*` files are stored in `http://cdn.fromdoppler.com/unlayer-editor/static`.
+
+## Embed the editor
+
+To use the editor, you should include a reference to the desired `asset-manifest-*` file. For example:
+
+- `asset-manifest-v1.json`, you will have the last final versions until a breaking change increment the mayor version to `v2`.
+- `asset-manifest-main.json`, you will have the last code merged the `main` branch.
+- `asset-manifest-INT.json`, you will have the last code pushed to the `INT` branch.
+
+Currently in Doppler [we are always using the v1](https://github.com/MakingSense/Doppler/blob/f89184ce5e16bc326809f5b224a478621bf75fbb/Doppler.Presentation.MVC/UnlayerEditorPoc/index.html#L26):
+
+```html
+<html lang="en">
+<head>
+    <!-- . . . -->
+    <script src="https://cdn.fromdoppler.com/loader/v1/loader.js"></script>
+</head>
+
+<body>
+    <!-- . . . -->
+    <script type="text/javascript">
+        (new AssetServices()).load("https://cdn.fromdoppler.com/unlayer-editor/asset-manifest-v1.json", []);
+    </script>
+    <!-- . . . -->
+</body>
+</html>
+```
