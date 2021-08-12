@@ -111,5 +111,7 @@ docker run --rm \
       --name=\"${name}\" \
       --version=\"${version}\" \
       --pre-version-suffix=\"${versionPre}\" \
-    && scp -P \"${CDN_SFTP_PORT}\" -r \"/work/build/.\" \"${CDN_SFTP_USERNAME}@${CDN_SFTP_HOSTNAME}:/${CDN_SFTP_BASE}/${pkgName}/${tag}/\""
-# TODO: use the prepared files (/work/ready) in place of build ones (/work/build) in SCP
+    && sh ./upload.sh \
+      --port=\"${CDN_SFTP_PORT}\" \
+      --destination=\"${CDN_SFTP_USERNAME}@${CDN_SFTP_HOSTNAME}:/${CDN_SFTP_BASE}/${pkgName}/\" \
+    "
