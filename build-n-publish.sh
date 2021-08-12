@@ -2,7 +2,6 @@
 
 # constants
 pkgName="unlayer-editor"
-cdnBaseUrl="https://cdn.fromdoppler.com"
 
 # parameters
 commit=""
@@ -99,109 +98,20 @@ cd "$(dirname "$0")"
 export MSYS_NO_PATHCONV=1
 export MSYS2_ARG_CONV_EXCL="*"
 
-if [ -n "${version}" ]
-then
-  versionBuild=${commit}
-  # Ugly code to deal with versions
-  # Input:
-  #   version=v12.34.5
-  #   versionBuild=94f85efb9c
-  #   versionPre=0pr
-  # Output:
-  #   versionMayor=pre-v12
-  #   versionMayorMinor=pre-v12.34
-  #   versionMayorMinorPatch=pre-v12.34.5
-  #   versionMayorMinorPatchPre=pre-v12.34.5-0pr
-  #   versionFull=pre-v12.34.5-0pr+94f85efb9c
-  #   versionFullForTag=pre-v12.34.5-0pr_94f85efb9c
-  # region Ugly code to deal with versions
+tag="${pkgName}-${commit}"
 
-  versionFull=${version}
+docker build . --tag "${tag}"
 
-  if [ -n "${versionPre}" ]
-  then
-    versionFull=${versionFull}-${versionPre}
-  fi
-
-  if [ -n "${versionBuild}" ]
-  then
-    versionFull=${versionFull}+${versionBuild}
-  fi
-
-  # https://semver.org/spec/v2.0.0.html#backusnaur-form-grammar-for-valid-semver-versions
-  # <valid semver> ::= <version core>
-  #                  | <version core> "-" <pre-release>
-  #                  | <version core> "+" <build>
-  #                  | <version core> "-" <pre-release> "+" <build>
-  #
-  # <version core> ::= <major> "." <minor> "." <patch>
-  versionBuild="$(echo "${versionFull}"+ | cut -d'+' -f2)"
-  versionMayorMinorPatchPre="$(echo "${versionFull}" | cut -d'+' -f1)" # v0.0.0-xxx (ignoring `+` if exists)
-  versionPre="$(echo "${versionMayorMinorPatchPre}"- | cut -d'-' -f2)"
-  versionMayorMinorPatch="$(echo "${versionMayorMinorPatchPre}" | cut -d'-' -f1)" # v0.0.0 (ignoring `-` if exists)
-  versionMayor="$(echo "${versionMayorMinorPatch}" | cut -d'.' -f1)" # v0
-  versionMinor="$(echo "${versionMayorMinorPatch}" | cut -d'.' -f2)"
-  versionMayorMinor="${versionMayor}.${versionMinor}" # v0.0
-  # by the moment we do not need it, versionPatch only for demo purposes
-  # versionPatch="$(echo "${versionMayorMinorPatch}" | cut -d'.' -f3)"
-
-  if [ -z "${versionBuild}" ]
-  then
-    canonicalTag=${versionMayorMinorPatchPre}
-  else
-    # because `+` is not accepted in tag names
-    canonicalTag=${versionMayorMinorPatchPre}_${versionBuild}
-  fi
-
-  if [ -n "${versionPre}" ]
-  then
-    preReleasePrefix="pre-"
-    versionMayor=${preReleasePrefix}${versionMayor}
-    versionMayorMinor=${preReleasePrefix}${versionMayorMinor}
-    versionMayorMinorPatch=${preReleasePrefix}${versionMayorMinorPatch}
-    versionMayorMinorPatchPre=${preReleasePrefix}${versionMayorMinorPatchPre}
-    versionFull=${preReleasePrefix}${versionFull}
-    canonicalTag=${preReleasePrefix}${canonicalTag}
-  fi
-  # endregion Ugly code to deal with versions
-fi
-
-if [ -n "${name}" ]
-then
-  versionFull=${name}-${commit}
-  canonicalTag=${versionFull}
-fi
-
-docker build . \
-  --build-arg baseUrl="${cdnBaseUrl}" \
-  --build-arg pkgName="${pkgName}" \
-  --build-arg version="${canonicalTag}" \
-  --tag "${canonicalTag}"
-
-# TODO: update this
-# BEGIN - Old behavior
 docker run --rm \
   -v /var/lib/jenkins/.ssh:/root/.ssh:ro \
-  "${canonicalTag}" \
+  "${tag}" \
   /bin/sh -c "\
-    scp -P \"${CDN_SFTP_PORT}\" -r \"/source/${pkgName}\" \"${CDN_SFTP_USERNAME}@${CDN_SFTP_HOSTNAME}:/${CDN_SFTP_BASE}/\""
-
-echo "Files ready in ${cdnBaseUrl}/${pkgName}/${canonicalTag}"
-# END - Old behavior
-
-# TODO: Implement this:
-# BEGIN - Desired Behavior
-echo "We should generate ${cdnBaseUrl}/${pkgName}/asset-manifest-${canonicalTag}.json"
-if [ -n "${version}" ]
-then
-  echo "We should generate ${cdnBaseUrl}/${pkgName}/asset-manifest-${versionMayor}.json"
-  echo "We should generate ${cdnBaseUrl}/${pkgName}/asset-manifest-${versionMayorMinor}.json"
-  echo "We should generate ${cdnBaseUrl}/${pkgName}/asset-manifest-${versionMayorMinorPatch}.json"
-  echo "We should generate ${cdnBaseUrl}/${pkgName}/asset-manifest-${versionMayorMinorPatchPre}.json"
-fi
-
-if [ -n "${name}" ]
-then
-  echo "We should generate ${cdnBaseUrl}/${pkgName}/asset-manifest-${name}.json"
-fi
-# END - Desired Behavior
+    sh ./prepare.sh \
+      --commit=\"${commit}\" \
+      --name=\"${name}\" \
+      --version=\"${version}\" \
+      --pre-version-suffix=\"${versionPre}\" \
+    && sh ./upload.sh \
+      --port=\"${CDN_SFTP_PORT}\" \
+      --destination=\"${CDN_SFTP_USERNAME}@${CDN_SFTP_HOSTNAME}:/${CDN_SFTP_BASE}/${pkgName}/\" \
+    "
