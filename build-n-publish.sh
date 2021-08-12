@@ -1,28 +1,207 @@
 #!/bin/sh
 
+# constants
 pkgName="unlayer-editor"
-pkgVersion=${1:-"v0.0.0-build0"}
-cdnBaseUrl=${2:-"https//cdn.fromdoppler.com"}
+cdnBaseUrl="https://cdn.fromdoppler.com"
 
-# Exit immediately if a command exits with a non-zero status.
+# parameters
+commit=""
+name=""
+version=""
+versionPre=""
+
+print_help () {
+    echo ""
+    echo "Usage: sh build-n-publish.sh [OPTIONS]"
+    echo ""
+    echo "Use Docker to build project's bundle files and publish them to our CDN"
+    echo ""
+    echo "Options:"
+    echo "  -c, --commit (mandatory)"
+    echo "  -n, --name, version name"
+    echo "  -v, --version, version number"
+    echo "  -s, --pre-version-suffix (optional, only with version)"
+    echo "  -h, --help"
+    echo "Only one of name or version parameters is required, and cannot be included together."
+    echo
+    echo "Examples:"
+    echo "  sh build-n-publish.sh --commit=aee25c286a7c8265e2b32ccc293f5ab0bd7a9d57 --version=v1.2.11"
+    echo "  sh build-n-publish.sh --c=aee25c286a7c8265e2b32ccc293f5ab0bd7a9d57 -v=v1.2.11"
+    echo "  sh build-n-publish.sh --c=aee25c286a7c8265e2b32ccc293f5ab0bd7a9d57 -v=v1.2.11 -s=beta1"
+    echo "  sh build-n-publish.sh --commit=aee25c286a7c8265e2b32ccc293f5ab0bd7a9d57 --version=v1.2.11 --pre-version-suffix=beta1"
+    echo "  sh build-n-publish.sh --commit=aee25c286a7c8265e2b32ccc293f5ab0bd7a9d57 --name=main"
+}
+
+for i in "$@" ; do
+case $i in
+    -c=*|--commit=*)
+    commit="${i#*=}"
+    ;;
+    -n=*|--name=*)
+    name="${i#*=}"
+    ;;
+    -v=*|--version=*)
+    version="${i#*=}"
+    ;;
+    -s=*|--pre-version-suffix=*)
+    versionPre="${i#*=}"
+    ;;
+    -h|--help)
+    print_help
+    exit 0
+    ;;
+esac
+done
+
+if [ -z "${commit}" ]
+then
+  echo "Error: commit parameter is mandatory"
+  print_help
+  exit 1
+fi
+
+if [ -n "${version}" ] && [ -n "${name}" ]
+then
+  echo "Error: name and version parameters cannot be included together"
+  print_help
+  exit 1
+fi
+
+if [ -z "${version}" ] && [ -z "${name}" ]
+then
+  echo "Error: one of name or version parameters is required"
+  print_help
+  exit 1
+fi
+
+if [ -z "${version}" ] && [ -n "${versionPre}" ]
+then
+  echo "Error: pre-version-suffix parameter is only accepted along with version parameter"
+  print_help
+  exit 1
+fi
+
+# TODO: validate commit format
+# TODO: validate version format (if it is included)
+
+# Stop script on NZEC
 set -e
+# Stop script if unbound variable found (use ${var:-} if intentional)
+set -u
 
 # Lines added to get the script running in the script path shell context
 # reference: http://www.ostricher.com/2014/10/the-right-way-to-get-the-directory-of-a-bash-script/
 cd "$(dirname "$0")"
 
-tag="${pkgName}-${pkgVersion}-$(date +%Y%m%d%H%M%S)"
+# To avoid issues with MINGW and Git Bash, see:
+# https://github.com/docker/toolbox/issues/673
+# https://gist.github.com/borekb/cb1536a3685ca6fc0ad9a028e6a959e3
+export MSYS_NO_PATHCONV=1
+export MSYS2_ARG_CONV_EXCL="*"
+
+if [ -n "${version}" ]
+then
+  versionBuild=${commit}
+  # Ugly code to deal with versions
+  # Input:
+  #   version=v12.34.5
+  #   versionBuild=94f85efb9c
+  #   versionPre=0pr
+  # Output:
+  #   versionMayor=pre-v12
+  #   versionMayorMinor=pre-v12.34
+  #   versionMayorMinorPatch=pre-v12.34.5
+  #   versionMayorMinorPatchPre=pre-v12.34.5-0pr
+  #   versionFull=pre-v12.34.5-0pr+94f85efb9c
+  #   versionFullForTag=pre-v12.34.5-0pr_94f85efb9c
+  # region Ugly code to deal with versions
+
+  versionFull=${version}
+
+  if [ -n "${versionPre}" ]
+  then
+    versionFull=${versionFull}-${versionPre}
+  fi
+
+  if [ -n "${versionBuild}" ]
+  then
+    versionFull=${versionFull}+${versionBuild}
+  fi
+
+  # https://semver.org/spec/v2.0.0.html#backusnaur-form-grammar-for-valid-semver-versions
+  # <valid semver> ::= <version core>
+  #                  | <version core> "-" <pre-release>
+  #                  | <version core> "+" <build>
+  #                  | <version core> "-" <pre-release> "+" <build>
+  #
+  # <version core> ::= <major> "." <minor> "." <patch>
+  versionBuild="$(echo "${versionFull}"+ | cut -d'+' -f2)"
+  versionMayorMinorPatchPre="$(echo "${versionFull}" | cut -d'+' -f1)" # v0.0.0-xxx (ignoring `+` if exists)
+  versionPre="$(echo "${versionMayorMinorPatchPre}"- | cut -d'-' -f2)"
+  versionMayorMinorPatch="$(echo "${versionMayorMinorPatchPre}" | cut -d'-' -f1)" # v0.0.0 (ignoring `-` if exists)
+  versionMayor="$(echo "${versionMayorMinorPatch}" | cut -d'.' -f1)" # v0
+  versionMinor="$(echo "${versionMayorMinorPatch}" | cut -d'.' -f2)"
+  versionMayorMinor="${versionMayor}.${versionMinor}" # v0.0
+  # by the moment we do not need it, versionPatch only for demo purposes
+  # versionPatch="$(echo "${versionMayorMinorPatch}" | cut -d'.' -f3)"
+
+  if [ -z "${versionBuild}" ]
+  then
+    canonicalTag=${versionMayorMinorPatchPre}
+  else
+    # because `+` is not accepted in tag names
+    canonicalTag=${versionMayorMinorPatchPre}_${versionBuild}
+  fi
+
+  if [ -n "${versionPre}" ]
+  then
+    preReleasePrefix="pre-"
+    versionMayor=${preReleasePrefix}${versionMayor}
+    versionMayorMinor=${preReleasePrefix}${versionMayorMinor}
+    versionMayorMinorPatch=${preReleasePrefix}${versionMayorMinorPatch}
+    versionMayorMinorPatchPre=${preReleasePrefix}${versionMayorMinorPatchPre}
+    versionFull=${preReleasePrefix}${versionFull}
+    canonicalTag=${preReleasePrefix}${canonicalTag}
+  fi
+  # endregion Ugly code to deal with versions
+fi
+
+if [ -n "${name}" ]
+then
+  versionFull=${name}-${commit}
+  canonicalTag=${versionFull}
+fi
 
 docker build . \
   --build-arg baseUrl="${cdnBaseUrl}" \
   --build-arg pkgName="${pkgName}" \
-  --build-arg version="${pkgVersion}" \
-  --tag "${tag}"
+  --build-arg version="${canonicalTag}" \
+  --tag "${canonicalTag}"
 
+# TODO: update this
+# BEGIN - Old behavior
 docker run --rm \
   -v /var/lib/jenkins/.ssh:/root/.ssh:ro \
-  "${tag}" \
+  "${canonicalTag}" \
   /bin/sh -c "\
     scp -P \"${CDN_SFTP_PORT}\" -r \"/source/${pkgName}\" \"${CDN_SFTP_USERNAME}@${CDN_SFTP_HOSTNAME}:/${CDN_SFTP_BASE}/\""
 
-echo "Files ready in ${cdnBaseUrl}/${pkgName}/${pkgVersion}"
+echo "Files ready in ${cdnBaseUrl}/${pkgName}/${canonicalTag}"
+# END - Old behavior
+
+# TODO: Implement this:
+# BEGIN - Desired Behavior
+echo "We should generate ${cdnBaseUrl}/${pkgName}/asset-manifest-${canonicalTag}.json"
+if [ -n "${version}" ]
+then
+  echo "We should generate ${cdnBaseUrl}/${pkgName}/asset-manifest-${versionMayor}.json"
+  echo "We should generate ${cdnBaseUrl}/${pkgName}/asset-manifest-${versionMayorMinor}.json"
+  echo "We should generate ${cdnBaseUrl}/${pkgName}/asset-manifest-${versionMayorMinorPatch}.json"
+  echo "We should generate ${cdnBaseUrl}/${pkgName}/asset-manifest-${versionMayorMinorPatchPre}.json"
+fi
+
+if [ -n "${name}" ]
+then
+  echo "We should generate ${cdnBaseUrl}/${pkgName}/asset-manifest-${name}.json"
+fi
+# END - Desired Behavior
