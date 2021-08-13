@@ -133,17 +133,20 @@ Currently in Doppler [we are always using the v1](https://github.com/MakingSense
 
 ```html
 <html lang="en">
-<head>
+  <head>
     <!-- . . . -->
     <script src="https://cdn.fromdoppler.com/loader/v1/loader.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- . . . -->
     <script type="text/javascript">
-        (new AssetServices()).load("https://cdn.fromdoppler.com/unlayer-editor/asset-manifest-v1.json", []);
+      new AssetServices().load(
+        'https://cdn.fromdoppler.com/unlayer-editor/asset-manifest-v1.json',
+        [],
+      );
     </script>
     <!-- . . . -->
-</body>
+  </body>
 </html>
 ```
