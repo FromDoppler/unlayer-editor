@@ -22,6 +22,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "coverage:local": "react-scripts test --coverage --watchAll",
+    "coverage:ci": "react-scripts test --coverage",
     "eject": "react-scripts eject",
     "verify-format": "yarn eslint-check & yarn prettier-check & yarn eclint-check",
     "eclint-fix": "eclint fix",
@@ -62,5 +64,28 @@
     "eslint-plugin-promise": "5.1.0",
     "eslint-plugin-react": "^7.24.0",
     "prettier": "^2.3.2"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{js,jsx,tsx,ts}",
+      "!**/.github/**",
+      "!**/.vscode/**",
+      "!**/cdn-hepers/**",
+      "!**/coverage/**",
+      "!**/docs/**",
+      "!**/node_modules/**",
+      "!**/coverage/**",
+      "!**/setupTests.ts",
+      "!**/reportWebVitals.ts",
+      "!**/react-app-env.d.ts"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    }
   }
 }
