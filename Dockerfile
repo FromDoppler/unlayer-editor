@@ -15,10 +15,6 @@ RUN yarn verify-format
 
 FROM restore AS test
 ENV CI=true
-RUN yarn test
-
-FROM test AS coverage
-ENV CI=true
 RUN yarn coverage:ci
 
 FROM restore as build

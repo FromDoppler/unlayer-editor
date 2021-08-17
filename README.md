@@ -25,6 +25,12 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+#### `yarn coverage:local`
+
+Launches the test runner with report coverage in the interactive watch mode.
+
+You can view the generated report by opening `./coverage/lcov-report/index.html` file in any web browser.
+
 #### `yarn verify-format`
 
 Runs some code formatting validations:

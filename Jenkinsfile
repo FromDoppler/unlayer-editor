@@ -26,11 +26,6 @@ pipeline {
         sh 'docker build --target test .'
       }
     }
-    stage('Coverage') {
-      steps {
-        sh 'docker build --target coverage .'
-      }
-    }
     stage('Build') {
       steps {
         sh 'docker build --target build .'
