@@ -11,7 +11,8 @@ updates:
       include: scope
     ignore:
       - dependency-name: "node"
-        versions: ["15.x", "16.x"]
+        versions:
+        - ">= 15.0.0"
   - package-ecosystem: npm
     directory: "/"
     schedule:
@@ -24,4 +25,5 @@ updates:
       include: scope
     ignore:
       - dependency-name: "@types/node"
-        versions: ["15.x", "16.x"]
+        versions:
+        - ">= 15.0.0"
