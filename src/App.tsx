@@ -9,20 +9,32 @@ const App: React.FC = () => {
   return (
     <div className="App" data-testid="email-editor-test">
       <EmailEditor
-        projectId={1071}
-        key="email-editor-test"
         ref={emailEditorRef}
+        key="email-editor-test"
+        projectId={1071}
         options={{
           customJS: [
             window.location.protocol +
               '//' +
               window.location.host +
-              '/socialTool.js',
-            window.location.protocol +
-              '//' +
-              window.location.host +
-              '/subscribeTool.js',
+              '/socialShare.js',
           ],
+          tools: {
+            'custom#social_share_tool': {
+              properties: {
+                department: {
+                  editor: {
+                    data: {
+                      options: [
+                        { label: 'Grande', value: 'grande' },
+                        { label: 'Pequeño', value: 'pequenio' },
+                      ],
+                    },
+                  },
+                },
+              },
+            },
+          },
         }}
       />
     </div>
