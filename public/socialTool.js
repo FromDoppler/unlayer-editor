@@ -118,7 +118,6 @@ unlayer.registerTool({
       },
     }),
     exporters: {
-      web: function () {},
       email: function () {},
     },
   },
