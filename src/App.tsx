@@ -8,7 +8,23 @@ const App: React.FC = () => {
 
   return (
     <div className="App" data-testid="email-editor-test">
-      <EmailEditor key="email-editor-test" ref={emailEditorRef} />
+      <EmailEditor
+        projectId={1071}
+        key="email-editor-test"
+        ref={emailEditorRef}
+        options={{
+          customJS: [
+            window.location.protocol +
+              '//' +
+              window.location.host +
+              '/socialTool.js',
+            window.location.protocol +
+              '//' +
+              window.location.host +
+              '/subscribeTool.js',
+          ],
+        }}
+      />
     </div>
   );
 };
