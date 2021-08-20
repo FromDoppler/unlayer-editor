@@ -28,3 +28,5 @@ package-lock.json
 .*ignore
 *.svg
 *.png
+build/**
+coverage/**
