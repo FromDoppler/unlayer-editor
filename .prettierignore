@@ -29,4 +29,6 @@ package-lock.json
 *.svg
 *.png
 build/**
+.eslintrc.json
+.github/dependabot.yml
 coverage/**
