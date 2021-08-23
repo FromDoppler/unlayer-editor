@@ -19,8 +19,8 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-app-rewired start --scripts-version react-scripts start",
+    "build": "react-app-rewired build --scripts-version react-scripts build",
     "test": "react-scripts test",
     "coverage:local": "react-scripts test --coverage --watchAll",
     "coverage:ci": "react-scripts test --coverage",
@@ -63,11 +63,13 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-promise": "5.1.0",
     "eslint-plugin-react": "^7.24.0",
-    "prettier": "^2.3.2"
+    "prettier": "^2.3.2",
+    "react-app-rewired": "^2.1.8"
   },
   "jest": {
     "collectCoverageFrom": [
       "**/*.{js,jsx,tsx,ts}",
+      "!**/src/customJs/**",
       "!**/.github/**",
       "!**/.vscode/**",
       "!**/cdn-hepers/**",

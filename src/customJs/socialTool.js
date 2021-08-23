@@ -1,6 +1,9 @@
+//TODO: configure the ESLint and Prettier for disable lines
+// eslint-disable-next-line no-undef
 unlayer.registerPropertyEditor({
   name: 'facebook',
   layout: 'bottom',
+  // eslint-disable-next-line no-undef
   Widget: unlayer.createWidget({
     render(value) {
       return `
@@ -20,9 +23,11 @@ unlayer.registerPropertyEditor({
   }),
 });
 
+// eslint-disable-next-line no-undef
 unlayer.registerPropertyEditor({
   name: 'twitter',
   layout: 'bottom',
+  // eslint-disable-next-line no-undef
   Widget: unlayer.createWidget({
     render(value) {
       return `
@@ -42,9 +47,11 @@ unlayer.registerPropertyEditor({
   }),
 });
 
+// eslint-disable-next-line no-undef
 unlayer.registerPropertyEditor({
   name: 'linkedin',
   layout: 'bottom',
+  // eslint-disable-next-line no-undef
   Widget: unlayer.createWidget({
     render(value) {
       return `
@@ -64,6 +71,7 @@ unlayer.registerPropertyEditor({
   }),
 });
 
+// eslint-disable-next-line no-undef
 unlayer.registerTool({
   type: 'social-tool',
   category: 'contents',
@@ -97,6 +105,7 @@ unlayer.registerTool({
     },
   },
   renderer: {
+    // eslint-disable-next-line no-undef
     Viewer: unlayer.createViewer({
       render(values) {
         return `
@@ -118,6 +127,7 @@ unlayer.registerTool({
       },
     }),
     exporters: {
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       email: function () {},
     },
   },
