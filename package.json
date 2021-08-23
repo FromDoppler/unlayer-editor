@@ -69,6 +69,7 @@
   "jest": {
     "collectCoverageFrom": [
       "**/*.{js,jsx,tsx,ts}",
+      "!**/src/customJs/**",
       "!**/.github/**",
       "!**/.vscode/**",
       "!**/cdn-hepers/**",

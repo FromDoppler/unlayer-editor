@@ -1,3 +1,4 @@
+//TODO: configure the ESLint and Prettier for disable lines
 // eslint-disable-next-line no-undef
 unlayer.registerPropertyEditor({
   name: 'subscribe-editor',
