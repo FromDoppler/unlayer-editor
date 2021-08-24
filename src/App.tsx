@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import './App.css';
 
-import EmailEditor from 'react-email-editor';
+import EmailEditor, { ToolConfig } from 'react-email-editor';
 
 const App: React.FC = () => {
   const emailEditorRef = useRef(null);
@@ -22,7 +22,28 @@ const App: React.FC = () => {
               '//' +
               window.location.host +
               '/subscribeTool.js',
+            window.location.protocol +
+              '//' +
+              window.location.host +
+              '/socialShare.js',
           ],
+          tools: {
+            'custom#social_share_tool': {
+              properties: {
+                social_share_size: {
+                  editor: {
+                    data: {
+                      options: [
+                        { label: 'Normal', value: '90' },
+                        { label: 'Pequeño', value: '70' },
+                        { label: 'Grande', value: '120' },
+                      ],
+                    },
+                  },
+                },
+              },
+            } as ToolConfig,
+          },
         }}
       />
     </div>
