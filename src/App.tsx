@@ -37,15 +37,14 @@ const App: React.FC = () => {
   const saveDesign = () => {
     // eslint-disable-next-line
     emailEditorRef.current.editor.saveDesign((design: any) => {
-      console.log('saveDesign', design);
+      console.log('Template data', '\n', design);
     });
   };
 
   const exportHtml = () => {
     // eslint-disable-next-line
     emailEditorRef.current.editor.exportHtml((data: any) => {
-      const { html } = data;
-      console.log('exportHtml', html);
+      console.log('HTML Email data', '\n', data.html);
     });
   };
 
