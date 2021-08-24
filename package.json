@@ -18,8 +18,17 @@
     "typescript": "^4.1.2",
     "web-vitals": "^2.1.0"
   },
+  "watch": {
+    "dev-build": {
+      "patterns": [
+        "src/customJs"
+      ],
+      "extensions": "js"
+    }
+  },
   "scripts": {
-    "start": "react-app-rewired start --scripts-version react-scripts start",
+    "start": "concurrently --kill-others \"npm-watch\" \"react-scripts start\"",
+    "dev-build": "webpack --config webpack.config-dev.js",
     "build": "react-app-rewired build --scripts-version react-scripts build",
     "test": "react-scripts test",
     "coverage:local": "react-scripts test --coverage --watchAll",
