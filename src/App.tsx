@@ -34,9 +34,9 @@ const App: React.FC = () => {
                   editor: {
                     data: {
                       options: [
-                        { label: 'Normal', value: 'normal' },
-                        { label: 'Pequeño', value: 'small' },
-                        { label: 'Grande', value: 'big' },
+                        { label: 'Normal', value: '90' },
+                        { label: 'Pequeño', value: '70' },
+                        { label: 'Grande', value: '120' },
                       ],
                     },
                   },
