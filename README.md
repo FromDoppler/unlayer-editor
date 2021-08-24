@@ -150,3 +150,117 @@ Currently in Doppler [we are always using the v1](https://github.com/MakingSense
   </body>
 </html>
 ```
+
+## File storage
+
+### AWS S3 storage configuration
+
+Unlayer have file storage support built-in with Amazon S3 that can be configured without any coding. Follow these steps to set up your S3 file storage.
+
+- Create S3 Bucket: The first step is to create a bucket in your AWS S3 console. You need to uncheck "'Block all public access" for S3 storage.
+
+  ![AWS S3 edit block puplic access](./docs/aws-uncheck-s3-block-all-public-access.png)
+
+- Create IAM User: Go to your AWS IAM console and create a new user with `Programmatic Access` so you can get the access key id and secret access key.
+
+- Attach Policy and Permissions: Aattach a minimum set of permissions, use the following policy.
+Make sure to replace BUCKET-NAME, ID-COUNT, ID-USER with your actual bucket settings.
+
+  ```json
+  {
+      "Version": "2012-10-17",
+      "Statement": [
+          {
+              "Sid": "AllowFullAccessBucket",
+              "Effect": "Allow",
+              "Principal": {
+                  "AWS": "arn:aws:iam::ID-COUNT:user/ID-USER"
+              },
+              "Action": [
+                  "s3:GetBucketPublicAccessBlock",
+                  "s3:PutObject",
+                  "s3:GetObject",
+                  "s3:PutBucketPublicAccessBlock",
+                  "s3:GetBucketCORS",
+                  "s3:ListBucket",
+                  "s3:PutBucketCORS",
+                  "s3:GetBucketAcl",
+                  "s3:GetBucketLocation",
+                  "s3:PutObjectAcl",
+                  "s3:PutBucketTagging"
+              ],
+              "Resource": [
+                  "arn:aws:s3:::BUCKET-NAME/*",
+                  "arn:aws:s3:::BUCKET-NAME"
+              ]
+          }
+      ]
+  }
+  ```
+
+- Enable CORS for your S3 Bucket: Your S3 Bucket must have CORS (cross-origin resource sharing) enabled. Follow these steps:
+
+  - Go to your S3 Bucket in AWS Console
+
+  - Click the Permissions tab
+
+  - Click the CORS Configuration button
+
+  - Add the following in the configuration editor
+
+  ```json
+  [
+      {
+          "AllowedHeaders": [],
+          "AllowedMethods": [
+              "PUT",
+              "POST",
+              "DELETE",
+              "HEAD"
+          ],
+          "AllowedOrigins": [
+              "https://*.unlayer.com"
+          ],
+          "ExposeHeaders": []
+      }
+  ]
+  ```
+
+- Add Credentials in your Unlayer Project: Simply enter your information of S3 storage against your project. For this:
+
+  - Login to Unlayer dashboard
+
+  - Select your Project
+
+  - Click Settings in the navigation bar and select the Storage tab
+
+  - Click the Add Storage button
+
+  - Enter your Access Key Id, Secret Access Key, and Bucket
+
+  - Check Primary Storage at the end
+
+  ![AWS S3 edit block puplic access](./docs/config-unlayer-settings-storage-aws-s3.png)
+
+- Test your File Storage: Click the Test Storage button and see if all the items are working properly. If any of these are red, the storage will not work. In that case, please make sure all permissions are properly attached and the bucket exists in the correct region.
+
+  ![AWS S3 edit block puplic access](./docs/test-unlayer-aws-s3-success-full-configuration.png)
+
+- Unlayer project configuration: You must pass projectId when initializing the editor.
+
+  ```html
+  <script type="text/javascript">
+  unlayer.init({
+    id: "editor",
+    projectId: XXXX // Add your projectId from Settings
+  });
+  </script>
+  ```
+
+  ![AWS S3 edit block puplic access](./docs/config-unlayer-init-project-id.png)
+
+- Real use case: When an image is uploaded by any user, it's image created inside the S3 bucket with a timestamp prefix to make it unique. If the image is loaded again, a new file will be created inside the s3 bucket no matter it is the same image.
+
+  ![AWS S3 edit block puplic access](./docs/test-unlayer-upload-same-image.png)
+
+  ![AWS S3 edit block puplic access](./docs/test-s3-upload-same-image.png)
