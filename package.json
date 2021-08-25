@@ -93,7 +93,8 @@
       "!**/coverage/**",
       "!**/setupTests.ts",
       "!**/reportWebVitals.ts",
-      "!**/react-app-env.d.ts"
+      "!**/react-app-env.d.ts",
+      "!**/App.tsx"
     ],
     "coverageThreshold": {
       "global": {
