@@ -13,20 +13,7 @@ const App: React.FC = () => {
         key="email-editor-test"
         ref={emailEditorRef}
         options={{
-          customJS: [
-            window.location.protocol +
-              '//' +
-              window.location.host +
-              '/socialTool.js',
-            window.location.protocol +
-              '//' +
-              window.location.host +
-              '/subscribeTool.js',
-            window.location.protocol +
-              '//' +
-              window.location.host +
-              '/socialShare.js',
-          ],
+          customJS: [`${window.location.href}/customJs/index.js`],
           tools: {
             'custom#social_share_tool': {
               properties: {
