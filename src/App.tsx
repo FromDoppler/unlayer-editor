@@ -44,7 +44,7 @@ const App: React.FC = () => {
   const exportHtml = () => {
     // eslint-disable-next-line
     emailEditorRef.current.editor.exportHtml((data: any) => {
-      const { html } = data
+      const { html } = data;
       console.log('HTML Email data', '\n', html);
     });
   };
