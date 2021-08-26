@@ -47,7 +47,7 @@ pipeline {
             branch 'main'
           }
           steps {
-            sh 'sh build-n-publish.sh --commit=${GIT_COMMIT} --name=main-${BUILD_NUMBER}'
+            sh 'sh build-n-publish.sh --commit=${GIT_COMMIT} --name=main'
           }
         }
         stage('Publish pre-release images from INT') {
@@ -55,7 +55,7 @@ pipeline {
             branch 'INT'
           }
           steps {
-            sh 'sh build-n-publish.sh --commit=${GIT_COMMIT} --name=INT-${BUILD_NUMBER}'
+            sh 'sh build-n-publish.sh --commit=${GIT_COMMIT} --name=INT'
           }
         }
         stage('Publish final version images') {
