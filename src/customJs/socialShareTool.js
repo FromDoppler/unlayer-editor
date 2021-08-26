@@ -33,7 +33,7 @@ const socialShareTool = function (data) {
             </div>
           `;
 };
-
+// eslint-disable-next-line no-undef
 unlayer.registerTool({
   name: 'social_share_tool',
   label: 'Social Share',
@@ -58,6 +58,7 @@ unlayer.registerTool({
     },
   },
   renderer: {
+    // eslint-disable-next-line no-undef
     Viewer: unlayer.createViewer({
       render(values) {
         return socialShareTool(values);
