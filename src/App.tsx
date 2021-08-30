@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
 import './App.css';
 import styled from 'styled-components';
+import CryptoJS from 'crypto-js';
 
-import EmailEditor, { ToolConfig } from 'react-email-editor';
+import EmailEditor, { ToolConfig, User } from 'react-email-editor';
 
 const Bar = styled.div`
   flex: 1;
@@ -30,9 +31,28 @@ const Bar = styled.div`
   }
 `;
 
+interface UserSecurity extends User {
+  readonly signature?: string | undefined;
+}
+
 const App: React.FC = () => {
   // eslint-disable-next-line
-  const emailEditorRef: any = useRef(null);
+  const emailEditorRef: any = useRef(null);;
+  const projectId: number = parseInt(
+    process.env.REACT_APP_PROJECT_ID as string,
+    10,
+  );
+  const userId: number = parseInt(process.env.REACT_APP_USER_ID as string, 10);
+  const userKeySecret: string = process.env
+    .REACT_APP_IDENTITY_VERIFICATION_SECRET as string;
+  const signature = CryptoJS.HmacSHA256(
+    userId.toString(),
+    userKeySecret,
+  ).toString(CryptoJS.enc.Hex);
+  const userExtend: UserSecurity = {
+    id: userId,
+    signature: signature,
+  };
 
   const saveDesign = () => {
     // eslint-disable-next-line
@@ -57,10 +77,11 @@ const App: React.FC = () => {
         <button onClick={exportHtml}>Export HTML</button>
       </Bar>
       <EmailEditor
-        projectId={1071}
+        projectId={projectId}
         key="email-editor-test"
         ref={emailEditorRef}
         options={{
+          user: userExtend,
           customJS: [`${window.location.href}/customJs/index.js`],
           tools: {
             'custom#social_share_tool': {
