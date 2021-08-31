@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import './App.css';
 import styled from 'styled-components';
-import CryptoJS from 'crypto-js';
 
 import EmailEditor, { ToolConfig, User } from 'react-email-editor';
 
@@ -37,21 +36,17 @@ interface UserSecurity extends User {
 
 const App: React.FC = () => {
   // eslint-disable-next-line
-  const emailEditorRef: any = useRef(null);;
+  const emailEditorRef: any = useRef(null);
   const projectId: number = parseInt(
     process.env.REACT_APP_PROJECT_ID as string,
     10,
   );
   const userId: number = parseInt(process.env.REACT_APP_USER_ID as string, 10);
-  const userKeySecret: string = process.env
-    .REACT_APP_IDENTITY_VERIFICATION_SECRET as string;
-  const signature = CryptoJS.HmacSHA256(
-    userId.toString(),
-    userKeySecret,
-  ).toString(CryptoJS.enc.Hex);
+  const userSignature: string = process.env
+    .REACT_APP_USER_SIGNATURE as string;
   const userExtend: UserSecurity = {
     id: userId,
-    signature: signature,
+    signature: userSignature,
   };
 
   const saveDesign = () => {
