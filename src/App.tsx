@@ -42,8 +42,7 @@ const App: React.FC = () => {
     10,
   );
   const userId: number = parseInt(process.env.REACT_APP_USER_ID as string, 10);
-  const userSignature: string = process.env
-    .REACT_APP_USER_SIGNATURE as string;
+  const userSignature: string = process.env.REACT_APP_USER_SIGNATURE as string;
   const userExtend: UserSecurity = {
     id: userId,
     signature: userSignature,
