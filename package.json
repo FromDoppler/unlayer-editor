@@ -93,7 +93,7 @@
     "test": "node scripts/test.js",
     "coverage:local": "node scripts/test.js --coverage --watchAll",
     "coverage:ci": "node scripts/test.js --coverage",
-    "verify-format": "yarn eslint-check & yarn prettier-check & yarn eclint-check",
+    "verify-format": "yarn eslint-check && yarn prettier-check && yarn eclint-check",
     "eclint-fix": "eclint fix",
     "eclint-check": "eclint check",
     "eslint-check": "eslint --ext .ts --ext .tsx .",

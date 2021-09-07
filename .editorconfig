@@ -12,6 +12,8 @@ indent_size = 2
 
 [*.{json,js,ts}]
 indent_size = 2
+block_comment_start = /*
+block_comment_end = */
 
 [*.{ps1,psm1}]
 indent_size = 4
