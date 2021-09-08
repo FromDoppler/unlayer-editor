@@ -164,37 +164,34 @@ Unlayer have file storage support built-in with Amazon S3 that can be configured
 - Create IAM User: Go to your AWS IAM console and create a new user with `Programmatic Access` so you can get the access key id and secret access key.
 
 - Attach Policy and Permissions: Aattach a minimum set of permissions, use the following policy.
-Make sure to replace BUCKET-NAME, ID-COUNT, ID-USER with your actual bucket settings.
+  Make sure to replace BUCKET-NAME, ID-COUNT, ID-USER with your actual bucket settings.
 
   ```json
   {
-      "Version": "2012-10-17",
-      "Statement": [
-          {
-              "Sid": "AllowFullAccessBucket",
-              "Effect": "Allow",
-              "Principal": {
-                  "AWS": "arn:aws:iam::ID-COUNT:user/ID-USER"
-              },
-              "Action": [
-                  "s3:GetBucketPublicAccessBlock",
-                  "s3:PutObject",
-                  "s3:GetObject",
-                  "s3:PutBucketPublicAccessBlock",
-                  "s3:GetBucketCORS",
-                  "s3:ListBucket",
-                  "s3:PutBucketCORS",
-                  "s3:GetBucketAcl",
-                  "s3:GetBucketLocation",
-                  "s3:PutObjectAcl",
-                  "s3:PutBucketTagging"
-              ],
-              "Resource": [
-                  "arn:aws:s3:::BUCKET-NAME/*",
-                  "arn:aws:s3:::BUCKET-NAME"
-              ]
-          }
-      ]
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "AllowFullAccessBucket",
+        "Effect": "Allow",
+        "Principal": {
+          "AWS": "arn:aws:iam::ID-COUNT:user/ID-USER"
+        },
+        "Action": [
+          "s3:GetBucketPublicAccessBlock",
+          "s3:PutObject",
+          "s3:GetObject",
+          "s3:PutBucketPublicAccessBlock",
+          "s3:GetBucketCORS",
+          "s3:ListBucket",
+          "s3:PutBucketCORS",
+          "s3:GetBucketAcl",
+          "s3:GetBucketLocation",
+          "s3:PutObjectAcl",
+          "s3:PutBucketTagging"
+        ],
+        "Resource": ["arn:aws:s3:::BUCKET-NAME/*", "arn:aws:s3:::BUCKET-NAME"]
+      }
+    ]
   }
   ```
 
@@ -210,19 +207,12 @@ Make sure to replace BUCKET-NAME, ID-COUNT, ID-USER with your actual bucket sett
 
   ```json
   [
-      {
-          "AllowedHeaders": [],
-          "AllowedMethods": [
-              "PUT",
-              "POST",
-              "DELETE",
-              "HEAD"
-          ],
-          "AllowedOrigins": [
-              "https://*.unlayer.com"
-          ],
-          "ExposeHeaders": []
-      }
+    {
+      "AllowedHeaders": [],
+      "AllowedMethods": ["PUT", "POST", "DELETE", "HEAD"],
+      "AllowedOrigins": ["https://*.unlayer.com"],
+      "ExposeHeaders": []
+    }
   ]
   ```
 
@@ -250,10 +240,10 @@ Make sure to replace BUCKET-NAME, ID-COUNT, ID-USER with your actual bucket sett
 
   ```html
   <script type="text/javascript">
-  unlayer.init({
-    id: "editor",
-    projectId: XXXX // Add your projectId from Settings
-  });
+    unlayer.init({
+      id: 'editor',
+      projectId: XXXX, // Add your projectId from Settings
+    });
   </script>
   ```
 
