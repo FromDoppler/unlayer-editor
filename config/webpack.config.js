@@ -193,7 +193,9 @@ module.exports = function (webpackEnv) {
             // initialization, it doesn't blow up the WebpackDevServer client, and
             // changing JS code would still trigger a refresh.
           ]
-        : paths.appIndexJs,
+        : isEnvDevelopment
+        ? paths.appIndexJs
+        : paths.appCustomIndexJs,
     output: {
       // The build folder.
       path: isEnvProduction ? paths.appBuild : undefined,

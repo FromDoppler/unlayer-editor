@@ -89,7 +89,7 @@
   "scripts": {
     "start": "concurrently --kill-others \"npm-watch\" \"node scripts/start.js\"",
     "dev-build": "webpack --config webpack.config-dev.js",
-    "build": "react-app-rewired build --scripts-version node scripts/build.js",
+    "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "coverage:local": "node scripts/test.js --coverage --watchAll",
     "coverage:ci": "node scripts/test.js --coverage",
