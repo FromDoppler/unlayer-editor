@@ -35,8 +35,7 @@ interface UserSecurity extends User {
 }
 
 const App: React.FC = () => {
-  // eslint-disable-next-line
-  const emailEditorRef: any = useRef(null);
+  const emailEditorRef = useRef() as React.MutableRefObject<EmailEditor>;
   const projectId: number = parseInt(
     process.env.REACT_APP_PROJECT_ID as string,
     10,
@@ -49,15 +48,13 @@ const App: React.FC = () => {
   };
 
   const saveDesign = () => {
-    // eslint-disable-next-line
-    emailEditorRef.current.editor.saveDesign((design: any) => {
+    emailEditorRef.current.saveDesign((design) => {
       console.log('Template data', '\n', design);
     });
   };
 
   const exportHtml = () => {
-    // eslint-disable-next-line
-    emailEditorRef.current.editor.exportHtml((data: any) => {
+    emailEditorRef.current.exportHtml((data) => {
       const { html } = data;
       console.log('HTML Email data', '\n', html);
     });
