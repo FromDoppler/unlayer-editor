@@ -1,8 +1,13 @@
 import React, { useRef } from 'react';
 import './App.css';
+import mergeTags from './external/merge.tags';
 import styled from 'styled-components';
 
-import EmailEditor, { ToolConfig, User } from 'react-email-editor';
+import EmailEditor, {
+  ToolConfig,
+  User,
+  UnlayerOptions,
+} from 'react-email-editor';
 
 const Bar = styled.div`
   flex: 1;
@@ -30,10 +35,6 @@ const Bar = styled.div`
   }
 `;
 
-interface UserSecurity extends User {
-  readonly signature?: string | undefined;
-}
-
 const App: React.FC = () => {
   const emailEditorRef = useRef() as React.MutableRefObject<EmailEditor>;
   const projectId: number = parseInt(
@@ -42,10 +43,35 @@ const App: React.FC = () => {
   );
   const userId: number = parseInt(process.env.REACT_APP_USER_ID as string, 10);
   const userSignature: string = process.env.REACT_APP_USER_SIGNATURE as string;
-  const userExtend: UserSecurity = {
+  const userExtend = {
     id: userId,
     signature: userSignature,
-  };
+  } as User;
+  const UnlayerOptionsExtended = {
+    mergeTagsConfig: {
+      sort: false,
+    },
+    mergeTags: mergeTags,
+    user: userExtend,
+    customJS: [`${window.location.href}/customJs/index.js`],
+    tools: {
+      'custom#social_share_tool': {
+        properties: {
+          social_share_size: {
+            editor: {
+              data: {
+                options: [
+                  { label: 'Normal', value: '90' },
+                  { label: 'Pequeño', value: '70' },
+                  { label: 'Grande', value: '120' },
+                ],
+              },
+            },
+          },
+        },
+      } as ToolConfig,
+    },
+  } as UnlayerOptions;
 
   const saveDesign = () => {
     emailEditorRef.current.saveDesign((design) => {
@@ -71,27 +97,7 @@ const App: React.FC = () => {
         projectId={projectId}
         key="email-editor-test"
         ref={emailEditorRef}
-        options={{
-          user: userExtend,
-          customJS: [`${window.location.href}/customJs/index.js`],
-          tools: {
-            'custom#social_share_tool': {
-              properties: {
-                social_share_size: {
-                  editor: {
-                    data: {
-                      options: [
-                        { label: 'Normal', value: '90' },
-                        { label: 'Pequeño', value: '70' },
-                        { label: 'Grande', value: '120' },
-                      ],
-                    },
-                  },
-                },
-              },
-            } as ToolConfig,
-          },
-        }}
+        options={UnlayerOptionsExtended}
       />
     </div>
   );
