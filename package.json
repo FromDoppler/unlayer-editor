@@ -6,7 +6,7 @@
     "@babel/core": "^7.15.5",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
     "@svgr/webpack": "^5.5.0",
-    "@testing-library/dom": "^8.3.0",
+    "@testing-library/dom": "^8.5.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.2.1",
@@ -78,7 +78,7 @@
     "resolve-url-loader": "^4.0.0",
     "sass-loader": "^10.2.0",
     "semver": "^7.3.5",
-    "style-loader": "^1.3.0",
+    "style-loader": "^2.0.0",
     "styled-components": "^4.4.1",
     "terser-webpack-plugin": "^4.2.3",
     "ts-pnp": "^1.2.0",
@@ -88,7 +88,7 @@
     "webpack": "^4.46.0",
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^3.11.2",
-    "webpack-manifest-plugin": "^2.2.0",
+    "webpack-manifest-plugin": "^3.2.0",
     "workbox-webpack-plugin": "^6.3.0"
   },
   "watch": {
