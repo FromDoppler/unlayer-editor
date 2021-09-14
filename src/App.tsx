@@ -49,7 +49,10 @@ const App: React.FC = () => {
     },
     mergeTags: mergeTags,
     user: userExtend,
-    customJS: [`${window.location.href}/customJs/index.js`],
+    customJS: [
+      `${window.location.href}/customJs/index.js`,
+      `window.setCompanyTitle("Making Sense");`,
+    ],
   } as UnlayerOptions;
 
   const saveDesign = () => {
