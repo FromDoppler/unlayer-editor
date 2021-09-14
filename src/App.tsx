@@ -3,11 +3,7 @@ import './App.css';
 import mergeTags from './external/merge.tags';
 import styled from 'styled-components';
 
-import EmailEditor, {
-  ToolConfig,
-  User,
-  UnlayerOptions,
-} from 'react-email-editor';
+import EmailEditor, { User, UnlayerOptions } from 'react-email-editor';
 
 const Bar = styled.div`
   flex: 1;
@@ -54,23 +50,6 @@ const App: React.FC = () => {
     mergeTags: mergeTags,
     user: userExtend,
     customJS: [`${window.location.href}/customJs/index.js`],
-    tools: {
-      'custom#social_share_tool': {
-        properties: {
-          social_share_size: {
-            editor: {
-              data: {
-                options: [
-                  { label: 'Normal', value: '90' },
-                  { label: 'Pequeño', value: '70' },
-                  { label: 'Grande', value: '120' },
-                ],
-              },
-            },
-          },
-        },
-      } as ToolConfig,
-    },
   } as UnlayerOptions;
 
   const saveDesign = () => {
