@@ -1,6 +1,5 @@
 const React = window.unlayer.React;
 import ReactDOMServer from 'react-dom/server';
-
 import PropTypes from 'prop-types';
 
 export const SocialShareTool = (props) => {
@@ -79,9 +78,15 @@ export const SocialShareTool = (props) => {
   );
 };
 
-SocialShareTool.PropTypes = {
+SocialShareTool.propTypes = {
   values: {
-    sizeSocialTool: PropTypes.string,
+    social_share_align_option: PropTypes.string,
+    social_share_network_facebook: PropTypes.bool,
+    social_share_size: PropTypes.string,
+    social_share_network_linkedin: PropTypes.string,
+    social_share_network_twitter: PropTypes.string,
+    social_share_network_pinterest: PropTypes.string,
+    social_share_network_whatsapp: PropTypes.string,
   },
 };
 
