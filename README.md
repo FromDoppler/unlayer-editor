@@ -63,7 +63,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 We are using Jenkins as our CI/CD engine. [.Jenkinsfile](./.Jenkinsfile) is a declarative self documented file that you can use as the detailed documentation about the build and deployment process.
 
-The build details can be found in [.Dockerfile](./.Dockerfile).
+The build details can be found in [Dockerfile](./Dockerfile).
 
 The details about how do we deal with [semantic version](https://semver.org/) and what are we uploading to the CDN are in [./build-n-publish.sh] and [cdn-helpers/prepare.sh](./cdn-helpers/prepare.sh)
 
