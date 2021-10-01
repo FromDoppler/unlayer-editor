@@ -32,3 +32,4 @@ build/**
 .eslintrc.json
 .github/dependabot.yml
 coverage/**
+*.log
