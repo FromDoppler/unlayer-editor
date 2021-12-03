@@ -89,7 +89,7 @@
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^3.11.3",
     "webpack-manifest-plugin": "^2.2.0",
-    "workbox-webpack-plugin": "^6.4.1"
+    "workbox-webpack-plugin": "^6.4.2"
   },
   "watch": {
     "dev-build": {
