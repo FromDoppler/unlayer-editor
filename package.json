@@ -4,6 +4,7 @@
   "private": true,
   "devDependencies": {
     "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
     "@babel/preset-react": "^7.16.0",
     "@testing-library/dom": "^8.11.1",
     "@testing-library/jest-dom": "^5.16.1",
@@ -15,20 +16,39 @@
     "@types/react-dom": "^16.9.14",
     "@types/react-email-editor": "^1.1.2",
     "@types/styled-components": "^5.1.17",
-    "concurrently": "^6.4.0",
+    "@typescript-eslint/eslint-plugin": "^5.6.0",
+    "@typescript-eslint/parser": "^5.6.0",
     "babel-loader": "^8.2.3",
+    "concurrently": "^6.4.0",
+    "css-loader": "^6.5.1",
+    "dotenv": "^10.0.0",
+    "dotenv-flow-webpack": "^1.1.0",
     "eclint": "^2.8.1",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.27.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "npm-watch": "^0.11.0",
+    "path": "^0.12.7",
+    "prettier": "^2.5.1",
+    "process": "^0.11.10",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-email-editor": "^1.3.0",
+    "style-loader": "^3.3.1",
     "styled-components": "^4.4.1",
+    "ts-loader": "^9.2.6",
     "typescript": "^4.5.2",
     "webpack": "^5.65.0",
-    "webpack-cli": "^4.9.1"
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0",
+    "webpack-manifest-plugin": "^4.0.2"
   },
   "watch": {
-    "dev-build": {
+    "custom-js-build": {
       "patterns": [
         "src/customJs"
       ],
@@ -36,9 +56,11 @@
     }
   },
   "scripts": {
-    "start": "concurrently --kill-others \"npm-watch\" \"node scripts/start.js\"",
-    "dev-build": "webpack --config webpack.config-dev.js",
-    "build": "node scripts/build.js",
+    "start": "concurrently --kill-others \"npm:custom-js-watch\" \"npm:dev-server\"",
+    "dev-server": "webpack-dev-server --env NODE_ENV=development --config webpack-dev-server.config.js",
+    "custom-js-build": "webpack --env NODE_ENV=development",
+    "custom-js-watch": "npm-watch custom-js-build",
+    "build": "webpack --env NODE_ENV=production",
     "test": "node scripts/test.js",
     "coverage:local": "node scripts/test.js --coverage --watchAll",
     "coverage:ci": "node scripts/test.js --coverage",

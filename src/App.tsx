@@ -50,7 +50,7 @@ const App: React.FC = () => {
     mergeTags: mergeTags,
     user: userExtend,
     customJS: [
-      `${window.location.href}/customJs/index.js`,
+      `${process.env.PUBLIC_URL}/customJs/index.js`,
       `window.setCompanyTitle("Making Sense");`,
     ],
   } as UnlayerOptions;
