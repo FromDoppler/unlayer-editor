@@ -12,8 +12,9 @@
     "module": "es6",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "noEmit": false,
+    "types": ["node", "jest"],
     "jsx": "react-jsx"
   },
   "include": ["src"]

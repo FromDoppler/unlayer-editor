@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import './App.css';
 import mergeTags from './external/merge.tags';
 import styled from 'styled-components';
 
