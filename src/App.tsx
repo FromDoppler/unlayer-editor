@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import './App.css';
 import mergeTags from './external/merge.tags';
 import styled from 'styled-components';
 
@@ -50,7 +49,7 @@ const App: React.FC = () => {
     mergeTags: mergeTags,
     user: userExtend,
     customJS: [
-      `${window.location.href}/customJs/index.js`,
+      `${process.env.PUBLIC_URL}/customJs/index.js`,
       `window.setCompanyTitle("Making Sense");`,
     ],
   } as UnlayerOptions;

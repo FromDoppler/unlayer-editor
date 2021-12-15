@@ -4,6 +4,7 @@
 .gitlint
 .vscode
 .vs
+.babelrc
 **/*.binlog
 **/*.cs
 **/*.csproj
@@ -33,3 +34,5 @@ build/**
 .github/dependabot.yml
 coverage/**
 *.log
+.idea/*
+webpack*
