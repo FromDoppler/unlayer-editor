@@ -4,95 +4,54 @@
   "private": true,
   "devDependencies": {
     "@babel/core": "^7.16.0",
-    "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
-    "@svgr/webpack": "^6.1.2",
-    "@testing-library/dom": "^8.11.1",
-    "@testing-library/jest-dom": "^5.16.1",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^26.0.24",
+    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-react": "^7.16.0",
+    "@types/jest": "^27.0.3",
     "@types/node": "^14.18.0",
     "@types/react": "^16.14.21",
     "@types/react-dom": "^16.9.14",
     "@types/react-email-editor": "^1.1.2",
     "@types/styled-components": "^5.1.17",
-    "@typescript-eslint/eslint-plugin": "^4.33.0",
-    "@typescript-eslint/parser": "^4.33.0",
-    "babel-eslint": "^10.1.0",
-    "babel-jest": "^26.6.3",
+    "@typescript-eslint/eslint-plugin": "^5.6.0",
+    "@typescript-eslint/parser": "^5.6.0",
+    "babel-jest": "^27.4.4",
     "babel-loader": "^8.2.3",
-    "babel-plugin-named-asset-import": "^0.3.7",
-    "babel-preset-react-app": "^10.0.0",
-    "bfj": "^7.0.2",
-    "browserslist": "^4.18.1",
-    "camelcase": "^6.2.1",
-    "case-sensitive-paths-webpack-plugin": "^2.4.0",
-    "css-loader": "^5.2.7",
     "concurrently": "^6.4.0",
+    "css-loader": "^6.5.1",
     "dotenv": "^10.0.0",
-    "dotenv-expand": "^5.1.0",
+    "dotenv-flow-webpack": "^1.1.0",
     "eclint": "^2.8.1",
-    "eslint": "^7.32.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "enzyme-to-json": "^3.6.2",
+    "eslint": "^8.4.1",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-config-react": "^1.1.7",
-    "eslint-config-react-app": "^6.0.0",
-    "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-flowtype": "^5.10.0",
-    "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jest": "^25.3.0",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-promise": "^5.2.0",
     "eslint-plugin-react": "^7.27.1",
-    "eslint-plugin-react-hooks": "^4.3.0",
-    "eslint-plugin-testing-library": "^5.0.1",
-    "eslint-webpack-plugin": "^2.6.0",
     "file-loader": "^6.2.0",
-    "fs-extra": "^9.1.0",
-    "html-webpack-plugin": "^4.5.2",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^26.6.3",
-    "jest-circus": "^26.6.3",
-    "jest-resolve": "^26.6.2",
-    "jest-watch-typeahead": "^0.6.5",
-    "mini-css-extract-plugin": "^1.6.2",
+    "html-webpack-plugin": "^5.5.0",
+    "jest": "^27.4.4",
+    "jsdom": "^17.0.0",
     "npm-watch": "^0.11.0",
-    "optimize-css-assets-webpack-plugin": "^6.0.1",
-    "pnp-webpack-plugin": "^1.7.0",
-    "postcss-flexbugs-fixes": "^4.2.1",
-    "postcss-loader": "^3.0.0",
-    "postcss-normalize": "^9.0.0",
-    "postcss-preset-env": "^6.7.0",
-    "postcss-safe-parser": "^5.0.2",
+    "path": "^0.12.7",
     "prettier": "^2.5.1",
-    "prompts": "^2.4.2",
+    "process": "^0.11.10",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
-    "react-app-polyfill": "^2.0.0",
-    "react-dev-utils": "^11.0.4",
     "react-dom": "^16.13.1",
-    "react-email-editor": "^1.5.0",
-    "react-refresh": "^0.9.0",
-    "resolve": "^1.20.0",
-    "resolve-url-loader": "^4.0.0",
-    "sass-loader": "^10.2.0",
-    "semver": "^7.3.5",
-    "style-loader": "^2.0.0",
+    "react-email-editor": "^1.3.0",
+    "style-loader": "^3.3.1",
     "styled-components": "^4.4.1",
-    "terser-webpack-plugin": "^4.2.3",
-    "ts-pnp": "^1.2.0",
-    "typescript": "^4.5.3",
-    "url-loader": "^4.1.1",
-    "web-vitals": "^2.1.2",
-    "webpack": "^4.46.0",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.5.2",
+    "webpack": "^5.65.0",
     "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^3.11.3",
-    "webpack-manifest-plugin": "^2.2.0",
-    "workbox-webpack-plugin": "^6.4.2"
+    "webpack-dev-server": "^4.6.0",
+    "webpack-manifest-plugin": "^4.0.2"
   },
   "watch": {
-    "dev-build": {
+    "custom-js-build": {
       "patterns": [
         "src/customJs"
       ],
@@ -100,12 +59,14 @@
     }
   },
   "scripts": {
-    "start": "concurrently --kill-others \"npm-watch\" \"node scripts/start.js\"",
-    "dev-build": "webpack --config webpack.config-dev.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js",
-    "coverage:local": "node scripts/test.js --coverage --watchAll",
-    "coverage:ci": "node scripts/test.js --coverage",
+    "start": "concurrently --kill-others \"npm:custom-js-watch\" \"npm:dev-server\"",
+    "dev-server": "webpack-dev-server --env NODE_ENV=development --config webpack-dev-server.config.js",
+    "custom-js-build": "webpack --env NODE_ENV=development",
+    "custom-js-watch": "npm-watch custom-js-build",
+    "build": "webpack --env NODE_ENV=production",
+    "test": "jest",
+    "coverage:local": "jest --coverage --watchAll",
+    "coverage:ci": "jest --coverage",
     "verify-format": "yarn eslint-check && yarn prettier-check && yarn eclint-check",
     "eclint-fix": "eclint fix",
     "eclint-check": "eclint check",
@@ -132,79 +93,22 @@
     ]
   },
   "jest": {
-    "roots": [
-      "<rootDir>/src"
-    ],
     "collectCoverageFrom": [
-      "**/*.{js,jsx,tsx,ts}",
-      "!**/src/customJs/**",
-      "!**/.github/**",
-      "!**/.vscode/**",
-      "!**/cdn-hepers/**",
-      "!**/coverage/**",
-      "!**/docs/**",
-      "!**/node_modules/**",
-      "!**/coverage/**",
-      "!**/setupTests.ts",
-      "!**/reportWebVitals.ts",
-      "!**/react-app-env.d.ts",
-      "!**/App.tsx"
+      "**/src/customJs/**"
     ],
-    "setupFiles": [
-      "react-app-polyfill/jsdom"
-    ],
-    "setupFilesAfterEnv": [
-      "<rootDir>/src/setupTests.ts"
-    ],
-    "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
-      "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
-    ],
-    "testEnvironment": "jsdom",
-    "testRunner": "<rootDir>/node_modules/jest-circus/runner.js",
-    "transform": {
-      "^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": "<rootDir>/config/jest/babelTransform.js",
-      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-      "^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
-    },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$",
-      "^.+\\.module\\.(css|sass|scss)$"
-    ],
-    "modulePaths": [],
-    "moduleNameMapper": {
-      "^react-native$": "react-native-web",
-      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
-    },
-    "moduleFileExtensions": [
-      "web.js",
-      "js",
-      "web.ts",
-      "ts",
-      "web.tsx",
-      "tsx",
-      "json",
-      "web.jsx",
-      "jsx",
-      "node"
-    ],
-    "watchPlugins": [
-      "jest-watch-typeahead/filename",
-      "jest-watch-typeahead/testname"
-    ],
-    "resetMocks": true,
     "coverageThreshold": {
       "global": {
-        "branches": 80,
-        "functions": 80,
-        "lines": 80,
-        "statements": 80
+        "branches": 0,
+        "functions": 0,
+        "lines": 0,
+        "statements": 0
       }
-    }
-  },
-  "babel": {
-    "presets": [
-      "react-app"
+    },
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupFiles": [
+      "./src/setupTests.js"
     ]
   }
 }
