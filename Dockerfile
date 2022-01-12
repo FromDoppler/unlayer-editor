@@ -4,7 +4,7 @@ COPY ./*.sh ./
 COPY ./**/*.sh ./
 RUN shellcheck -e SC1091,SC1090 ./*.sh
 
-FROM node:14.18.2 AS restore
+FROM node:14.18.3 AS restore
 WORKDIR /src
 COPY package.json yarn.lock ./
 RUN yarn
