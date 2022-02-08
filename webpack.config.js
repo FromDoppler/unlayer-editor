@@ -35,7 +35,7 @@ module.exports = function (env) {
                 : 'index.js',
             path: env.NODE_ENV === 'production'
                 ? path.resolve(__dirname, 'build')
-                : path.esolve(__dirname, 'public/customJs'),
+                : path.resolve(__dirname, 'public/customJs'),
             publicPath: '',
             clean: true
         },
