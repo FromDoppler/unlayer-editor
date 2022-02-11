@@ -21,7 +21,7 @@ export const SocialShareTool = (props) => {
                 {values.social_share_network_facebook && (
                   <a
                     socialshare="4"
-                    href="[[[$share_vo_facebook]]]"
+                    href="[[shareInFacebookLink]]"
                     target="_blank"
                   >
                     <img
@@ -35,7 +35,7 @@ export const SocialShareTool = (props) => {
                 {values.social_share_network_linkedin && (
                   <a
                     socialshare="3"
-                    href="[[[$share_vo_linkedin]]]"
+                    href="[[shareInLinkedinLink]]"
                     target="_blank"
                   >
                     <img
@@ -49,7 +49,7 @@ export const SocialShareTool = (props) => {
                 {values.social_share_network_twitter && (
                   <a
                     socialshare="2"
-                    href="[[[$share_vo_twitter]]]"
+                    href="[[shareInTwitterLink]]"
                     target="_blank"
                   >
                     <img
@@ -63,7 +63,7 @@ export const SocialShareTool = (props) => {
                 {values.social_share_network_pinterest && (
                   <a
                     socialshare="20"
-                    href="[[[$share_vo_pinterest]]]"
+                    href="[[shareInPinterestLink]]"
                     target="_blank"
                   >
                     <img
@@ -77,7 +77,7 @@ export const SocialShareTool = (props) => {
                 {values.social_share_network_whatsapp && (
                   <a
                     socialshare="24"
-                    href="[[[$share_vo_whatsapp]]]"
+                    href="[[shareInWhatsappLink]]"
                     target="_blank"
                   >
                     <img
