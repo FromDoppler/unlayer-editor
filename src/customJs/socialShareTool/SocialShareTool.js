@@ -19,7 +19,7 @@ export const SocialShareTool = (props) => {
                 valign="middle"
               >
                 {values.social_share_network_facebook && (
-                  <a href="#" target="_blank">
+                  <a href="[[[$share_vo_facebook]]]" target="_blank">
                     <img
                       width={values.social_share_size}
                       src="https://app2.dopplerfiles.com/MSEditor/images/color_big_facebook_en.png"
@@ -29,7 +29,7 @@ export const SocialShareTool = (props) => {
                   </a>
                 )}
                 {values.social_share_network_linkedin && (
-                  <a href="#" target="_blank">
+                  <a href="[[[$share_vo_linkedin]]]" target="_blank">
                     <img
                       width={values.social_share_size}
                       src="https://app2.dopplerfiles.com/MSEditor/images/color_big_linkedin_en.png"
@@ -39,7 +39,7 @@ export const SocialShareTool = (props) => {
                   </a>
                 )}
                 {values.social_share_network_twitter && (
-                  <a href="#" target="_blank">
+                  <a href="[[[$share_vo_twitter]]]" target="_blank">
                     <img
                       width={values.social_share_size}
                       src="https://app2.dopplerfiles.com/MSEditor/images/color_big_twitter_en.png"
@@ -49,7 +49,7 @@ export const SocialShareTool = (props) => {
                   </a>
                 )}
                 {values.social_share_network_pinterest && (
-                  <a href="#" target="_blank">
+                  <a href="[[[$share_vo_pinterest]]]" target="_blank">
                     <img
                       width={values.social_share_size}
                       src="https://app2.dopplerfiles.com/MSEditor/images/color_big_pinterest_en.png"
@@ -59,7 +59,7 @@ export const SocialShareTool = (props) => {
                   </a>
                 )}
                 {values.social_share_network_whatsapp && (
-                  <a href="#" target="_blank">
+                  <a href="[[[$share_vo_whatsapp]]]" target="_blank">
                     <img
                       width={values.social_share_size}
                       src="https://app2.dopplerfiles.com/MSEditor/images/color_big_whatsapp_en.png"
