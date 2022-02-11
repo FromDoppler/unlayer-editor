@@ -19,51 +19,71 @@ export const SocialShareTool = (props) => {
                 valign="middle"
               >
                 {values.social_share_network_facebook && (
-                  <a href="[[[$share_vo_facebook]]]" target="_blank">
+                  <a
+                    socialshare="4"
+                    href="[[[$share_vo_facebook]]]"
+                    target="_blank"
+                  >
                     <img
                       width={values.social_share_size}
                       src="https://app2.dopplerfiles.com/MSEditor/images/color_big_facebook_en.png"
-                      alt="facebook"
+                      alt="Facebook"
                       style={{ margin: '0px 2px', display: 'inline-block' }}
                     />
                   </a>
                 )}
                 {values.social_share_network_linkedin && (
-                  <a href="[[[$share_vo_linkedin]]]" target="_blank">
+                  <a
+                    socialshare="3"
+                    href="[[[$share_vo_linkedin]]]"
+                    target="_blank"
+                  >
                     <img
                       width={values.social_share_size}
                       src="https://app2.dopplerfiles.com/MSEditor/images/color_big_linkedin_en.png"
-                      alt="linkedin"
+                      alt="Linkedin"
                       style={{ margin: '0px 2px', display: 'inline-block' }}
                     />
                   </a>
                 )}
                 {values.social_share_network_twitter && (
-                  <a href="[[[$share_vo_twitter]]]" target="_blank">
+                  <a
+                    socialshare="2"
+                    href="[[[$share_vo_twitter]]]"
+                    target="_blank"
+                  >
                     <img
                       width={values.social_share_size}
                       src="https://app2.dopplerfiles.com/MSEditor/images/color_big_twitter_en.png"
-                      alt="twitter"
+                      alt="Twitter"
                       style={{ margin: '0px 2px', display: 'inline-block' }}
                     />
                   </a>
                 )}
                 {values.social_share_network_pinterest && (
-                  <a href="[[[$share_vo_pinterest]]]" target="_blank">
+                  <a
+                    socialshare="20"
+                    href="[[[$share_vo_pinterest]]]"
+                    target="_blank"
+                  >
                     <img
                       width={values.social_share_size}
                       src="https://app2.dopplerfiles.com/MSEditor/images/color_big_pinterest_en.png"
-                      alt="pinterest"
+                      alt="Pinterest"
                       style={{ margin: '0px 2px', display: 'inline-block' }}
                     />
                   </a>
                 )}
                 {values.social_share_network_whatsapp && (
-                  <a href="[[[$share_vo_whatsapp]]]" target="_blank">
+                  <a
+                    socialshare="24"
+                    href="[[[$share_vo_whatsapp]]]"
+                    target="_blank"
+                  >
                     <img
                       width={values.social_share_size}
                       src="https://app2.dopplerfiles.com/MSEditor/images/color_big_whatsapp_en.png"
-                      alt="whatsapp"
+                      alt="Whatsapp"
                       style={{ margin: '0px 2px', display: 'inline-block' }}
                     />
                   </a>
