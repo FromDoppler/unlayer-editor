@@ -20,14 +20,16 @@ const serializeManifest = (seed, files, entries) => {
 
     return {
         files: filesSerialized,
-        entrypoints: entries
+        entrypoints: entries.main
     };
 }
 
 module.exports = function (env) {
     Dotenv.config({path: './.env.' + env.NODE_ENV});
     return {
-        entry: './src/customJs/index.js',
+        entry: {
+          main: './src/customJs/index.js'
+        },
         mode: env.NODE_ENV ? env.NODE_ENV : 'development',
         output: {
             filename: env.NODE_ENV === 'production'
