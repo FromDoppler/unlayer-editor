@@ -68,10 +68,11 @@
     "coverage:local": "jest --coverage --watchAll",
     "coverage:ci": "jest --coverage",
     "verify-format": "yarn eslint-check && yarn prettier-check && yarn eclint-check",
+    "fix-format": "yarn prettier-fix && yarn eclint-fix",
     "eclint-fix": "eclint fix",
     "eclint-check": "eclint check",
     "eslint-check": "eslint --ext .ts --ext .tsx .",
-    "prettier": "prettier --write \"**/**\"",
+    "prettier-fix": "prettier --write \"**/**\"",
     "prettier-check": "prettier --check \"**/**\""
   },
   "eslintConfig": {
