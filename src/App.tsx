@@ -43,6 +43,16 @@ const App: React.FC = () => {
     signature: userSignature,
   } as User;
   const UnlayerOptionsExtended = {
+    features: {
+      preheaderText: false,
+    },
+    appearance: {
+      panels: {
+        tools: {
+          dock: 'left',
+        },
+      },
+    },
     mergeTagsConfig: {
       sort: false,
     },
