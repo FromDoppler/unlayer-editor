@@ -15,7 +15,7 @@
     "@typescript-eslint/eslint-plugin": "^5.12.0",
     "@typescript-eslint/parser": "^5.19.0",
     "babel-jest": "^27.4.4",
-    "babel-loader": "^8.2.3",
+    "babel-loader": "^8.2.4",
     "concurrently": "^7.0.0",
     "css-loader": "^6.5.1",
     "dotenv": "^10.0.0",
