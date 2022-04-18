@@ -1,3 +1,5 @@
+import { messages_en } from '../i18n/en';
+import { messages_es } from '../i18n/es';
 import { intl, setLocale } from './localization';
 
 describe(setLocale.name, () => {
@@ -12,6 +14,23 @@ describe(setLocale.name, () => {
 
       // Assert
       expect(unlayerDouble.setLocale).toHaveBeenCalledWith(lang);
+    },
+  );
+
+  it.each([{ lang: 'es-ES' }, { lang: 'en-US' }, { lang: 'fr-FR' }])(
+    'should call Unlayer.setTranslations when language is $lang',
+    ({ lang }) => {
+      // Arrange
+      const unlayerDouble = prepareUnlayerGlobalObject();
+
+      // Act
+      setLocale(lang);
+
+      // Assert
+      expect(unlayerDouble.setTranslations).toHaveBeenCalledWith({
+        'en-US': messages_en,
+        'es-ES': messages_es,
+      });
     },
   );
 
@@ -38,6 +57,7 @@ describe(setLocale.name, () => {
 function prepareUnlayerGlobalObject() {
   window.unlayer = {
     setLocale: jest.fn(),
+    setTranslations: jest.fn(),
   };
   return window.unlayer;
 }

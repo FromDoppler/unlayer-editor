@@ -5,4 +5,7 @@ export const messages_es = {
   size: `Tamaño`,
   small: `Pequeño`,
   social_networks: `Redes sociales`,
+  'tools.tabs.body': `Estilos generales`,
+  'tools.tabs.images': `Imágenes de stock`,
+  'tools.tabs.uploads': `Galería`,
 };
