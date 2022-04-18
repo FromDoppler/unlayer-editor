@@ -60,7 +60,7 @@ const App: React.FC = () => {
     user: userExtend,
     customJS: [
       `${process.env.PUBLIC_URL}/customJs/index.js`,
-      `window.initUnlayerExtensions({ companyTitle: "MakingSense" })`,
+      `window.initUnlayerExtensions({ locale: "es-ES", companyTitle: "MakingSense" })`,
     ],
   } as UnlayerOptions;
 

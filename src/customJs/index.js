@@ -6,10 +6,12 @@ import { getSocialToolConfig } from './socialTool/SocialTool';
 import { getSocialShareToolConfig } from './socialShareTool';
 import { setCompanyTitle } from './sharedSingletonModule';
 import { getCompanyTitleDemoConfig } from './companyTitleDemo';
+import { setLocale } from './localization';
 
 const unlayer = window.unlayer;
 
-window.initUnlayerExtensions = ({ companyTitle }) => {
+window.initUnlayerExtensions = ({ locale, companyTitle }) => {
+  setLocale(locale);
   setCompanyTitle(companyTitle);
   unlayer.registerPropertyEditor(getTwitterPropertyConfig());
   unlayer.registerPropertyEditor(getLinkedInPropertyConfig());
