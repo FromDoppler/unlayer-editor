@@ -17,6 +17,8 @@ const sanitizeLanguageOrDefault = (lang) =>
   Object.keys(messages).includes(lang) ? lang : defaultLanguage;
 
 export const setLocale = (locale) => {
+  window.unlayer.setLocale(locale);
+
   intl = createIntl(
     {
       locale,

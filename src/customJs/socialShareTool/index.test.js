@@ -7,9 +7,10 @@ describe(getSocialShareToolConfig.name, () => {
     { lang: 'en-US', expected_social_share_size_title: 'Size' },
     { lang: 'fr-FR', expected_social_share_size_title: 'Tamaño' },
   ])(
-    'should return localized object',
+    'should return localized object using $lang language',
     ({ lang, expected_social_share_size_title }) => {
       // Arrange
+      prepareUnlayerGlobalObject();
       setLocale(lang);
 
       // Act
@@ -26,3 +27,10 @@ describe(getSocialShareToolConfig.name, () => {
     },
   );
 });
+
+function prepareUnlayerGlobalObject() {
+  window.unlayer = {
+    setLocale: jest.fn(),
+  };
+  return window.unlayer;
+}
