@@ -2,7 +2,7 @@ const React = window.unlayer.React;
 import { SocialShareTool } from './SocialShareTool';
 import ReactDOMServer from 'react-dom/server';
 
-export const socialShareToolConfig = {
+export const getSocialShareToolConfig = () => ({
   name: 'social_share_tool',
   label: 'Social Share',
   icon: 'fa-share-alt',
@@ -83,4 +83,4 @@ export const socialShareToolConfig = {
       },
     },
   },
-};
+});

@@ -19,8 +19,8 @@ FacebookProperty.propTypes = {
   value: PropTypes.string,
 };
 
-export const facebookPropertyConfig = {
+export const getFacebookPropertyConfig = () => ({
   name: 'facebook',
   layout: 'bottom',
   Widget: FacebookProperty,
-};
+});

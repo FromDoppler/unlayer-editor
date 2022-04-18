@@ -19,8 +19,8 @@ TwitterProperty.propTypes = {
   value: PropTypes.string,
 };
 
-export const twitterPropertyConfig = {
+export const getTwitterPropertyConfig = () => ({
   name: 'twitter',
   layout: 'bottom',
   Widget: TwitterProperty,
-};
+});

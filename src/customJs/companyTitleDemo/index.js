@@ -1,6 +1,6 @@
 import { CompanyTitle } from './CompanyTitle';
 
-export const companyTitleDemoConfig = {
+export const getCompanyTitleDemoConfig = () => ({
   name: 'company_title_demo_tool',
   label: 'Company title',
   icon: 'fa-share-alt',
@@ -9,4 +9,4 @@ export const companyTitleDemoConfig = {
   renderer: {
     Viewer: CompanyTitle,
   },
-};
+});

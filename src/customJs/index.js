@@ -1,22 +1,24 @@
 import subscribeTool from './subscribeTool';
-import { twitterPropertyConfig } from './socialTool/TwitterProperty';
-import { linkedInPropertyConfig } from './socialTool/LinkedInProperty';
-import { facebookPropertyConfig } from './socialTool/FacebookProperty';
-import { socialToolConfig } from './socialTool/SocialTool';
-import { socialShareToolConfig } from './socialShareTool';
+import { getTwitterPropertyConfig } from './socialTool/TwitterProperty';
+import { getLinkedInPropertyConfig } from './socialTool/LinkedInProperty';
+import { getFacebookPropertyConfig } from './socialTool/FacebookProperty';
+import { getSocialToolConfig } from './socialTool/SocialTool';
+import { getSocialShareToolConfig } from './socialShareTool';
 import { setCompanyTitle } from './sharedSingletonModule';
-import { companyTitleDemoConfig } from './companyTitleDemo';
+import { getCompanyTitleDemoConfig } from './companyTitleDemo';
 
 const unlayer = window.unlayer;
 
-// Register Properties and tool Social Tool
-window.setCompanyTitle = setCompanyTitle;
-unlayer.registerPropertyEditor(twitterPropertyConfig);
-unlayer.registerPropertyEditor(linkedInPropertyConfig);
-unlayer.registerPropertyEditor(facebookPropertyConfig);
-unlayer.registerTool(socialToolConfig);
-unlayer.registerTool(companyTitleDemoConfig);
+window.initUnlayerExtensions = ({ companyTitle }) => {
+  setCompanyTitle(companyTitle);
+  unlayer.registerPropertyEditor(getTwitterPropertyConfig());
+  unlayer.registerPropertyEditor(getLinkedInPropertyConfig());
+  unlayer.registerPropertyEditor(getFacebookPropertyConfig());
+  unlayer.registerTool(getSocialToolConfig());
+  unlayer.registerTool(getCompanyTitleDemoConfig());
+  // Register Properties and tool Social Share Tool
+  unlayer.registerTool(getSocialShareToolConfig());
+};
 
-// Register Properties and tool Social Share Tool
-unlayer.registerTool(socialShareToolConfig);
+// TODO: Verify to delete this
 export default { subscribeTool };
