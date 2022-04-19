@@ -50,7 +50,7 @@ SocialTool.propTypes = {
   },
 };
 
-export const socialToolConfig = {
+export const getSocialToolConfig = () => ({
   type: 'social-tool',
   category: 'contents',
   label: 'Social',
@@ -85,4 +85,4 @@ export const socialToolConfig = {
   renderer: {
     Viewer: SocialTool,
   },
-};
+});

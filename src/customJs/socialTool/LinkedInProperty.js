@@ -19,8 +19,8 @@ LinkedInProperty.propTypes = {
   value: PropTypes.string,
 };
 
-export const linkedInPropertyConfig = {
+export const getLinkedInPropertyConfig = () => ({
   name: 'linkedin',
   layout: 'bottom',
   Widget: LinkedInProperty,
-};
+});

@@ -1,8 +1,9 @@
 const React = window.unlayer.React;
 import { SocialShareTool } from './SocialShareTool';
 import ReactDOMServer from 'react-dom/server';
+import { intl } from '../localization';
 
-export const socialShareToolConfig = {
+export const getSocialShareToolConfig = () => ({
   name: 'social_share_tool',
   label: 'Social Share',
   icon: 'fa-share-alt',
@@ -14,7 +15,7 @@ export const socialShareToolConfig = {
       title: null,
     },
     social_share_size: {
-      title: 'Tamaño',
+      title: intl.formatMessage({ id: 'size' }),
       position: 1,
       options: {
         social_share_size: {
@@ -22,16 +23,16 @@ export const socialShareToolConfig = {
           widget: 'dropdown',
           data: {
             options: [
-              { label: 'Normal', value: '90' },
-              { label: 'Pequeño', value: '70' },
-              { label: 'Grande', value: '120' },
+              { label: intl.formatMessage({ id: 'medium' }), value: '90' },
+              { label: intl.formatMessage({ id: 'small' }), value: '70' },
+              { label: intl.formatMessage({ id: 'big' }), value: '120' },
             ],
           },
         },
       },
     },
     social_share_network: {
-      title: 'Redes',
+      title: intl.formatMessage({ id: 'social_networks' }),
       position: 2,
       options: {
         social_share_network_facebook: {
@@ -62,11 +63,11 @@ export const socialShareToolConfig = {
       },
     },
     social_share_align: {
-      title: 'Alineación',
+      title: intl.formatMessage({ id: 'alignment' }),
       position: 3,
       options: {
         social_share_align_option: {
-          label: 'Alineación',
+          label: intl.formatMessage({ id: 'alignment' }),
           defaultValue: 'center',
           widget: 'alignment',
         },
@@ -83,4 +84,4 @@ export const socialShareToolConfig = {
       },
     },
   },
-};
+});
