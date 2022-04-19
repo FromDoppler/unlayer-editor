@@ -31,6 +31,7 @@ describe(getSocialShareToolConfig.name, () => {
 function prepareUnlayerGlobalObject() {
   window.unlayer = {
     setLocale: jest.fn(),
+    setTranslations: jest.fn(),
   };
   return window.unlayer;
 }

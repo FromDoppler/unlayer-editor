@@ -18,6 +18,7 @@ const sanitizeLanguageOrDefault = (lang) =>
 
 export const setLocale = (locale) => {
   window.unlayer.setLocale(locale);
+  window.unlayer.setTranslations(messages);
 
   intl = createIntl(
     {
