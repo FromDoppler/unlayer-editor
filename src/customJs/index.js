@@ -12,7 +12,13 @@ const unlayer = window.unlayer;
 
 const { locale, companyTitle } = window['unlayer-extensions-configuration'];
 
-setLocale(locale);
+const unlayerLocales = {
+  es: 'es-ES',
+  en: 'en-US',
+};
+const unlayerLocale = unlayerLocales[locale] ?? unlayerLocales['es'];
+
+setLocale(unlayerLocale);
 setCompanyTitle(companyTitle);
 unlayer.registerPropertyEditor(getTwitterPropertyConfig());
 unlayer.registerPropertyEditor(getLinkedInPropertyConfig());
