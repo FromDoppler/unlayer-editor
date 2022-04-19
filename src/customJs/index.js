@@ -10,17 +10,23 @@ import { setLocale } from './localization';
 
 const unlayer = window.unlayer;
 
-window.initUnlayerExtensions = ({ locale, companyTitle }) => {
-  setLocale(locale);
-  setCompanyTitle(companyTitle);
-  unlayer.registerPropertyEditor(getTwitterPropertyConfig());
-  unlayer.registerPropertyEditor(getLinkedInPropertyConfig());
-  unlayer.registerPropertyEditor(getFacebookPropertyConfig());
-  unlayer.registerTool(getSocialToolConfig());
-  unlayer.registerTool(getCompanyTitleDemoConfig());
-  // Register Properties and tool Social Share Tool
-  unlayer.registerTool(getSocialShareToolConfig());
+const { locale, companyTitle } = window['unlayer-extensions-configuration'];
+
+const unlayerLocales = {
+  es: 'es-ES',
+  en: 'en-US',
 };
+const unlayerLocale = unlayerLocales[locale] ?? unlayerLocales['es'];
+
+setLocale(unlayerLocale);
+setCompanyTitle(companyTitle);
+unlayer.registerPropertyEditor(getTwitterPropertyConfig());
+unlayer.registerPropertyEditor(getLinkedInPropertyConfig());
+unlayer.registerPropertyEditor(getFacebookPropertyConfig());
+unlayer.registerTool(getSocialToolConfig());
+unlayer.registerTool(getCompanyTitleDemoConfig());
+// Register Properties and tool Social Share Tool
+unlayer.registerTool(getSocialShareToolConfig());
 
 // TODO: Verify to delete this
 export default { subscribeTool };

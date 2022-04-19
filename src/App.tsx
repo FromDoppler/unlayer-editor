@@ -59,8 +59,11 @@ const App: React.FC = () => {
     mergeTags: mergeTags,
     user: userExtend,
     customJS: [
+      `window["unlayer-extensions-configuration"] = {
+        locale: "es",
+        companyTitle: "MakingSense"
+      };`,
       `${process.env.PUBLIC_URL}/customJs/index.js`,
-      `window.initUnlayerExtensions({ locale: "es-ES", companyTitle: "MakingSense" })`,
     ],
   } as UnlayerOptions;
 
