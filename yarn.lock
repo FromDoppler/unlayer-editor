@@ -6983,10 +6983,10 @@ react-dom@^16.13.1:
     prop-types "^15.6.2"
     scheduler "^0.19.1"
 
-react-email-editor@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/react-email-editor/-/react-email-editor-1.5.0.tgz#54b1318460bb9c6697321227ca1551bac78ff8a8"
-  integrity sha512-81+tVkLJZUaezXIKZdMAg631mMORaDkqrj0Ud6hHpYtLfdz1v1gFRiAsehvvh44+7J/LmzWacavZ5HtM1qaINw==
+react-email-editor@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/react-email-editor/-/react-email-editor-1.6.0.tgz#474d0df4fc70f105a30c7359c4db684c7ddf6ea4"
+  integrity sha512-rxqUBVyC95AZjTX3X4aO3FtcmH6qhIOKfAqzJl4aCUHwUb5LVCvS/pjFd8jy0beDL8WJN9NG6QreVHterD1WCQ==
 
 react-is@^16.12.0, react-is@^16.13.1, react-is@^16.7.0, react-is@^16.8.6:
   version "16.13.1"
