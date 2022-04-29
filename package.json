@@ -32,7 +32,7 @@
     "eslint-plugin-react": "^7.29.4",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
-    "jest": "^28.0.2",
+    "jest": "^28.0.3",
     "jsdom": "^19.0.0",
     "npm-watch": "^0.11.0",
     "path": "^0.12.7",
