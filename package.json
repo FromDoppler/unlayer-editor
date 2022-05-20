@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "@babel/core": "^7.17.9",
+    "@babel/core": "^7.18.0",
     "@babel/preset-env": "^7.18.0",
     "@babel/preset-react": "^7.16.7",
     "@formatjs/intl": "^2.2.0",
