@@ -1207,10 +1207,10 @@
   dependencies:
     tslib "2.4.0"
 
-"@formatjs/intl@^2.2.4":
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/@formatjs/intl/-/intl-2.2.4.tgz#27c71b1c9ffc7b2632956dc49faf8e0da3871486"
-  integrity sha512-cQpEdxP4WtQsb8kc8h2+21fnkb7tcQMBAMpnUzK8lFUNOXQtu65pUVe0f7Nh7uvJoVbtMiigTGoj+J4dZjUOuQ==
+"@formatjs/intl@^2.2.5":
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl/-/intl-2.2.5.tgz#888f42750eacdcfb836a062eb889cb429d13f7f7"
+  integrity sha512-b0+5Bjsl3KDAII2frBPRO7ck9Ec/xqZ25BoiJATJhe//e4n6FOvVXk5QKYwBQPDt3JPu/Qa14oqHDiZlZmVdSg==
   dependencies:
     "@formatjs/ecma402-abstract" "1.11.6"
     "@formatjs/fast-memoize" "1.2.3"
