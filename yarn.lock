@@ -1708,10 +1708,10 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@^28.1.0":
-  version "28.1.0"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-28.1.0.tgz#6107d7f8cf46d994e4de23e11f873d61bafe5573"
-  integrity sha512-ITfF6JJIl9zbEi2k6NmhNE/BiDqfsI/ceqfvdaWaPbcrCpYyyRq4KtDQIWh6vQUru6SqwppODiom/Zhid+np6A==
+"@types/jest@^28.1.1":
+  version "28.1.1"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-28.1.1.tgz#8c9ba63702a11f8c386ee211280e8b68cb093cd1"
+  integrity sha512-C2p7yqleUKtCkVjlOur9BWVA4HgUQmEj/HWCt5WzZ5mLXrWnyIfl0wGuArc+kBXsy0ZZfLp+7dywB4HtSVYGVA==
   dependencies:
     jest-matcher-utils "^27.0.0"
     pretty-format "^27.0.0"
@@ -8171,10 +8171,10 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
-typescript@^4.7.2:
-  version "4.7.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.2.tgz#1f9aa2ceb9af87cca227813b4310fff0b51593c4"
-  integrity sha512-Mamb1iX2FDUpcTRzltPxgWMKy3fhg0TN378ylbktPGPK/99KbDtMQ4W1hwgsbPAsG3a0xKa1vmw4VKZQbkvz5A==
+typescript@^4.7.3:
+  version "4.7.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.3.tgz#8364b502d5257b540f9de4c40be84c98e23a129d"
+  integrity sha512-WOkT3XYvrpXx4vMMqlD+8R8R37fZkjyLGlxavMc4iB8lrl8L0DeTcHbYgw/v0N/z9wAFsgBhcsF0ruoySS22mA==
 
 unbox-primitive@^1.0.1:
   version "1.0.1"
