@@ -13,5 +13,12 @@ const unlayerLocale = unlayerLocales[locale] ?? unlayerLocales['es'];
 
 setLocale(unlayerLocale);
 
+unlayer.setLinkTypes([
+  {
+    name: 'sms',
+    enabled: false,
+  },
+]);
+
 // Register Properties and tool Social Share Tool
 unlayer.registerTool(getSocialShareToolConfig());
