@@ -135,16 +135,17 @@ Currently in Doppler [we are always using the v1](https://github.com/MakingSense
 <html lang="en">
   <head>
     <!-- . . . -->
-    <script src="https://cdn.fromdoppler.com/loader/v1/loader.js"></script>
+    <script src="https://cdn.fromdoppler.com/mfe-loader/loader-v2.0.0.js"></script>
   </head>
 
   <body>
     <!-- . . . -->
     <script type="text/javascript">
-      new AssetServices().load(
-        'https://cdn.fromdoppler.com/unlayer-editor/asset-manifest-v1.json',
-        [],
-      );
+      assetServices.load({
+        manifestURL:
+          'https://cdn.fromdoppler.com/unlayer-editor/asset-manifest-v1.json',
+        sources: [],
+      });
     </script>
     <!-- . . . -->
   </body>
