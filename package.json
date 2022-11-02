@@ -2,6 +2,9 @@
   "name": "unlayer-editor",
   "version": "0.1.0",
   "private": true,
+  "resolutions": {
+    "@types/react": "18.0.24"
+  },
   "devDependencies": {
     "@types/jest": "29.2.1",
     "@types/node": "18.11.9",
