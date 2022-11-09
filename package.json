@@ -6,6 +6,7 @@
     "@types/react": "18.0.25"
   },
   "devDependencies": {
+    "@testing-library/react": "^13.4.0",
     "@types/jest": "29.2.2",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",

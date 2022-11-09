@@ -1,5 +1,6 @@
 import { getSocialShareToolConfig } from './socialShareTool';
 import { setLocale } from './localization';
+import { getPayuButtonToolConfig } from './payuButtonTool';
 
 const unlayer = window.unlayer;
 
@@ -22,3 +23,4 @@ unlayer.setLinkTypes([
 
 // Register Properties and tool Social Share Tool
 unlayer.registerTool(getSocialShareToolConfig());
+unlayer.registerTool(getPayuButtonToolConfig());
