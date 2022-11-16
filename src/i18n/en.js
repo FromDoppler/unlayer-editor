@@ -12,6 +12,7 @@ export const messages_en = {
     'https://cdn.fromdoppler.com/unlayer-editor/assets/payu-button-medium-en.png',
   payu_small_button:
     'https://cdn.fromdoppler.com/unlayer-editor/assets/payu-button-small-en.png',
+  prefix_url: 'URL',
   size: `Size`,
   small: `Small`,
   social_networks: `Social networks`,
