@@ -4,6 +4,7 @@ export const messages_en = {
   configuration: 'Configuration',
   medium: `Medium`,
   pay_button_link: 'Detailed payment request',
+  payu_button: 'PayU Button',
   payu_large_button:
     'https://cdn.fromdoppler.com/unlayer-editor/assets/payu-button-large-en.png',
   payu_medium_button:
