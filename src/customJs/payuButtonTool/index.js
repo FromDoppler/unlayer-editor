@@ -15,19 +15,16 @@ export const getPayuButtonToolConfig = () => ({
     default: {
       title: null,
     },
-    payu_url_section: {
-      title: intl.formatMessage({ id: 'pay_button_link' }),
-      position: 1,
-      options: {
-        paymentURL: {
-          widget: 'text',
-        },
-      },
-    },
     basic_configuration_section: {
       title: intl.formatMessage({ id: 'configuration' }),
       position: 3,
       options: {
+        paymentURL: {
+          widget: 'link_property',
+          data: {
+            label: intl.formatMessage({ id: 'pay_button_link' }),
+          },
+        },
         size: {
           label: intl.formatMessage({ id: 'size' }),
           defaultValue: 'medium',
