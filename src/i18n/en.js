@@ -1,9 +1,9 @@
 export const messages_en = {
   alignment: `Alignment`,
   big: `Big`,
-  configuration: 'Configuration',
   'editor.link.url': `URL`,
   medium: `Medium`,
+  'option_groups.button_options.title': 'Button Options',
   pay_button_link: 'Detailed payment request',
   payu_button: 'PayU Button',
   payu_large_button:

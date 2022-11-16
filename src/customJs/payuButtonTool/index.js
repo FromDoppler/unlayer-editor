@@ -16,7 +16,7 @@ export const getPayuButtonToolConfig = () => ({
       title: null,
     },
     basic_configuration_section: {
-      title: intl.formatMessage({ id: 'configuration' }),
+      title: intl.formatMessage({ id: 'option_groups.button_options.title' }),
       position: 3,
       options: {
         paymentURL: {

@@ -1,9 +1,9 @@
 export const messages_es = {
   alignment: `Alineación`,
   big: `Grande`,
-  configuration: 'Configuración',
   'editor.link.url': `URL`,
   medium: `Normal`,
+  'option_groups.button_options.title': 'Opciones de botones',
   pay_button_link: 'Solicitud de pago detallada',
   payu_button: 'Pago PayU',
   payu_large_button:
