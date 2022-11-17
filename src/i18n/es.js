@@ -2,6 +2,7 @@ export const messages_es = {
   alignment: `Alineación`,
   big: `Grande`,
   configuration: 'Configuración',
+  'editor.link.url': `URL`,
   medium: `Normal`,
   pay_button_link: 'Solicitud de pago detallada',
   payu_button: 'Pago PayU',
