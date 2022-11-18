@@ -23,6 +23,17 @@ export const getPayuButtonToolConfig = () => ({
           widget: 'link_property',
           data: {
             label: intl.formatMessage({ id: 'pay_button_link' }),
+            help: `
+              <div
+                style="font-style: italic; font-size: 13px; line-height: 1.6; color: #525252;
+                font-family: Roboto,sans-serif;">
+                ${intl.formatMessage({ id: 'payu_help' })}
+                <a target="_blank"
+                    style="color: #33AC72; text-decoration: none;"
+                    href="${intl.formatMessage({ id: 'payu_help_link' })}">
+                    ${intl.formatMessage({ id: 'help' })}
+                </a>
+              </div>`,
           },
         },
         size: {
