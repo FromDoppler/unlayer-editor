@@ -7,7 +7,7 @@ import { intl } from '../localization';
 export const getPayuButtonToolConfig = () => ({
   name: 'payu_button_tool',
   label: intl.formatMessage({ id: 'payu_button' }),
-  icon: 'fa-share-alt',
+  icon: process.env.PUBLIC_URL + '/assets/Payu_Button.svg',
   category: 'contents',
   type: 'whatever',
   values: {},
