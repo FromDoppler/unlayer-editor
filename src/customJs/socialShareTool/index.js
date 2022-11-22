@@ -5,7 +5,7 @@ import { intl } from '../localization';
 
 export const getSocialShareToolConfig = () => ({
   name: 'social_share_tool',
-  label: 'Social Share',
+  label: intl.formatMessage({ id: 'social_share_title' }),
   icon: 'fa-share-alt',
   category: 'contents',
   type: 'whatever',
