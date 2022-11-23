@@ -7,7 +7,7 @@ import { intl } from '../localization';
 export const getPayuButtonToolConfig = () => ({
   name: 'payu_button_tool',
   label: intl.formatMessage({ id: 'payu_button' }),
-  icon: process.env.PUBLIC_URL + '/assets/Payu_Button.svg',
+  icon: process.env.PUBLIC_URL + '/assets/payu_button.svg',
   category: 'contents',
   type: 'whatever',
   values: {},
@@ -65,5 +65,22 @@ export const getPayuButtonToolConfig = () => ({
         );
       },
     },
+  },
+  validator: ({ defaultErrors, values }) => {
+    if (!values.paymentURL) {
+      defaultErrors.push({
+        id: 'CUSTOM_ERROR',
+        icon: process.env.PUBLIC_URL + '/assets/payu_button.svg',
+        severity: 'WARNING',
+        title: intl.formatMessage({
+          id: 'tabs.audit.rules.payu_button.empty_links.title',
+        }),
+        description: intl.formatMessage({
+          id: 'tabs.audit.rules.payu_button.empty_links.description',
+        }),
+      });
+    }
+
+    return defaultErrors;
   },
 });
