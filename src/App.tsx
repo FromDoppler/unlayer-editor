@@ -24,7 +24,7 @@ const Bar = styled.div`
     font-weight: bold;
     background-color: #000;
     color: #fff;
-    border: 0px;
+    border: 0;
     max-width: 150px;
     cursor: pointer;
   }
@@ -43,6 +43,11 @@ const App: React.FC = () => {
     signature: userSignature,
   } as User;
   const UnlayerOptionsExtended = {
+    tools: {
+      button: {
+        icon: process.env.PUBLIC_URL + '/assets/button.svg',
+      },
+    },
     features: {
       preheaderText: false,
     },
