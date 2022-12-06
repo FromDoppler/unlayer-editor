@@ -8,6 +8,7 @@ export const getPayuButtonToolConfig = () => ({
   name: 'payu_button_tool',
   label: intl.formatMessage({ id: 'payu_button' }),
   icon: process.env.PUBLIC_URL + '/assets/payu_button.svg',
+  supportedDisplayModes: ['web', 'email'],
   category: 'contents',
   type: 'whatever',
   values: {},
@@ -59,6 +60,11 @@ export const getPayuButtonToolConfig = () => ({
   renderer: {
     Viewer: PayuButtonTool,
     exporters: {
+      web: function (values) {
+        return ReactDOMServer.renderToStaticMarkup(
+          <PayuButtonTool values={values} />,
+        );
+      },
       email: function (values) {
         return ReactDOMServer.renderToStaticMarkup(
           <PayuButtonTool values={values} />,
