@@ -2,92 +2,74 @@ const React = window.unlayer.React;
 import PropTypes from 'prop-types';
 
 export const SocialShareTool = (props) => {
-  const values = props.values;
+  const { social_share_align_option } = props.values;
+
+  const socialButtonCommonStyle = {
+    margin: '0px 2px',
+    display: 'inline-block',
+  };
+
+  const socialSettings = [
+    {
+      link: '[[shareInFacebookLink]]',
+      socialImg:
+        'https://app2.dopplerfiles.com/MSEditor/images/color_big_facebook_en.png',
+      altText: 'Facebook',
+    },
+    {
+      link: '[[shareInLinkedinLink]]',
+      socialImg:
+        'https://app2.dopplerfiles.com/MSEditor/images/color_big_linkedin_en.png',
+      altText: 'Linkedin',
+    },
+    {
+      link: '[[shareInTwitterLink]]',
+      socialImg:
+        'https://app2.dopplerfiles.com/MSEditor/images/color_big_twitter_en.png',
+      altText: 'Twitter',
+    },
+    {
+      link: '[[shareInPinterestLink]]',
+      socialImg:
+        'https://app2.dopplerfiles.com/MSEditor/images/color_big_pinterest_en.png',
+      altText: 'Pinterest',
+    },
+    {
+      link: '[[shareInWhatsappLink]]',
+      socialImg:
+        'https://app2.dopplerfiles.com/MSEditor/images/color_big_whatsapp_en.png',
+      altText: 'Whatsapp',
+    },
+  ];
 
   return (
     <table cellPadding="0" cellSpacing="0" border="0" width="100%">
       <tr>
-        <td style={{ textAlign: values.social_share_align_option }}>
+        <td style={{ textAlign: social_share_align_option }}>
           <table cellPadding="0" cellSpacing="0" border="0" width="100%">
             <tr>
               <td
                 style={{
                   paddingRight: '5px',
                   paddingTop: '5px',
-                  textAlign: values.social_share_align_option,
+                  textAlign: social_share_align_option,
                 }}
                 valign="middle"
               >
-                {values.social_share_network_facebook && (
+                {socialSettings.map((config, id) => (
                   <a
-                    socialshare="4"
-                    href="[[shareInFacebookLink]]"
+                    href={config.link}
                     target="_blank"
+                    rel="noreferrer"
+                    id={`social_button_${id}`}
                   >
                     <img
-                      width={values.social_share_size}
-                      src="https://app2.dopplerfiles.com/MSEditor/images/color_big_facebook_en.png"
-                      alt="Facebook"
-                      style={{ margin: '0px 2px', display: 'inline-block' }}
+                      src={config.socialImg}
+                      alt={config.altText}
+                      style={socialButtonCommonStyle}
                     />
                   </a>
-                )}
-                {values.social_share_network_linkedin && (
-                  <a
-                    socialshare="3"
-                    href="[[shareInLinkedinLink]]"
-                    target="_blank"
-                  >
-                    <img
-                      width={values.social_share_size}
-                      src="https://app2.dopplerfiles.com/MSEditor/images/color_big_linkedin_en.png"
-                      alt="Linkedin"
-                      style={{ margin: '0px 2px', display: 'inline-block' }}
-                    />
-                  </a>
-                )}
-                {values.social_share_network_twitter && (
-                  <a
-                    socialshare="2"
-                    href="[[shareInTwitterLink]]"
-                    target="_blank"
-                  >
-                    <img
-                      width={values.social_share_size}
-                      src="https://app2.dopplerfiles.com/MSEditor/images/color_big_twitter_en.png"
-                      alt="Twitter"
-                      style={{ margin: '0px 2px', display: 'inline-block' }}
-                    />
-                  </a>
-                )}
-                {values.social_share_network_pinterest && (
-                  <a
-                    socialshare="20"
-                    href="[[shareInPinterestLink]]"
-                    target="_blank"
-                  >
-                    <img
-                      width={values.social_share_size}
-                      src="https://app2.dopplerfiles.com/MSEditor/images/color_big_pinterest_en.png"
-                      alt="Pinterest"
-                      style={{ margin: '0px 2px', display: 'inline-block' }}
-                    />
-                  </a>
-                )}
-                {values.social_share_network_whatsapp && (
-                  <a
-                    socialshare="24"
-                    href="[[shareInWhatsappLink]]"
-                    target="_blank"
-                  >
-                    <img
-                      width={values.social_share_size}
-                      src="https://app2.dopplerfiles.com/MSEditor/images/color_big_whatsapp_en.png"
-                      alt="Whatsapp"
-                      style={{ margin: '0px 2px', display: 'inline-block' }}
-                    />
-                  </a>
-                )}
+                ))}
               </td>
             </tr>
           </table>
