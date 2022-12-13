@@ -1,7 +1,7 @@
 import { getSocialShareToolConfig } from './socialShareTool';
 import { setLocale } from './localization';
 import { getPayuButtonToolConfig } from './payuButtonTool';
-import { getLinkPropertyConfiguration } from './linkProperty';
+import { getLinkPropertyConfiguration } from './commonProperties/linkProperty';
 
 const unlayer = window.unlayer;
 
