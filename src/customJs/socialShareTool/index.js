@@ -7,6 +7,7 @@ export const getSocialShareToolConfig = () => ({
   name: 'social_share_tool',
   label: intl.formatMessage({ id: 'social_share_title' }),
   icon: 'fa-share-alt',
+  supportedDisplayModes: ['web', 'email'],
   category: 'contents',
   type: 'whatever',
   values: {},
@@ -77,6 +78,11 @@ export const getSocialShareToolConfig = () => ({
   renderer: {
     Viewer: SocialShareTool,
     exporters: {
+      web: function (values) {
+        return ReactDOMServer.renderToStaticMarkup(
+          <SocialShareTool values={values} />,
+        );
+      },
       email: function (values) {
         return ReactDOMServer.renderToStaticMarkup(
           <SocialShareTool values={values} />,
