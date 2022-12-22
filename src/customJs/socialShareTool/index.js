@@ -1,4 +1,5 @@
 const React = window.unlayer.React;
+import { socialSettings } from './configuration';
 import { SocialShareTool } from './SocialShareTool';
 import ReactDOMServer from 'react-dom/server';
 import { intl } from '../localization';
@@ -36,30 +37,12 @@ export const getSocialShareToolConfig = () => ({
       title: intl.formatMessage({ id: 'social_networks' }),
       position: 2,
       options: {
-        social_share_network_facebook: {
-          label: 'Facebook',
-          defaultValue: true,
-          widget: 'toggle',
-        },
-        social_share_network_linkedin: {
-          label: 'Linkedin',
-          defaultValue: true,
-          widget: 'toggle',
-        },
-        social_share_network_twitter: {
-          label: 'Twitter',
-          defaultValue: true,
-          widget: 'toggle',
-        },
-        social_share_network_pinterest: {
-          label: 'Pinterest',
-          defaultValue: true,
-          widget: 'toggle',
-        },
-        social_share_network_whatsapp: {
-          label: 'Whatsapp',
-          defaultValue: true,
-          widget: 'toggle',
+        social_share_available: {
+          data: {
+            options: socialSettings,
+          },
+          defaultValue: socialSettings.map((config) => config.id),
+          widget: 'enable_social_property',
         },
       },
     },
