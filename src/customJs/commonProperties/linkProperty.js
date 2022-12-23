@@ -1,14 +1,7 @@
-import { intl } from './localization';
+import { intl } from '../localization';
+import { customPropertyLabel } from './unlayerLabelProperty';
 
 const unlayer = window.unlayer;
-
-const customPropertyLabel = (label) => `
-            <div class="blockbuilder-widget-label mb-2">
-                <label class="blockbuilder-label-primary">
-                    <div class=""><span class="has-value same-value">${label}</span>
-                    </div>
-                </label>
-            </div>`;
 
 const linkPropertyWidget = {
   render(value, updateValue, data) {
@@ -32,7 +25,7 @@ const linkPropertyWidget = {
             ${help}
       `;
   },
-  mount(node, value, updateValue, data) {
+  mount(node, value, updateValue) {
     const input = node.getElementsByTagName('input')[0];
     input.onchange = (e) => {
       updateValue(e.target.value);
