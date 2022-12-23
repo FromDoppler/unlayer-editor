@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 const React = window.unlayer.React;
 
-const Toggle = ({ label, onChange }) => {
+const Toggle = ({ label, onChange, defaultValue }) => {
   const [active, setActive] = React.useState(true);
   const [focus, setFocus] = React.useState(false);
   const clickEvent = (e) => {
@@ -14,6 +14,10 @@ const Toggle = ({ label, onChange }) => {
       return !prev;
     });
   };
+
+  React.useEffect(() => {
+    setActive(defaultValue);
+  }, [setActive]);
 
   return (
     <div className="blockbuilder-widget-label">
@@ -62,9 +66,10 @@ const Toggle = ({ label, onChange }) => {
   );
 };
 
-const EnableSocialProperty = (props) => {
-  const { data, updateValue, value } = props;
+export const EnableSocialProperty = (props) => {
+  const { data, updateValue, value, defaultValue: defaultValueProp } = props;
   const options = data && data.options ? data.options : [];
+  let defaultValue = [];
 
   const changeValue = (isCheck, key) => {
     const currentSelection = value ? value : [];
@@ -75,12 +80,19 @@ const EnableSocialProperty = (props) => {
     updateValue(currentSelection.filter((id) => id !== key));
   };
 
+  React.useEffect(() => {
+    if (defaultValueProp && defaultValueProp.length > 0) {
+      defaultValue = defaultValueProp;
+    }
+  });
+
   return options.map((option, index) => {
     return (
       <Toggle
         key={index}
         onChange={(value) => changeValue(value, option.id)}
         label={option.name}
+        defaultValue={defaultValue.includes(option.id)}
       />
     );
   });
@@ -94,4 +106,5 @@ export const getEnableSocialPropertyConfig = () => ({
 Toggle.propTypes = {
   label: PropTypes.string,
   onChange: PropTypes.func,
+  defaultValue: PropTypes.bool,
 };
