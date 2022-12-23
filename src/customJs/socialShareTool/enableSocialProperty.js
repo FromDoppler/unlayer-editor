@@ -2,10 +2,9 @@ import PropTypes from 'prop-types';
 const React = window.unlayer.React;
 
 const Toggle = ({ label, onChange, defaultValue }) => {
-  const [active, setActive] = React.useState(true);
+  const [active, setActive] = React.useState(defaultValue);
   const [focus, setFocus] = React.useState(false);
-  const clickEvent = (e) => {
-    e.preventDefault();
+  const changeEvent = () => {
     setActive((prev) => {
       if (onChange) {
         onChange(!prev);
@@ -14,10 +13,6 @@ const Toggle = ({ label, onChange, defaultValue }) => {
       return !prev;
     });
   };
-
-  React.useEffect(() => {
-    setActive(defaultValue);
-  }, [setActive]);
 
   return (
     <div className="blockbuilder-widget-label">
@@ -31,7 +26,6 @@ const Toggle = ({ label, onChange, defaultValue }) => {
           className={`react-toggle ${active ? 'react-toggle--checked' : ''} ${
             focus ? 'react-toggle--focus' : ''
           }`}
-          onClick={clickEvent}
         >
           <div className="react-toggle-track">
             <div className="react-toggle-track-check">
@@ -57,6 +51,7 @@ const Toggle = ({ label, onChange, defaultValue }) => {
           <input
             className="react-toggle-screenreader-only"
             type="checkbox"
+            onChange={changeEvent}
             onFocus={() => setFocus(true)}
             onBlur={() => setFocus(false)}
           />
@@ -67,9 +62,8 @@ const Toggle = ({ label, onChange, defaultValue }) => {
 };
 
 export const EnableSocialProperty = (props) => {
-  const { data, updateValue, value, defaultValue: defaultValueProp } = props;
+  const { data, updateValue, value } = props;
   const options = data && data.options ? data.options : [];
-  let defaultValue = [];
 
   const changeValue = (isCheck, key) => {
     const currentSelection = value ? value : [];
@@ -80,19 +74,13 @@ export const EnableSocialProperty = (props) => {
     updateValue(currentSelection.filter((id) => id !== key));
   };
 
-  React.useEffect(() => {
-    if (defaultValueProp && defaultValueProp.length > 0) {
-      defaultValue = defaultValueProp;
-    }
-  });
-
   return options.map((option, index) => {
     return (
       <Toggle
         key={index}
         onChange={(value) => changeValue(value, option.id)}
         label={option.name}
-        defaultValue={defaultValue.includes(option.id)}
+        defaultValue={value.includes(option.id)}
       />
     );
   });
