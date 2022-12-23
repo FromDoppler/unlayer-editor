@@ -19,6 +19,7 @@ export const messages_es = {
   size: `Tamaño`,
   small: `Pequeño`,
   social_networks: `Redes sociales`,
+  social_share_suffix: '_es',
   social_share_title: 'Compartir',
   'tabs.audit.rules.payu_button.empty_links.description':
     'Los botones de pago PayU no funcionarán cuando el usuario los pulse si no tienen enlace de solicitud de pago. Añade un enlace a los siguientes botones.',

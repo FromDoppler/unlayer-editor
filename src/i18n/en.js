@@ -19,6 +19,7 @@ export const messages_en = {
   size: `Size`,
   small: `Small`,
   social_networks: `Social networks`,
+  social_share_suffix: '_en',
   social_share_title: 'Share',
   'tabs.audit.rules.payu_button.empty_links.description':
     'Without a link, PayU buttons will not work when a user clicks on it. Add a link to the following PayU buttons.',
