@@ -19,7 +19,7 @@
     "dotenv": "16.0.3",
     "dotenv-flow-webpack": "1.1.0",
     "eclint": "2.8.1",
-    "eslint": "8.30.0",
+    "eslint": "8.31.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-jest": "27.1.7",
     "eslint-plugin-prettier": "4.2.1",
