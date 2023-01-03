@@ -1,10 +1,16 @@
-import { socialSettings } from './configuration';
+import { getSocialSetting } from './configuration';
 import PropTypes from 'prop-types';
 
 const React = window.unlayer.React;
 
 export const SocialShareTool = (props) => {
-  const { social_share_align_option, social_share_available } = props.values;
+  const {
+    social_share_align_option,
+    social_share_available,
+    social_share_size: size,
+  } = props.values;
+
+  const socialSetting = getSocialSetting();
 
   return (
     <table cellPadding="0" cellSpacing="0" border="0" width="100%">
@@ -20,7 +26,7 @@ export const SocialShareTool = (props) => {
                 }}
                 valign="middle"
               >
-                {socialSettings
+                {socialSetting
                   .filter((config) =>
                     social_share_available.includes(config.id),
                   )
@@ -32,9 +38,11 @@ export const SocialShareTool = (props) => {
                       key={`social_button_${id}`}
                     >
                       <img
-                        src={config.socialImg}
+                        src={config.getSrc(size)}
                         alt={config.name}
+                        width={size === 'big' ? '94' : '40'}
                         style={{
+                          width: size === 'big' ? '94px' : '40px',
                           margin: '0px 2px',
                           display: 'inline-block',
                         }}

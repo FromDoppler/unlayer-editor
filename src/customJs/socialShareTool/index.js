@@ -1,5 +1,5 @@
 const React = window.unlayer.React;
-import { socialSettings } from './configuration';
+import { getSocialSetting } from './configuration';
 import { SocialShareTool } from './SocialShareTool';
 import ReactDOMServer from 'react-dom/server';
 import { intl } from '../localization';
@@ -21,13 +21,12 @@ export const getSocialShareToolConfig = () => ({
       position: 1,
       options: {
         social_share_size: {
-          defaultValue: '90',
+          defaultValue: 'big',
           widget: 'dropdown',
           data: {
             options: [
-              { label: intl.formatMessage({ id: 'medium' }), value: '90' },
-              { label: intl.formatMessage({ id: 'small' }), value: '70' },
-              { label: intl.formatMessage({ id: 'big' }), value: '120' },
+              { label: intl.formatMessage({ id: 'small' }), value: 'small' },
+              { label: intl.formatMessage({ id: 'big' }), value: 'big' },
             ],
           },
         },
@@ -39,9 +38,9 @@ export const getSocialShareToolConfig = () => ({
       options: {
         social_share_available: {
           data: {
-            options: socialSettings,
+            options: getSocialSetting(),
           },
-          defaultValue: socialSettings.map((config) => config.id),
+          defaultValue: getSocialSetting().map((config) => config.id),
           widget: 'enable_social_property',
         },
       },
