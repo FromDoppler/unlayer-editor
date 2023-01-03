@@ -38,7 +38,7 @@ export const SocialShareTool = (props) => {
                       key={`social_button_${id}`}
                     >
                       <img
-                        src={size === 'big' ? config.srcBig : config.srcSmall}
+                        src={config.getSrc(size)}
                         alt={config.name}
                         width={size === 'big' ? '94' : '40'}
                         style={{

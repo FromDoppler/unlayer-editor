@@ -11,6 +11,11 @@ describe(getSocialShareToolConfig.name, () => {
     ({ lang, expected_social_share_size_title }) => {
       // Arrange
       prepareUnlayerGlobalObject();
+
+      window['unlayer-extensions-configuration'] = {
+        baseAssetsUrl: '',
+      };
+
       setLocale(lang);
 
       // Act

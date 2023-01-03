@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 import { EnableSocialProperty } from './enableSocialProperty';
-import { socialSettings } from './configuration';
+import { getSocialSetting } from './configuration';
 
 // TODO: this is a shared code, make it a common helper
 function prepareUnlayerGlobalObject() {
@@ -11,10 +11,13 @@ function prepareUnlayerGlobalObject() {
   };
   return window.unlayer;
 }
+window['unlayer-extensions-configuration'] = {
+  baseAssetsUrl: '',
+};
 
 const unlayerPropertyProps = {
   data: {
-    options: socialSettings,
+    options: getSocialSetting(),
   },
   value: ['facebook', 'linkedin', 'twitter', 'pinterest', 'whatsapp'],
 };
@@ -24,6 +27,7 @@ describe('EnableSocialProperty', () => {
     prepareUnlayerGlobalObject();
     render(<EnableSocialProperty {...unlayerPropertyProps} />);
 
+    const socialSettings = getSocialSetting();
     let query = '';
     socialSettings.forEach((option, index) => {
       query += `(${option.name})${
