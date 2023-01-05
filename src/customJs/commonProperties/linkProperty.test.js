@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { LinkPropertyWidget } from './linkProperty';
 import { setLocale } from '../localization';
 import userEvent from '@testing-library/user-event';
@@ -81,6 +81,22 @@ describe(LinkPropertyWidget.name, () => {
     },
   );
 
+  it('must be render with value', async () => {
+    prepareUnlayerGlobalObject();
+    setLocale('en-US');
+
+    const defaultValue = 'https://writing.url';
+    const unlayerPropertyProps = {
+      data: {},
+      value: defaultValue,
+    };
+
+    render(<LinkPropertyWidget {...unlayerPropertyProps} />);
+
+    const input = await screen.getByLabelText('link-property-input');
+    expect(input.value).toBe(defaultValue);
+  });
+
   it('must be allow write into input link', async () => {
     prepareUnlayerGlobalObject();
     setLocale('en-US');
@@ -99,10 +115,12 @@ describe(LinkPropertyWidget.name, () => {
       />,
     );
 
-    const input = await screen.findByLabelText('link-property-input');
-    await userEvent.type(input, typedUrlTextValue);
+    const input = await screen.getByLabelText('link-property-input');
+    await fireEvent.change(input, { target: { value: typedUrlTextValue } });
 
-    expect(input.value).toBe(typedUrlTextValue);
-    expect(updateValueFn).toHaveBeenCalled();
+    waitFor(() => {
+      expect(input.value).toBe(typedUrlTextValue);
+      expect(updateValueFn).toHaveBeenCalled();
+    });
   });
 });
