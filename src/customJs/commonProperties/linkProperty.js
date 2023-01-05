@@ -32,6 +32,7 @@ export const LinkPropertyWidget = (props) => {
           <input
             type="url"
             className="form-control"
+            aria-label="link-property-input"
             value={currentValue}
             onChange={(e) => {
               setCurrentValue(e.target.value);
