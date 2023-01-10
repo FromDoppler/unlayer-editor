@@ -1,5 +1,6 @@
 import { intl } from '../localization';
 import { UnlayerLabelProperty } from './unlayerLabelProperty';
+import { formatUrl } from './utils';
 
 const React = window.unlayer.React;
 
@@ -9,15 +10,6 @@ export const LinkPropertyWidget = (props) => {
     updateValue,
     data: { label, help },
   } = props;
-
-  const [currentValue, setCurrentValue] = React.useState(value);
-
-  React.useEffect(() => {
-    if (!currentValue) {
-      return;
-    }
-    updateValue(currentValue);
-  }, [currentValue]);
 
   return (
     <>
@@ -30,13 +22,14 @@ export const LinkPropertyWidget = (props) => {
             </span>
           </div>
           <input
+            onBlur={(e) => {
+              e.target.value = formatUrl(e.target.value);
+              updateValue(e.target.value);
+            }}
+            defaultValue={value}
             type="url"
             className="form-control"
             aria-label="link-property-input"
-            value={currentValue}
-            onChange={(e) => {
-              setCurrentValue(e.target.value);
-            }}
           />
         </div>
       </div>
