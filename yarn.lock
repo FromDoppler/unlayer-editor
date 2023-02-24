@@ -7974,10 +7974,10 @@ react-dom@18.2.0:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
 
-react-email-editor@1.6.3:
-  version "1.6.3"
-  resolved "https://registry.yarnpkg.com/react-email-editor/-/react-email-editor-1.6.3.tgz#9ea2efcba73c45aeb2a827098fa63eb6fd0e2a96"
-  integrity sha512-QbUdNfVYKLpAnY5blAMddQzobXugD/ugKkVC7TSjEkba/1nv4qg4qYMu9/+cDpU+iNe7PCayBuDMNhAog5VUvQ==
+react-email-editor@1.7.3:
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/react-email-editor/-/react-email-editor-1.7.3.tgz#b427d3032948fbca6872f73fd033fcbf5fb61394"
+  integrity sha512-Fi8fkdJxDmCG0hjO92tnr4diSP66NDaV1TXrDHtmfccYCaHZSR8pLRgsMwltewdnoOmLCT8bcx/w5qTI+0vGZw==
 
 react-is@^16.12.0, react-is@^16.13.1, react-is@^16.7.0, react-is@^16.8.6:
   version "16.13.1"
