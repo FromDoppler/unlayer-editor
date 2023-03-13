@@ -1,3 +1,5 @@
+const React = window.unlayer.React;
+
 export const PayuButtonTool = unlayer.createViewer({
   render(values) {
     const { size, paymentURL, alignment } = values;

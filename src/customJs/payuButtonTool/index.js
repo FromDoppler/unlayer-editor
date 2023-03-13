@@ -1,5 +1,7 @@
 import { PayuButtonTool } from './PayuButtonTool';
 
+const React = window.unlayer.React;
+
 export const getPayuButtonToolConfig = () => ({
   name: 'payu_button_tool',
   label: 'payu_button',
@@ -52,7 +54,7 @@ export const getPayuButtonToolConfig = () => ({
         // );
       },
       email: function (values) {
-        return JSON.stringify(values);
+        return '*1*' + JSON.stringify(values);
         // return ReactDOMServer.renderToStaticMarkup(
         //   <PayuButtonTool values={values} />,
         // );
