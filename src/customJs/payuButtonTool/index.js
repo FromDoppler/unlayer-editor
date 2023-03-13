@@ -1,4 +1,5 @@
 import { PayuButtonTool } from './PayuButtonTool';
+import ReactDOMServer from 'react-dom/server';
 
 const React = window.unlayer.React;
 
@@ -54,10 +55,10 @@ export const getPayuButtonToolConfig = () => ({
         // );
       },
       email: function (values) {
-        return '*3*' + JSON.stringify(values);
-        // return ReactDOMServer.renderToStaticMarkup(
-        //   <PayuButtonTool values={values} />,
-        // );
+        // return '*3*' + JSON.stringify(values);
+        return ReactDOMServer.renderToStaticMarkup(
+          <PayuButtonTool values={values} />,
+        );
       },
     },
   },
