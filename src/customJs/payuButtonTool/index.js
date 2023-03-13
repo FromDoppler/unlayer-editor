@@ -54,7 +54,7 @@ export const getPayuButtonToolConfig = () => ({
         // );
       },
       email: function (values) {
-        return '*1*' + JSON.stringify(values);
+        return '*3*' + JSON.stringify(values);
         // return ReactDOMServer.renderToStaticMarkup(
         //   <PayuButtonTool values={values} />,
         // );
