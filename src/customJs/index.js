@@ -16,7 +16,7 @@ const unlayerLocale = unlayerLocales[locale] ?? unlayerLocales['es'];
 
 setLocale(unlayerLocale);
 
-unlayer.setLinkTypes([
+unlayer.setLinkTypes?.([
   {
     name: 'sms',
     enabled: false,
