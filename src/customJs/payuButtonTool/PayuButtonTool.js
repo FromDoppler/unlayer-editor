@@ -12,7 +12,7 @@ export const PayuButtonTool = (props) => {
       <a role="link" href={paymentURL ? paymentURL : '#'} target="_blank">
         <img
           style={{ width: buttonImgWidth }}
-          src={`${intl.formatMessage({ id: `payu_${size}_button` })}`}
+          src={`${intl.formatMessage({ id: `_dp.payu_${size}_button` })}`}
           alt="payu_button"
         />
       </a>

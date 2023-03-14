@@ -6,7 +6,7 @@ import { intl } from '../localization';
 
 export const getPayuButtonToolConfig = () => ({
   name: 'payu_button_tool',
-  label: intl.formatMessage({ id: 'payu_button' }),
+  label: intl.formatMessage({ id: '_dp.payu_button' }),
   icon: process.env.PUBLIC_URL + '/assets/payu_button.svg',
   supportedDisplayModes: ['web', 'email'],
   category: 'contents',
@@ -23,7 +23,7 @@ export const getPayuButtonToolConfig = () => ({
         paymentURL: {
           widget: 'link_property',
           data: {
-            label: intl.formatMessage({ id: 'pay_button_link' }),
+            label: intl.formatMessage({ id: '_dp.pay_button_link' }),
             help: (
               <div
                 style={{
@@ -34,32 +34,38 @@ export const getPayuButtonToolConfig = () => ({
                   fontFamily: 'Roboto,sans-serif',
                 }}
               >
-                {intl.formatMessage({ id: 'payu_help' })}
+                {intl.formatMessage({ id: '_dp.payu_help' })}
                 <a
                   target="_blank"
                   style={{ color: '#33AC72', textDecoration: 'none' }}
-                  href={intl.formatMessage({ id: 'payu_help_link' })}
+                  href={intl.formatMessage({ id: '_dp.payu_help_link' })}
                 >
-                  &nbsp;{intl.formatMessage({ id: 'help' })}
+                  &nbsp;{intl.formatMessage({ id: '_dp.help' })}
                 </a>
               </div>
             ),
           },
         },
         size: {
-          label: intl.formatMessage({ id: 'size' }),
+          label: intl.formatMessage({ id: '_dp.size' }),
           defaultValue: 'medium',
           widget: 'dropdown',
           data: {
             options: [
-              { label: intl.formatMessage({ id: 'small' }), value: 'small' },
-              { label: intl.formatMessage({ id: 'medium' }), value: 'medium' },
-              { label: intl.formatMessage({ id: 'big' }), value: 'large' },
+              {
+                label: intl.formatMessage({ id: '_dp.small' }),
+                value: 'small',
+              },
+              {
+                label: intl.formatMessage({ id: '_dp.medium' }),
+                value: 'medium',
+              },
+              { label: intl.formatMessage({ id: '_dp.big' }), value: 'large' },
             ],
           },
         },
         alignment: {
-          label: intl.formatMessage({ id: 'alignment' }),
+          label: intl.formatMessage({ id: '_dp.alignment' }),
           defaultValue: 'center',
           widget: 'alignment',
         },

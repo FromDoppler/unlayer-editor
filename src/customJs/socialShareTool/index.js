@@ -6,7 +6,7 @@ import { intl } from '../localization';
 
 export const getSocialShareToolConfig = () => ({
   name: 'social_share_tool',
-  label: intl.formatMessage({ id: 'social_share_title' }),
+  label: intl.formatMessage({ id: '_dp.social_share_title' }),
   icon: 'fa-share-alt',
   supportedDisplayModes: ['web', 'email'],
   category: 'contents',
@@ -17,7 +17,7 @@ export const getSocialShareToolConfig = () => ({
       title: null,
     },
     social_share_size: {
-      title: intl.formatMessage({ id: 'size' }),
+      title: intl.formatMessage({ id: '_dp.size' }),
       position: 1,
       options: {
         social_share_size: {
@@ -25,15 +25,18 @@ export const getSocialShareToolConfig = () => ({
           widget: 'dropdown',
           data: {
             options: [
-              { label: intl.formatMessage({ id: 'small' }), value: 'small' },
-              { label: intl.formatMessage({ id: 'big' }), value: 'big' },
+              {
+                label: intl.formatMessage({ id: '_dp.small' }),
+                value: 'small',
+              },
+              { label: intl.formatMessage({ id: '_dp.big' }), value: 'big' },
             ],
           },
         },
       },
     },
     social_share_network: {
-      title: intl.formatMessage({ id: 'social_networks' }),
+      title: intl.formatMessage({ id: '_dp.social_networks' }),
       position: 2,
       options: {
         social_share_available: {
@@ -46,11 +49,11 @@ export const getSocialShareToolConfig = () => ({
       },
     },
     social_share_align: {
-      title: intl.formatMessage({ id: 'alignment' }),
+      title: intl.formatMessage({ id: '_dp.alignment' }),
       position: 3,
       options: {
         social_share_align_option: {
-          label: intl.formatMessage({ id: 'alignment' }),
+          label: intl.formatMessage({ id: '_dp.alignment' }),
           defaultValue: 'center',
           widget: 'alignment',
         },
