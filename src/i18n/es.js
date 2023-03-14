@@ -249,7 +249,7 @@ export const messages_es = {
   'editor.magic_image.first_experience.title': `Deja que {ai} cree imágenes`,
   'editor.magic_image.modal_title': `Imágenes mágicas de {ai}`,
   'editor.magic_image.prompt_placeholder': `Una tortuga nadando bajo el agua, pintura expresionista`,
-  'editor.magic_image.stock_list.text': `Get the perfect image with AI. Just type what you want and AI will create it for you.`,
+  'editor.magic_image.stock_list.text': `Obtén la imagen perfecta con IA. Solo escribe lo que quieres y la IA lo creará para ti.`,
   'editor.magic_image.text_prompt': `Tu mensaje de texto`,
   'editor.magic_image.the_prompt': `El mensaje`,
   'editor.margin.label': `Margen`,
