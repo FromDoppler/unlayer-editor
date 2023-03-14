@@ -46,7 +46,7 @@ describe(setLocale.name, () => {
       setLocale(lang);
 
       // Act
-      const result = intl.formatMessage({ id: 'size' });
+      const result = intl.formatMessage({ id: '_dp.size' });
 
       // Assert
       expect(result).toEqual(expected_size_translation);

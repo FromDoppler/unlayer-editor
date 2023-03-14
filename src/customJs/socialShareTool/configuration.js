@@ -5,7 +5,7 @@ export const getSocialSetting = () => {
 
   const translateNetworkIconUrl = (network, size) =>
     intl.formatMessage(
-      { id: 'social_share_url' },
+      { id: '_dp.social_share_url' },
       { baseUrl: baseAssetsUrl, network, size },
     );
 
