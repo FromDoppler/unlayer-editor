@@ -3,6 +3,7 @@ import { setLocale } from './localization';
 import { getPayuButtonToolConfig } from './payuButtonTool';
 import { getLinkPropertyConfiguration } from './commonProperties/linkProperty';
 import { getEnableSocialPropertyConfig } from './socialShareTool/enableSocialProperty';
+import './main.css';
 
 const unlayer = window.unlayer;
 
