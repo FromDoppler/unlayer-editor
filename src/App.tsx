@@ -2,7 +2,13 @@ import React, { useRef } from 'react';
 import mergeTags from './external/merge.tags';
 import styled from 'styled-components';
 
-import EmailEditor, { User, UnlayerOptions } from 'react-email-editor';
+import EmailEditor, {
+  User,
+  UnlayerOptions,
+  EditorRef,
+  Design,
+  HtmlExport,
+} from 'react-email-editor';
 
 const Bar = styled.div`
   flex: 1;
@@ -31,7 +37,7 @@ const Bar = styled.div`
 `;
 
 const App: React.FC = () => {
-  const emailEditorRef = useRef() as React.MutableRefObject<EmailEditor>;
+  const emailEditorRef = useRef<EditorRef>(null);
   const projectId: number = parseInt(
     process.env.REACT_APP_PROJECT_ID as string,
     10,
@@ -74,13 +80,13 @@ const App: React.FC = () => {
   } as UnlayerOptions;
 
   const saveDesign = () => {
-    emailEditorRef.current.saveDesign((design) => {
+    emailEditorRef.current?.saveDesign((design: Design) => {
       console.log('Template data', '\n', design);
     });
   };
 
   const exportHtml = () => {
-    emailEditorRef.current.exportHtml((data) => {
+    emailEditorRef.current?.exportHtml((data: HtmlExport) => {
       const { html } = data;
       console.log('HTML Email data', '\n', html);
     });
