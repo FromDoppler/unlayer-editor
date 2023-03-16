@@ -1,4 +1,6 @@
-.blockbuilder-content-tool-name {
+.blockbuilder-content-tools
+  .blockbuilder-content-tool
+  .blockbuilder-content-tool-name {
   text-transform: none;
   overflow-wrap: inherit;
   text-overflow: unset;
