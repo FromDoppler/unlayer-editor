@@ -69,6 +69,7 @@ const App: React.FC = () => {
     },
     mergeTags: mergeTags,
     user: userExtend,
+    customCSS: [`${process.env.PUBLIC_URL}/customJs/main.css`],
     customJS: [
       `window["unlayer-extensions-configuration"] = {
         locale: "es",

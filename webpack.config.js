@@ -2,6 +2,7 @@ const path = require('path');
 const {WebpackManifestPlugin} = require('webpack-manifest-plugin');
 const DotenvFlow = require('dotenv-flow-webpack');
 const Dotenv = require('dotenv')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const mapFileManifest = (file) => {
     if (process.env.NODE_ENV === 'development') {
@@ -51,10 +52,19 @@ module.exports = function (env) {
                 {
                     test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
                     type: 'public/resource',
-                }
+                },
+                {
+                  test: /\.css$/i,
+                  use: [MiniCssExtractPlugin.loader, "css-loader"],
+                },
             ],
         },
         plugins: [
+            new MiniCssExtractPlugin({
+              filename: env.NODE_ENV === 'production'
+                ? "static/[name].[contenthash].css"
+                : "[name].css"
+            }),
             new WebpackManifestPlugin({
                 fileName: 'asset-manifest.json',
                 generate: serializeManifest
