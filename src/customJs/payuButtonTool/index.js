@@ -2,11 +2,10 @@ import { PayuButtonTool } from './PayuButtonTool';
 
 const React = window.unlayer.React;
 import ReactDOMServer from 'react-dom/server';
-import { intl } from '../localization';
 
 export const getPayuButtonToolConfig = () => ({
   name: 'payu_button_tool',
-  label: intl.formatMessage({ id: '_dp.payu_button' }),
+  label: '_dp.payu_button',
   icon: process.env.PUBLIC_URL + '/assets/payu_button.svg',
   supportedDisplayModes: ['web', 'email'],
   category: 'contents',
@@ -17,13 +16,13 @@ export const getPayuButtonToolConfig = () => ({
       title: null,
     },
     basic_configuration_section: {
-      title: intl.formatMessage({ id: 'option_groups.button_options.title' }),
+      title: 'option_groups.button_options.title',
       position: 3,
       options: {
         paymentURL: {
           widget: 'link_property',
           data: {
-            label: intl.formatMessage({ id: '_dp.pay_button_link' }),
+            label: '_dp.pay_button_link',
             help: (
               <div
                 style={{
@@ -34,38 +33,38 @@ export const getPayuButtonToolConfig = () => ({
                   fontFamily: 'Roboto,sans-serif',
                 }}
               >
-                {intl.formatMessage({ id: '_dp.payu_help' })}
+                {'_dp.payu_help'}
                 <a
                   target="_blank"
                   style={{ color: '#33AC72', textDecoration: 'none' }}
-                  href={intl.formatMessage({ id: '_dp.payu_help_link' })}
+                  href={'_dp.payu_help_link'}
                 >
-                  &nbsp;{intl.formatMessage({ id: '_dp.help' })}
+                  &nbsp;{'_dp.help'}
                 </a>
               </div>
             ),
           },
         },
         size: {
-          label: intl.formatMessage({ id: '_dp.size' }),
+          label: '_dp.size',
           defaultValue: 'medium',
           widget: 'dropdown',
           data: {
             options: [
               {
-                label: intl.formatMessage({ id: '_dp.small' }),
+                label: '_dp.small',
                 value: 'small',
               },
               {
-                label: intl.formatMessage({ id: '_dp.medium' }),
+                label: '_dp.medium',
                 value: 'medium',
               },
-              { label: intl.formatMessage({ id: '_dp.big' }), value: 'large' },
+              { label: '_dp.big', value: 'large' },
             ],
           },
         },
         alignment: {
-          label: intl.formatMessage({ id: '_dp.alignment' }),
+          label: '_dp.alignment',
           defaultValue: 'center',
           widget: 'alignment',
         },
@@ -93,12 +92,8 @@ export const getPayuButtonToolConfig = () => ({
         id: 'CUSTOM_ERROR',
         icon: process.env.PUBLIC_URL + '/assets/payu_button.svg',
         severity: 'WARNING',
-        title: intl.formatMessage({
-          id: 'tabs.audit.rules.payu_button.empty_links.title',
-        }),
-        description: intl.formatMessage({
-          id: 'tabs.audit.rules.payu_button.empty_links.description',
-        }),
+        title: 'tabs.audit.rules.payu_button.empty_links.title',
+        description: 'tabs.audit.rules.payu_button.empty_links.description',
       });
     }
 

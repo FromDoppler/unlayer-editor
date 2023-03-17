@@ -438,6 +438,7 @@ export const messages_es = {
   'option_groups.spacing.title': `Espaciado`,
   'option_groups.styles.title': `Estilos`,
   'option_groups.text.title': `Texto`,
+  payu_button_tool: 'payu_button_tool ES',
   'shapes.circle': `Círculo`,
   'shapes.rectangle': `Rectángulo`,
   'shapes.round': `Redondo`,
