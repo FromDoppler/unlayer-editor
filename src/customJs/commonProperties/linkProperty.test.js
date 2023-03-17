@@ -119,7 +119,7 @@ describe(LinkPropertyWidget.name, () => {
     await fireEvent.change(input, { target: { value: typedUrlTextValue } });
 
     waitFor(() => {
-      expect(input.value).toBe(typedUrlTextValue);
+      expect(input.value).toBe('typedUrlTextValue');
       expect(updateValueFn).toHaveBeenCalled();
     });
   });

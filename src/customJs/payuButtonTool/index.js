@@ -94,6 +94,8 @@ export const getPayuButtonToolConfig = () => ({
         severity: 'WARNING',
         title: 'tabs.audit.rules.payu_button.empty_links.title',
         description: 'tabs.audit.rules.payu_button.empty_links.description',
+        location: 'location',
+        slug: 'slug',
       });
     }
 
