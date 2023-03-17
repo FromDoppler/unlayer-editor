@@ -93,7 +93,7 @@ describe(LinkPropertyWidget.name, () => {
 
     render(<LinkPropertyWidget {...unlayerPropertyProps} />);
 
-    const input = await screen.getByLabelText('link-property-input');
+    const input = screen.getByLabelText('link-property-input');
     expect(input.value).toBe(defaultValue);
   });
 
@@ -115,8 +115,8 @@ describe(LinkPropertyWidget.name, () => {
       />,
     );
 
-    const input = await screen.getByLabelText('link-property-input');
-    await fireEvent.change(input, { target: { value: typedUrlTextValue } });
+    const input = screen.getByLabelText('link-property-input');
+    fireEvent.change(input, { target: { value: typedUrlTextValue } });
 
     waitFor(() => {
       expect(input.value).toBe(typedUrlTextValue);
