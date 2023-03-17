@@ -117,8 +117,9 @@ describe(LinkPropertyWidget.name, () => {
 
     const input = screen.getByLabelText('link-property-input');
     fireEvent.change(input, { target: { value: typedUrlTextValue } });
+    fireEvent.blur(input);
 
-    waitFor(() => {
+    await waitFor(() => {
       expect(input.value).toBe(typedUrlTextValue);
       expect(updateValueFn).toHaveBeenCalled();
     });
