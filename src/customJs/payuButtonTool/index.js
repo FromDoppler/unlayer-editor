@@ -87,6 +87,8 @@ export const getPayuButtonToolConfig = () => ({
     },
   },
   validator: ({ defaultErrors, values }) => {
+    console.log({ defaultErrors });
+    console.log({ values });
     if (!values.paymentURL) {
       defaultErrors.push({
         id: 'CUSTOM_ERROR',
