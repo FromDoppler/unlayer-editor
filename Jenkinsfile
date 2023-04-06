@@ -32,6 +32,9 @@ pipeline {
       }
     }
     stage('Publish in CDN') {
+      environment {
+          PKG_NAME = "unlayer-editor${PACKAGE_SUFFIX}"
+      }
       stages {
         // TODO: Inject CDN SFTP credentials here
         stage('Publish pre-release images from pull request') {

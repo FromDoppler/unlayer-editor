@@ -6,3 +6,4 @@ build
 Dockerfile*
 Jenkinsfile
 .doppler-ci
+doppler-jenkins-ci.groovy
