@@ -32,6 +32,9 @@ pipeline {
       }
     }
     stage('Publish in CDN') {
+      environment {
+          PKG_NAME = "unlayer-editor"
+      }
       stages {
         // TODO: Inject CDN SFTP credentials here
         stage('Publish pre-release images from pull request') {
@@ -39,7 +42,12 @@ pipeline {
             changeRequest target: 'main'
           }
           steps {
-            sh 'sh ./build-n-publish.sh --commit=${GIT_COMMIT} --name=pr-${CHANGE_ID}'
+            sh '''
+              sh ./build-n-publish.sh \
+                --package=${PKG_NAME} \
+                --commit=${GIT_COMMIT} \
+                --name=pr-${CHANGE_ID}
+            '''
           }
         }
         stage('Publish pre-release images from main') {
@@ -47,7 +55,12 @@ pipeline {
             branch 'main'
           }
           steps {
-            sh 'sh build-n-publish.sh --commit=${GIT_COMMIT} --name=main'
+            sh '''
+              sh build-n-publish.sh \
+                --package=${PKG_NAME} \
+                --commit=${GIT_COMMIT} \
+                --name=main
+            '''
           }
         }
         stage('Publish pre-release images from INT') {
@@ -55,7 +68,12 @@ pipeline {
             branch 'INT'
           }
           steps {
-            sh 'sh build-n-publish.sh --commit=${GIT_COMMIT} --name=INT'
+            sh '''
+              sh build-n-publish.sh \
+                --package=${PKG_NAME} \
+                --commit=${GIT_COMMIT} \
+                --name=INT
+            '''
           }
         }
         stage('Publish final version images') {
@@ -65,7 +83,12 @@ pipeline {
             }
           }
           steps {
-            sh 'sh build-n-publish.sh --commit=${GIT_COMMIT} --version=${TAG_NAME}'
+            sh '''
+              sh build-n-publish.sh \
+                --package=${PKG_NAME} \
+                --commit=${GIT_COMMIT} \
+                --version=${TAG_NAME}
+            '''
           }
         }
       }

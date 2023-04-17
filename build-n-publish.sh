@@ -16,6 +16,7 @@ print_help () {
     echo "Use Docker to build project's bundle files and publish them to our CDN"
     echo ""
     echo "Options:"
+    echo "  -p, --package, package name (optional, default: ${pkgName})"
     echo "  -c, --commit (mandatory)"
     echo "  -n, --name, version name"
     echo "  -v, --version, version number"
@@ -33,6 +34,9 @@ print_help () {
 
 for i in "$@" ; do
 case $i in
+    -p=*|--package=*)
+    pkgName="${i#*=}"
+    ;;
     -c=*|--commit=*)
     commit="${i#*=}"
     ;;
@@ -51,6 +55,13 @@ case $i in
     ;;
 esac
 done
+
+if [ -z "${pkgName}" ]
+then
+  echo "Error: package parameter is mandatory"
+  print_help
+  exit 1
+fi
 
 if [ -z "${commit}" ]
 then

@@ -30,7 +30,7 @@ charset = utf-8-bom
 indent_style = tab
 
 # Unset for binary and generated files
-[{**.png,**.svg,**/obj/**,**/bin/**,.vscode/**,**/Properties/launchSettings.json,*.[sS]ecret.*,.doppler-ci,build/**,coverage/**}]
+[{**.png,**.svg,**/obj/**,**/bin/**,.vscode/**,**/Properties/launchSettings.json,*.[sS]ecret.*,.doppler-ci,*.groovy,build/**,coverage/**}]
 charset = unset
 end_of_line = unset
 insert_final_newline = unset
