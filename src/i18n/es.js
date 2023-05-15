@@ -352,7 +352,7 @@ export const messages_es = {
   'labels.loading': `Cargando`,
   'labels.loading_images': `Cargando imágenes`,
   'labels.menu.links': `Enlaces del menú`,
-  'labels.merge_tags': `Etiquetas de combinación`,
+  'labels.merge_tags': `Campos personalizados`,
   'labels.mobile_preview': `Vista previa móvil`,
   'labels.more_images': `Más imágenes`,
   'labels.new': `Nuevo`,
