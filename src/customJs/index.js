@@ -4,10 +4,11 @@ import { getPayuButtonToolConfig } from './payuButtonTool';
 import { getLinkPropertyConfiguration } from './commonProperties/linkProperty';
 import { getEnableSocialPropertyConfig } from './socialShareTool/enableSocialProperty';
 import './main.css';
+import { getConfiguration } from './configuration';
 
 const unlayer = window.unlayer;
 
-const { locale } = window['unlayer-extensions-configuration'];
+const { locale } = getConfiguration();
 
 const unlayerLocales = {
   es: 'es-ES',

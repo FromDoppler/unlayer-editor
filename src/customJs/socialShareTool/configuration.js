@@ -1,7 +1,8 @@
+import { getConfiguration } from '../configuration';
 import { intl } from '../localization';
 
 export const getSocialSetting = () => {
-  const { baseAssetsUrl } = window['unlayer-extensions-configuration'];
+  const { baseAssetsUrl } = getConfiguration();
 
   const translateNetworkIconUrl = (network, size) =>
     intl.formatMessage(
