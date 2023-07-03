@@ -16,7 +16,12 @@ describe(getConfiguration.name, () => {
   });
 });
 
-const defaultConfiguration = { baseAssetsUrl: '', locale: 'es', stores: [] };
+const defaultConfiguration = {
+  baseAssetsUrl: '',
+  locale: 'es',
+  stores: [],
+  promotionCodeEnabled: false,
+};
 
 describe(parseConfigurationDTO.name, () => {
   it('should return default configuration when DTO is an empty object', () => {
@@ -51,7 +56,12 @@ describe(parseConfigurationDTO.name, () => {
     const result = parseConfigurationDTO(input);
 
     // Assert
-    expect(result).toEqual({ baseAssetsUrl, locale, stores: [] });
+    expect(result).toEqual({
+      baseAssetsUrl,
+      locale,
+      stores: [],
+      promotionCodeEnabled: false,
+    });
   });
 
   it('should parse stores', () => {
@@ -74,5 +84,37 @@ describe(parseConfigurationDTO.name, () => {
 
     // Assert
     expect(result).toEqual(expect.objectContaining({ stores: expectedStores }));
+  });
+
+  it('should set promotionCodeEnabled = true when there is at least one store with promotionCodeEnabled', () => {
+    // Arrange
+    const inputStores = [
+      { name: 'store1', promotionCodeEnabled: false },
+      { name: 'store2', promotionCodeEnabled: true },
+    ];
+
+    // Act
+    const result = parseConfigurationDTO({ stores: inputStores });
+
+    // Assert
+    expect(result).toEqual(
+      expect.objectContaining({ promotionCodeEnabled: true }),
+    );
+  });
+
+  it('should set promotionCodeEnabled = false when there are not stores with promotionCodeEnabled', () => {
+    // Arrange
+    const inputStores = [
+      { name: 'store1' },
+      { name: 'store2', promotionCodeEnabled: false },
+    ];
+
+    // Act
+    const result = parseConfigurationDTO({ stores: inputStores });
+
+    // Assert
+    expect(result).toEqual(
+      expect.objectContaining({ promotionCodeEnabled: false }),
+    );
   });
 });

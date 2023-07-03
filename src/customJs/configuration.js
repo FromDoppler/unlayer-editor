@@ -7,6 +7,7 @@
  * @property {string} baseAssetsUrl
  * @property {('en'|'es')} locale
  * @property {Store[]} stores
+ * @property {boolean} promotionCodeEnabled - There is at least one store with promotionCodeEnabled
  *
  * @typedef Store
  * @type {object}
@@ -30,10 +31,12 @@ export const parseConfigurationDTO = ({
   stores = [],
 } = {}) => {
   stores = stores.map(parseStoreDTO);
+  const promotionCodeEnabled = stores.some((x) => x.promotionCodeEnabled);
   return {
     baseAssetsUrl,
     locale,
     stores,
+    promotionCodeEnabled,
   };
 };
 
