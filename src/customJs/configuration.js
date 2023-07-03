@@ -6,6 +6,12 @@
  * @type {object}
  * @property {string} baseAssetsUrl
  * @property {('en'|'es')} locale
+ * @property {Store[]} stores
+ *
+ * @typedef Store
+ * @type {object}
+ * @property {string} name
+ * @property {boolean} promotionCodeEnabled
  */
 
 /** @type {Configuration} */
@@ -21,9 +27,17 @@ export const getConfiguration = () =>
 export const parseConfigurationDTO = ({
   baseAssetsUrl = '',
   locale = defaultLanguage,
+  stores = [],
 } = {}) => {
+  stores = stores.map(parseStoreDTO);
   return {
     baseAssetsUrl,
     locale,
+    stores,
   };
 };
+
+const parseStoreDTO = ({ name = '', promotionCodeEnabled = false } = {}) => ({
+  name,
+  promotionCodeEnabled,
+});

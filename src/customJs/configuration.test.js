@@ -16,7 +16,7 @@ describe(getConfiguration.name, () => {
   });
 });
 
-const defaultConfiguration = { baseAssetsUrl: '', locale: 'es' };
+const defaultConfiguration = { baseAssetsUrl: '', locale: 'es', stores: [] };
 
 describe(parseConfigurationDTO.name, () => {
   it('should return default configuration when DTO is an empty object', () => {
@@ -51,6 +51,28 @@ describe(parseConfigurationDTO.name, () => {
     const result = parseConfigurationDTO(input);
 
     // Assert
-    expect(result).toEqual({ baseAssetsUrl, locale });
+    expect(result).toEqual({ baseAssetsUrl, locale, stores: [] });
+  });
+
+  it('should parse stores', () => {
+    // Arrange
+    const inputStores = [
+      {},
+      { promotionCodeEnabled: true },
+      { name: 'store1', promotionCodeEnabled: false },
+      { name: 'store2', promotionCodeEnabled: true },
+    ];
+    const expectedStores = [
+      { name: '', promotionCodeEnabled: false },
+      { name: '', promotionCodeEnabled: true },
+      { name: 'store1', promotionCodeEnabled: false },
+      { name: 'store2', promotionCodeEnabled: true },
+    ];
+
+    // Act
+    const result = parseConfigurationDTO({ stores: inputStores });
+
+    // Assert
+    expect(result).toEqual(expect.objectContaining({ stores: expectedStores }));
   });
 });
