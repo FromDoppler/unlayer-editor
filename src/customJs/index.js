@@ -4,10 +4,11 @@ import { getPayuButtonToolConfig } from './payuButtonTool';
 import { getLinkPropertyConfiguration } from './commonProperties/linkProperty';
 import { getEnableSocialPropertyConfig } from './socialShareTool/enableSocialProperty';
 import './main.css';
+import { getConfiguration } from './configuration';
 
 const unlayer = window.unlayer;
 
-const { locale } = window['unlayer-extensions-configuration'];
+const { locale, promotionCodeEnabled } = getConfiguration();
 
 const unlayerLocales = {
   es: 'es-ES',
@@ -29,3 +30,11 @@ unlayer.registerPropertyEditor(getLinkPropertyConfiguration());
 unlayer.registerPropertyEditor(getEnableSocialPropertyConfig());
 unlayer.registerTool(getSocialShareToolConfig());
 unlayer.registerTool(getPayuButtonToolConfig());
+
+if (promotionCodeEnabled) {
+  console.log('promotionCodeEnabled, it will show the Promo Code Tool soon...');
+  // TODO: do something like this
+  // unlayer.registerTool(getPromoCodeToolConfig());
+  // For Promo Code Tool, promotionCodeEnabled is enough to decide to show or
+  // hide the tool. Other tools depend on the campaign.
+}
