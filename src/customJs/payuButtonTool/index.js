@@ -8,17 +8,9 @@ export const getPayuButtonToolConfig = () => ({
   name: 'payu_button_tool',
   label: intl.formatMessage({ id: '_dp.payu_button' }),
   icon: process.env.PUBLIC_URL + '/assets/payu_button.svg',
-  supportedDisplayModes: ['web', 'email'],
-  category: 'contents',
-  type: 'whatever',
-  values: {},
   options: {
-    default: {
-      title: null,
-    },
     basic_configuration_section: {
       title: intl.formatMessage({ id: 'option_groups.button_options.title' }),
-      position: 3,
       options: {
         paymentURL: {
           widget: 'link_property',

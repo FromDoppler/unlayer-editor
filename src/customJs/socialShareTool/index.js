@@ -8,14 +8,7 @@ export const getSocialShareToolConfig = () => ({
   name: 'social_share_tool',
   label: intl.formatMessage({ id: '_dp.social_share_title' }),
   icon: 'fa-share-alt',
-  supportedDisplayModes: ['web', 'email'],
-  category: 'contents',
-  type: 'whatever',
-  values: {},
   options: {
-    default: {
-      title: null,
-    },
     social_share_size: {
       title: intl.formatMessage({ id: '_dp.size' }),
       position: 1,
