@@ -1,6 +1,6 @@
 import { intl } from '../localization';
 import { UnlayerLabelProperty } from './unlayerLabelProperty';
-import { formatUrl } from './utils';
+import { formatUrl } from '../utils/url';
 
 const React = window.unlayer.React;
 
