@@ -3,6 +3,7 @@ import { PayuButtonTool } from './PayuButtonTool';
 const React = window.unlayer.React;
 import ReactDOMServer from 'react-dom/server';
 import { intl } from '../localization';
+import { createRenderer } from '../utils/unlayer';
 
 export const getPayuButtonToolConfig = () => ({
   name: 'payu_button_tool',
@@ -64,21 +65,7 @@ export const getPayuButtonToolConfig = () => ({
       },
     },
   },
-  renderer: {
-    Viewer: PayuButtonTool,
-    exporters: {
-      web: function (values) {
-        return ReactDOMServer.renderToStaticMarkup(
-          <PayuButtonTool values={values} />,
-        );
-      },
-      email: function (values) {
-        return ReactDOMServer.renderToStaticMarkup(
-          <PayuButtonTool values={values} />,
-        );
-      },
-    },
-  },
+  renderer: createRenderer(PayuButtonTool),
   validator: ({ defaultErrors, values }) => {
     if (!values.paymentURL) {
       defaultErrors.push({

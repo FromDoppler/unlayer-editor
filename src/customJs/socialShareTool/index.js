@@ -1,8 +1,8 @@
 const React = window.unlayer.React;
 import { getSocialSetting } from './configuration';
 import { SocialShareTool } from './SocialShareTool';
-import ReactDOMServer from 'react-dom/server';
 import { intl } from '../localization';
+import { createRenderer } from '../utils/unlayer';
 
 export const getSocialShareToolConfig = () => ({
   name: 'social_share_tool',
@@ -53,19 +53,5 @@ export const getSocialShareToolConfig = () => ({
       },
     },
   },
-  renderer: {
-    Viewer: SocialShareTool,
-    exporters: {
-      web: function (values) {
-        return ReactDOMServer.renderToStaticMarkup(
-          <SocialShareTool values={values} />,
-        );
-      },
-      email: function (values) {
-        return ReactDOMServer.renderToStaticMarkup(
-          <SocialShareTool values={values} />,
-        );
-      },
-    },
-  },
+  renderer: createRenderer(SocialShareTool),
 });
