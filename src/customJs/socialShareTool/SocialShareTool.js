@@ -2,13 +2,13 @@ const React = window.unlayer.React;
 import PropTypes from 'prop-types';
 import { getSocialSetting } from './configuration';
 
-export const SocialShareTool = (props) => {
-  const {
+export const SocialShareTool = ({
+  values: {
     social_share_align_option,
     social_share_available,
     social_share_size: size,
-  } = props.values;
-
+  },
+}) => {
   const socialSetting = getSocialSetting();
 
   return (
