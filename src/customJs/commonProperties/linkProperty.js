@@ -1,8 +1,7 @@
-import { intl } from '../localization';
-import { UnlayerLabelProperty } from './unlayerLabelProperty';
-import { formatUrl } from '../utils/url';
-
 const React = window.unlayer.React;
+import { intl } from '../localization';
+import { formatUrl } from '../utils/url';
+import { UnlayerLabelProperty } from './unlayerLabelProperty';
 
 export const LinkPropertyWidget = (props) => {
   const {

@@ -1,5 +1,5 @@
-import { getConfiguration } from '../configuration';
 import { intl } from '../localization';
+import { getConfiguration } from '../configuration';
 
 export const getSocialSetting = () => {
   const { baseAssetsUrl } = getConfiguration();

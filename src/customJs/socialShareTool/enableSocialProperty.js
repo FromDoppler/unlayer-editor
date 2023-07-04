@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 const React = window.unlayer.React;
+import PropTypes from 'prop-types';
 
 const Toggle = ({ label, onChange, defaultValue }) => {
   const [active, setActive] = React.useState(defaultValue);

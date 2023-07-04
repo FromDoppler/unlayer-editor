@@ -1,9 +1,7 @@
-import { PayuButtonTool } from './PayuButtonTool';
-
 const React = window.unlayer.React;
-import ReactDOMServer from 'react-dom/server';
 import { intl } from '../localization';
 import { createRenderer } from '../utils/unlayer';
+import { PayuButtonTool } from './PayuButtonTool';
 
 export const getPayuButtonToolConfig = () => ({
   name: 'payu_button_tool',

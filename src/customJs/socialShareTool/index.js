@@ -1,8 +1,8 @@
 const React = window.unlayer.React;
-import { getSocialSetting } from './configuration';
-import { SocialShareTool } from './SocialShareTool';
 import { intl } from '../localization';
 import { createRenderer } from '../utils/unlayer';
+import { getSocialSetting } from './configuration';
+import { SocialShareTool } from './SocialShareTool';
 
 export const getSocialShareToolConfig = () => ({
   name: 'social_share_tool',

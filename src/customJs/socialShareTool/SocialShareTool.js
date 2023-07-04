@@ -1,7 +1,6 @@
-import { getSocialSetting } from './configuration';
-import PropTypes from 'prop-types';
-
 const React = window.unlayer.React;
+import PropTypes from 'prop-types';
+import { getSocialSetting } from './configuration';
 
 export const SocialShareTool = (props) => {
   const {
