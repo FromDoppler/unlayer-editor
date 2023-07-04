@@ -1,7 +1,7 @@
-import { getSocialShareToolConfig } from '.';
+import { getSocialShareToolDefinition } from './getSocialShareToolDefinition';
 import { setLocale } from '../localization';
 
-describe(getSocialShareToolConfig.name, () => {
+describe(getSocialShareToolDefinition.name, () => {
   it.each([
     { lang: 'es-ES', expected_social_share_size_title: 'Tamaño' },
     { lang: 'en-US', expected_social_share_size_title: 'Size' },
@@ -19,7 +19,7 @@ describe(getSocialShareToolConfig.name, () => {
       setLocale(lang);
 
       // Act
-      const result = getSocialShareToolConfig();
+      const result = getSocialShareToolDefinition();
 
       // Assert
       expect(result).toBeDefined();

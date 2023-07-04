@@ -1,9 +1,9 @@
 const React = window.unlayer.React;
 import { intl } from '../localization';
 import { createRenderer } from '../utils/unlayer';
-import { PayuButtonTool } from './PayuButtonTool';
+import { PayuButtonViewer } from '../components/PayuButtonViewer';
 
-export const getPayuButtonToolConfig = () => ({
+export const getPayuButtonToolDefinition = () => ({
   name: 'payu_button_tool',
   label: intl.formatMessage({ id: '_dp.payu_button' }),
   icon: process.env.PUBLIC_URL + '/assets/payu_button.svg',
@@ -63,7 +63,7 @@ export const getPayuButtonToolConfig = () => ({
       },
     },
   },
-  renderer: createRenderer(PayuButtonTool),
+  renderer: createRenderer(PayuButtonViewer),
   validator: ({ defaultErrors, values }) => {
     if (!values.paymentURL) {
       defaultErrors.push({

@@ -1,8 +1,8 @@
 const React = window.unlayer.React;
 import PropTypes from 'prop-types';
-import { getSocialSetting } from './configuration';
+import { getSocialSetting } from '../socialShareTool/configuration';
 
-export const SocialShareTool = ({
+export const SocialShareViewer = ({
   values: {
     social_share_align_option,
     social_share_available,
@@ -55,7 +55,7 @@ export const SocialShareTool = ({
   );
 };
 
-SocialShareTool.propTypes = {
+SocialShareViewer.propTypes = {
   values: {
     social_share_align_option: PropTypes.string,
     social_share_size: PropTypes.string,

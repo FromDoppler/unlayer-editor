@@ -2,9 +2,9 @@ const React = window.unlayer.React;
 import { intl } from '../localization';
 import { createRenderer } from '../utils/unlayer';
 import { getSocialSetting } from './configuration';
-import { SocialShareTool } from './SocialShareTool';
+import { SocialShareViewer } from '../components/SocialShareViewer';
 
-export const getSocialShareToolConfig = () => ({
+export const getSocialShareToolDefinition = () => ({
   name: 'social_share_tool',
   label: intl.formatMessage({ id: '_dp.social_share_title' }),
   icon: 'fa-share-alt',
@@ -53,5 +53,5 @@ export const getSocialShareToolConfig = () => ({
       },
     },
   },
-  renderer: createRenderer(SocialShareTool),
+  renderer: createRenderer(SocialShareViewer),
 });

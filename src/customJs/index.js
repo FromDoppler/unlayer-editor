@@ -1,6 +1,6 @@
-import { getSocialShareToolConfig } from './socialShareTool';
+import { getSocialShareToolDefinition } from './socialShareTool/getSocialShareToolDefinition';
 import { setLocale } from './localization';
-import { getPayuButtonToolConfig } from './payuButtonTool';
+import { getPayuButtonToolDefinition } from './payuButtonTool/getPayuButtonToolDefinition';
 import { UrlWidget } from './components/UrlWidget';
 import { SocialNetworksWidget } from './components/SocialNetworksWidget';
 import './main.css';
@@ -34,8 +34,8 @@ unlayer.registerPropertyEditor({
   name: 'social_networks',
   Widget: SocialNetworksWidget,
 });
-unlayer.registerTool(getSocialShareToolConfig());
-unlayer.registerTool(getPayuButtonToolConfig());
+unlayer.registerTool(getSocialShareToolDefinition());
+unlayer.registerTool(getPayuButtonToolDefinition());
 
 if (promotionCodeEnabled) {
   console.log('promotionCodeEnabled, it will show the Promo Code Tool soon...');
