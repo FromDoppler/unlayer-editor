@@ -61,26 +61,26 @@ const Toggle = ({ label, onChange, defaultValue }) => {
   );
 };
 
-export const EnableSocialProperty = (props) => {
-  const { data, updateValue, value } = props;
-  const options = data && data.options ? data.options : [];
-
-  const changeValue = (isCheck, key) => {
-    const currentSelection = value ? value : [];
-    if (isCheck) {
-      updateValue([...currentSelection, key]);
+export const EnableSocialProperty = ({
+  data: { options = [] } = {},
+  updateValue,
+  value: currentSelection = [],
+}) => {
+  const updateSelection = (isChecked, id) => {
+    if (isChecked) {
+      updateValue([...currentSelection, id]);
       return;
     }
-    updateValue(currentSelection.filter((id) => id !== key));
+    updateValue(currentSelection.filter((x) => x !== id));
   };
 
-  return options.map((option) => {
+  return options.map(({ id, name }) => {
     return (
       <Toggle
-        key={option.id}
-        onChange={(value) => changeValue(value, option.id)}
-        label={option.name}
-        defaultValue={value.includes(option.id)}
+        key={id}
+        onChange={(isChecked) => updateSelection(isChecked, id)}
+        label={name}
+        defaultValue={currentSelection.includes(id)}
       />
     );
   });

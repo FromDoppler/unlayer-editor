@@ -43,7 +43,7 @@ export const getSocialShareToolConfig = () => ({
           data: {
             options: getSocialSetting(),
           },
-          defaultValue: getSocialSetting().map((config) => config.id),
+          defaultValue: getSocialSetting().map(({ id }) => id),
           widget: 'enable_social_property',
         },
       },

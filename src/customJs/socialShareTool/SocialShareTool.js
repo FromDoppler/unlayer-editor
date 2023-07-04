@@ -27,19 +27,17 @@ export const SocialShareTool = (props) => {
                 valign="middle"
               >
                 {socialSetting
-                  .filter((config) =>
-                    social_share_available.includes(config.id),
-                  )
-                  .map((config) => (
+                  .filter(({ id }) => social_share_available.includes(id))
+                  .map(({ link, id, name, getSrc }) => (
                     <a
-                      href={config.link}
+                      href={link}
                       target="_blank"
                       rel="noreferrer"
-                      key={`social_button_${config.id}`}
+                      key={`social_button_${id}`}
                     >
                       <img
-                        src={config.getSrc(size)}
-                        alt={config.name}
+                        src={getSrc(size)}
+                        alt={name}
                         width={size === 'big' ? '94' : '40'}
                         style={{
                           width: size === 'big' ? '94px' : '40px',
