@@ -12,7 +12,7 @@ export const getPayuButtonToolConfig = () => ({
       title: intl.formatMessage({ id: 'option_groups.button_options.title' }),
       options: {
         paymentURL: {
-          widget: 'link_property',
+          widget: 'url',
           data: {
             label: intl.formatMessage({ id: '_dp.pay_button_link' }),
             help: (

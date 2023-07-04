@@ -27,11 +27,11 @@ unlayer.setLinkTypes?.([
 
 // Register Properties and tool Social Share Tool
 unlayer.registerPropertyEditor({
-  name: 'link_property',
+  name: 'url',
   Widget: UrlWidget,
 });
 unlayer.registerPropertyEditor({
-  name: 'enable_social_property',
+  name: 'social_networks',
   Widget: SocialNetworksWidget,
 });
 unlayer.registerTool(getSocialShareToolConfig());
