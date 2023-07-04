@@ -1,8 +1,8 @@
 import { getSocialShareToolConfig } from './socialShareTool';
 import { setLocale } from './localization';
 import { getPayuButtonToolConfig } from './payuButtonTool';
-import { getLinkPropertyConfiguration } from './commonProperties/linkProperty';
-import { getEnableSocialPropertyConfig } from './socialShareTool/enableSocialProperty';
+import { UrlWidget } from './components/UrlWidget';
+import { SocialNetworksWidget } from './components/SocialNetworksWidget';
 import './main.css';
 import { getConfiguration } from './configuration';
 
@@ -26,8 +26,14 @@ unlayer.setLinkTypes?.([
 ]);
 
 // Register Properties and tool Social Share Tool
-unlayer.registerPropertyEditor(getLinkPropertyConfiguration());
-unlayer.registerPropertyEditor(getEnableSocialPropertyConfig());
+unlayer.registerPropertyEditor({
+  name: 'link_property',
+  Widget: UrlWidget,
+});
+unlayer.registerPropertyEditor({
+  name: 'enable_social_property',
+  Widget: SocialNetworksWidget,
+});
 unlayer.registerTool(getSocialShareToolConfig());
 unlayer.registerTool(getPayuButtonToolConfig());
 

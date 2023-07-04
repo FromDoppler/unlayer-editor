@@ -61,7 +61,7 @@ const Toggle = ({ label, onChange, defaultValue }) => {
   );
 };
 
-export const EnableSocialProperty = ({
+export const SocialNetworksWidget = ({
   data: { options = [] } = {},
   updateValue,
   value: currentSelection = [],
@@ -85,11 +85,6 @@ export const EnableSocialProperty = ({
     );
   });
 };
-
-export const getEnableSocialPropertyConfig = () => ({
-  name: 'enable_social_property',
-  Widget: EnableSocialProperty,
-});
 
 Toggle.propTypes = {
   label: PropTypes.string,

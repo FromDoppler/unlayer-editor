@@ -2,7 +2,7 @@ const React = window.unlayer.React;
 import PropTypes from 'prop-types';
 
 // Copied structure of Unlayer label
-export const UnlayerLabelProperty = ({ label }) => (
+export const UnlayerLabel = ({ label }) => (
   <div className="blockbuilder-widget-label mb-2">
     <label className="blockbuilder-label-primary">
       <div>
@@ -12,6 +12,6 @@ export const UnlayerLabelProperty = ({ label }) => (
   </div>
 );
 
-UnlayerLabelProperty.propTypes = {
+UnlayerLabel.propTypes = {
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };

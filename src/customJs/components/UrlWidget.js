@@ -1,15 +1,11 @@
 const React = window.unlayer.React;
 import { intl } from '../localization';
 import { formatUrl } from '../utils/url';
-import { UnlayerLabelProperty } from './unlayerLabelProperty';
+import { UnlayerLabel } from '../components/UnlayerLabel';
 
-export const LinkPropertyWidget = ({
-  value,
-  updateValue,
-  data: { label, help },
-}) => (
+export const UrlWidget = ({ value, updateValue, data: { label, help } }) => (
   <>
-    <UnlayerLabelProperty label={label}></UnlayerLabelProperty>
+    <UnlayerLabel label={label}></UnlayerLabel>
     <div className="blockbuilder-widget-label mb-2">
       <div className="href_field input-group">
         <div className="input-group-prepend">
@@ -32,8 +28,3 @@ export const LinkPropertyWidget = ({
     {help ? help : ''}
   </>
 );
-
-export const getLinkPropertyConfiguration = () => ({
-  name: 'link_property',
-  Widget: LinkPropertyWidget,
-});

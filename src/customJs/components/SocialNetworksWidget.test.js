@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
-import { EnableSocialProperty } from './enableSocialProperty';
-import { getSocialSetting } from './configuration';
+import { SocialNetworksWidget } from './SocialNetworksWidget';
+import { getSocialSetting } from '../socialShareTool/configuration';
 
 // TODO: this is a shared code, make it a common helper
 function prepareUnlayerGlobalObject() {
@@ -25,7 +25,7 @@ const unlayerPropertyProps = {
 describe('EnableSocialProperty', () => {
   it('must be render the option props configuration', async () => {
     prepareUnlayerGlobalObject();
-    render(<EnableSocialProperty {...unlayerPropertyProps} />);
+    render(<SocialNetworksWidget {...unlayerPropertyProps} />);
 
     const socialSettings = getSocialSetting();
     let query = '';
