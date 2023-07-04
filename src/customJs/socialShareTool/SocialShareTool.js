@@ -30,12 +30,12 @@ export const SocialShareTool = (props) => {
                   .filter((config) =>
                     social_share_available.includes(config.id),
                   )
-                  .map((config, id) => (
+                  .map((config) => (
                     <a
                       href={config.link}
                       target="_blank"
                       rel="noreferrer"
-                      key={`social_button_${id}`}
+                      key={`social_button_${config.id}`}
                     >
                       <img
                         src={config.getSrc(size)}

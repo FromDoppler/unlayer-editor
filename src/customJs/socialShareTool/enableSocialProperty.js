@@ -74,10 +74,10 @@ export const EnableSocialProperty = (props) => {
     updateValue(currentSelection.filter((id) => id !== key));
   };
 
-  return options.map((option, index) => {
+  return options.map((option) => {
     return (
       <Toggle
-        key={index}
+        key={option.id}
         onChange={(value) => changeValue(value, option.id)}
         label={option.name}
         defaultValue={value.includes(option.id)}
