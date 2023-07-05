@@ -1,7 +1,7 @@
 const React = window.unlayer.React;
 import { intl } from '../localization';
 import { createRenderer } from '../utils/unlayer';
-import { getSocialSetting } from './configuration';
+import { SOCIAL_NETWORKS } from '../constants';
 import { SocialShareViewer } from '../components/SocialShareViewer';
 
 export const getSocialShareToolDefinition = () => ({
@@ -34,9 +34,9 @@ export const getSocialShareToolDefinition = () => ({
       options: {
         social_share_available: {
           data: {
-            options: getSocialSetting(),
+            options: SOCIAL_NETWORKS,
           },
-          defaultValue: getSocialSetting().map(({ id }) => id),
+          defaultValue: SOCIAL_NETWORKS.map(({ id }) => id),
           widget: 'social_networks',
         },
       },

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 import { SocialNetworksWidget } from './SocialNetworksWidget';
-import { getSocialSetting } from '../socialShareTool/configuration';
+import { SOCIAL_NETWORKS } from '../constants';
 
 // TODO: this is a shared code, make it a common helper
 function prepareUnlayerGlobalObject() {
@@ -17,7 +17,7 @@ window['unlayer-extensions-configuration'] = {
 
 const unlayerPropertyProps = {
   data: {
-    options: getSocialSetting(),
+    options: SOCIAL_NETWORKS,
   },
   value: ['facebook', 'linkedin', 'twitter', 'pinterest', 'whatsapp'],
 };
@@ -27,7 +27,7 @@ describe('EnableSocialProperty', () => {
     prepareUnlayerGlobalObject();
     render(<SocialNetworksWidget {...unlayerPropertyProps} />);
 
-    const socialSettings = getSocialSetting();
+    const socialSettings = SOCIAL_NETWORKS;
     let query = '';
     socialSettings.forEach((option, index) => {
       query += `(${option.name})${

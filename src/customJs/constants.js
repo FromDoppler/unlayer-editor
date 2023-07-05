@@ -1,4 +1,4 @@
-export const getSocialSetting = () => [
+export const SOCIAL_NETWORKS = [
   {
     link: '[[shareInFacebookLink]]',
     name: 'Facebook',
