@@ -1,6 +1,6 @@
-import { getSocialShareToolDefinition } from './socialShareTool/getSocialShareToolDefinition';
+import { getSocialShareToolDefinition } from './tools/getSocialShareToolDefinition';
 import { setLocale } from './localization';
-import { getPayuButtonToolDefinition } from './payuButtonTool/getPayuButtonToolDefinition';
+import { getPayuButtonToolDefinition } from './tools/getPayuButtonToolDefinition';
 import { UrlWidget } from './components/UrlWidget';
 import { SocialNetworksWidget } from './components/SocialNetworksWidget';
 import './main.css';
