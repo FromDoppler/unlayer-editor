@@ -2,7 +2,7 @@ import { intl } from '../localization';
 
 export const getSocialSetting = () => {
   const translateNetworkIconUrl = (network, size) =>
-    intl.formatMessage({ id: '_dp.social_share_url' }, { network, size });
+    intl.formatMessage({ id: `_dp.social_share_url_${size}_${network}` });
 
   return [
     {
