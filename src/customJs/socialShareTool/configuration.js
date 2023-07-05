@@ -7,31 +7,36 @@ export const getSocialSetting = () => {
   return [
     {
       link: '[[shareInFacebookLink]]',
-      getSrc: (size) => translateNetworkIconUrl('facebook', size),
+      getSrc: (size) =>
+        translateNetworkIconUrl('facebook_shared_property', size),
       name: 'Facebook',
       id: 'facebook_shared_property',
     },
     {
       link: '[[shareInLinkedinLink]]',
-      getSrc: (size) => translateNetworkIconUrl('linkedin', size),
+      getSrc: (size) =>
+        translateNetworkIconUrl('linkedin_shared_property', size),
       name: 'Linkedin',
       id: 'linkedin_shared_property',
     },
     {
       link: '[[shareInTwitterLink]]',
-      getSrc: (size) => translateNetworkIconUrl('twitter', size),
+      getSrc: (size) =>
+        translateNetworkIconUrl('twitter_shared_property', size),
       name: 'Twitter',
       id: 'twitter_shared_property',
     },
     {
       link: '[[shareInPinterestLink]]',
-      getSrc: (size) => translateNetworkIconUrl('pinterest', size),
+      getSrc: (size) =>
+        translateNetworkIconUrl('pinterest_shared_property', size),
       name: 'Pinterest',
       id: 'pinterest_shared_property',
     },
     {
       link: '[[shareInWhatsappLink]]',
-      getSrc: (size) => translateNetworkIconUrl('whatsapp', size),
+      getSrc: (size) =>
+        translateNetworkIconUrl('whatsapp_shared_property', size),
       name: 'Whatsapp',
       id: 'whatsapp_shared_property',
     },
