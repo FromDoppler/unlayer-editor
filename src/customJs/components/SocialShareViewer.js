@@ -1,5 +1,6 @@
 const React = window.unlayer.React;
 import PropTypes from 'prop-types';
+import { intl } from '../localization';
 import { getSocialSetting } from '../socialShareTool/configuration';
 
 export const SocialShareViewer = ({
@@ -27,7 +28,7 @@ export const SocialShareViewer = ({
               >
                 {socialSetting
                   .filter(({ id }) => social_share_available.includes(id))
-                  .map(({ link, id, name, getSrc }) => (
+                  .map(({ link, id, name }) => (
                     <a
                       href={link}
                       target="_blank"
@@ -35,7 +36,9 @@ export const SocialShareViewer = ({
                       key={`social_button_${id}`}
                     >
                       <img
-                        src={getSrc(size)}
+                        src={intl.formatMessage({
+                          id: `_dp.social_share_url_${size}_${id}`,
+                        })}
                         alt={name}
                         width={size === 'big' ? '94' : '40'}
                         style={{

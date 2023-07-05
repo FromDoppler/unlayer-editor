@@ -1,44 +1,27 @@
-import { intl } from '../localization';
-
-export const getSocialSetting = () => {
-  const translateNetworkIconUrl = (network, size) =>
-    intl.formatMessage({ id: `_dp.social_share_url_${size}_${network}` });
-
-  return [
-    {
-      link: '[[shareInFacebookLink]]',
-      getSrc: (size) =>
-        translateNetworkIconUrl('facebook_shared_property', size),
-      name: 'Facebook',
-      id: 'facebook_shared_property',
-    },
-    {
-      link: '[[shareInLinkedinLink]]',
-      getSrc: (size) =>
-        translateNetworkIconUrl('linkedin_shared_property', size),
-      name: 'Linkedin',
-      id: 'linkedin_shared_property',
-    },
-    {
-      link: '[[shareInTwitterLink]]',
-      getSrc: (size) =>
-        translateNetworkIconUrl('twitter_shared_property', size),
-      name: 'Twitter',
-      id: 'twitter_shared_property',
-    },
-    {
-      link: '[[shareInPinterestLink]]',
-      getSrc: (size) =>
-        translateNetworkIconUrl('pinterest_shared_property', size),
-      name: 'Pinterest',
-      id: 'pinterest_shared_property',
-    },
-    {
-      link: '[[shareInWhatsappLink]]',
-      getSrc: (size) =>
-        translateNetworkIconUrl('whatsapp_shared_property', size),
-      name: 'Whatsapp',
-      id: 'whatsapp_shared_property',
-    },
-  ];
-};
+export const getSocialSetting = () => [
+  {
+    link: '[[shareInFacebookLink]]',
+    name: 'Facebook',
+    id: 'facebook_shared_property',
+  },
+  {
+    link: '[[shareInLinkedinLink]]',
+    name: 'Linkedin',
+    id: 'linkedin_shared_property',
+  },
+  {
+    link: '[[shareInTwitterLink]]',
+    name: 'Twitter',
+    id: 'twitter_shared_property',
+  },
+  {
+    link: '[[shareInPinterestLink]]',
+    name: 'Pinterest',
+    id: 'pinterest_shared_property',
+  },
+  {
+    link: '[[shareInWhatsappLink]]',
+    name: 'Whatsapp',
+    id: 'whatsapp_shared_property',
+  },
+];
