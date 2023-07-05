@@ -1,3 +1,6 @@
+const ASSETS_BASE_URL = 'https://cdn.fromdoppler.com/unlayer-editor/assets';
+const HELP_BASE_URL = 'https://help.fromdoppler.com';
+
 // Based on https://github.com/unlayer/translations/blob/5e1318c40e72ef1311045d1fb64d997f3b3964f2/en.json
 export const messages_en = {
   '_dp.alignment': `Alignment`,
@@ -7,15 +10,15 @@ export const messages_en = {
   '_dp.pay_button_link': `Detailed payment request`,
   '_dp.payu_button': `PayU Button`,
   '_dp.payu_help': `Don't you have a PayU account? Press`,
-  '_dp.payu_help_link': `https://help.fromdoppler.com/en/how-to-integrate-doppler-with-payu`,
-  '_dp.payu_large_button': `https://cdn.fromdoppler.com/unlayer-editor/assets/payu-button-large-en.png`,
-  '_dp.payu_medium_button': `https://cdn.fromdoppler.com/unlayer-editor/assets/payu-button-medium-en.png`,
-  '_dp.payu_small_button': `https://cdn.fromdoppler.com/unlayer-editor/assets/payu-button-small-en.png`,
+  '_dp.payu_help_link': `${HELP_BASE_URL}/en/how-to-integrate-doppler-with-payu`,
+  '_dp.payu_large_button': `${ASSETS_BASE_URL}/payu-button-large-en.png`,
+  '_dp.payu_medium_button': `${ASSETS_BASE_URL}/payu-button-medium-en.png`,
+  '_dp.payu_small_button': `${ASSETS_BASE_URL}/payu-button-small-en.png`,
   '_dp.size': `Size`,
   '_dp.small': `Small`,
   '_dp.social_networks': `Social networks`,
   '_dp.social_share_title': `Share`,
-  '_dp.social_share_url': `https://cdn.fromdoppler.com/unlayer-editor/assets/color_{size}_{network}_en.png`,
+  '_dp.social_share_url': `${ASSETS_BASE_URL}/color_{size}_{network}_en.png`,
   'buttons.add_column': `Add Column`,
   'buttons.add_content': `Add Content`,
   'buttons.add_display_condition': `Add Display Condition`,
