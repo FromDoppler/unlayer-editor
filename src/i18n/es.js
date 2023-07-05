@@ -15,7 +15,7 @@ export const messages_es = {
   '_dp.small': `Pequeño`,
   '_dp.social_networks': `Redes sociales`,
   '_dp.social_share_title': `Compartir`,
-  '_dp.social_share_url': `{baseUrl}/color_{size}_{network}.png`,
+  '_dp.social_share_url': `https://cdn.fromdoppler.com/unlayer-editor/assets/color_{size}_{network}.png`,
   'buttons.add_column': `Añadir columna`,
   'buttons.add_content': `Agregar contenido`,
   'buttons.add_display_condition': `Añadir requisito de pantalla`,

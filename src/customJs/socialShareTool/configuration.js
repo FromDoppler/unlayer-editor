@@ -1,14 +1,8 @@
 import { intl } from '../localization';
-import { getConfiguration } from '../configuration';
 
 export const getSocialSetting = () => {
-  const { baseAssetsUrl } = getConfiguration();
-
   const translateNetworkIconUrl = (network, size) =>
-    intl.formatMessage(
-      { id: '_dp.social_share_url' },
-      { baseUrl: baseAssetsUrl, network, size },
-    );
+    intl.formatMessage({ id: '_dp.social_share_url' }, { network, size });
 
   return [
     {

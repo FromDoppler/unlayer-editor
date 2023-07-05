@@ -15,7 +15,7 @@ export const messages_en = {
   '_dp.small': `Small`,
   '_dp.social_networks': `Social networks`,
   '_dp.social_share_title': `Share`,
-  '_dp.social_share_url': `{baseUrl}/color_{size}_{network}_en.png`,
+  '_dp.social_share_url': `https://cdn.fromdoppler.com/unlayer-editor/assets/color_{size}_{network}_en.png`,
   'buttons.add_column': `Add Column`,
   'buttons.add_content': `Add Content`,
   'buttons.add_display_condition': `Add Display Condition`,
