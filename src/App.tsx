@@ -51,7 +51,7 @@ const App: React.FC = () => {
   const UnlayerOptionsExtended = {
     tools: {
       button: {
-        icon: process.env.PUBLIC_URL + '/assets/button.svg',
+        icon: 'https://cdn.fromdoppler.com/unlayer-editor/assets/button.svg',
       },
     },
     features: {

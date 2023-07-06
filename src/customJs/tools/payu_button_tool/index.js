@@ -6,7 +6,7 @@ import { PayuButtonViewer } from './PayuButtonViewer';
 export const getPayuButtonToolDefinition = () => ({
   name: 'payu_button_tool',
   label: intl.formatMessage({ id: '_dp.payu_button' }),
-  icon: process.env.PUBLIC_URL + '/assets/payu_button.svg',
+  icon: 'https://cdn.fromdoppler.com/unlayer-editor/assets/payu_button.svg',
   options: {
     basic_configuration_section: {
       title: intl.formatMessage({ id: 'option_groups.button_options.title' }),
@@ -68,7 +68,7 @@ export const getPayuButtonToolDefinition = () => ({
     if (!values.paymentURL) {
       defaultErrors.push({
         id: 'CUSTOM_ERROR',
-        icon: process.env.PUBLIC_URL + '/assets/payu_button.svg',
+        icon: 'https://cdn.fromdoppler.com/unlayer-editor/assets/payu_button.svg',
         severity: 'WARNING',
         title: intl.formatMessage({
           id: 'tabs.audit.rules.payu_button.empty_links.title',
