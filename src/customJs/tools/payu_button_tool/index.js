@@ -2,11 +2,12 @@ const React = window.unlayer.React;
 import { intl } from '../../localization';
 import { createRenderer } from '../../utils/unlayer';
 import { PayuButtonViewer } from './PayuButtonViewer';
+import { ASSETS_BASE_URL } from '../../constants';
 
 export const getPayuButtonToolDefinition = () => ({
   name: 'payu_button_tool',
   label: intl.formatMessage({ id: '_dp.payu_button' }),
-  icon: 'https://cdn.fromdoppler.com/unlayer-editor/assets/payu_button.svg',
+  icon: `${ASSETS_BASE_URL}/payu_button.svg`,
   options: {
     basic_configuration_section: {
       title: intl.formatMessage({ id: 'option_groups.button_options.title' }),
@@ -68,7 +69,7 @@ export const getPayuButtonToolDefinition = () => ({
     if (!values.paymentURL) {
       defaultErrors.push({
         id: 'CUSTOM_ERROR',
-        icon: 'https://cdn.fromdoppler.com/unlayer-editor/assets/payu_button.svg',
+        icon: `${ASSETS_BASE_URL}/payu_button.svg`,
         severity: 'WARNING',
         title: intl.formatMessage({
           id: 'tabs.audit.rules.payu_button.empty_links.title',
