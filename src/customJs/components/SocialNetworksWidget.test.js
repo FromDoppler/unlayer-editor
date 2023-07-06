@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
-import { EnableSocialProperty } from './enableSocialProperty';
-import { getSocialSetting } from './configuration';
+import { SocialNetworksWidget } from './SocialNetworksWidget';
+import { SOCIAL_NETWORKS } from '../constants';
 
 // TODO: this is a shared code, make it a common helper
 function prepareUnlayerGlobalObject() {
@@ -17,7 +17,7 @@ window['unlayer-extensions-configuration'] = {
 
 const unlayerPropertyProps = {
   data: {
-    options: getSocialSetting(),
+    options: SOCIAL_NETWORKS,
   },
   value: ['facebook', 'linkedin', 'twitter', 'pinterest', 'whatsapp'],
 };
@@ -25,9 +25,9 @@ const unlayerPropertyProps = {
 describe('EnableSocialProperty', () => {
   it('must be render the option props configuration', async () => {
     prepareUnlayerGlobalObject();
-    render(<EnableSocialProperty {...unlayerPropertyProps} />);
+    render(<SocialNetworksWidget {...unlayerPropertyProps} />);
 
-    const socialSettings = getSocialSetting();
+    const socialSettings = SOCIAL_NETWORKS;
     let query = '';
     socialSettings.forEach((option, index) => {
       query += `(${option.name})${

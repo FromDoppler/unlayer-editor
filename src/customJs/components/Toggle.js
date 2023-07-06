@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
 const React = window.unlayer.React;
+import PropTypes from 'prop-types';
 
-const Toggle = ({ label, onChange, defaultValue }) => {
+export const Toggle = ({ label, onChange, defaultValue }) => {
   const [active, setActive] = React.useState(defaultValue);
   const [focus, setFocus] = React.useState(false);
   const changeEvent = () => {
@@ -60,36 +60,6 @@ const Toggle = ({ label, onChange, defaultValue }) => {
     </div>
   );
 };
-
-export const EnableSocialProperty = (props) => {
-  const { data, updateValue, value } = props;
-  const options = data && data.options ? data.options : [];
-
-  const changeValue = (isCheck, key) => {
-    const currentSelection = value ? value : [];
-    if (isCheck) {
-      updateValue([...currentSelection, key]);
-      return;
-    }
-    updateValue(currentSelection.filter((id) => id !== key));
-  };
-
-  return options.map((option, index) => {
-    return (
-      <Toggle
-        key={index}
-        onChange={(value) => changeValue(value, option.id)}
-        label={option.name}
-        defaultValue={value.includes(option.id)}
-      />
-    );
-  });
-};
-
-export const getEnableSocialPropertyConfig = () => ({
-  name: 'enable_social_property',
-  Widget: EnableSocialProperty,
-});
 
 Toggle.propTypes = {
   label: PropTypes.string,

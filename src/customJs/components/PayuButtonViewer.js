@@ -1,9 +1,8 @@
-import { intl } from '../localization';
-
 const React = window.unlayer.React;
 import PropTypes from 'prop-types';
+import { intl } from '../localization';
 
-export const PayuButtonTool = (props) => {
+export const PayuButtonViewer = (props) => {
   const { size, paymentURL, alignment } = props.values;
   const buttonImgWidth = size === 'small' ? 116 : size === 'medium' ? 145 : 182;
 
@@ -20,7 +19,7 @@ export const PayuButtonTool = (props) => {
   );
 };
 
-PayuButtonTool.propTypes = {
+PayuButtonViewer.propTypes = {
   values: PropTypes.shape({
     size: PropTypes.string,
     alignment: PropTypes.string,

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { LinkPropertyWidget } from './linkProperty';
+import { UrlWidget } from './UrlWidget';
 import { setLocale } from '../localization';
 import userEvent from '@testing-library/user-event';
 
@@ -13,7 +13,7 @@ function prepareUnlayerGlobalObject() {
   return window.unlayer;
 }
 
-describe(LinkPropertyWidget.name, () => {
+describe(UrlWidget.name, () => {
   it('must be render input link by default', async () => {
     prepareUnlayerGlobalObject();
     setLocale('en-US');
@@ -23,12 +23,7 @@ describe(LinkPropertyWidget.name, () => {
       value: 'this is a input value',
     };
     const updateValueFn = jest.fn();
-    render(
-      <LinkPropertyWidget
-        {...unlayerPropertyProps}
-        updateValue={updateValueFn}
-      />,
-    );
+    render(<UrlWidget {...unlayerPropertyProps} updateValue={updateValueFn} />);
 
     const input = await screen.findByLabelText('link-property-input');
     const prefixLabel = await screen.findByText('URL');
@@ -65,10 +60,7 @@ describe(LinkPropertyWidget.name, () => {
       };
       const updateValueFn = jest.fn();
       render(
-        <LinkPropertyWidget
-          {...unlayerPropertyProps}
-          updateValue={updateValueFn}
-        />,
+        <UrlWidget {...unlayerPropertyProps} updateValue={updateValueFn} />,
       );
 
       const input = await screen.findByLabelText('link-property-input');
@@ -91,7 +83,7 @@ describe(LinkPropertyWidget.name, () => {
       value: defaultValue,
     };
 
-    render(<LinkPropertyWidget {...unlayerPropertyProps} />);
+    render(<UrlWidget {...unlayerPropertyProps} />);
 
     const input = screen.getByLabelText('link-property-input');
     expect(input.value).toBe(defaultValue);
@@ -108,12 +100,7 @@ describe(LinkPropertyWidget.name, () => {
     const updateValueFn = jest.fn();
     const typedUrlTextValue = 'https://writing.url';
 
-    render(
-      <LinkPropertyWidget
-        {...unlayerPropertyProps}
-        updateValue={updateValueFn}
-      />,
-    );
+    render(<UrlWidget {...unlayerPropertyProps} updateValue={updateValueFn} />);
 
     const input = screen.getByLabelText('link-property-input');
     fireEvent.change(input, { target: { value: typedUrlTextValue } });

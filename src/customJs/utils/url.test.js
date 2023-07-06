@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { formatUrl } from './utils';
+import { formatUrl } from './url';
 
 describe(formatUrl.name, () => {
   it.each([

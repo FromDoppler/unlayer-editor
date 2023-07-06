@@ -1,9 +1,9 @@
 import { setLocale } from '../localization';
-import { PayuButtonTool } from './PayuButtonTool';
+import { PayuButtonViewer } from './PayuButtonViewer';
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 
-describe(PayuButtonTool.name, () => {
+describe(PayuButtonViewer.name, () => {
   it.each([
     {
       expectedImageUrl:
@@ -59,7 +59,7 @@ describe(PayuButtonTool.name, () => {
         paymentURL: arbitraryLink,
         alignment: align,
       };
-      render(<PayuButtonTool values={values} />);
+      render(<PayuButtonViewer values={values} />);
       const payuImage = screen.getByAltText('payu_button');
 
       expect(screen.getByRole('container').align).toEqual(align);

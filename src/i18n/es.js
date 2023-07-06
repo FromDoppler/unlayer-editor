@@ -1,3 +1,6 @@
+const ASSETS_BASE_URL = 'https://cdn.fromdoppler.com/unlayer-editor/assets';
+const HELP_BASE_URL = 'https://help.fromdoppler.com';
+
 // Based on https://github.com/unlayer/translations/blob/5e1318c40e72ef1311045d1fb64d997f3b3964f2/es.json
 export const messages_es = {
   '_dp.alignment': `Alineación`,
@@ -7,15 +10,24 @@ export const messages_es = {
   '_dp.pay_button_link': `Solicitud de pago detallada`,
   '_dp.payu_button': `Pago PayU`,
   '_dp.payu_help': `¿No tienes cuenta en PayU? Presiona`,
-  '_dp.payu_help_link': `https://help.fromdoppler.com/es/como-integrar-doppler-con-payu/`,
-  '_dp.payu_large_button': `https://cdn.fromdoppler.com/unlayer-editor/assets/payu-button-large-es.png`,
-  '_dp.payu_medium_button': `https://cdn.fromdoppler.com/unlayer-editor/assets/payu-button-medium-es.png`,
-  '_dp.payu_small_button': `https://cdn.fromdoppler.com/unlayer-editor/assets/payu-button-small-es.png`,
+  '_dp.payu_help_link': `${HELP_BASE_URL}/es/como-integrar-doppler-con-payu/`,
+  '_dp.payu_large_button': `${ASSETS_BASE_URL}/payu-button-large-es.png`,
+  '_dp.payu_medium_button': `${ASSETS_BASE_URL}/payu-button-medium-es.png`,
+  '_dp.payu_small_button': `${ASSETS_BASE_URL}/payu-button-small-es.png`,
   '_dp.size': `Tamaño`,
   '_dp.small': `Pequeño`,
   '_dp.social_networks': `Redes sociales`,
   '_dp.social_share_title': `Compartir`,
-  '_dp.social_share_url': `{baseUrl}/color_{size}_{network}.png`,
+  '_dp.social_share_url_big_facebook_shared_property': `${ASSETS_BASE_URL}/color_big_facebook.png`,
+  '_dp.social_share_url_big_linkedin_shared_property': `${ASSETS_BASE_URL}/color_big_linkedin.png`,
+  '_dp.social_share_url_big_pinterest_shared_property': `${ASSETS_BASE_URL}/color_big_pinterest.png`,
+  '_dp.social_share_url_big_twitter_shared_property': `${ASSETS_BASE_URL}/color_big_twitter.png`,
+  '_dp.social_share_url_big_whatsapp_shared_property': `${ASSETS_BASE_URL}/color_big_whatsapp.png`,
+  '_dp.social_share_url_small_facebook_shared_property': `${ASSETS_BASE_URL}/color_small_facebook.png`,
+  '_dp.social_share_url_small_linkedin_shared_property': `${ASSETS_BASE_URL}/color_small_linkedin.png`,
+  '_dp.social_share_url_small_pinterest_shared_property': `${ASSETS_BASE_URL}/color_small_pinterest.png`,
+  '_dp.social_share_url_small_twitter_shared_property': `${ASSETS_BASE_URL}/color_small_twitter.png`,
+  '_dp.social_share_url_small_whatsapp_shared_property': `${ASSETS_BASE_URL}/color_small_whatsapp.png`,
   'buttons.add_column': `Añadir columna`,
   'buttons.add_content': `Agregar contenido`,
   'buttons.add_display_condition': `Añadir requisito de pantalla`,

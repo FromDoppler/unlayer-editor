@@ -1,27 +1,18 @@
-import { PayuButtonTool } from './PayuButtonTool';
-
 const React = window.unlayer.React;
-import ReactDOMServer from 'react-dom/server';
 import { intl } from '../localization';
+import { createRenderer } from '../utils/unlayer';
+import { PayuButtonViewer } from '../components/PayuButtonViewer';
 
-export const getPayuButtonToolConfig = () => ({
+export const getPayuButtonToolDefinition = () => ({
   name: 'payu_button_tool',
   label: intl.formatMessage({ id: '_dp.payu_button' }),
   icon: process.env.PUBLIC_URL + '/assets/payu_button.svg',
-  supportedDisplayModes: ['web', 'email'],
-  category: 'contents',
-  type: 'whatever',
-  values: {},
   options: {
-    default: {
-      title: null,
-    },
     basic_configuration_section: {
       title: intl.formatMessage({ id: 'option_groups.button_options.title' }),
-      position: 3,
       options: {
         paymentURL: {
-          widget: 'link_property',
+          widget: 'url',
           data: {
             label: intl.formatMessage({ id: '_dp.pay_button_link' }),
             help: (
@@ -72,21 +63,7 @@ export const getPayuButtonToolConfig = () => ({
       },
     },
   },
-  renderer: {
-    Viewer: PayuButtonTool,
-    exporters: {
-      web: function (values) {
-        return ReactDOMServer.renderToStaticMarkup(
-          <PayuButtonTool values={values} />,
-        );
-      },
-      email: function (values) {
-        return ReactDOMServer.renderToStaticMarkup(
-          <PayuButtonTool values={values} />,
-        );
-      },
-    },
-  },
+  renderer: createRenderer(PayuButtonViewer),
   validator: ({ defaultErrors, values }) => {
     if (!values.paymentURL) {
       defaultErrors.push({

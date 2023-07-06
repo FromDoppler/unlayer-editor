@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
-import { UnlayerLabelProperty } from './unlayerLabelProperty';
+import { UnlayerLabel } from './UnlayerLabel';
 
-describe(UnlayerLabelProperty.name, () => {
+describe(UnlayerLabel.name, () => {
   it('must be render the label text', async () => {
     const labelText = 'unlayer label text';
-    render(<UnlayerLabelProperty label={labelText} />);
+    render(<UnlayerLabel label={labelText} />);
 
     const renderedProperties = await screen.findAllByText(labelText);
     expect(renderedProperties).toHaveLength(1);

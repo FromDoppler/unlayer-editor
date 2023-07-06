@@ -1,8 +1,8 @@
-import { getSocialShareToolConfig } from './socialShareTool';
+import { getSocialShareToolDefinition } from './tools/getSocialShareToolDefinition';
 import { setLocale } from './localization';
-import { getPayuButtonToolConfig } from './payuButtonTool';
-import { getLinkPropertyConfiguration } from './commonProperties/linkProperty';
-import { getEnableSocialPropertyConfig } from './socialShareTool/enableSocialProperty';
+import { getPayuButtonToolDefinition } from './tools/getPayuButtonToolDefinition';
+import { UrlWidget } from './components/UrlWidget';
+import { SocialNetworksWidget } from './components/SocialNetworksWidget';
 import './main.css';
 import { getConfiguration } from './configuration';
 
@@ -26,10 +26,16 @@ unlayer.setLinkTypes?.([
 ]);
 
 // Register Properties and tool Social Share Tool
-unlayer.registerPropertyEditor(getLinkPropertyConfiguration());
-unlayer.registerPropertyEditor(getEnableSocialPropertyConfig());
-unlayer.registerTool(getSocialShareToolConfig());
-unlayer.registerTool(getPayuButtonToolConfig());
+unlayer.registerPropertyEditor({
+  name: 'url',
+  Widget: UrlWidget,
+});
+unlayer.registerPropertyEditor({
+  name: 'social_networks',
+  Widget: SocialNetworksWidget,
+});
+unlayer.registerTool(getSocialShareToolDefinition());
+unlayer.registerTool(getPayuButtonToolDefinition());
 
 if (promotionCodeEnabled) {
   console.log('promotionCodeEnabled, it will show the Promo Code Tool soon...');

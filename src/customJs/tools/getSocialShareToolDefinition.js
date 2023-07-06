@@ -1,21 +1,14 @@
 const React = window.unlayer.React;
-import { getSocialSetting } from './configuration';
-import { SocialShareTool } from './SocialShareTool';
-import ReactDOMServer from 'react-dom/server';
 import { intl } from '../localization';
+import { createRenderer } from '../utils/unlayer';
+import { SOCIAL_NETWORKS } from '../constants';
+import { SocialShareViewer } from '../components/SocialShareViewer';
 
-export const getSocialShareToolConfig = () => ({
+export const getSocialShareToolDefinition = () => ({
   name: 'social_share_tool',
   label: intl.formatMessage({ id: '_dp.social_share_title' }),
   icon: 'fa-share-alt',
-  supportedDisplayModes: ['web', 'email'],
-  category: 'contents',
-  type: 'whatever',
-  values: {},
   options: {
-    default: {
-      title: null,
-    },
     social_share_size: {
       title: intl.formatMessage({ id: '_dp.size' }),
       position: 1,
@@ -41,10 +34,10 @@ export const getSocialShareToolConfig = () => ({
       options: {
         social_share_available: {
           data: {
-            options: getSocialSetting(),
+            options: SOCIAL_NETWORKS,
           },
-          defaultValue: getSocialSetting().map((config) => config.id),
-          widget: 'enable_social_property',
+          defaultValue: SOCIAL_NETWORKS.map(({ id }) => id),
+          widget: 'social_networks',
         },
       },
     },
@@ -60,19 +53,5 @@ export const getSocialShareToolConfig = () => ({
       },
     },
   },
-  renderer: {
-    Viewer: SocialShareTool,
-    exporters: {
-      web: function (values) {
-        return ReactDOMServer.renderToStaticMarkup(
-          <SocialShareTool values={values} />,
-        );
-      },
-      email: function (values) {
-        return ReactDOMServer.renderToStaticMarkup(
-          <SocialShareTool values={values} />,
-        );
-      },
-    },
-  },
+  renderer: createRenderer(SocialShareViewer),
 });
