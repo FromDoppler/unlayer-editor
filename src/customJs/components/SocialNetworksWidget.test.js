@@ -11,9 +11,6 @@ function prepareUnlayerGlobalObject() {
   };
   return window.unlayer;
 }
-window['unlayer-extensions-configuration'] = {
-  baseAssetsUrl: '',
-};
 
 const unlayerPropertyProps = {
   data: {

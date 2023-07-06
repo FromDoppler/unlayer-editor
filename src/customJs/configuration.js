@@ -4,7 +4,6 @@
 /**
  * @typedef Configuration
  * @type {object}
- * @property {string} baseAssetsUrl
  * @property {('en'|'es')} locale
  * @property {Store[]} stores
  * @property {boolean} promotionCodeEnabled - There is at least one store with promotionCodeEnabled
@@ -26,14 +25,12 @@ export const getConfiguration = () =>
     parseConfigurationDTO(window['unlayer-extensions-configuration']));
 
 export const parseConfigurationDTO = ({
-  baseAssetsUrl = '',
   locale = defaultLanguage,
   stores = [],
 } = {}) => {
   stores = stores.map(parseStoreDTO);
   const promotionCodeEnabled = stores.some((x) => x.promotionCodeEnabled);
   return {
-    baseAssetsUrl,
     locale,
     stores,
     promotionCodeEnabled,

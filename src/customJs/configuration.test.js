@@ -5,19 +5,18 @@ describe(getConfiguration.name, () => {
     // Arrange
     const controlValue = 'controlValue';
     window['unlayer-extensions-configuration'] = {
-      baseAssetsUrl: controlValue,
+      locale: controlValue,
     };
 
     // Act
     const result = getConfiguration();
 
     // Assert
-    expect(result.baseAssetsUrl).toBe(controlValue);
+    expect(result.locale).toBe(controlValue);
   });
 });
 
-const defaultConfiguration = {
-  baseAssetsUrl: '',
+const expectedDefaultConfiguration = {
   locale: 'es',
   stores: [],
   promotionCodeEnabled: false,
@@ -32,7 +31,7 @@ describe(parseConfigurationDTO.name, () => {
     const result = parseConfigurationDTO(input);
 
     // Assert
-    expect(result).toEqual(defaultConfiguration);
+    expect(result).toEqual(expectedDefaultConfiguration);
   });
 
   it('should return default configuration when DTO is not defined', () => {
@@ -43,21 +42,19 @@ describe(parseConfigurationDTO.name, () => {
     const result = parseConfigurationDTO(input);
 
     // Assert
-    expect(result).toEqual(defaultConfiguration);
+    expect(result).toEqual(expectedDefaultConfiguration);
   });
 
   it('should make honor to DTO values', () => {
     // Arrange
-    const baseAssetsUrl = 'https://cdn.fromdoppler.com';
     const locale = 'en';
-    const input = { baseAssetsUrl, locale };
+    const input = { locale };
 
     // Act
     const result = parseConfigurationDTO(input);
 
     // Assert
     expect(result).toEqual({
-      baseAssetsUrl,
       locale,
       stores: [],
       promotionCodeEnabled: false,
