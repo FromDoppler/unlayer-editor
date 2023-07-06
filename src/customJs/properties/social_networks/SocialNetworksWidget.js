@@ -1,5 +1,5 @@
 const React = window.unlayer.React;
-import { Toggle } from './Toggle';
+import { Toggle } from '../../components/Toggle';
 
 export const SocialNetworksWidget = ({
   data: { options = [] } = {},

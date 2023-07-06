@@ -1,7 +1,7 @@
 const React = window.unlayer.React;
-import { intl } from '../localization';
-import { formatUrl } from '../utils/url';
-import { UnlayerLabel } from '../components/UnlayerLabel';
+import { intl } from '../../localization';
+import { formatUrl } from '../../utils/url';
+import { UnlayerLabel } from '../../components/UnlayerLabel';
 
 export const UrlWidget = ({ value, updateValue, data: { label, help } }) => (
   <>

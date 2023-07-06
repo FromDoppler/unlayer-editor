@@ -1,6 +1,6 @@
 const React = window.unlayer.React;
 import PropTypes from 'prop-types';
-import { intl } from '../localization';
+import { intl } from '../../localization';
 
 export const PayuButtonViewer = (props) => {
   const { size, paymentURL, alignment } = props.values;

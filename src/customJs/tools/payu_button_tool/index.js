@@ -1,7 +1,7 @@
 const React = window.unlayer.React;
-import { intl } from '../localization';
-import { createRenderer } from '../utils/unlayer';
-import { PayuButtonViewer } from '../components/PayuButtonViewer';
+import { intl } from '../../localization';
+import { createRenderer } from '../../utils/unlayer';
+import { PayuButtonViewer } from './PayuButtonViewer';
 
 export const getPayuButtonToolDefinition = () => ({
   name: 'payu_button_tool',

@@ -1,8 +1,8 @@
 const React = window.unlayer.React;
-import { intl } from '../localization';
-import { createRenderer } from '../utils/unlayer';
-import { SOCIAL_NETWORKS } from '../constants';
-import { SocialShareViewer } from '../components/SocialShareViewer';
+import { intl } from '../../localization';
+import { createRenderer } from '../../utils/unlayer';
+import { SOCIAL_NETWORKS } from '../../constants';
+import { SocialShareViewer } from './SocialShareViewer';
 
 export const getSocialShareToolDefinition = () => ({
   name: 'social_share_tool',

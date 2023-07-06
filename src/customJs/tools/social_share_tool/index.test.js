@@ -1,5 +1,5 @@
-import { getSocialShareToolDefinition } from './getSocialShareToolDefinition';
-import { setLocale } from '../localization';
+import { getSocialShareToolDefinition } from '.';
+import { setLocale } from '../../localization';
 
 describe(getSocialShareToolDefinition.name, () => {
   it.each([
