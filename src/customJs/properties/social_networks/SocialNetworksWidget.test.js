@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 import { SocialNetworksWidget } from './SocialNetworksWidget';
-import { SOCIAL_NETWORKS } from '../constants';
+import { SOCIAL_NETWORKS } from '../../constants';
 
 // TODO: this is a shared code, make it a common helper
 function prepareUnlayerGlobalObject() {

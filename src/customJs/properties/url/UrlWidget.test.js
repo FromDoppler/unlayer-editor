@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { UrlWidget } from './UrlWidget';
-import { setLocale } from '../localization';
-import userEvent from '@testing-library/user-event';
+import { setLocale } from '../../localization';
 
 // TODO: this is a shared code, make it a common helper
 function prepareUnlayerGlobalObject() {

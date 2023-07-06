@@ -1,7 +1,7 @@
 const React = window.unlayer.React;
 import PropTypes from 'prop-types';
-import { intl } from '../localization';
-import { SOCIAL_NETWORKS } from '../constants';
+import { intl } from '../../localization';
+import { SOCIAL_NETWORKS } from '../../constants';
 
 export const SocialShareViewer = ({
   values: {

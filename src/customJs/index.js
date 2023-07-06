@@ -1,10 +1,10 @@
-import { getSocialShareToolDefinition } from './tools/getSocialShareToolDefinition';
-import { setLocale } from './localization';
-import { getPayuButtonToolDefinition } from './tools/getPayuButtonToolDefinition';
-import { UrlWidget } from './components/UrlWidget';
-import { SocialNetworksWidget } from './components/SocialNetworksWidget';
 import './main.css';
 import { getConfiguration } from './configuration';
+import { setLocale } from './localization';
+import { urlPropertyEditorDefinition } from './properties/url';
+import { socialNetworksPropertyEditorDefinition } from './properties/social_networks';
+import { getSocialShareToolDefinition } from './tools/social_share_tool';
+import { getPayuButtonToolDefinition } from './tools/payu_button_tool';
 
 const unlayer = window.unlayer;
 
@@ -26,14 +26,10 @@ unlayer.setLinkTypes?.([
 ]);
 
 // Register Properties and tool Social Share Tool
-unlayer.registerPropertyEditor({
-  name: 'url',
-  Widget: UrlWidget,
-});
-unlayer.registerPropertyEditor({
-  name: 'social_networks',
-  Widget: SocialNetworksWidget,
-});
+
+unlayer.registerPropertyEditor(urlPropertyEditorDefinition);
+unlayer.registerPropertyEditor(socialNetworksPropertyEditorDefinition);
+
 unlayer.registerTool(getSocialShareToolDefinition());
 unlayer.registerTool(getPayuButtonToolDefinition());
 
