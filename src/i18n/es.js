@@ -1,5 +1,4 @@
-const ASSETS_BASE_URL = 'https://cdn.fromdoppler.com/unlayer-editor/assets';
-const HELP_BASE_URL = 'https://help.fromdoppler.com';
+import { ASSETS_BASE_URL, HELP_BASE_URL } from '../customJs/constants';
 
 // Based on https://github.com/unlayer/translations/blob/5e1318c40e72ef1311045d1fb64d997f3b3964f2/es.json
 export const messages_es = {

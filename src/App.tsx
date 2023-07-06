@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import mergeTags from './external/merge.tags';
 import styled from 'styled-components';
+import { ASSETS_BASE_URL } from './customJs/constants';
 
 import EmailEditor, {
   User,
@@ -51,7 +52,7 @@ const App: React.FC = () => {
   const UnlayerOptionsExtended = {
     tools: {
       button: {
-        icon: process.env.PUBLIC_URL + '/assets/button.svg',
+        icon: `${ASSETS_BASE_URL}/button.svg`,
       },
     },
     features: {

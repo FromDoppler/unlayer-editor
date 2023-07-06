@@ -1,3 +1,8 @@
+export const ASSETS_BASE_URL =
+  'https://cdn.fromdoppler.com/unlayer-editor/assets';
+
+export const HELP_BASE_URL = 'https://help.fromdoppler.com';
+
 export const SOCIAL_NETWORKS = [
   {
     link: '[[shareInFacebookLink]]',
