@@ -50,6 +50,11 @@ module.exports = function (env) {
                     use: ['babel-loader'],
                 },
                 {
+                  test: /\.tsx?$/,
+                  use: 'ts-loader',
+                  exclude: /node_modules/,
+              },
+                {
                     test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
                     type: 'public/resource',
                 },
@@ -72,6 +77,9 @@ module.exports = function (env) {
             new DotenvFlow({
                 node_env: env.NODE_ENV ? env.NODE_ENV : 'development'
             })
-        ]
+        ],
+        resolve: {
+          extensions: ['.tsx', '.ts', '.js'],
+      }
     };
 };
