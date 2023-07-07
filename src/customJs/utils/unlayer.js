@@ -1,9 +1,18 @@
 const React = window.unlayer.React;
+const unlayer = window.unlayer;
 import ReactDOMServer from 'react-dom/server';
 
 const enableLogging = false;
 
-export const createTool = ({
+export const setLinkTypes = (linkTypes) => unlayer.setLinkTypes?.(linkTypes);
+
+export const registerPropertyEditor = (propertyDefinition) =>
+  unlayer.registerPropertyEditor(propertyDefinition);
+
+export const registerReactTool = (toolDefinition) =>
+  unlayer.registerTool(createTool(toolDefinition));
+
+const createTool = ({
   name,
   label,
   icon,
