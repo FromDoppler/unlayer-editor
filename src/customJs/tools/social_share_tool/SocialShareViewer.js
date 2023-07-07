@@ -55,9 +55,9 @@ export const SocialShareViewer = ({
 );
 
 SocialShareViewer.propTypes = {
-  values: {
+  values: PropTypes.shape({
     social_share_align_option: PropTypes.string,
     social_share_size: PropTypes.string,
     social_share_available: PropTypes.array,
-  },
+  }),
 };
