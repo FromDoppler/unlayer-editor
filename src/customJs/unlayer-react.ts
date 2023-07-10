@@ -1,5 +1,6 @@
 import type ReactNamespace from 'react';
 import type ReactDOMNamespace from 'react-dom';
+import type ReactDNDNamespace from 'react-dnd';
 
 export const {
   React,
@@ -8,7 +9,7 @@ export const {
 }: {
   React: typeof ReactNamespace;
   ReactDOM: typeof ReactDOMNamespace;
-  ReactDND: any;
+  ReactDND: typeof ReactDNDNamespace;
 } = (window as any).unlayer;
 
 export const {
