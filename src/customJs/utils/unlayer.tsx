@@ -1,4 +1,4 @@
-const React = (window as any).unlayer.React;
+import { React } from '../unlayer-react';
 const unlayer = (window as any).unlayer;
 import ReactDOMServer from 'react-dom/server';
 import {

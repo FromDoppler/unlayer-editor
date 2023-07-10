@@ -1,4 +1,4 @@
-const React = window.unlayer.React;
+import { React } from '../../unlayer-react';
 import { intl } from '../../localization';
 import { formatUrl } from '../../utils/url';
 import { UnlayerLabel } from '../../components/UnlayerLabel';

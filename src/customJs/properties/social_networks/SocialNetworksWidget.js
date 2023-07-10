@@ -1,4 +1,4 @@
-const React = window.unlayer.React;
+import { React } from '../../unlayer-react';
 import { Toggle } from '../../components/Toggle';
 
 export const SocialNetworksWidget = ({

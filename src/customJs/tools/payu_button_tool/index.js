@@ -1,4 +1,4 @@
-const React = window.unlayer.React;
+import { React } from '../../unlayer-react';
 import { intl } from '../../localization';
 import { PayuButtonViewer } from './PayuButtonViewer';
 import { ASSETS_BASE_URL } from '../../constants';

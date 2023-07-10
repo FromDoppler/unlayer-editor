@@ -1,4 +1,4 @@
-const React = window.unlayer.React;
+import { React } from '../../unlayer-react';
 import { intl } from '../../localization';
 import { SOCIAL_NETWORKS } from '../../constants';
 import { SocialShareViewer } from './SocialShareViewer';

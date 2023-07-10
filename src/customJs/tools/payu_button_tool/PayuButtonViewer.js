@@ -1,4 +1,4 @@
-const React = window.unlayer.React;
+import { React } from '../../unlayer-react';
 import PropTypes from 'prop-types';
 import { intl } from '../../localization';
 
