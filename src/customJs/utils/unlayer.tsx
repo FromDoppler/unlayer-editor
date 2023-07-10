@@ -1,15 +1,28 @@
-const React = window.unlayer.React;
-const unlayer = window.unlayer;
+const React = (window as any).unlayer.React;
+const unlayer = (window as any).unlayer;
 import ReactDOMServer from 'react-dom/server';
+import {
+  DisplayMode,
+  LinkType,
+  ObjectWithStringProps,
+  ReactPropertyDefinition,
+  ReactToolDefinition,
+  ToolData,
+  Values,
+  ViewerComponent,
+} from '../types';
 
 const enableLogging = false;
 
-export const setLinkTypes = (linkTypes) => unlayer.setLinkTypes?.(linkTypes);
+export const setLinkTypes = (
+  linkTypes: { name: LinkType; enabled: boolean }[],
+) => unlayer.setLinkTypes?.(linkTypes);
 
-export const registerPropertyEditor = (propertyDefinition) =>
-  unlayer.registerPropertyEditor(propertyDefinition);
+export const registerPropertyEditor = (
+  propertyDefinition: ReactPropertyDefinition,
+) => unlayer.registerPropertyEditor(propertyDefinition);
 
-export const registerReactTool = (toolDefinition) =>
+export const registerReactTool = (toolDefinition: ReactToolDefinition) =>
   unlayer.registerTool(createTool(toolDefinition));
 
 const createTool = ({
@@ -18,15 +31,22 @@ const createTool = ({
   icon,
   Component,
   ...restOfToolDefinitions
-}) => {
-  const toolData = { name, label, icon };
+}: ReactToolDefinition) => {
+  const toolData: ToolData = { name, label, icon };
   return {
     ...restOfToolDefinitions,
     name,
     label,
     icon,
     renderer: {
-      Viewer: ({ values, displayMode, ...restOfViewerProps }) =>
+      Viewer: ({
+        values,
+        displayMode,
+        ...restOfViewerProps
+      }: {
+        values: Values;
+        displayMode: DisplayMode;
+      }) =>
         viewer({
           Component,
           displayMode,
@@ -36,7 +56,7 @@ const createTool = ({
           restOfToolDefinitions,
         }),
       exporters: {
-        web: (values, ...restOfExporterParameters) =>
+        web: (values: Values, ...restOfExporterParameters: any[]) =>
           exporter({
             Component,
             displayMode: 'web',
@@ -45,7 +65,7 @@ const createTool = ({
             restOfExporterParameters,
             restOfToolDefinitions,
           }),
-        email: (values, ...restOfExporterParameters) =>
+        email: (values: Values, ...restOfExporterParameters: any[]) =>
           exporter({
             Component,
             displayMode: 'email',
@@ -66,6 +86,13 @@ const viewer = ({
   toolData,
   restOfViewerProps,
   restOfToolDefinitions,
+}: {
+  Component: ViewerComponent;
+  displayMode: DisplayMode;
+  values: Values;
+  toolData: ToolData;
+  restOfViewerProps: ObjectWithStringProps;
+  restOfToolDefinitions: ObjectWithStringProps;
 }) => {
   const isViewer = true;
   enableLogging &&
@@ -98,6 +125,13 @@ const exporter = ({
   toolData,
   restOfExporterParameters,
   restOfToolDefinitions,
+}: {
+  Component: ViewerComponent;
+  displayMode: DisplayMode;
+  values: Values;
+  toolData: ToolData;
+  restOfExporterParameters: ObjectWithStringProps;
+  restOfToolDefinitions: ObjectWithStringProps;
 }) => {
   // restOfExporterParameters and restOfToolDefinitions are here only for debugging process
   // and to evaluate if they could be used in the future.
