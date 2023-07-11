@@ -1,6 +1,5 @@
 const React = window.unlayer.React;
 import { intl } from '../../localization';
-import { createRenderer } from '../../utils/unlayer';
 import { PayuButtonViewer } from './PayuButtonViewer';
 import { ASSETS_BASE_URL } from '../../constants';
 
@@ -8,6 +7,7 @@ export const getPayuButtonToolDefinition = () => ({
   name: 'payu_button_tool',
   label: intl.formatMessage({ id: '_dp.payu_button' }),
   icon: `${ASSETS_BASE_URL}/payu_button.svg`,
+  Component: PayuButtonViewer,
   options: {
     basic_configuration_section: {
       title: intl.formatMessage({ id: 'option_groups.button_options.title' }),
@@ -52,7 +52,10 @@ export const getPayuButtonToolDefinition = () => ({
                 label: intl.formatMessage({ id: '_dp.medium' }),
                 value: 'medium',
               },
-              { label: intl.formatMessage({ id: '_dp.big' }), value: 'large' },
+              {
+                label: intl.formatMessage({ id: '_dp.big' }),
+                value: 'large',
+              },
             ],
           },
         },
@@ -64,7 +67,6 @@ export const getPayuButtonToolDefinition = () => ({
       },
     },
   },
-  renderer: createRenderer(PayuButtonViewer),
   validator: ({ defaultErrors, values }) => {
     if (!values.paymentURL) {
       defaultErrors.push({

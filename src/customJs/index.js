@@ -1,12 +1,15 @@
 import './main.css';
 import { getConfiguration } from './configuration';
 import { setLocale } from './localization';
+import {
+  setLinkTypes,
+  registerPropertyEditor,
+  registerReactTool,
+} from './utils/unlayer';
 import { urlPropertyEditorDefinition } from './properties/url';
 import { socialNetworksPropertyEditorDefinition } from './properties/social_networks';
 import { getSocialShareToolDefinition } from './tools/social_share_tool';
 import { getPayuButtonToolDefinition } from './tools/payu_button_tool';
-
-const unlayer = window.unlayer;
 
 const { locale, promotionCodeEnabled } = getConfiguration();
 
@@ -18,7 +21,7 @@ const unlayerLocale = unlayerLocales[locale] ?? unlayerLocales['es'];
 
 setLocale(unlayerLocale);
 
-unlayer.setLinkTypes?.([
+setLinkTypes?.([
   {
     name: 'sms',
     enabled: false,
@@ -27,11 +30,11 @@ unlayer.setLinkTypes?.([
 
 // Register Properties and tool Social Share Tool
 
-unlayer.registerPropertyEditor(urlPropertyEditorDefinition);
-unlayer.registerPropertyEditor(socialNetworksPropertyEditorDefinition);
+registerPropertyEditor(urlPropertyEditorDefinition);
+registerPropertyEditor(socialNetworksPropertyEditorDefinition);
 
-unlayer.registerTool(getSocialShareToolDefinition());
-unlayer.registerTool(getPayuButtonToolDefinition());
+registerReactTool(getSocialShareToolDefinition());
+registerReactTool(getPayuButtonToolDefinition());
 
 if (promotionCodeEnabled) {
   console.log('promotionCodeEnabled, it will show the Promo Code Tool soon...');
