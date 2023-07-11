@@ -31,7 +31,8 @@
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-namespace": "off",
-    "prettier/prettier": "off"
+    "prettier/prettier": "off",
+    "react/prop-types": "off"
   },
   "globals": {
     "unlayer": "readonly"
