@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { React } from '../../unlayer-react';
 import { setLocale } from '../../localization';
 import { PayuButtonViewer } from './PayuButtonViewer';
 import { render, screen } from '@testing-library/react';
