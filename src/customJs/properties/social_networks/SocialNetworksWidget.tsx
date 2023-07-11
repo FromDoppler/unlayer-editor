@@ -1,20 +1,20 @@
 import { React } from '../../unlayer-react';
-import { WidgetComponent } from '../../types';
+import { SocialNetworkId, WidgetComponent } from '../../types';
 import { Toggle } from '../../components/Toggle';
+import { SocialNetworksValue } from './SocialNetworksValue';
 
-type Option = { id: string; name: string } & Record<string, any>;
-type Value = string[];
+type Option = { id: SocialNetworkId; name: string } & Record<string, any>;
 
-export const SocialNetworksWidget: WidgetComponent = ({
-  data: { options = [] } = {},
-  updateValue,
+export const SocialNetworksWidget: WidgetComponent<SocialNetworksValue> = ({
   value: currentSelection = [],
+  updateValue,
+  data: { options = [] } = {},
 }: {
   data: { options?: Option[] };
-  updateValue: (value: Value) => void;
-  value: Value;
+  updateValue: (value: SocialNetworksValue) => void;
+  value: SocialNetworksValue;
 }) => {
-  const updateSelection = (isChecked: boolean, id: string) => {
+  const updateSelection = (isChecked: boolean, id: SocialNetworkId) => {
     if (isChecked) {
       updateValue([...currentSelection, id]);
       return;

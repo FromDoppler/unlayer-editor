@@ -11,23 +11,18 @@ export type LinkType = 'phone' | 'email' | 'sms';
 
 export type ObjectWithStringProps = Record<string, any>;
 
-// TODO: make Value type generic based on the property
-export type Value = any;
-
 export type ToolData = { name: string; label: string; icon: string };
 
-export type WidgetComponent = (props: {
-  // TODO: make value property generic
-  value: Value;
-  // TODO: make v parameter generic based on the same type of value
-  updateValue: (v: any) => void;
+export type WidgetComponent<T> = (props: {
+  value: T;
+  updateValue: (v: T) => void;
   // TODO: make d property generic, void by default
   data: any;
 }) => ReactNode;
 
-export type ReactPropertyDefinition = {
+export type ReactPropertyDefinition<T> = {
   name: string;
-  Widget: WidgetComponent;
+  Widget: WidgetComponent<T>;
 };
 
 export type ViewerComponent<T> = (props: {
@@ -43,6 +38,8 @@ export type ReactToolDefinition<T> = {
   icon: string;
   Component: ViewerComponent<T>;
   // TODO: typify options
+  // T in ReactToolDefinition<T> should be the combination of the Ts of the widgets
+  // of these options
   options: ObjectWithStringProps;
   // TODO: typify validator
   validator?: ({

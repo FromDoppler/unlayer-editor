@@ -17,8 +17,8 @@ export const setLinkTypes = (
   linkTypes: { name: LinkType; enabled: boolean }[],
 ) => unlayer.setLinkTypes?.(linkTypes);
 
-export const registerPropertyEditor = (
-  propertyDefinition: ReactPropertyDefinition,
+export const registerPropertyEditor = <T,>(
+  propertyDefinition: ReactPropertyDefinition<T>,
 ) => unlayer.registerPropertyEditor(propertyDefinition);
 
 export const registerReactTool = <T,>(toolDefinition: ReactToolDefinition<T>) =>

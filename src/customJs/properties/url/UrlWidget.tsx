@@ -3,14 +3,15 @@ import { WidgetComponent } from '../../types';
 import { intl } from '../../localization';
 import { formatUrl } from '../../utils/url';
 import { UnlayerLabel } from '../../components/UnlayerLabel';
+import { UrlValue } from './UrlValue';
 
-export const UrlWidget: WidgetComponent = ({
+export const UrlWidget: WidgetComponent<UrlValue> = ({
   value,
   updateValue,
   data: { label, help },
 }: {
-  value: string;
-  updateValue: (v: string) => void;
+  value: UrlValue;
+  updateValue: (v: UrlValue) => void;
   data: { label: string; help?: ReactNode };
 }) => (
   <>
