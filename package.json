@@ -67,7 +67,7 @@
       "patterns": [
         "src/customJs"
       ],
-      "extensions": "js,css"
+      "extensions": "js,ts,tsx,css"
     }
   },
   "scripts": {
