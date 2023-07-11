@@ -1,7 +1,15 @@
 import { React, useState } from '../unlayer-react';
 import PropTypes from 'prop-types';
 
-export const Toggle = ({ label, onChange, defaultValue }) => {
+export const Toggle = ({
+  label,
+  onChange,
+  defaultValue,
+}: {
+  label: string;
+  onChange: (v: boolean) => void;
+  defaultValue: boolean;
+}) => {
   const [active, setActive] = useState(defaultValue);
   const [focus, setFocus] = useState(false);
   const changeEvent = () => {

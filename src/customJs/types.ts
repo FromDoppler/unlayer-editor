@@ -1,3 +1,10 @@
+import { SOCIAL_NETWORKS } from './constants';
+import { ReactNode } from './unlayer-react';
+
+export type SocialNetworkId = (typeof SOCIAL_NETWORKS)[number]['id'];
+
+export type Alignment = 'center' | 'justify' | 'left' | 'right';
+
 export type DisplayMode = 'email' | 'web';
 
 export type LinkType = 'phone' | 'email' | 'sms';
@@ -7,38 +14,34 @@ export type ObjectWithStringProps = Record<string, any>;
 // TODO: make Value type generic based on the property
 export type Value = any;
 
-// TODO: make Values type generic based on the property/tool
-export type ValueKey = string;
-
-// TODO: make Values type generic based on the tool
-export type Values = Record<ValueKey, Value>;
-
 export type ToolData = { name: string; label: string; icon: string };
+
+export type WidgetComponent = (props: {
+  // TODO: make value property generic
+  value: Value;
+  // TODO: make v parameter generic based on the same type of value
+  updateValue: (v: any) => void;
+  // TODO: make d property generic, void by default
+  data: any;
+}) => ReactNode;
 
 export type ReactPropertyDefinition = {
   name: string;
-  Widget: (props: {
-    // TODO: make value property generic
-    value: Value;
-    // TODO: make v parameter generic based on the same type of value
-    updateValue: (v: any) => void;
-    // TODO: make d property generic, void by default
-    data: any;
-  }) => JSX.Element;
+  Widget: WidgetComponent;
 };
 
-export type ViewerComponent = (props: {
-  values: Values;
+export type ViewerComponent<T> = (props: {
+  values: T;
   displayMode: DisplayMode;
   isViewer: boolean;
   toolData: ToolData;
-}) => JSX.Element;
+}) => ReactNode;
 
-export type ReactToolDefinition = {
+export type ReactToolDefinition<T> = {
   name: string;
   label: string;
   icon: string;
-  Component: ViewerComponent;
+  Component: ViewerComponent<T>;
   // TODO: typify options
   options: ObjectWithStringProps;
   // TODO: typify validator
@@ -47,7 +50,7 @@ export type ReactToolDefinition = {
     values,
   }: {
     defaultErrors: any;
-    values: Values;
+    values: T;
   }) => any;
   // TODO: add other properties and remove & Record<any, any>;
 } & Record<any, any>;

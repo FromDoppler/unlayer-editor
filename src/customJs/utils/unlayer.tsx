@@ -8,7 +8,6 @@ import {
   ReactPropertyDefinition,
   ReactToolDefinition,
   ToolData,
-  Values,
   ViewerComponent,
 } from '../types';
 
@@ -22,16 +21,16 @@ export const registerPropertyEditor = (
   propertyDefinition: ReactPropertyDefinition,
 ) => unlayer.registerPropertyEditor(propertyDefinition);
 
-export const registerReactTool = (toolDefinition: ReactToolDefinition) =>
+export const registerReactTool = <T,>(toolDefinition: ReactToolDefinition<T>) =>
   unlayer.registerTool(createTool(toolDefinition));
 
-const createTool = ({
+const createTool = <T,>({
   name,
   label,
   icon,
   Component,
   ...restOfToolDefinitions
-}: ReactToolDefinition) => {
+}: ReactToolDefinition<T>) => {
   const toolData: ToolData = { name, label, icon };
   return {
     ...restOfToolDefinitions,
@@ -44,7 +43,7 @@ const createTool = ({
         displayMode,
         ...restOfViewerProps
       }: {
-        values: Values;
+        values: T;
         displayMode: DisplayMode;
       }) =>
         viewer({
@@ -56,7 +55,7 @@ const createTool = ({
           restOfToolDefinitions,
         }),
       exporters: {
-        web: (values: Values, ...restOfExporterParameters: any[]) =>
+        web: (values: T, ...restOfExporterParameters: any[]) =>
           exporter({
             Component,
             displayMode: 'web',
@@ -65,7 +64,7 @@ const createTool = ({
             restOfExporterParameters,
             restOfToolDefinitions,
           }),
-        email: (values: Values, ...restOfExporterParameters: any[]) =>
+        email: (values: T, ...restOfExporterParameters: any[]) =>
           exporter({
             Component,
             displayMode: 'email',
@@ -79,7 +78,7 @@ const createTool = ({
   };
 };
 
-const viewer = ({
+const viewer = <T,>({
   Component,
   displayMode,
   values,
@@ -87,9 +86,9 @@ const viewer = ({
   restOfViewerProps,
   restOfToolDefinitions,
 }: {
-  Component: ViewerComponent;
+  Component: ViewerComponent<T>;
   displayMode: DisplayMode;
-  values: Values;
+  values: T;
   toolData: ToolData;
   restOfViewerProps: ObjectWithStringProps;
   restOfToolDefinitions: ObjectWithStringProps;
@@ -118,7 +117,7 @@ const viewer = ({
   );
 };
 
-const exporter = ({
+const exporter = <T,>({
   Component,
   displayMode,
   values,
@@ -126,9 +125,9 @@ const exporter = ({
   restOfExporterParameters,
   restOfToolDefinitions,
 }: {
-  Component: ViewerComponent;
+  Component: ViewerComponent<T>;
   displayMode: DisplayMode;
-  values: Values;
+  values: T;
   toolData: ToolData;
   restOfExporterParameters: ObjectWithStringProps;
   restOfToolDefinitions: ObjectWithStringProps;

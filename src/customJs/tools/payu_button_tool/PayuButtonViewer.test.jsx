@@ -62,7 +62,7 @@ describe(PayuButtonViewer.name, () => {
       render(<PayuButtonViewer values={values} />);
       const payuImage = screen.getByAltText('payu_button');
 
-      expect(screen.getByRole('container').align).toEqual(align);
+      expect(screen.getByRole('container').style.textAlign).toEqual(align);
       expect(screen.getByRole('link').href).toEqual(arbitraryLink);
       expect(payuImage.src).toEqual(expectedImageUrl);
     },

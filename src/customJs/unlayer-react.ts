@@ -2,6 +2,8 @@ import type ReactNamespace from 'react';
 import type ReactDOMNamespace from 'react-dom';
 import type ReactDNDNamespace from 'react-dnd';
 
+export type { ReactNode } from 'react';
+
 export const {
   React,
   ReactDOM,
