@@ -21,8 +21,12 @@ export type WidgetComponent<TPropertyValue, TToolValues = void> = (props: {
   values: TToolValues;
 }) => ReactNode;
 
-export type ReactPropertyDefinition<TPropertyValue, TToolValues = void> = {
-  name: string;
+export type ReactPropertyDefinition<
+  TPropertyName extends string,
+  TPropertyValue,
+  TToolValues = void,
+> = {
+  name: TPropertyName;
   Widget: WidgetComponent<TPropertyValue, TToolValues>;
 };
 

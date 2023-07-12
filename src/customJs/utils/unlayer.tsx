@@ -18,8 +18,16 @@ export const setLinkTypes = (
   linkTypes: { name: LinkType; enabled: boolean }[],
 ) => unlayer.setLinkTypes?.(linkTypes);
 
-export const registerPropertyEditor = <TPropertyValue,>(
-  propertyDefinition: ReactPropertyDefinition<TPropertyValue>,
+export const registerPropertyEditor = <
+  TPropertyName extends string,
+  TPropertyValue,
+  TToolValues,
+>(
+  propertyDefinition: ReactPropertyDefinition<
+    TPropertyName,
+    TPropertyValue,
+    TToolValues
+  >,
 ) => unlayer.registerPropertyEditor(propertyDefinition);
 
 export const registerReactTool = <TToolValues,>(
