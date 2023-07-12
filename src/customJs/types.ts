@@ -13,16 +13,17 @@ export type ObjectWithStringProps = Record<string, any>;
 
 export type ToolData = { name: string; label: string; icon: string };
 
-export type WidgetComponent<TPropertyValue> = (props: {
+export type WidgetComponent<TPropertyValue, TToolValues = void> = (props: {
   value: TPropertyValue;
   updateValue: (v: TPropertyValue) => void;
   // TODO: make d property generic, void by default
   data: any;
+  values: TToolValues;
 }) => ReactNode;
 
-export type ReactPropertyDefinition<TPropertyValue> = {
+export type ReactPropertyDefinition<TPropertyValue, TToolValues = void> = {
   name: string;
-  Widget: WidgetComponent<TPropertyValue>;
+  Widget: WidgetComponent<TPropertyValue, TToolValues>;
 };
 
 export type ViewerComponent<TToolValues> = (props: {
