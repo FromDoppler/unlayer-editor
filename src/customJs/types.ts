@@ -13,33 +13,32 @@ export type ObjectWithStringProps = Record<string, any>;
 
 export type ToolData = { name: string; label: string; icon: string };
 
-export type WidgetComponent<T> = (props: {
-  value: T;
-  updateValue: (v: T) => void;
+export type WidgetComponent<TPropertyValue> = (props: {
+  value: TPropertyValue;
+  updateValue: (v: TPropertyValue) => void;
   // TODO: make d property generic, void by default
   data: any;
 }) => ReactNode;
 
-export type ReactPropertyDefinition<T> = {
+export type ReactPropertyDefinition<TPropertyValue> = {
   name: string;
-  Widget: WidgetComponent<T>;
+  Widget: WidgetComponent<TPropertyValue>;
 };
 
-export type ViewerComponent<T> = (props: {
-  values: T;
+export type ViewerComponent<TToolValues> = (props: {
+  values: TToolValues;
   displayMode: DisplayMode;
   isViewer: boolean;
   toolData: ToolData;
 }) => ReactNode;
 
-export type ReactToolDefinition<T> = {
+export type ReactToolDefinition<TToolValues> = {
   name: string;
   label: string;
   icon: string;
-  Component: ViewerComponent<T>;
+  Component: ViewerComponent<TToolValues>;
   // TODO: typify options
-  // T in ReactToolDefinition<T> should be the combination of the Ts of the widgets
-  // of these options
+  // TToolValues should be the combination of the TPropertyValues of these options
   options: ObjectWithStringProps;
   // TODO: typify validator
   validator?: ({
@@ -47,7 +46,7 @@ export type ReactToolDefinition<T> = {
     values,
   }: {
     defaultErrors: any;
-    values: T;
+    values: TToolValues;
   }) => any;
   // TODO: add other properties and remove & Record<any, any>;
 } & Record<any, any>;
