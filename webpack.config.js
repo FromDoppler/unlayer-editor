@@ -29,7 +29,7 @@ module.exports = function (env) {
     Dotenv.config({path: './.env.' + env.NODE_ENV});
     return {
         entry: {
-          main: './src/customJs/index.js'
+          main: './src/customJs/index.ts'
         },
         mode: env.NODE_ENV ? env.NODE_ENV : 'development',
         output: {
@@ -49,6 +49,11 @@ module.exports = function (env) {
                     exclude: /node_modules/,
                     use: ['babel-loader'],
                 },
+                {
+                  test: /\.tsx?$/,
+                  use: 'ts-loader',
+                  exclude: /node_modules/,
+              },
                 {
                     test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
                     type: 'public/resource',
@@ -72,6 +77,9 @@ module.exports = function (env) {
             new DotenvFlow({
                 node_env: env.NODE_ENV ? env.NODE_ENV : 'development'
             })
-        ]
+        ],
+        resolve: {
+          extensions: ['.tsx', '.ts', '.js'],
+      }
     };
 };

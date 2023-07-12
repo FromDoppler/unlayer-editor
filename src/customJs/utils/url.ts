@@ -1,4 +1,4 @@
-export const formatUrl = (valueWithOutFormat) => {
+export const formatUrl = (valueWithOutFormat: string) => {
   if (!valueWithOutFormat) {
     return '';
   }

@@ -29,4 +29,4 @@ export const SOCIAL_NETWORKS = [
     name: 'Whatsapp',
     id: 'whatsapp_shared_property',
   },
-];
+] as const;

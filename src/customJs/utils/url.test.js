@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { React } from '../unlayer-react';
 import { formatUrl } from './url';
 
 describe(formatUrl.name, () => {

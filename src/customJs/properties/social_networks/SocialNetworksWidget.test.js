@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { React } from '../../unlayer-react';
 import { render, screen } from '@testing-library/react';
 import { SocialNetworksWidget } from './SocialNetworksWidget';
 import { SOCIAL_NETWORKS } from '../../constants';

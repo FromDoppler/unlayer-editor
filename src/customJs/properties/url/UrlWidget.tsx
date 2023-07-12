@@ -1,11 +1,21 @@
-const React = window.unlayer.React;
+import { React, ReactNode } from '../../unlayer-react';
+import { WidgetComponent } from '../../types';
 import { intl } from '../../localization';
 import { formatUrl } from '../../utils/url';
 import { UnlayerLabel } from '../../components/UnlayerLabel';
+import { UrlValue } from './UrlValue';
 
-export const UrlWidget = ({ value, updateValue, data: { label, help } }) => (
+export const UrlWidget: WidgetComponent<UrlValue> = ({
+  value,
+  updateValue,
+  data: { label, help },
+}: {
+  value: UrlValue;
+  updateValue: (v: UrlValue) => void;
+  data: { label: string; help?: ReactNode };
+}) => (
   <>
-    <UnlayerLabel label={label}></UnlayerLabel>
+    <UnlayerLabel label={label} />
     <div className="blockbuilder-widget-label mb-2">
       <div className="href_field input-group">
         <div className="input-group-prepend">

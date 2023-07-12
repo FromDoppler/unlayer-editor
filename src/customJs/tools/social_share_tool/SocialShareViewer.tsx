@@ -1,19 +1,20 @@
-const React = window.unlayer.React;
-import PropTypes from 'prop-types';
+import { React } from '../../unlayer-react';
 import { intl } from '../../localization';
 import { SOCIAL_NETWORKS } from '../../constants';
+import { ViewerComponent } from '../../types';
+import { SocialShareValues } from './SocialShareValues';
 
-export const SocialShareViewer = ({
+export const SocialShareViewer: ViewerComponent<SocialShareValues> = ({
   values: {
     social_share_align_option,
     social_share_available,
     social_share_size: size,
   },
 }) => (
-  <table cellPadding="0" cellSpacing="0" border="0" width="100%">
+  <table cellPadding="0" cellSpacing="0" border={0} width="100%">
     <tr>
       <td style={{ textAlign: social_share_align_option }}>
-        <table cellPadding="0" cellSpacing="0" border="0" width="100%">
+        <table cellPadding="0" cellSpacing="0" border={0} width="100%">
           <tr>
             <td
               style={{
@@ -53,11 +54,3 @@ export const SocialShareViewer = ({
     </tr>
   </table>
 );
-
-SocialShareViewer.propTypes = {
-  values: {
-    social_share_align_option: PropTypes.string,
-    social_share_size: PropTypes.string,
-    social_share_available: PropTypes.array,
-  },
-};

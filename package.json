@@ -36,7 +36,9 @@
     "@babel/core": "7.22.8",
     "@babel/preset-env": "7.22.7",
     "@babel/preset-react": "7.22.5",
+    "@babel/preset-typescript": "^7.22.5",
     "@formatjs/intl": "2.9.0",
+    "@types/react-dnd": "^3.0.2",
     "babel-loader": "9.1.3",
     "concurrently": "8.2.0",
     "css-loader": "6.8.1",
@@ -65,7 +67,7 @@
       "patterns": [
         "src/customJs"
       ],
-      "extensions": "js,css"
+      "extensions": "js,ts,tsx,css"
     }
   },
   "scripts": {

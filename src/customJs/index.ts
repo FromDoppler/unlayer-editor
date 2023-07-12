@@ -16,7 +16,7 @@ const { locale, promotionCodeEnabled } = getConfiguration();
 const unlayerLocales = {
   es: 'es-ES',
   en: 'en-US',
-};
+} as const;
 const unlayerLocale = unlayerLocales[locale] ?? unlayerLocales['es'];
 
 setLocale(unlayerLocale);

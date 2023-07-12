@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { React } from '../../unlayer-react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { UrlWidget } from './UrlWidget';
 import { setLocale } from '../../localization';

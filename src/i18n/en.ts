@@ -1,7 +1,8 @@
+import { IntlMessages } from '../customJs/localization';
 import { ASSETS_BASE_URL, HELP_BASE_URL } from '../customJs/constants';
 
 // Based on https://github.com/unlayer/translations/blob/5e1318c40e72ef1311045d1fb64d997f3b3964f2/en.json
-export const messages_en = {
+export const messages_en: IntlMessages = {
   '_dp.alignment': `Alignment`,
   '_dp.big': `Big`,
   '_dp.help': `HELP`,
