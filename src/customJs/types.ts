@@ -13,13 +13,17 @@ export type ObjectWithStringProps = Record<string, any>;
 
 export type ToolData = { name: string; label: string; icon: string };
 
-export type WidgetComponent<TPropertyValue, TToolValues = void> = (props: {
+export type WidgetComponentProps<TPropertyValue, TToolValues = void> = {
   value: TPropertyValue;
   updateValue: (v: TPropertyValue) => void;
   // TODO: make d property generic, void by default
   data: any;
   values: TToolValues;
-}) => ReactNode;
+};
+
+export type WidgetComponent<TPropertyValue, TToolValues = void> = (
+  props: WidgetComponentProps<TPropertyValue, TToolValues>,
+) => ReactNode;
 
 export type ReactPropertyDefinition<
   TPropertyName extends string,
@@ -30,12 +34,23 @@ export type ReactPropertyDefinition<
   Widget: WidgetComponent<TPropertyValue, TToolValues>;
 };
 
-export type ViewerComponent<TToolValues> = (props: {
+export type ReactProperty<TPropertyName extends string, TPropertyValue> = {
+  label: string;
+  defaultValue: TPropertyValue;
+  widget: TPropertyName;
+  // TODO: add other properties and remove & Record<any, any>;
+} & Record<any, any>;
+
+export type ViewerComponentProps<TToolValues> = {
   values: TToolValues;
   displayMode: DisplayMode;
   isViewer: boolean;
   toolData: ToolData;
-}) => ReactNode;
+};
+
+export type ViewerComponent<TToolValues> = (
+  props: ViewerComponentProps<TToolValues>,
+) => ReactNode;
 
 export type ReactToolDefinition<TToolValues> = {
   name: string;
