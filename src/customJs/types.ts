@@ -11,25 +11,37 @@ export type LinkType = 'phone' | 'email' | 'sms';
 
 export type ObjectWithStringProps = Record<string, any>;
 
-export type WidgetComponentProps<TPropertyValue, TToolValues = void> = {
+export type BaseToolData = {
+  label?: string;
+};
+
+export type WidgetComponentProps<
+  TPropertyValue,
+  TToolValues = void,
+  TToolData extends BaseToolData = BaseToolData,
+> = {
   value: TPropertyValue;
   updateValue: (v: TPropertyValue) => void;
-  // TODO: make d property generic, void by default
-  data: any;
+  data: TToolData;
   values: TToolValues;
 };
 
-export type WidgetComponent<TPropertyValue, TToolValues = void> = (
-  props: WidgetComponentProps<TPropertyValue, TToolValues>,
+export type WidgetComponent<
+  TPropertyValue,
+  TToolValues = void,
+  TToolData extends BaseToolData = BaseToolData,
+> = (
+  props: WidgetComponentProps<TPropertyValue, TToolValues, TToolData>,
 ) => ReactNode;
 
 export type ReactPropertyDefinition<
   TPropertyName extends string,
   TPropertyValue,
   TToolValues = void,
+  TToolData extends BaseToolData = BaseToolData,
 > = {
   name: TPropertyName;
-  Widget: WidgetComponent<TPropertyValue, TToolValues>;
+  Widget: WidgetComponent<TPropertyValue, TToolValues, TToolData>;
 };
 
 export type ReactProperty<TPropertyName extends string, TPropertyValue> = {
