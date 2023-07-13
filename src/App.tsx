@@ -74,6 +74,7 @@ const App: React.FC = () => {
     customJS: [
       `window["unlayer-extensions-configuration"] = {
         locale: "es",
+        previewMode: true,
       };`,
       `${process.env.PUBLIC_URL}/customJs/index.js`,
     ],

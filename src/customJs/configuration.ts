@@ -6,6 +6,7 @@ type Configuration = {
   stores: Store[];
   /** True when there is at least one store with promotionCodeEnabled */
   promotionCodeEnabled: boolean;
+  previewMode: boolean;
 };
 
 type Store = {
@@ -25,9 +26,11 @@ export const getConfiguration = () =>
 export const parseConfigurationDTO = ({
   locale = defaultLanguage,
   stores = [],
+  previewMode = false,
 }: {
   locale?: 'es' | 'en';
   stores?: Store[];
+  previewMode?: boolean;
 } = {}) => {
   stores = stores.map(parseStoreDTO);
   const promotionCodeEnabled = stores.some((x) => x.promotionCodeEnabled);
@@ -35,6 +38,7 @@ export const parseConfigurationDTO = ({
     locale,
     stores,
     promotionCodeEnabled,
+    previewMode,
   };
 };
 
