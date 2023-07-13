@@ -20,6 +20,7 @@ const expectedDefaultConfiguration = {
   locale: 'es',
   stores: [],
   promotionCodeEnabled: false,
+  previewMode: false,
 };
 
 describe(parseConfigurationDTO.name, () => {
@@ -48,7 +49,8 @@ describe(parseConfigurationDTO.name, () => {
   it('should make honor to DTO values', () => {
     // Arrange
     const locale = 'en';
-    const input = { locale };
+    const previewMode = true;
+    const input = { locale, previewMode };
 
     // Act
     const result = parseConfigurationDTO(input);
@@ -58,6 +60,7 @@ describe(parseConfigurationDTO.name, () => {
       locale,
       stores: [],
       promotionCodeEnabled: false,
+      previewMode,
     });
   });
 
