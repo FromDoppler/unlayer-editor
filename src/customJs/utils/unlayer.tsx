@@ -7,7 +7,7 @@ import {
   ObjectWithStringProps,
   ReactPropertyDefinition,
   ReactToolDefinition,
-  ToolData,
+  ToolInfo,
   ViewerComponent,
 } from '../types';
 import { getConfiguration } from '../configuration';
@@ -41,7 +41,7 @@ const createTool = <TToolValues,>({
   Component,
   ...restOfToolDefinitions
 }: ReactToolDefinition<TToolValues>) => {
-  const toolData: ToolData = { name, label, icon };
+  const toolInfo: ToolInfo = { name, label, icon };
   return {
     ...restOfToolDefinitions,
     name,
@@ -60,7 +60,7 @@ const createTool = <TToolValues,>({
           Component,
           displayMode,
           values,
-          toolData,
+          toolInfo,
           restOfViewerProps,
           restOfToolDefinitions,
         }),
@@ -70,7 +70,7 @@ const createTool = <TToolValues,>({
             Component,
             displayMode: 'web',
             values,
-            toolData,
+            toolInfo,
             restOfExporterParameters,
             restOfToolDefinitions,
           }),
@@ -79,7 +79,7 @@ const createTool = <TToolValues,>({
             Component,
             displayMode: 'email',
             values,
-            toolData,
+            toolInfo,
             restOfExporterParameters,
             restOfToolDefinitions,
           }),
@@ -92,14 +92,14 @@ const viewer = <TToolValues,>({
   Component,
   displayMode,
   values,
-  toolData,
+  toolInfo,
   restOfViewerProps,
   restOfToolDefinitions,
 }: {
   Component: ViewerComponent<TToolValues>;
   displayMode: DisplayMode;
   values: TToolValues;
-  toolData: ToolData;
+  toolInfo: ToolInfo;
   restOfViewerProps: ObjectWithStringProps;
   restOfToolDefinitions: ObjectWithStringProps;
 }) => {
@@ -109,7 +109,7 @@ const viewer = <TToolValues,>({
       Component,
       displayMode,
       isViewer,
-      toolData,
+      toolInfo,
       restOfViewerProps,
       restOfToolDefinitions,
       values,
@@ -122,7 +122,7 @@ const viewer = <TToolValues,>({
       values={values}
       displayMode={displayMode}
       isViewer={isViewer}
-      toolData={toolData}
+      toolInfo={toolInfo}
     />
   );
 };
@@ -131,14 +131,14 @@ const exporter = <TToolValues,>({
   Component,
   displayMode,
   values,
-  toolData,
+  toolInfo,
   restOfExporterParameters,
   restOfToolDefinitions,
 }: {
   Component: ViewerComponent<TToolValues>;
   displayMode: DisplayMode;
   values: TToolValues;
-  toolData: ToolData;
+  toolInfo: ToolInfo;
   restOfExporterParameters: ObjectWithStringProps;
   restOfToolDefinitions: ObjectWithStringProps;
 }) => {
@@ -151,7 +151,7 @@ const exporter = <TToolValues,>({
       Component,
       displayMode,
       isViewer,
-      toolData,
+      toolInfo,
       restOfExporterParameters,
       restOfToolDefinitions,
       values,
@@ -161,7 +161,7 @@ const exporter = <TToolValues,>({
       values={values}
       displayMode={displayMode}
       isViewer={isViewer}
-      toolData={toolData}
+      toolInfo={toolInfo}
     />,
   );
 };

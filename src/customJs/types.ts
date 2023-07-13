@@ -11,8 +11,6 @@ export type LinkType = 'phone' | 'email' | 'sms';
 
 export type ObjectWithStringProps = Record<string, any>;
 
-export type ToolData = { name: string; label: string; icon: string };
-
 export type WidgetComponentProps<TPropertyValue, TToolValues = void> = {
   value: TPropertyValue;
   updateValue: (v: TPropertyValue) => void;
@@ -41,11 +39,13 @@ export type ReactProperty<TPropertyName extends string, TPropertyValue> = {
   // TODO: add other properties and remove & Record<any, any>;
 } & Record<any, any>;
 
+export type ToolInfo = { name: string; label: string; icon: string };
+
 export type ViewerComponentProps<TToolValues> = {
   values: TToolValues;
   displayMode: DisplayMode;
   isViewer: boolean;
-  toolData: ToolData;
+  toolInfo: ToolInfo;
 };
 
 export type ViewerComponent<TToolValues> = (
