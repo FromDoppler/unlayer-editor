@@ -46,6 +46,11 @@ export const getPromoCodeToolDefinition: () =>
         },
       },
     },
+    // See https://docs.unlayer.com/docs/property-states
+    propertyStates: (values: PromoCodeValues) => ({
+      promo_code: { enabled: values.store !== EMPTY_SELECTION },
+    }),
+    },
   };
 };
 
