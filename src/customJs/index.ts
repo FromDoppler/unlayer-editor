@@ -11,7 +11,7 @@ import { socialNetworksPropertyEditorDefinition } from './properties/social_netw
 import { getSocialShareToolDefinition } from './tools/social_share_tool';
 import { getPayuButtonToolDefinition } from './tools/payu_button_tool';
 
-const { locale, promotionCodeEnabled, previewMode } = getConfiguration();
+const { locale } = getConfiguration();
 
 const unlayerLocales = {
   es: 'es-ES',
@@ -36,10 +36,7 @@ registerPropertyEditor(socialNetworksPropertyEditorDefinition);
 registerReactTool(getSocialShareToolDefinition());
 registerReactTool(getPayuButtonToolDefinition());
 
-if (previewMode && promotionCodeEnabled) {
-  console.log('promotionCodeEnabled, it will show the Promo Code Tool soon...');
-  // TODO: do something like this
-  // unlayer.registerTool(getPromoCodeToolConfig());
-  // For Promo Code Tool, promotionCodeEnabled is enough to decide to show or
-  // hide the tool. Other tools depend on the campaign.
-}
+// TODO: check promotionCodeEnabled and previewMode in getPromoCodeToolDefinition()
+// and return undefined if the tool should not be registered.
+// For Promo Code Tool, promotionCodeEnabled is enough to decide to show or
+// hide the tool. Other tools depend on the campaign.
