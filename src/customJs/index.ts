@@ -11,6 +11,7 @@ import { socialNetworksPropertyEditorDefinition } from './properties/social_netw
 import { getSocialShareToolDefinition } from './tools/social_share_tool';
 import { getPayuButtonToolDefinition } from './tools/payu_button_tool';
 import { getPromoCodeToolDefinition } from './tools/promo_code';
+import { promoCodesPropertyEditorDefinition } from './properties/promo_codes';
 
 const { locale, previewMode } = getConfiguration();
 
@@ -33,6 +34,7 @@ setLinkTypes?.([
 
 registerPropertyEditor(urlPropertyEditorDefinition);
 registerPropertyEditor(socialNetworksPropertyEditorDefinition);
+registerPropertyEditor(promoCodesPropertyEditorDefinition);
 
 registerReactTool(getSocialShareToolDefinition());
 registerReactTool(getPayuButtonToolDefinition());

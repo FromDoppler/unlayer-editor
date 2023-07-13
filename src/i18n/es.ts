@@ -15,6 +15,7 @@ export const messages_es = {
   '_dp.payu_medium_button': `${ASSETS_BASE_URL}/payu-button-medium-es.png`,
   '_dp.payu_small_button': `${ASSETS_BASE_URL}/payu-button-small-es.png`,
   '_dp.promo_code': `Código Promocional`,
+  '_dp.promo_codes': `Códigos de promoción`,
   '_dp.select_option': `Seleccione una opción`,
   '_dp.size': `Tamaño`,
   '_dp.small': `Pequeño`,

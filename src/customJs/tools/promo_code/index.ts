@@ -4,6 +4,7 @@ import { ReactToolDefinition } from '../../types';
 import { PromoCodeValues } from './PromoCodeValues';
 import { getConfiguration } from '../../configuration';
 import { EMPTY_SELECTION } from '../../constants';
+import { promoCodesProperty } from '../../properties/promo_codes';
 
 export const getPromoCodeToolDefinition: () =>
   | ReactToolDefinition<PromoCodeValues>
@@ -33,6 +34,9 @@ export const getPromoCodeToolDefinition: () =>
               value: name,
               label: name,
             }),
+          }),
+          promo_code: promoCodesProperty({
+            label: intl.formatMessage({ id: '_dp.promo_codes' }),
           }),
         },
       },
