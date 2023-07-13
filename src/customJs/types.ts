@@ -11,35 +11,66 @@ export type LinkType = 'phone' | 'email' | 'sms';
 
 export type ObjectWithStringProps = Record<string, any>;
 
-export type ToolData = { name: string; label: string; icon: string };
-
-export type WidgetComponent<T> = (props: {
-  value: T;
-  updateValue: (v: T) => void;
-  // TODO: make d property generic, void by default
-  data: any;
-}) => ReactNode;
-
-export type ReactPropertyDefinition<T> = {
-  name: string;
-  Widget: WidgetComponent<T>;
+export type BaseToolData = {
+  label?: string;
 };
 
-export type ViewerComponent<T> = (props: {
-  values: T;
+export type WidgetComponentProps<
+  TPropertyValue,
+  TToolValues = void,
+  TToolData extends BaseToolData = BaseToolData,
+> = {
+  value: TPropertyValue;
+  updateValue: (v: TPropertyValue) => void;
+  data: TToolData;
+  values: TToolValues;
+};
+
+export type WidgetComponent<
+  TPropertyValue,
+  TToolValues = void,
+  TToolData extends BaseToolData = BaseToolData,
+> = (
+  props: WidgetComponentProps<TPropertyValue, TToolValues, TToolData>,
+) => ReactNode;
+
+export type ReactPropertyDefinition<
+  TPropertyName extends string,
+  TPropertyValue,
+  TToolValues = void,
+  TToolData extends BaseToolData = BaseToolData,
+> = {
+  name: TPropertyName;
+  Widget: WidgetComponent<TPropertyValue, TToolValues, TToolData>;
+};
+
+export type ReactProperty<TPropertyName extends string, TPropertyValue> = {
+  label: string;
+  defaultValue: TPropertyValue;
+  widget: TPropertyName;
+  // TODO: add other properties and remove & Record<any, any>;
+} & Record<any, any>;
+
+export type ToolInfo = { name: string; label: string; icon: string };
+
+export type ViewerComponentProps<TToolValues> = {
+  values: TToolValues;
   displayMode: DisplayMode;
   isViewer: boolean;
-  toolData: ToolData;
-}) => ReactNode;
+  toolInfo: ToolInfo;
+};
 
-export type ReactToolDefinition<T> = {
+export type ViewerComponent<TToolValues> = (
+  props: ViewerComponentProps<TToolValues>,
+) => ReactNode;
+
+export type ReactToolDefinition<TToolValues> = {
   name: string;
   label: string;
   icon: string;
-  Component: ViewerComponent<T>;
+  Component: ViewerComponent<TToolValues>;
   // TODO: typify options
-  // T in ReactToolDefinition<T> should be the combination of the Ts of the widgets
-  // of these options
+  // TToolValues should be the combination of the TPropertyValues of these options
   options: ObjectWithStringProps;
   // TODO: typify validator
   validator?: ({
@@ -47,7 +78,7 @@ export type ReactToolDefinition<T> = {
     values,
   }: {
     defaultErrors: any;
-    values: T;
+    values: TToolValues;
   }) => any;
   // TODO: add other properties and remove & Record<any, any>;
 } & Record<any, any>;

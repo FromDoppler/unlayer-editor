@@ -5,17 +5,13 @@ import { formatUrl } from '../../utils/url';
 import { UnlayerLabel } from '../../components/UnlayerLabel';
 import { UrlValue } from './UrlValue';
 
-export const UrlWidget: WidgetComponent<UrlValue> = ({
-  value,
-  updateValue,
-  data: { label, help },
-}: {
-  value: UrlValue;
-  updateValue: (v: UrlValue) => void;
-  data: { label: string; help?: ReactNode };
-}) => (
+export const UrlWidget: WidgetComponent<
+  UrlValue,
+  void,
+  { label?: string; help?: ReactNode }
+> = ({ value, updateValue, data: { label, help } }) => (
   <>
-    <UnlayerLabel label={label} />
+    <UnlayerLabel label={label ?? ''} />
     <div className="blockbuilder-widget-label mb-2">
       <div className="href_field input-group">
         <div className="input-group-prepend">

@@ -7,7 +7,7 @@ import {
   ObjectWithStringProps,
   ReactPropertyDefinition,
   ReactToolDefinition,
-  ToolData,
+  ToolInfo,
   ViewerComponent,
 } from '../types';
 import { getConfiguration } from '../configuration';
@@ -18,21 +18,30 @@ export const setLinkTypes = (
   linkTypes: { name: LinkType; enabled: boolean }[],
 ) => unlayer.setLinkTypes?.(linkTypes);
 
-export const registerPropertyEditor = <T,>(
-  propertyDefinition: ReactPropertyDefinition<T>,
+export const registerPropertyEditor = <
+  TPropertyName extends string,
+  TPropertyValue,
+  TToolValues,
+>(
+  propertyDefinition: ReactPropertyDefinition<
+    TPropertyName,
+    TPropertyValue,
+    TToolValues
+  >,
 ) => unlayer.registerPropertyEditor(propertyDefinition);
 
-export const registerReactTool = <T,>(toolDefinition: ReactToolDefinition<T>) =>
-  unlayer.registerTool(createTool(toolDefinition));
+export const registerReactTool = <TToolValues,>(
+  toolDefinition: ReactToolDefinition<TToolValues>,
+) => unlayer.registerTool(createTool(toolDefinition));
 
-const createTool = <T,>({
+const createTool = <TToolValues,>({
   name,
   label,
   icon,
   Component,
   ...restOfToolDefinitions
-}: ReactToolDefinition<T>) => {
-  const toolData: ToolData = { name, label, icon };
+}: ReactToolDefinition<TToolValues>) => {
+  const toolInfo: ToolInfo = { name, label, icon };
   return {
     ...restOfToolDefinitions,
     name,
@@ -44,33 +53,33 @@ const createTool = <T,>({
         displayMode,
         ...restOfViewerProps
       }: {
-        values: T;
+        values: TToolValues;
         displayMode: DisplayMode;
       }) =>
         viewer({
           Component,
           displayMode,
           values,
-          toolData,
+          toolInfo,
           restOfViewerProps,
           restOfToolDefinitions,
         }),
       exporters: {
-        web: (values: T, ...restOfExporterParameters: any[]) =>
+        web: (values: TToolValues, ...restOfExporterParameters: any[]) =>
           exporter({
             Component,
             displayMode: 'web',
             values,
-            toolData,
+            toolInfo,
             restOfExporterParameters,
             restOfToolDefinitions,
           }),
-        email: (values: T, ...restOfExporterParameters: any[]) =>
+        email: (values: TToolValues, ...restOfExporterParameters: any[]) =>
           exporter({
             Component,
             displayMode: 'email',
             values,
-            toolData,
+            toolInfo,
             restOfExporterParameters,
             restOfToolDefinitions,
           }),
@@ -79,18 +88,18 @@ const createTool = <T,>({
   };
 };
 
-const viewer = <T,>({
+const viewer = <TToolValues,>({
   Component,
   displayMode,
   values,
-  toolData,
+  toolInfo,
   restOfViewerProps,
   restOfToolDefinitions,
 }: {
-  Component: ViewerComponent<T>;
+  Component: ViewerComponent<TToolValues>;
   displayMode: DisplayMode;
-  values: T;
-  toolData: ToolData;
+  values: TToolValues;
+  toolInfo: ToolInfo;
   restOfViewerProps: ObjectWithStringProps;
   restOfToolDefinitions: ObjectWithStringProps;
 }) => {
@@ -100,7 +109,7 @@ const viewer = <T,>({
       Component,
       displayMode,
       isViewer,
-      toolData,
+      toolInfo,
       restOfViewerProps,
       restOfToolDefinitions,
       values,
@@ -113,23 +122,23 @@ const viewer = <T,>({
       values={values}
       displayMode={displayMode}
       isViewer={isViewer}
-      toolData={toolData}
+      toolInfo={toolInfo}
     />
   );
 };
 
-const exporter = <T,>({
+const exporter = <TToolValues,>({
   Component,
   displayMode,
   values,
-  toolData,
+  toolInfo,
   restOfExporterParameters,
   restOfToolDefinitions,
 }: {
-  Component: ViewerComponent<T>;
+  Component: ViewerComponent<TToolValues>;
   displayMode: DisplayMode;
-  values: T;
-  toolData: ToolData;
+  values: TToolValues;
+  toolInfo: ToolInfo;
   restOfExporterParameters: ObjectWithStringProps;
   restOfToolDefinitions: ObjectWithStringProps;
 }) => {
@@ -142,7 +151,7 @@ const exporter = <T,>({
       Component,
       displayMode,
       isViewer,
-      toolData,
+      toolInfo,
       restOfExporterParameters,
       restOfToolDefinitions,
       values,
@@ -152,7 +161,7 @@ const exporter = <T,>({
       values={values}
       displayMode={displayMode}
       isViewer={isViewer}
-      toolData={toolData}
+      toolInfo={toolInfo}
     />,
   );
 };
