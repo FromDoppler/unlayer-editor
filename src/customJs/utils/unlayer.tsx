@@ -10,8 +10,9 @@ import {
   ToolData,
   ViewerComponent,
 } from '../types';
+import { getConfiguration } from '../configuration';
 
-const enableLogging = false;
+const { previewMode: enableLogging } = getConfiguration();
 
 export const setLinkTypes = (
   linkTypes: { name: LinkType; enabled: boolean }[],
