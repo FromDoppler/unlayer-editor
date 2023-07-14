@@ -1,14 +1,12 @@
 import { React } from '../../unlayer-react';
-import { BaseToolData, SocialNetworkId, WidgetComponent } from '../../types';
+import { SocialNetworkId, WidgetComponent } from '../../types';
 import { Toggle } from '../../components/Toggle';
 import { SocialNetworksValue } from './SocialNetworksValue';
-
-type Option = { id: SocialNetworkId; name: string } & Record<string, any>;
 
 export const SocialNetworksWidget: WidgetComponent<
   SocialNetworksValue,
   void,
-  BaseToolData & { options?: Option[] }
+  { options?: { id: SocialNetworkId; name: string }[] }
 > = ({
   value: currentSelection = [],
   updateValue,
