@@ -22,11 +22,13 @@ export const registerPropertyEditor = <
   TPropertyName extends string,
   TPropertyValue,
   TToolValues,
+  TToolData,
 >(
   propertyDefinition: ReactPropertyDefinition<
     TPropertyName,
     TPropertyValue,
-    TToolValues
+    TToolValues,
+    TToolData
   >,
 ) => unlayer.registerPropertyEditor(propertyDefinition);
 

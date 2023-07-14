@@ -1,11 +1,16 @@
+import { ReactNode } from '../../unlayer-react';
 import { ReactPropertyDefinition } from '../../types';
 import { UrlValue } from './UrlValue';
 import { UrlWidget } from './UrlWidget';
 
+export const urlPropertyEditor = 'url';
+
 export const urlPropertyEditorDefinition: ReactPropertyDefinition<
-  'url',
-  UrlValue
+  typeof urlPropertyEditor,
+  UrlValue,
+  void,
+  { help?: ReactNode }
 > = {
-  name: 'url',
+  name: urlPropertyEditor,
   Widget: UrlWidget,
 };

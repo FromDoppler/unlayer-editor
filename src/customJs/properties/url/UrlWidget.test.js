@@ -51,8 +51,8 @@ describe(UrlWidget.name, () => {
       setLocale('en-US');
 
       const unlayerPropertyProps = {
+        label,
         data: {
-          label,
           help,
         },
         value: 'this is a input value',

@@ -11,25 +11,22 @@ export type LinkType = 'phone' | 'email' | 'sms';
 
 export type ObjectWithStringProps = Record<string, any>;
 
-export type BaseToolData = {
-  label?: string;
-};
-
 export type WidgetComponentProps<
   TPropertyValue,
   TToolValues = void,
-  TToolData extends BaseToolData = BaseToolData,
+  TToolData = void,
 > = {
   value: TPropertyValue;
   updateValue: (v: TPropertyValue) => void;
   data: TToolData;
   values: TToolValues;
+  label?: string;
 };
 
 export type WidgetComponent<
   TPropertyValue,
   TToolValues = void,
-  TToolData extends BaseToolData = BaseToolData,
+  TToolData = void,
 > = (
   props: WidgetComponentProps<TPropertyValue, TToolValues, TToolData>,
 ) => ReactNode;
@@ -37,8 +34,8 @@ export type WidgetComponent<
 export type ReactPropertyDefinition<
   TPropertyName extends string,
   TPropertyValue,
-  TToolValues = void,
-  TToolData extends BaseToolData = BaseToolData,
+  TToolValues,
+  TToolData,
 > = {
   name: TPropertyName;
   Widget: WidgetComponent<TPropertyValue, TToolValues, TToolData>;
