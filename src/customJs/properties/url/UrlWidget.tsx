@@ -8,8 +8,8 @@ import { UrlValue } from './UrlValue';
 export const UrlWidget: WidgetComponent<
   UrlValue,
   void,
-  { label?: string; help?: ReactNode }
-> = ({ value, updateValue, data: { label, help } }) => (
+  { help?: ReactNode }
+> = ({ value, updateValue, label, data: { help } }) => (
   <>
     <UnlayerLabel label={label ?? ''} />
     <div className="blockbuilder-widget-label mb-2">

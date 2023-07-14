@@ -7,7 +7,7 @@ export const urlPropertyEditorDefinition: ReactPropertyDefinition<
   'url',
   UrlValue,
   void,
-  { label?: string; help?: ReactNode }
+  { help?: ReactNode }
 > = {
   name: 'url',
   Widget: UrlWidget,
