@@ -3,7 +3,7 @@ import { SOCIAL_NETWORKS } from '../../constants';
 import { SocialShareViewer } from './SocialShareViewer';
 import { ReactToolDefinition } from '../../types';
 import { SocialShareValues } from './SocialShareValues';
-import { urlPropertyEditor } from '../../properties/url';
+import { socialNetworksPropertyEditor } from '../../properties/social_networks';
 
 export const getSocialShareToolDefinition: () => ReactToolDefinition<SocialShareValues> =
   () => ({
@@ -40,7 +40,7 @@ export const getSocialShareToolDefinition: () => ReactToolDefinition<SocialShare
               options: SOCIAL_NETWORKS,
             },
             defaultValue: SOCIAL_NETWORKS.map(({ id }) => id),
-            widget: urlPropertyEditor,
+            widget: socialNetworksPropertyEditor,
           },
         },
       },
