@@ -14,9 +14,13 @@ type Store = {
   promotionCodeEnabled: boolean;
 };
 
-let _configuration: Configuration;
+let _configuration: Configuration | undefined;
 
 const defaultLanguage = 'es';
+
+/** To be used in tests or very special scenarios */
+export const __invalidateConfigurationCache = () =>
+  (_configuration = undefined);
 
 export const getConfiguration = () =>
   (_configuration =

@@ -75,6 +75,11 @@ const App: React.FC = () => {
       `window["unlayer-extensions-configuration"] = {
         locale: "es",
         previewMode: true,
+        stores: [
+          { name: "MercadoShop", promotionCodeEnabled: true },
+          { name: "Magento", promotionCodeEnabled: false },
+          { name: "TiendaNube", promotionCodeEnabled: false }
+        ]
       };`,
       `${process.env.PUBLIC_URL}/customJs/index.js`,
     ],

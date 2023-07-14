@@ -10,8 +10,10 @@ import { urlPropertyEditorDefinition } from './properties/url';
 import { socialNetworksPropertyEditorDefinition } from './properties/social_networks';
 import { getSocialShareToolDefinition } from './tools/social_share_tool';
 import { getPayuButtonToolDefinition } from './tools/payu_button_tool';
+import { getPromoCodeToolDefinition } from './tools/promo_code';
+import { promoCodesPropertyEditorDefinition } from './properties/promo_codes';
 
-const { locale } = getConfiguration();
+const { locale, previewMode } = getConfiguration();
 
 const unlayerLocales = {
   es: 'es-ES',
@@ -32,11 +34,10 @@ setLinkTypes?.([
 
 registerPropertyEditor(urlPropertyEditorDefinition);
 registerPropertyEditor(socialNetworksPropertyEditorDefinition);
+registerPropertyEditor(promoCodesPropertyEditorDefinition);
 
 registerReactTool(getSocialShareToolDefinition());
 registerReactTool(getPayuButtonToolDefinition());
-
-// TODO: check promotionCodeEnabled and previewMode in getPromoCodeToolDefinition()
-// and return undefined if the tool should not be registered.
-// For Promo Code Tool, promotionCodeEnabled is enough to decide to show or
-// hide the tool. Other tools depend on the campaign.
+if (previewMode) {
+  registerReactTool(getPromoCodeToolDefinition());
+}
