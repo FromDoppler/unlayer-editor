@@ -17,8 +17,8 @@ export const getPayuButtonToolDefinition: () => ReactToolDefinition<PayuButtonVa
         options: {
           paymentURL: {
             widget: 'url',
+            label: intl.formatMessage({ id: '_dp.pay_button_link' }),
             data: {
-              label: intl.formatMessage({ id: '_dp.pay_button_link' }),
               help: PayuButtonHelp(),
             },
           },
