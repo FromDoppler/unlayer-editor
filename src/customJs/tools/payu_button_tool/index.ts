@@ -4,6 +4,7 @@ import { ASSETS_BASE_URL } from '../../constants';
 import { ReactToolDefinition } from '../../types';
 import { PayuButtonHelp } from './PayuButtonHelp';
 import { PayuButtonValues } from './PayuButtonValues';
+import { urlPropertyEditor } from '../../properties/url';
 
 export const getPayuButtonToolDefinition: () => ReactToolDefinition<PayuButtonValues> =
   () => ({
@@ -16,7 +17,7 @@ export const getPayuButtonToolDefinition: () => ReactToolDefinition<PayuButtonVa
         title: intl.formatMessage({ id: 'option_groups.button_options.title' }),
         options: {
           paymentURL: {
-            widget: 'url',
+            widget: urlPropertyEditor,
             label: intl.formatMessage({ id: '_dp.pay_button_link' }),
             data: {
               help: PayuButtonHelp(),

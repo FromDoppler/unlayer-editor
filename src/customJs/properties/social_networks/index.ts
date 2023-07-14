@@ -2,12 +2,14 @@ import { ReactPropertyDefinition, SocialNetworkId } from '../../types';
 import { SocialNetworksValue } from './SocialNetworksValue';
 import { SocialNetworksWidget } from './SocialNetworksWidget';
 
+export const socialNetworksPropertyEditor = 'social_networks';
+
 export const socialNetworksPropertyEditorDefinition: ReactPropertyDefinition<
-  'social_networks',
+  typeof socialNetworksPropertyEditor,
   SocialNetworksValue,
   void,
   { options?: { id: SocialNetworkId; name: string }[] }
 > = {
-  name: 'social_networks',
+  name: socialNetworksPropertyEditor,
   Widget: SocialNetworksWidget,
 };
