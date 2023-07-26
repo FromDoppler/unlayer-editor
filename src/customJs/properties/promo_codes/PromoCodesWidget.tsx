@@ -1,15 +1,13 @@
 import { React, useEffect, useState } from '../../unlayer-react';
 import { WidgetComponent } from '../../types';
-import {
-  PromoCodesValue,
-  StoresValue,
-  StoreDependentToolValues,
-} from './types';
+import { PromoCodesValue, StoreDependentToolValues } from './types';
 import { EMPTY_SELECTION } from '../../constants';
-import { timeout } from '../../utils/promises';
 import { addUnlayerLabel } from '../../components/UnlayerLabel';
 
 type CodeOption = { value: string; label: string };
+
+let lastRequestId = 0;
+const getRequestId = () => lastRequestId++;
 
 export const PromoCodesWidget: WidgetComponent<
   PromoCodesValue,
@@ -19,15 +17,41 @@ export const PromoCodesWidget: WidgetComponent<
   const [codeOptions, setCodeOptions] = useState<CodeOption[]>([]);
 
   useEffect(() => {
-    (async () => {
-      try {
-        setLoading(true);
-        const promoCodes = await loadPromoCodes({ store });
-        setCodeOptions(promoCodes);
-      } finally {
+    if (store === EMPTY_SELECTION) {
+      setLoading(false);
+      setCodeOptions([]);
+      return;
+    }
+
+    setLoading(true);
+
+    // TODO: encapsulate it
+    const requestId = getRequestId();
+
+    window.top?.postMessage(
+      {
+        requestId,
+        action: 'getPromoCodes',
+        store,
+      },
+      { targetOrigin: '*' },
+    );
+
+    const listener = (message: any) => {
+      if (
+        message.data.isResponse === true &&
+        requestId === message.data.requestId
+      ) {
+        setCodeOptions(message.data.value);
         setLoading(false);
       }
-    })();
+    };
+
+    window.addEventListener('message', listener);
+
+    return () => {
+      window.removeEventListener('message', listener);
+    };
   }, [store]);
 
   // TODO: show a spinner or something
@@ -46,29 +70,3 @@ export const PromoCodesWidget: WidgetComponent<
     </ul>
   );
 });
-
-// TODO: bring the promo codes from the backend
-const loadPromoCodes: ({
-  store,
-}: {
-  store: StoresValue;
-}) => Promise<CodeOption[]> = async ({ store }) => {
-  if (store === EMPTY_SELECTION) {
-    return [];
-  }
-  await timeout(3000);
-  return [
-    {
-      label: `10% off (${store})`,
-      value: `${store}-10abc`,
-    },
-    {
-      label: `20% off (${store})`,
-      value: `${store}-20cde`,
-    },
-    {
-      label: `30% off (${store})`,
-      value: `${store}-30efg`,
-    },
-  ];
-};
