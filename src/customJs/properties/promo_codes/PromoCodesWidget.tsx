@@ -3,6 +3,7 @@ import { WidgetComponent } from '../../types';
 import { PromoCodesValue, StoreDependentToolValues } from './types';
 import { EMPTY_SELECTION } from '../../constants';
 import { addUnlayerLabel } from '../../components/UnlayerLabel';
+import { getPromoCodes } from '../../utils/dopplerAppBridge';
 
 type CodeOption = { value: string; label: string };
 
@@ -25,19 +26,8 @@ export const PromoCodesWidget: WidgetComponent<
 
     setLoading(true);
 
-    // TODO: encapsulate it
     const requestId = getRequestId();
-
-    window.top?.postMessage(
-      {
-        requestId,
-        action: 'getPromoCodes',
-        store,
-      },
-      { targetOrigin: '*' },
-    );
-
-    const listener = (message: any) => {
+    const getPromoCodesResponseListener = (message: any) => {
       if (
         message.data.isResponse === true &&
         requestId === message.data.requestId
@@ -46,11 +36,10 @@ export const PromoCodesWidget: WidgetComponent<
         setLoading(false);
       }
     };
-
-    window.addEventListener('message', listener);
+    getPromoCodes(requestId, store, getPromoCodesResponseListener);
 
     return () => {
-      window.removeEventListener('message', listener);
+      window.removeEventListener('message', getPromoCodesResponseListener);
     };
   }, [store]);
 
