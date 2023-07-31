@@ -3,45 +3,15 @@ import { WidgetComponent } from '../../types';
 import { PromoCodesValue, StoreDependentToolValues } from './types';
 import { EMPTY_SELECTION } from '../../constants';
 import { addUnlayerLabel } from '../../components/UnlayerLabel';
-import { getPromoCodes } from '../../utils/dopplerAppBridge';
+import { requestDopplerApp } from '../../utils/dopplerAppBridge';
 
 type CodeOption = { value: string; label: string };
-
-let lastRequestId = 0;
-const getRequestId = () => lastRequestId++;
 
 export const PromoCodesWidget: WidgetComponent<
   PromoCodesValue,
   StoreDependentToolValues
 > = addUnlayerLabel(({ value, updateValue, values: { store } }) => {
-  const [loading, setLoading] = useState(false);
-  const [codeOptions, setCodeOptions] = useState<CodeOption[]>([]);
-
-  useEffect(() => {
-    if (store === EMPTY_SELECTION) {
-      setLoading(false);
-      setCodeOptions([]);
-      return;
-    }
-
-    setLoading(true);
-
-    const requestId = getRequestId();
-    const getPromoCodesResponseListener = (message: any) => {
-      if (
-        message.data.isResponse === true &&
-        requestId === message.data.requestId
-      ) {
-        setCodeOptions(message.data.value);
-        setLoading(false);
-      }
-    };
-    getPromoCodes(requestId, store, getPromoCodesResponseListener);
-
-    return () => {
-      window.removeEventListener('message', getPromoCodesResponseListener);
-    };
-  }, [store]);
+  const { loading, codeOptions } = usePromoCodes({ store });
 
   // TODO: show a spinner or something
   if (loading) {
@@ -59,3 +29,34 @@ export const PromoCodesWidget: WidgetComponent<
     </ul>
   );
 });
+
+const usePromoCodes = ({ store }: { store: string }) => {
+  const [loading, setLoading] = useState(false);
+  const [codeOptions, setCodeOptions] = useState<CodeOption[]>([]);
+
+  useEffect(() => {
+    if (store === EMPTY_SELECTION) {
+      setLoading(false);
+      setCodeOptions([]);
+      return;
+    }
+
+    setLoading(true);
+
+    const { destructor } = requestDopplerApp({
+      action: 'getPromoCodes',
+      store,
+      callback: (value: CodeOption[]) => {
+        setCodeOptions(value);
+        setLoading(false);
+      },
+    });
+
+    return destructor;
+  }, [store]);
+
+  return {
+    loading,
+    codeOptions,
+  };
+};
