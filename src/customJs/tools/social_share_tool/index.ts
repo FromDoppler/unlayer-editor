@@ -1,5 +1,5 @@
 import { intl } from '../../localization';
-import { SOCIAL_NETWORKS } from '../../constants';
+import { ASSETS_BASE_URL, SOCIAL_NETWORKS } from '../../constants';
 import { SocialShareViewer } from './SocialShareViewer';
 import { ReactToolDefinition } from '../../types';
 import { SocialShareValues } from './SocialShareValues';
@@ -9,7 +9,7 @@ export const getSocialShareToolDefinition: () => ReactToolDefinition<SocialShare
   () => ({
     name: 'social_share_tool',
     label: intl.formatMessage({ id: '_dp.social_share_title' }),
-    icon: 'fa-share-alt',
+    icon: `${ASSETS_BASE_URL}/share-node.svg`,
     Component: SocialShareViewer,
     options: {
       social_share_size: {
