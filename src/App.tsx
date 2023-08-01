@@ -76,9 +76,9 @@ const App: React.FC = () => {
         locale: "es",
         previewMode: true,
         stores: [
-          { name: "MercadoShop", promotionCodeEnabled: true },
+          { name: "MercadoShops", promotionCodeEnabled: true },
           { name: "Magento", promotionCodeEnabled: false },
-          { name: "TiendaNube", promotionCodeEnabled: false }
+          { name: "Tiendanube", promotionCodeEnabled: false }
         ]
       };`,
       `${process.env.PUBLIC_URL}/customJs/index.js`,
