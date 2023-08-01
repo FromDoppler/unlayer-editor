@@ -1,7 +1,7 @@
 import { React } from '../unlayer-react';
-import { ToolInfo, ViewerComponent } from '../types';
+import { ToolInfo } from '../types';
 
-export const EmptyViewer: ViewerComponent<void> = ({
+export const EmptyViewer = ({
   toolInfo,
   isViewer,
 }: {

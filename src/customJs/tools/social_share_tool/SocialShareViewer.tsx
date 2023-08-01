@@ -17,7 +17,7 @@ export const SocialShareViewer: ViewerComponent<SocialShareValues> = ({
     social_share_available.includes(id),
   );
   return selectedNetworks.length === 0 ? (
-    <EmptyViewer values={undefined} {...rest} />
+    <EmptyViewer {...rest} />
   ) : (
     <table cellPadding="0" cellSpacing="0" border={0} width="100%">
       <tr>

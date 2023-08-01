@@ -13,7 +13,7 @@ describe(EmptyViewer.name, () => {
   };
 
   it('should render the icon', async () => {
-    render(<EmptyViewer values={undefined} {...rest} />);
+    render(<EmptyViewer {...rest} />);
 
     const img = screen.getByRole('img');
     expect(img).toBeDefined();
@@ -22,7 +22,7 @@ describe(EmptyViewer.name, () => {
   });
 
   it('must be render the label', async () => {
-    render(<EmptyViewer values={undefined} {...rest} />);
+    render(<EmptyViewer {...rest} />);
 
     const span = await screen.findByText(rest.toolInfo.label);
     expect(span).toBeDefined();
@@ -38,7 +38,7 @@ describe(EmptyViewer.name, () => {
       },
     };
 
-    const { container } = render(<EmptyViewer values={undefined} {...rest} />);
+    const { container } = render(<EmptyViewer {...rest} />);
 
     expect(container.firstChild).toBeNull();
   });
