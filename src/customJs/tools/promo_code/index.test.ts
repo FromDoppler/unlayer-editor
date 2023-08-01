@@ -18,9 +18,9 @@ describe(sut.name, () => {
     undefined,
     [],
     [
-      { name: 'MercadoShop', promotionCodeEnabled: false },
+      { name: 'MercadoShops', promotionCodeEnabled: false },
       { name: 'Magento', promotionCodeEnabled: false },
-      { name: 'TiendaNube', promotionCodeEnabled: false },
+      { name: 'Tiendanube', promotionCodeEnabled: false },
     ],
   ])(
     'should return undefined when there are no stores with promotion code',
@@ -40,9 +40,9 @@ describe(sut.name, () => {
     // Arrange
     (window as any)['unlayer-extensions-configuration'] = {
       stores: [
-        { name: 'MercadoShop', promotionCodeEnabled: true },
+        { name: 'MercadoShops', promotionCodeEnabled: true },
         { name: 'Magento', promotionCodeEnabled: false },
-        { name: 'TiendaNube', promotionCodeEnabled: false },
+        { name: 'Tiendanube', promotionCodeEnabled: false },
       ],
     };
 
@@ -61,9 +61,9 @@ describe(sut.name, () => {
     // Arrange
     (window as any)['unlayer-extensions-configuration'] = {
       stores: [
-        { name: 'MercadoShop', promotionCodeEnabled: true },
+        { name: 'MercadoShops', promotionCodeEnabled: true },
         { name: 'Magento', promotionCodeEnabled: false },
-        { name: 'TiendaNube', promotionCodeEnabled: false },
+        { name: 'Tiendanube', promotionCodeEnabled: false },
       ],
     };
 
@@ -82,20 +82,20 @@ describe(sut.name, () => {
       value: EMPTY_SELECTION,
     });
     expect(property.data.options).toContainEqual({
-      label: 'MercadoShop',
-      value: 'MercadoShop',
+      label: 'MercadoShops',
+      value: 'MercadoShops',
     });
     // When there is only one store, it is selected as default option
-    expect(property.defaultValue).toBe('MercadoShop');
+    expect(property.defaultValue).toBe('MercadoShops');
   });
 
   it('should return right store property when there are more than a store with promotion code', () => {
     // Arrange
     (window as any)['unlayer-extensions-configuration'] = {
       stores: [
-        { name: 'MercadoShop', promotionCodeEnabled: true },
+        { name: 'MercadoShops', promotionCodeEnabled: true },
         { name: 'Magento', promotionCodeEnabled: true },
-        { name: 'TiendaNube', promotionCodeEnabled: false },
+        { name: 'Tiendanube', promotionCodeEnabled: false },
       ],
     };
 
@@ -114,8 +114,8 @@ describe(sut.name, () => {
       value: EMPTY_SELECTION,
     });
     expect(property.data.options).toContainEqual({
-      label: 'MercadoShop',
-      value: 'MercadoShop',
+      label: 'MercadoShops',
+      value: 'MercadoShops',
     });
     expect(property.data.options).toContainEqual({
       label: 'Magento',
