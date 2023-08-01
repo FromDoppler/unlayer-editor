@@ -3,7 +3,7 @@ import { PromoCodeViewer } from './PromoCodeViewer';
 import { ReactToolDefinition } from '../../types';
 import { PromoCodeValues } from './PromoCodeValues';
 import { getConfiguration } from '../../configuration';
-import { EMPTY_SELECTION } from '../../constants';
+import { ASSETS_BASE_URL, EMPTY_SELECTION } from '../../constants';
 import { promoCodesProperty } from '../../properties/promo_codes';
 
 export const getPromoCodeToolDefinition: () =>
@@ -21,7 +21,7 @@ export const getPromoCodeToolDefinition: () =>
   return {
     name: 'promo_code',
     label: intl.formatMessage({ id: '_dp.promo_code' }),
-    icon: 'fa-share-alt',
+    icon: `${ASSETS_BASE_URL}/promotion_code.svg`,
     Component: PromoCodeViewer,
     options: {
       promo_code: {
