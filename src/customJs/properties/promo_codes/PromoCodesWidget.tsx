@@ -1,13 +1,9 @@
 import { React, useEffect, useState } from '../../unlayer-react';
 import { WidgetComponent } from '../../types';
-import {
-  PromoCodesValue,
-  StoresValue,
-  StoreDependentToolValues,
-} from './types';
+import { PromoCodesValue, StoreDependentToolValues } from './types';
 import { EMPTY_SELECTION } from '../../constants';
-import { timeout } from '../../utils/promises';
 import { addUnlayerLabel } from '../../components/UnlayerLabel';
+import { requestDopplerApp } from '../../utils/dopplerAppBridge';
 
 type CodeOption = { value: string; label: string };
 
@@ -15,20 +11,7 @@ export const PromoCodesWidget: WidgetComponent<
   PromoCodesValue,
   StoreDependentToolValues
 > = addUnlayerLabel(({ value, updateValue, values: { store } }) => {
-  const [loading, setLoading] = useState(false);
-  const [codeOptions, setCodeOptions] = useState<CodeOption[]>([]);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        setLoading(true);
-        const promoCodes = await loadPromoCodes({ store });
-        setCodeOptions(promoCodes);
-      } finally {
-        setLoading(false);
-      }
-    })();
-  }, [store]);
+  const { loading, codeOptions } = usePromoCodes({ store });
 
   // TODO: show a spinner or something
   if (loading) {
@@ -47,28 +30,33 @@ export const PromoCodesWidget: WidgetComponent<
   );
 });
 
-// TODO: bring the promo codes from the backend
-const loadPromoCodes: ({
-  store,
-}: {
-  store: StoresValue;
-}) => Promise<CodeOption[]> = async ({ store }) => {
-  if (store === EMPTY_SELECTION) {
-    return [];
-  }
-  await timeout(3000);
-  return [
-    {
-      label: `10% off (${store})`,
-      value: `${store}-10abc`,
-    },
-    {
-      label: `20% off (${store})`,
-      value: `${store}-20cde`,
-    },
-    {
-      label: `30% off (${store})`,
-      value: `${store}-30efg`,
-    },
-  ];
+const usePromoCodes = ({ store }: { store: string }) => {
+  const [loading, setLoading] = useState(false);
+  const [codeOptions, setCodeOptions] = useState<CodeOption[]>([]);
+
+  useEffect(() => {
+    if (store === EMPTY_SELECTION) {
+      setLoading(false);
+      setCodeOptions([]);
+      return;
+    }
+
+    setLoading(true);
+
+    const { destructor } = requestDopplerApp({
+      action: 'getPromoCodes',
+      store,
+      callback: (value: CodeOption[]) => {
+        setCodeOptions(value);
+        setLoading(false);
+      },
+    });
+
+    return destructor;
+  }, [store]);
+
+  return {
+    loading,
+    codeOptions,
+  };
 };
