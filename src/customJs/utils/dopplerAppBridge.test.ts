@@ -108,10 +108,10 @@ describe(requestDopplerApp.name, () => {
       getListenerFromFirstCallAndSecondParameter,
     } = createTestContext();
 
-    // Act
     const { destructor } = executeRequest();
     const listener = getListenerFromFirstCallAndSecondParameter();
 
+    // Act
     // Unmounting the component
     destructor();
 
@@ -127,21 +127,16 @@ describe(requestDopplerApp.name, () => {
     const {
       executeRequest,
       requestParameters,
-      getRequestIdFromFirstCallAndFirstParameter,
       getListenerFromFirstCallAndSecondParameter,
     } = createTestContext();
 
-    // Act
     executeRequest();
-
-    // Arrange
     const listener = getListenerFromFirstCallAndSecondParameter();
-    const requestId = getRequestIdFromFirstCallAndFirstParameter();
 
     // The response of another request (with another requestId)
     const anotherResponseWithDifferentRequestId = {
       isResponse: true,
-      requestId: requestId * -1, // ensure a requestId different to the previous one
+      requestId: 9876543210, // ensure a requestId different to the previous one
       value: {},
     };
 
@@ -161,10 +156,8 @@ describe(requestDopplerApp.name, () => {
       getListenerFromFirstCallAndSecondParameter,
     } = createTestContext();
 
-    // Act
     executeRequest();
 
-    // Arrange
     const listener = getListenerFromFirstCallAndSecondParameter();
     const requestId = getRequestIdFromFirstCallAndFirstParameter();
 
