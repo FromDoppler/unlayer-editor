@@ -1,6 +1,10 @@
 import { React, useEffect, useState } from '../../unlayer-react';
 import { WidgetComponent } from '../../types';
-import { PromoCodesValue, StoreDependentToolValues } from './types';
+import {
+  PromoCodesValue,
+  StoreDependentToolValues,
+  PromoCodeItem,
+} from './types';
 import { EMPTY_SELECTION } from '../../constants';
 import { addUnlayerLabel } from '../../components/UnlayerLabel';
 import { requestDopplerApp } from '../../utils/dopplerAppBridge';
@@ -46,8 +50,9 @@ const usePromoCodes = ({ store }: { store: string }) => {
     const { destructor } = requestDopplerApp({
       action: 'getPromoCodes',
       store,
-      callback: (value: CodeOption[]) => {
-        setCodeOptions(value);
+      callback: (value: PromoCodeItem[]) => {
+        const itemsMapped = value.map((v) => mapCodeOption(v));
+        setCodeOptions(itemsMapped);
         setLoading(false);
       },
     });
@@ -59,4 +64,9 @@ const usePromoCodes = ({ store }: { store: string }) => {
     loading,
     codeOptions,
   };
+};
+
+const mapCodeOption = (item: PromoCodeItem): CodeOption => {
+  const label = item.type === 'money' ? `$${item.value}` : `${item.value}%`;
+  return { label: label, value: item.code };
 };
