@@ -1,13 +1,18 @@
 let lastRequestId = 0;
 
 export const requestDopplerApp = <TParameters extends object, TResult>({
+  global = window,
   action,
   callback,
   ...parameters
-}: { action: string; callback: (value: TResult) => void } & TParameters) => {
+}: {
+  global?: Window & typeof globalThis;
+  action: string;
+  callback: (value: TResult) => void;
+} & TParameters) => {
   const requestId = lastRequestId++;
 
-  window.top!.postMessage(
+  global.top!.postMessage(
     {
       requestId,
       action,
@@ -22,10 +27,10 @@ export const requestDopplerApp = <TParameters extends object, TResult>({
     }
   };
 
-  window.addEventListener('message', listener);
+  global.addEventListener('message', listener);
 
   const destructor = () => {
-    window.removeEventListener('message', listener);
+    global.removeEventListener('message', listener);
   };
   return { destructor };
 };
