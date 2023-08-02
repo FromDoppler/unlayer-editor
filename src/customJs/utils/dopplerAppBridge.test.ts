@@ -1,84 +1,207 @@
 import { requestDopplerApp } from './dopplerAppBridge';
 
 describe(requestDopplerApp.name, () => {
-  // It is not a unit test 🤦‍♂️
-  it('should call postMessage, setup evenListener, clean up listener on unmount and auto-increment requestId', async () => {
-    // Arrange
-    const store = 'myDummyStore';
-    const action = 'getPromoCodes';
-    const callback = jest.fn();
+  const createTestContext = () => {
+    const parameter1 = 'someParameter1';
+    const action = 'someAction';
+    const callbackMock = jest.fn();
 
-    const addEventListener = jest.spyOn(window, 'addEventListener');
-    const removeEventListener = jest.spyOn(window, 'removeEventListener');
-    const postMessage = jest
-      .spyOn(window.top!, 'postMessage')
-      .mockImplementation(() => {});
+    const windowMocks = {
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+      top: {
+        postMessage: jest.fn(),
+      },
+    };
+
+    const getRequestIdFromFirstCallAndFirstParameter = () =>
+      windowMocks.top.postMessage.mock.calls[0][0].requestId;
+
+    const getRequestIdFromSecondCallAndFirstParameter = () =>
+      windowMocks.top.postMessage.mock.calls[1][0].requestId;
+
+    const getListenerFromFirstCallAndSecondParameter = () =>
+      windowMocks.addEventListener.mock.calls[0][1] as (message: any) => void;
+
+    const executeRequest = () =>
+      requestDopplerApp({
+        global: windowMocks as any,
+        action,
+        parameter1,
+        callback: callbackMock,
+      });
+
+    return {
+      windowMocks,
+      executeRequest,
+      requestParameters: {
+        action,
+        parameter1,
+        callbackMock,
+      },
+      getRequestIdFromFirstCallAndFirstParameter,
+      getRequestIdFromSecondCallAndFirstParameter,
+      getListenerFromFirstCallAndSecondParameter,
+    };
+  };
+
+  it('should call to "postMessage" with the proper parameters', async () => {
+    // Arrange
+    const { windowMocks, executeRequest, requestParameters } =
+      createTestContext();
 
     // Act
-    const { destructor } = requestDopplerApp({
-      action,
-      store,
-      callback,
-    });
+    executeRequest();
 
     // Assert
-    expect(addEventListener).toHaveBeenCalledWith(
+    expect(windowMocks.top.postMessage).toHaveBeenCalledWith(
+      {
+        requestId: expect.any(Number),
+        action: requestParameters.action,
+        parameter1: requestParameters.parameter1,
+      },
+      { targetOrigin: '*' },
+    );
+  });
+
+  it('should call to "addEventListener"', async () => {
+    // Arrange
+    const { windowMocks, executeRequest } = createTestContext();
+
+    // Act
+    executeRequest();
+
+    // Assert
+    expect(windowMocks.addEventListener).toHaveBeenCalledWith(
       'message',
       expect.any(Function),
     );
-    const listener = addEventListener.mock.calls[0][1] as (
-      message: any,
-    ) => void;
+  });
 
-    expect(postMessage).toHaveBeenCalledWith(
-      { requestId: expect.any(Number), action, store },
-      { targetOrigin: '*' },
-    );
-    const requestId = postMessage.mock.calls[0][0].requestId;
+  it('should return a function to invoke "destructor"', async () => {
+    // Arrange
+    const { executeRequest } = createTestContext();
 
-    expect(removeEventListener).not.toHaveBeenCalled();
+    // Act
+    const { destructor } = executeRequest();
+
+    // Assert
     expect(destructor).toEqual(expect.any(Function));
+  });
+
+  it('should not call to "removeEventListener" when "destructor" is not invoked', async () => {
+    // Arrange
+    const { windowMocks, executeRequest } = createTestContext();
+
+    // Act
+    executeRequest();
+
+    // Assert
+    expect(windowMocks.removeEventListener).not.toHaveBeenCalled();
+  });
+
+  it('should call "removeEventListener" when invoke "destructor"', async () => {
+    // Arrange
+    const {
+      windowMocks,
+      executeRequest,
+      getListenerFromFirstCallAndSecondParameter,
+    } = createTestContext();
+
+    // Act
+    const { destructor } = executeRequest();
+    const listener = getListenerFromFirstCallAndSecondParameter();
+
+    // Unmounting the component
+    destructor();
+
+    // Assert
+    expect(windowMocks.removeEventListener).toHaveBeenCalledWith(
+      'message',
+      listener,
+    );
+  });
+
+  it('should not call the "callback" fn when the response belongs to another request (different requestId)', async () => {
+    // Arrange
+    const {
+      executeRequest,
+      requestParameters,
+      getRequestIdFromFirstCallAndFirstParameter,
+      getListenerFromFirstCallAndSecondParameter,
+    } = createTestContext();
+
+    // Act
+    executeRequest();
 
     // Arrange
-    // The response of another request
-    const anotherResponse = {
+    const listener = getListenerFromFirstCallAndSecondParameter();
+    const requestId = getRequestIdFromFirstCallAndFirstParameter();
+
+    // The response of another request (with another requestId)
+    const anotherResponseWithDifferentRequestId = {
       isResponse: true,
-      requestId: 'another response',
+      requestId: requestId * -1, // ensure a requestId different to the previous one
       value: {},
     };
+
     // Act
-    listener({ data: anotherResponse });
+    listener({ data: anotherResponseWithDifferentRequestId });
+
     // Assert
-    expect(callback).not.toHaveBeenCalled();
+    expect(requestParameters.callbackMock).not.toHaveBeenCalled();
+  });
+
+  it('should call the "callback" fn when the response belongs to our request (same requestId)', async () => {
+    // Arrange
+    const {
+      executeRequest,
+      requestParameters,
+      getRequestIdFromFirstCallAndFirstParameter,
+      getListenerFromFirstCallAndSecondParameter,
+    } = createTestContext();
+
+    // Act
+    executeRequest();
 
     // Arrange
-    // The response of our request
+    const listener = getListenerFromFirstCallAndSecondParameter();
+    const requestId = getRequestIdFromFirstCallAndFirstParameter();
+
+    // The response of our request (the same requestId)
     const expectedResponseValue = 'expectedResponseValue';
     const expectedResponse = {
       isResponse: true,
       requestId,
       value: expectedResponseValue,
     };
+
     // Act
     listener({ data: expectedResponse });
+
     // Assert
-    expect(callback).toHaveBeenCalledWith(expectedResponseValue);
+    expect(requestParameters.callbackMock).toHaveBeenCalled();
+  });
+
+  it('should increment the "requestId" when execute a new request', async () => {
+    // Arrange
+    const {
+      executeRequest,
+      getRequestIdFromFirstCallAndFirstParameter,
+      getRequestIdFromSecondCallAndFirstParameter,
+    } = createTestContext();
 
     // Act
-    // Unmounting the component
-    destructor();
-    // Assert
-    expect(removeEventListener).toHaveBeenCalledWith('message', listener);
+    // Execute firt request
+    executeRequest();
+    // Execute a new request
+    executeRequest();
 
-    // Act
-    // Another call
-    requestDopplerApp({
-      action,
-      store,
-      callback,
-    });
+    // Arrange
+    const requestId = getRequestIdFromFirstCallAndFirstParameter();
+    const secondRequestId = getRequestIdFromSecondCallAndFirstParameter();
+
     // Assert
-    const secondRequestId = postMessage.mock.calls[1][0].requestId;
     expect(secondRequestId).toBe(requestId + 1);
   });
 });
