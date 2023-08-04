@@ -1,3 +1,7 @@
+import { timeout } from './customJs/utils/promises';
+
+const UNLAYER_ORIGIN = 'https://editor.unlayer.com';
+
 // DUMMY DATA
 
 const promoCodesDummyValues = {
@@ -28,8 +32,6 @@ const promoCodesDummyValues = {
 
 // END DUMMY DATA
 
-const UNLAYER_ORIGIN = 'https://editor.unlayer.com';
-
 const registerListener = <TParameters, TResult>(
   listenedAction: string,
   workerFunction: (parameters: TParameters) => Promise<TResult>,
@@ -38,7 +40,6 @@ const registerListener = <TParameters, TResult>(
     origin,
     data,
   }: MessageEvent<{ action: string; requestId: number } & TParameters>) => {
-    console.log('3333');
     if (origin !== UNLAYER_ORIGIN) {
       return;
     }
@@ -64,7 +65,7 @@ const registerListener = <TParameters, TResult>(
 
 export const registerListeners = () => {
   registerListener('getPromoCodes', async ({ store }: { store: string }) => {
-    // TODO: add timeout
+    await timeout(1000);
     return store.toLocaleLowerCase() === 'mercadoshops'
       ? promoCodesDummyValues.MercadoShops
       : [];
