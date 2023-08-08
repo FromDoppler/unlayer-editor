@@ -11,8 +11,16 @@ export const PromoCodeViewer: ViewerComponent<PromoCodeValues> = ({
   return values.promo_code === EMPTY_SELECTION ? (
     <EmptyViewer {...rest} />
   ) : (
-    <code>
-      <pre>{JSON.stringify(values, undefined, 2)}</pre>
-    </code>
+    <div
+      style={{
+        textAlign: values.alignment,
+        backgroundColor: values.backgroundColor,
+      }}
+      role="container"
+    >
+      <span style={{ color: values.textColor, fontSize: values.fontSize }}>
+        {values.promo_code}
+      </span>
+    </div>
   );
 };
