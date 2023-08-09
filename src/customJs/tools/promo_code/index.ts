@@ -35,9 +35,7 @@ export const getPromoCodeToolDefinition: () =>
               label: name,
             }),
           }),
-          promo_code: promoCodesProperty({
-            label: intl.formatMessage({ id: '_dp.promo_codes' }),
-          }),
+          promo_code: promoCodesProperty(),
         },
       },
       default: {
