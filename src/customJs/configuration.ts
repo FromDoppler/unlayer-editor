@@ -1,17 +1,14 @@
 // See https://github.com/FromDoppler/doppler-editors-webapp/blob/main/src/abstractions/domain/DopplerEditorSettings.ts
 // and unlayerExtensionsConfiguration in UnlayerEditorWrapper.tsx
 
+import { Store } from './types';
+
 type Configuration = {
   locale: 'en' | 'es';
   stores: Store[];
   /** True when there is at least one store with promotionCodeEnabled */
   promotionCodeEnabled: boolean;
   previewMode: boolean;
-};
-
-type Store = {
-  name: string;
-  promotionCodeEnabled: boolean;
 };
 
 let _configuration: Configuration | undefined;

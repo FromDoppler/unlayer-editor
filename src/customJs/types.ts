@@ -9,6 +9,11 @@ export type DisplayMode = 'email' | 'web';
 
 export type LinkType = 'phone' | 'email' | 'sms';
 
+export type Store = {
+  name: string;
+  promotionCodeEnabled: boolean;
+};
+
 export type ObjectWithStringProps = Record<string, any>;
 
 export type WidgetComponentProps<
