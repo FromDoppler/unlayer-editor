@@ -38,6 +38,21 @@ export const getPromoCodeToolDefinition: () =>
       default: {
         options: {
           alignment: alignmentProperty(),
+          backgroundColor: {
+            label: intl.formatMessage({ id: 'editor.background_color.label' }),
+            defaultValue: 'rgba(255,255,255, 0)',
+            widget: 'color_picker',
+          },
+          textColor: {
+            label: intl.formatMessage({ id: 'editor.color.label' }),
+            defaultValue: '#333333',
+            widget: 'color_picker',
+          },
+          fontSize: {
+            label: intl.formatMessage({ id: 'editor.font_size.label' }),
+            defaultValue: 36,
+            widget: 'font_size',
+          },
         },
       },
     },
