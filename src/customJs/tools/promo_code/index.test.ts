@@ -55,6 +55,24 @@ describe(sut.name, () => {
       defaultValue: 'center',
       widget: 'alignment',
     });
+
+    expect(result?.options.default.options.backgroundColor).toEqual({
+      label: messages_es['editor.background_color.label'],
+      defaultValue: 'rgba(255,255,255, 0)',
+      widget: 'color_picker',
+    });
+
+    expect(result?.options.default.options.textColor).toEqual({
+      label: messages_es['editor.color.label'],
+      defaultValue: '#333333',
+      widget: 'color_picker',
+    });
+
+    expect(result?.options.default.options.fontSize).toEqual({
+      label: messages_es['editor.font_size.label'],
+      defaultValue: 36,
+      widget: 'font_size',
+    });
   });
 
   it('should return right store property when there is only a store with promotion code', () => {
