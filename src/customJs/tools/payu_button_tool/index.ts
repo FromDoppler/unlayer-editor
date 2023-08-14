@@ -5,6 +5,7 @@ import { ReactToolDefinitionFrom } from '../../types';
 import { PayuButtonHelp } from './PayuButtonHelp';
 import { PayuButtonBase } from './types';
 import { urlPropertyEditor } from '../../properties/url';
+import { alignmentProperty } from '../../properties/helpers';
 
 export const getPayuButtonToolDefinition: () => ReactToolDefinitionFrom<PayuButtonBase> =
   () => ({
@@ -44,11 +45,7 @@ export const getPayuButtonToolDefinition: () => ReactToolDefinitionFrom<PayuButt
               ],
             },
           },
-          alignment: {
-            label: intl.formatMessage({ id: '_dp.alignment' }),
-            defaultValue: 'center',
-            widget: 'alignment',
-          },
+          alignment: alignmentProperty(),
         },
       },
     },

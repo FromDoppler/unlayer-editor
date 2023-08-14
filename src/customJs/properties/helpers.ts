@@ -35,7 +35,7 @@ export const dropdownProperty = <T>({
 
 export const alignmentProperty = () => ({
   label: intl.formatMessage({ id: 'editor.align.label' }),
-  defaultValue: 'center',
+  defaultValue: 'center' as const,
   widget: 'alignment',
 });
 
