@@ -88,9 +88,9 @@ export type ReactToolDefinition<
     defaultErrors,
     values,
   }: {
-    defaultErrors: any;
+    defaultErrors: ValidatorError[];
     values: TToolValues;
-  }) => any;
+  }) => ValidatorError[];
   propertyStates?: (
     values: TToolValues,
   ) => ToolValuesPropertyStates<TToolValues>;
@@ -219,3 +219,11 @@ type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
 export type ToolValuesFrom<TBase> = Readonly<
   UnionToIntersection<TBase[keyof TBase]>
 >;
+
+type ValidatorError = {
+  id: string;
+  icon: string;
+  severity: 'ERROR' | 'WARNING';
+  title: string;
+  description: string;
+};
