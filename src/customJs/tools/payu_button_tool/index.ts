@@ -1,12 +1,12 @@
 import { intl } from '../../localization';
 import { PayuButtonViewer } from './PayuButtonViewer';
 import { ASSETS_BASE_URL } from '../../constants';
-import { ReactToolDefinition } from '../../types';
+import { ReactToolDefinitionFrom } from '../../types';
 import { PayuButtonHelp } from './PayuButtonHelp';
-import { PayuButtonValues } from './PayuButtonValues';
+import { PayuButtonBase } from './types';
 import { urlPropertyEditor } from '../../properties/url';
 
-export const getPayuButtonToolDefinition: () => ReactToolDefinition<PayuButtonValues> =
+export const getPayuButtonToolDefinition: () => ReactToolDefinitionFrom<PayuButtonBase> =
   () => ({
     name: 'payu_button_tool',
     label: intl.formatMessage({ id: '_dp.payu_button' }),
