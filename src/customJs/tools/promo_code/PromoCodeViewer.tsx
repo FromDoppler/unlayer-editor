@@ -1,6 +1,6 @@
 import { React } from '../../unlayer-react';
 import { ViewerComponent } from '../../types';
-import { PromoCodeValues } from './PromoCodeValues';
+import { PromoCodeValues } from './types';
 import { EmptyViewer } from '../../components/EmptyViewer';
 import { EMPTY_SELECTION } from '../../constants';
 

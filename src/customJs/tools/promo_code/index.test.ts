@@ -70,7 +70,7 @@ describe(sut.name, () => {
 
     expect(result?.options.default.options.fontSize).toEqual({
       label: messages_es['editor.font_size.label'],
-      defaultValue: 36,
+      defaultValue: '36px',
       widget: 'font_size',
     });
   });
@@ -89,9 +89,9 @@ describe(sut.name, () => {
     const result = sut();
 
     // Assert
-    const propertyGroup = result?.options.promo_code;
+    const propertyGroup = result!.options.promo_code;
     expect(propertyGroup.title).toBe(messages_es['_dp.promo_code']);
-    const property = result?.options.promo_code.options.store;
+    const property = result!.options.promo_code.options.store;
     expect(property.label).toBe(messages_es['_dp.store']);
     expect(property.widget).toBe('dropdown');
     expect(property.data.options.length).toBe(2);
@@ -121,9 +121,9 @@ describe(sut.name, () => {
     const result = sut();
 
     // Assert
-    const propertyGroup = result?.options.promo_code;
+    const propertyGroup = result!.options.promo_code;
     expect(propertyGroup.title).toBe(messages_es['_dp.promo_code']);
-    const property = result?.options.promo_code.options.store;
+    const property = result!.options.promo_code.options.store;
     expect(property.label).toBe(messages_es['_dp.store']);
     expect(property.widget).toBe('dropdown');
     expect(property.data.options.length).toBe(3);
