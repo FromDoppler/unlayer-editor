@@ -2,7 +2,7 @@ import { React } from '../../unlayer-react';
 import { intl } from '../../localization';
 import { SOCIAL_NETWORKS } from '../../constants';
 import { ViewerComponent } from '../../types';
-import { SocialShareValues } from './SocialShareValues';
+import { SocialShareValues } from './types';
 import { EmptyViewer } from '../../components/EmptyViewer';
 
 export const SocialShareViewer: ViewerComponent<SocialShareValues> = ({
