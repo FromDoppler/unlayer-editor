@@ -32,17 +32,17 @@ export const registerPropertyEditor = <
   >,
 ) => unlayer.registerPropertyEditor(propertyDefinition);
 
-export const registerReactTool = <TToolValues,>(
-  toolDefinition?: ReactToolDefinition<TToolValues>,
+export const registerReactTool = <TToolValues, TToolOptions>(
+  toolDefinition?: ReactToolDefinition<TToolValues, TToolOptions>,
 ) => toolDefinition && unlayer.registerTool(createTool(toolDefinition));
 
-const createTool = <TToolValues,>({
+const createTool = <TToolValues, TToolOptions>({
   name,
   label,
   icon,
   Component,
   ...restOfToolDefinitions
-}: ReactToolDefinition<TToolValues>) => {
+}: ReactToolDefinition<TToolValues, TToolOptions>) => {
   const toolInfo: ToolInfo = { name, label, icon };
   return {
     ...restOfToolDefinitions,

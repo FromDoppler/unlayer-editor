@@ -1,4 +1,4 @@
-import { ReactProperty, ReactPropertyDefinition } from '../../types';
+import { UnlayerProperty, ReactPropertyDefinition } from '../../types';
 import { PromoCodesValue, StoreDependentToolValues } from './types';
 import { PromoCodesWidget } from './PromoCodesWidget';
 import { EMPTY_SELECTION } from '../../constants';
@@ -19,7 +19,7 @@ export const promoCodesPropertyEditorDefinition: ReactPropertyDefinition<
 
 export const promoCodesProperty: (parameters?: {
   label?: string;
-}) => ReactProperty<promoCodesPropertyEditor, PromoCodesValue> = ({
+}) => UnlayerProperty<PromoCodesValue, promoCodesPropertyEditor> = ({
   label,
 }: {
   label?: string;
