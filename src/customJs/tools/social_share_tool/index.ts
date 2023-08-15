@@ -1,11 +1,11 @@
 import { intl } from '../../localization';
 import { ASSETS_BASE_URL, SOCIAL_NETWORKS } from '../../constants';
 import { SocialShareViewer } from './SocialShareViewer';
-import { ReactToolDefinition } from '../../types';
-import { SocialShareValues } from './SocialShareValues';
+import { ReactToolDefinitionFrom } from '../../types';
+import { SocialShareBase } from './types';
 import { socialNetworksPropertyEditor } from '../../properties/social_networks';
 
-export const getSocialShareToolDefinition: () => ReactToolDefinition<SocialShareValues> =
+export const getSocialShareToolDefinition: () => ReactToolDefinitionFrom<SocialShareBase> =
   () => ({
     name: 'social_share_tool',
     label: intl.formatMessage({ id: '_dp.social_share_title' }),

@@ -1,6 +1,6 @@
 import { React } from '../../unlayer-react';
 import { intl } from '../../localization';
-import { PayuButtonValues } from './PayuButtonValues';
+import { PayuButtonValues } from './types';
 import { ViewerComponent } from '../../types';
 
 export const PayuButtonViewer: ViewerComponent<PayuButtonValues> = ({

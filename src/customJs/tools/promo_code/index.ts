@@ -1,7 +1,7 @@
 import { intl } from '../../localization';
 import { PromoCodeViewer } from './PromoCodeViewer';
-import { ReactToolDefinition } from '../../types';
-import { PromoCodeValues } from './PromoCodeValues';
+import { ReactToolDefinitionFrom } from '../../types';
+import { PromoCodeBase, PromoCodeValues } from './types';
 import { getConfiguration } from '../../configuration';
 import { ASSETS_BASE_URL, EMPTY_SELECTION } from '../../constants';
 import { promoCodesProperty } from '../../properties/promo_codes';
@@ -11,7 +11,7 @@ import {
 } from '../../properties/helpers';
 
 export const getPromoCodeToolDefinition: () =>
-  | ReactToolDefinition<PromoCodeValues>
+  | ReactToolDefinitionFrom<PromoCodeBase>
   | undefined = () => {
   const { stores } = getConfiguration();
   const storesWithPromoCode = stores.filter(
@@ -50,7 +50,7 @@ export const getPromoCodeToolDefinition: () =>
           },
           fontSize: {
             label: intl.formatMessage({ id: 'editor.font_size.label' }),
-            defaultValue: 36,
+            defaultValue: '36px',
             widget: 'font_size',
           },
         },
@@ -62,14 +62,14 @@ export const getPromoCodeToolDefinition: () =>
     }),
     // See https://docs.unlayer.com/docs/transform-property-values
     transformer: (
-      values: {
+      values: PromoCodeValues,
+      source: {
         // The name of the updated property (ie. store or promo_code)
         name: string;
         // The new value of the updated property
         value: any;
       },
       // The updated
-      source: PromoCodeValues,
     ) => {
       // TODO: demo purposes, remove this code
       console.log({ transformer: { values, source } });
