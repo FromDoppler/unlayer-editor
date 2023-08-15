@@ -16,21 +16,51 @@ export const PromoCodesWidget: WidgetComponent<
   StoreDependentToolValues
 > = addUnlayerLabel(({ value, updateValue, values: { store } }) => {
   const { loading, codeOptions } = usePromoCodes({ store });
+  const changeValue = (e: any) => updateValue(e.target.value);
+
+  const containerStyle = {
+    margin: '5px',
+    font: '400 1.2em Roboto,sans-serif',
+    color: '#333',
+  } as const;
+
+  const spanCodeStyle = {
+    margin: '0 5px',
+    width: '70%',
+    fontWeight: 600,
+  } as const;
+
+  const spanStyle = {
+    marginLeft: '15px',
+  };
 
   // TODO: show a spinner or something
   if (loading) {
     return <div>LOADING...</div>;
   }
 
-  // TODO: show the options as radio buttons
   return (
-    <ul>
+    <div role="container">
       {codeOptions.map((x) => (
-        <li key={x.value} onClick={() => updateValue(x.value)}>
-          {x.value === value ? '[x]' : '[ ]'} {x.label}
-        </li>
+        <div className="form-check" style={containerStyle} key={x.value}>
+          <input
+            type="radio"
+            className="form-check-input"
+            value={x.value}
+            name="promoCodeRadioInput"
+            onChange={changeValue}
+            checked={x.value === value}
+          />
+          <label
+            className="form-check-label"
+            onClick={() => updateValue(x.value)}
+          >
+            <span style={spanCodeStyle}>{x.value}</span>
+            <span style={spanStyle}>{x.label}</span>
+          </label>
+        </div>
       ))}
-    </ul>
+    </div>
   );
 });
 
