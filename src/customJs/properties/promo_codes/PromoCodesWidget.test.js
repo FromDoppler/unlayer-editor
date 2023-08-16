@@ -133,7 +133,7 @@ describe('Promocode widget', () => {
     render(<PromoCodesWidget {...unlayerPropertyProps} />);
 
     const labelSpan = await screen.findByText('100%');
-    expect(labelSpan).toBeDefined;
+    expect(labelSpan).toBeDefined();
   });
 
   it('must be render promo code checked', async () => {
