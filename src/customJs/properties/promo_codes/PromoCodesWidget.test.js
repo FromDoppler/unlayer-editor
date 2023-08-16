@@ -3,6 +3,10 @@ import { render, screen } from '@testing-library/react';
 import { PromoCodesWidget } from './PromoCodesWidget';
 import { EMPTY_SELECTION } from '../../constants';
 import { requestDopplerApp } from '../../utils/dopplerAppBridge';
+import { setLocale } from '../../localization';
+
+// Required to initialize intl
+setLocale('es-ES');
 
 jest.mock('../../utils/dopplerAppBridge');
 
@@ -156,5 +160,27 @@ describe('Promocode widget', () => {
 
     const radioInput = await screen.findByRole('radio');
     expect(radioInput.checked).toEqual(true);
+  });
+
+  it('must be render promo code spinner waiting the request', async () => {
+    requestDopplerApp.mockImplementation((params) => {
+      // params.callback([
+      //   {
+      //     code: 'promoCodeTest',
+      //     type: 'percen',
+      //     value: 100,
+      //     useLimit: 1,
+      //     minPaymentAmount: 1,
+      //   },
+      // ]);
+      const destructor = () => {};
+      return destructor;
+    });
+
+    prepareUnlayerGlobalObject();
+    render(<PromoCodesWidget {...unlayerPropertyProps} />);
+
+    const spinnerContainer = await screen.findByRole('status');
+    expect(spinnerContainer).toBeDefined();
   });
 });
