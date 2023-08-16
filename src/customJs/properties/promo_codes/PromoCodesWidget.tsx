@@ -8,6 +8,7 @@ import {
 import { EMPTY_SELECTION } from '../../constants';
 import { addUnlayerLabel } from '../../components/UnlayerLabel';
 import { requestDopplerApp } from '../../utils/dopplerAppBridge';
+import { intl } from '../../localization';
 
 type CodeOption = { value: string; label: string };
 
@@ -17,6 +18,12 @@ export const PromoCodesWidget: WidgetComponent<
 > = addUnlayerLabel(({ value, updateValue, values: { store } }) => {
   const { loading, codeOptions } = usePromoCodes({ store });
   const changeValue = (e: any) => updateValue(e.target.value);
+
+  const loadingStyle = {
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+  } as const;
 
   const containerStyle = {
     margin: '5px',
@@ -34,9 +41,15 @@ export const PromoCodesWidget: WidgetComponent<
     marginLeft: '15px',
   };
 
-  // TODO: show a spinner or something
   if (loading) {
-    return <div>LOADING...</div>;
+    return (
+      <div style={loadingStyle}>
+        <div className="spinner-border text-secondary" role="status"></div>
+        <span className="visually-hidden" style={containerStyle}>
+          {intl.formatMessage({ id: 'labels.loading' })}...
+        </span>
+      </div>
+    );
   }
 
   return (
