@@ -89,6 +89,19 @@ export const getProductToolDefinition: () =>
           }),
         },
       },
+      discount: {
+        title: $t('_dp.discount'),
+        options: {
+          discountShown: toggleShowProperty(),
+          discountText: textProperty({
+            label: $t('_dp.discount_text'),
+          }),
+          discountFont: fontFamilyProperty(),
+          discountFontWeight: fontWeightProperty(),
+          discountFontSize: fontSizeProperty(),
+          discountColor: colorProperty(),
+        },
+      },
     },
   };
 };

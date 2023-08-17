@@ -40,6 +40,14 @@ export type ProductBase = Readonly<{
     pricesDiscountPriceFontSize: PixelSize;
     pricesDiscountPriceColor: Color;
   };
+  discount: {
+    discountShown: boolean;
+    discountText: string;
+    discountFont: FontFamily;
+    discountFontWeight: FontWeight;
+    discountFontSize: PixelSize;
+    discountColor: Color;
+  };
 }>;
 
 export type ProductPropertyGroups = PropertyGroupsFrom<ProductBase>;

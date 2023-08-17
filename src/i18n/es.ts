@@ -5,6 +5,8 @@ import { ASSETS_BASE_URL, HELP_BASE_URL } from '../customJs/constants';
 export const messages_es = {
   '_dp.alignment': `Alineación`,
   '_dp.big': `Grande`,
+  '_dp.discount': `Descuento`,
+  '_dp.discount_text': `Texto del descuento`,
   '_dp.help': `HELP`,
   '_dp.medium': `Normal`,
   '_dp.pay_button_link': `Solicitud de pago detallada`,
