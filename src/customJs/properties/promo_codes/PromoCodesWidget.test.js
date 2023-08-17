@@ -166,16 +166,7 @@ describe('Promocode widget', () => {
   });
 
   it('must be render promo code spinner waiting the request', async () => {
-    requestDopplerApp.mockImplementation((params) => {
-      // params.callback([
-      //   {
-      //     code: 'promoCodeTest',
-      //     type: 'percen',
-      //     value: 100,
-      //     useLimit: 1,
-      //     minPaymentAmount: 1,
-      //   },
-      // ]);
+    requestDopplerApp.mockImplementation(() => {
       const destructor = () => {};
       return { destructor };
     });
