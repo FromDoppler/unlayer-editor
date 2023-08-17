@@ -56,7 +56,7 @@ describe('Promocode widget', () => {
         },
       ]);
       const destructor = () => {};
-      return destructor;
+      return { destructor };
     });
 
     prepareUnlayerGlobalObject();
@@ -91,7 +91,7 @@ describe('Promocode widget', () => {
         },
       ]);
       const destructor = () => {};
-      return destructor;
+      return { destructor };
     });
 
     prepareUnlayerGlobalObject();
@@ -111,7 +111,7 @@ describe('Promocode widget', () => {
         },
       ]);
       const destructor = () => {};
-      return destructor;
+      return { destructor };
     });
 
     prepareUnlayerGlobalObject();
@@ -131,7 +131,7 @@ describe('Promocode widget', () => {
         },
       ]);
       const destructor = () => {};
-      return destructor;
+      return { destructor };
     });
 
     prepareUnlayerGlobalObject();
@@ -153,7 +153,7 @@ describe('Promocode widget', () => {
         },
       ]);
       const destructor = () => {};
-      return destructor;
+      return { destructor };
     });
 
     prepareUnlayerGlobalObject();
@@ -175,7 +175,7 @@ describe('Promocode widget', () => {
       //   },
       // ]);
       const destructor = () => {};
-      return destructor;
+      return { destructor };
     });
 
     prepareUnlayerGlobalObject();
