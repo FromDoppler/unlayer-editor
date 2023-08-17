@@ -1,5 +1,5 @@
 import { EMPTY_SELECTION } from '../constants';
-import { intl } from '../localization';
+import { $t } from '../localization';
 import { Store } from '../types';
 
 const createOptions = <TValue extends string>(
@@ -8,7 +8,7 @@ const createOptions = <TValue extends string>(
   const defaultValue = items.length === 1 ? items[0].value : EMPTY_SELECTION;
   const emptyOption = {
     value: EMPTY_SELECTION,
-    label: intl.formatMessage({ id: '_dp.select_option' }),
+    label: $t('_dp.select_option'),
   } as const;
   const options = [emptyOption, ...items] as [
     { value: TValue | EMPTY_SELECTION; label: string },
@@ -67,10 +67,10 @@ export const smallBigDropdownProperty = ({
     defaultValue,
     options: [
       {
-        label: intl.formatMessage({ id: '_dp.small' }),
+        label: $t('_dp.small'),
         value: 'small',
       },
-      { label: intl.formatMessage({ id: '_dp.big' }), value: 'big' },
+      { label: $t('_dp.big'), value: 'big' },
     ] as const,
   });
 
@@ -86,26 +86,26 @@ export const smallMediumLargeDropdownProperty = ({
     defaultValue,
     options: [
       {
-        label: intl.formatMessage({ id: '_dp.small' }),
+        label: $t('_dp.small'),
         value: 'small',
       },
       {
-        label: intl.formatMessage({ id: '_dp.medium' }),
+        label: $t('_dp.medium'),
         value: 'medium',
       },
-      { label: intl.formatMessage({ id: '_dp.big' }), value: 'large' },
+      { label: $t('_dp.big'), value: 'large' },
     ] as const,
   });
 
 export const alignmentProperty = () => ({
-  label: intl.formatMessage({ id: 'editor.align.label' }),
+  label: $t('editor.align.label'),
   defaultValue: 'center' as const,
   widget: 'alignment',
 });
 
 export const storesDropdownProperty = ({ stores }: { stores: Store[] }) =>
   mappedDropdownProperty({
-    label: intl.formatMessage({ id: '_dp.store' }),
+    label: $t('_dp.store'),
     items: stores,
     map: ({ name }) => ({
       value: name,

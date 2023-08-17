@@ -1,4 +1,4 @@
-import { intl } from '../../localization';
+import { $t } from '../../localization';
 import { PayuButtonViewer } from './PayuButtonViewer';
 import { ASSETS_BASE_URL } from '../../constants';
 import { ReactToolDefinitionFrom } from '../../types';
@@ -13,19 +13,19 @@ import {
 export const getPayuButtonToolDefinition: () => ReactToolDefinitionFrom<PayuButtonBase> =
   () => ({
     name: 'payu_button_tool',
-    label: intl.formatMessage({ id: '_dp.payu_button' }),
+    label: $t('_dp.payu_button'),
     icon: `${ASSETS_BASE_URL}/payu_button.svg`,
     Component: PayuButtonViewer,
     options: {
       basic_configuration_section: {
-        title: intl.formatMessage({ id: 'option_groups.button_options.title' }),
+        title: $t('option_groups.button_options.title'),
         options: {
           paymentURL: urlProperty({
-            label: intl.formatMessage({ id: '_dp.pay_button_link' }),
+            label: $t('_dp.pay_button_link'),
             help: PayuButtonHelp(),
           }),
           size: smallMediumLargeDropdownProperty({
-            label: intl.formatMessage({ id: '_dp.size' }),
+            label: $t('_dp.size'),
             defaultValue: 'medium',
           }),
           alignment: alignmentProperty(),
@@ -38,12 +38,10 @@ export const getPayuButtonToolDefinition: () => ReactToolDefinitionFrom<PayuButt
           id: 'CUSTOM_ERROR',
           icon: `${ASSETS_BASE_URL}/payu_button.svg`,
           severity: 'WARNING',
-          title: intl.formatMessage({
-            id: 'tabs.audit.rules.payu_button.empty_links.title',
-          }),
-          description: intl.formatMessage({
-            id: 'tabs.audit.rules.payu_button.empty_links.description',
-          }),
+          title: $t('tabs.audit.rules.payu_button.empty_links.title'),
+          description: $t(
+            'tabs.audit.rules.payu_button.empty_links.description',
+          ),
         });
       }
 

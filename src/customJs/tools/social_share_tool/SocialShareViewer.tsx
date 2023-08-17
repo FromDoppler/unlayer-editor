@@ -1,5 +1,5 @@
 import { React } from '../../unlayer-react';
-import { intl } from '../../localization';
+import { $t } from '../../localization';
 import { SOCIAL_NETWORKS } from '../../constants';
 import { ViewerComponent } from '../../types';
 import { SocialShareValues } from './types';
@@ -40,9 +40,7 @@ export const SocialShareViewer: ViewerComponent<SocialShareValues> = ({
                     key={`social_button_${id}`}
                   >
                     <img
-                      src={intl.formatMessage({
-                        id: `_dp.social_share_url_${size}_${id}`,
-                      })}
+                      src={$t(`_dp.social_share_url_${size}_${id}`)}
                       alt={name}
                       width={size === 'big' ? '94' : '40'}
                       style={{

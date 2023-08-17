@@ -1,6 +1,6 @@
 import { messages_en } from '../i18n/en';
 import { messages_es } from '../i18n/es';
-import { intl, setLocale } from './localization';
+import { $t, setLocale } from './localization';
 
 describe(setLocale.name, () => {
   it.each([{ lang: 'es-ES' }, { lang: 'en-US' }, { lang: 'fr-FR' }])(
@@ -46,7 +46,7 @@ describe(setLocale.name, () => {
       setLocale(lang);
 
       // Act
-      const result = intl.formatMessage({ id: '_dp.size' });
+      const result = $t('_dp.size');
 
       // Assert
       expect(result).toEqual(expected_size_translation);

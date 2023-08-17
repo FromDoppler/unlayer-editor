@@ -1,4 +1,4 @@
-import { intl } from '../../localization';
+import { $t } from '../../localization';
 import { ASSETS_BASE_URL, SOCIAL_NETWORKS } from '../../constants';
 import { SocialShareViewer } from './SocialShareViewer';
 import { ReactToolDefinitionFrom } from '../../types';
@@ -9,12 +9,12 @@ import { smallBigDropdownProperty } from '../../properties/helpers';
 export const getSocialShareToolDefinition: () => ReactToolDefinitionFrom<SocialShareBase> =
   () => ({
     name: 'social_share_tool',
-    label: intl.formatMessage({ id: '_dp.social_share_title' }),
+    label: $t('_dp.social_share_title'),
     icon: `${ASSETS_BASE_URL}/share-node.svg`,
     Component: SocialShareViewer,
     options: {
       social_share_size: {
-        title: intl.formatMessage({ id: '_dp.size' }),
+        title: $t('_dp.size'),
         position: 1,
         options: {
           social_share_size: smallBigDropdownProperty({
@@ -24,7 +24,7 @@ export const getSocialShareToolDefinition: () => ReactToolDefinitionFrom<SocialS
         },
       },
       social_share_network: {
-        title: intl.formatMessage({ id: '_dp.social_networks' }),
+        title: $t('_dp.social_networks'),
         position: 2,
         options: {
           social_share_available: {
@@ -37,11 +37,11 @@ export const getSocialShareToolDefinition: () => ReactToolDefinitionFrom<SocialS
         },
       },
       social_share_align: {
-        title: intl.formatMessage({ id: '_dp.alignment' }),
+        title: $t('_dp.alignment'),
         position: 3,
         options: {
           social_share_align_option: {
-            label: intl.formatMessage({ id: '_dp.alignment' }),
+            label: $t('_dp.alignment'),
             defaultValue: 'center',
             widget: 'alignment',
           },

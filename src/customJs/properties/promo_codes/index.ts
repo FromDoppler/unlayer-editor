@@ -2,7 +2,7 @@ import { UnlayerProperty, ReactPropertyDefinition } from '../../types';
 import { PromoCodesValue, StoreDependentToolValues } from './types';
 import { PromoCodesWidget } from './PromoCodesWidget';
 import { EMPTY_SELECTION } from '../../constants';
-import { intl } from '../../localization';
+import { $t } from '../../localization';
 
 export const promoCodesPropertyEditor = 'promo_codes';
 type promoCodesPropertyEditor = typeof promoCodesPropertyEditor;
@@ -24,7 +24,7 @@ export const promoCodesProperty: (parameters?: {
 }: {
   label?: string;
 } = {}) => ({
-  label: label ?? intl.formatMessage({ id: '_dp.promo_codes' }),
+  label: label ?? $t('_dp.promo_codes'),
   defaultValue: EMPTY_SELECTION,
   widget: promoCodesPropertyEditor,
 });

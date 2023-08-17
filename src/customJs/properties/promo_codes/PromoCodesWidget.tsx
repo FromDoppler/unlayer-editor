@@ -8,7 +8,7 @@ import {
 import { EMPTY_SELECTION } from '../../constants';
 import { addUnlayerLabel } from '../../components/UnlayerLabel';
 import { requestDopplerApp } from '../../utils/dopplerAppBridge';
-import { intl } from '../../localization';
+import { $t } from '../../localization';
 
 type CodeOption = { value: string; label: string };
 
@@ -46,14 +46,14 @@ export const PromoCodesWidget: WidgetComponent<
       <div style={loadingStyle}>
         <div className="spinner-border text-secondary" role="status"></div>
         <span className="visually-hidden" style={containerStyle}>
-          {intl.formatMessage({ id: 'labels.loading' })}...
+          {$t('labels.loading')}...
         </span>
       </div>
     );
   }
 
   return codeOptions.length === 0 ? (
-    <div>{intl.formatMessage({ id: '_dp.promo_codes_not_availables' })}</div>
+    <div>{$t('_dp.promo_codes_not_availables')}</div>
   ) : (
     <div role="container">
       {codeOptions.map((x) => (
