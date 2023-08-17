@@ -20,6 +20,7 @@ export const messages_en: IntlMessages = {
   '_dp.promo_codes': `Promotion codes`,
   '_dp.promo_codes_not_availables': `No promotion codes available in your store`,
   '_dp.select_option': `Select an option`,
+  '_dp.show': `Show`,
   '_dp.size': `Size`,
   '_dp.small': `Small`,
   '_dp.social_networks': `Social networks`,

@@ -8,6 +8,9 @@ export type ProductBase = Readonly<{
   product: {
     productUrl: string;
   };
+  image: {
+    imageShown: boolean;
+  };
 }>;
 
 export type ProductPropertyGroups = PropertyGroupsFrom<ProductBase>;

@@ -20,6 +20,7 @@ export const messages_es = {
   '_dp.promo_codes': `Códigos de promoción`,
   '_dp.promo_codes_not_availables': `No se encontraron códigos de promoción disponibles en tu tienda`,
   '_dp.select_option': `Seleccione una opción`,
+  '_dp.show': `Mostrar`,
   '_dp.size': `Tamaño`,
   '_dp.small': `Pequeño`,
   '_dp.social_networks': `Redes sociales`,

@@ -1,6 +1,6 @@
 import { EMPTY_SELECTION } from '../constants';
 import { $t } from '../localization';
-import { Store } from '../types';
+import { Store, UnlayerProperty } from '../types';
 
 const createOptions = <TValue extends string>(
   items: { value: TValue; label: string }[],
@@ -101,6 +101,36 @@ export const alignmentProperty = () => ({
   label: $t('editor.align.label'),
   defaultValue: 'center' as const,
   widget: 'alignment',
+});
+
+export const toggleProperty: ({
+  label,
+  defaultValue,
+}: {
+  label: string;
+  defaultValue: boolean;
+}) => UnlayerProperty<boolean> = ({
+  label,
+  defaultValue,
+}: {
+  label: string;
+  defaultValue: boolean;
+}) => ({
+  label,
+  defaultValue,
+  widget: 'toggle',
+});
+
+export const toggleShowProperty: (param?: {
+  defaultValue: boolean;
+}) => UnlayerProperty<boolean> = ({
+  defaultValue = true,
+}: {
+  defaultValue?: boolean;
+} = {}) => ({
+  label: $t('_dp.show'),
+  defaultValue,
+  widget: 'toggle',
 });
 
 export const storesDropdownProperty = ({ stores }: { stores: Store[] }) =>

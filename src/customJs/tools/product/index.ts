@@ -3,6 +3,7 @@ import { ProductViewer } from './ProductViewer';
 import { ProductToolDefinition } from './types';
 import { ASSETS_BASE_URL } from '../../constants';
 import { urlProperty } from '../../properties/url';
+import { toggleShowProperty } from '../../properties/helpers';
 
 export const getProductToolDefinition: () =>
   | ProductToolDefinition
@@ -19,6 +20,12 @@ export const getProductToolDefinition: () =>
           productUrl: urlProperty({
             label: $t('_dp.product_link'),
           }),
+        },
+      },
+      image: {
+        title: $t('editor.image.label'),
+        options: {
+          imageShown: toggleShowProperty(),
         },
       },
     },
