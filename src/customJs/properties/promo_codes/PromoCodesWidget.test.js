@@ -31,8 +31,10 @@ describe('Promocode widget', () => {
     prepareUnlayerGlobalObject();
     render(<PromoCodesWidget {...unlayerPropertyProps} />);
 
-    const container = await screen.findByRole('container');
-    expect(container).toBeDefined();
+    const noPromotioncodesMsg = await screen.findByText(
+      messages_es['_dp.promo_codes_not_availables'],
+    );
+    expect(noPromotioncodesMsg).toBeDefined();
 
     const radioInput = screen.queryByText('promoCodeRadioInput');
     expect(radioInput).toBeNull();
