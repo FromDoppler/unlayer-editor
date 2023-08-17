@@ -25,6 +25,21 @@ export type ProductBase = Readonly<{
     titleFontSize: PixelSize;
     titleColor: Color;
   };
+  prices: {
+    pricesShown: boolean;
+    pricesFont: FontFamily;
+    pricesFontWeight: FontWeight;
+
+    pricesDefaultPriceShown: boolean;
+    pricesDefaultPriceText: string;
+    pricesDefaultPriceFontSize: PixelSize;
+    pricesDefaultPriceColor: Color;
+
+    pricesDiscountPriceShown: boolean;
+    pricesDiscountPriceText: string;
+    pricesDiscountPriceFontSize: PixelSize;
+    pricesDiscountPriceColor: Color;
+  };
 }>;
 
 export type ProductPropertyGroups = PropertyGroupsFrom<ProductBase>;

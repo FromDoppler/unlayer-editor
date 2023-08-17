@@ -10,6 +10,7 @@ import {
   fontWeightProperty,
   imageProperty,
   textProperty,
+  toggleProperty,
   toggleShowProperty,
 } from '../../properties/helpers';
 
@@ -50,6 +51,42 @@ export const getProductToolDefinition: () =>
           titleFontWeight: fontWeightProperty(),
           titleFontSize: fontSizeProperty(),
           titleColor: colorProperty(),
+        },
+      },
+      prices: {
+        title: $t('_dp.prices'),
+        options: {
+          pricesShown: toggleShowProperty(),
+          pricesFont: fontFamilyProperty(),
+          pricesFontWeight: fontWeightProperty(),
+
+          pricesDefaultPriceShown: toggleProperty({
+            label: $t('_dp.price_default_shown'),
+            defaultValue: true,
+          }),
+          pricesDefaultPriceText: textProperty({
+            label: $t('_dp.price_default'),
+          }),
+          pricesDefaultPriceFontSize: fontSizeProperty({
+            label: $t('_dp.price_default_size'),
+          }),
+          pricesDefaultPriceColor: colorProperty({
+            label: $t('_dp.price_default_color'),
+          }),
+
+          pricesDiscountPriceShown: toggleProperty({
+            label: $t('_dp.price_discount_shown'),
+            defaultValue: true,
+          }),
+          pricesDiscountPriceText: textProperty({
+            label: $t('_dp.price_discount'),
+          }),
+          pricesDiscountPriceFontSize: fontSizeProperty({
+            label: $t('_dp.price_discount_size'),
+          }),
+          pricesDiscountPriceColor: colorProperty({
+            label: $t('_dp.price_discount_color'),
+          }),
         },
       },
     },
