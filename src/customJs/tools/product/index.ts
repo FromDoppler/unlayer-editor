@@ -3,7 +3,11 @@ import { ProductViewer } from './ProductViewer';
 import { ProductToolDefinition } from './types';
 import { ASSETS_BASE_URL } from '../../constants';
 import { urlProperty } from '../../properties/url';
-import { imageProperty, toggleShowProperty } from '../../properties/helpers';
+import {
+  imageProperty,
+  textProperty,
+  toggleShowProperty,
+} from '../../properties/helpers';
 
 export const getProductToolDefinition: () =>
   | ProductToolDefinition
@@ -28,6 +32,15 @@ export const getProductToolDefinition: () =>
           imageShown: toggleShowProperty(),
           image: imageProperty({
             label: $t('_dp.product_image'),
+          }),
+        },
+      },
+      title: {
+        title: $t('_dp.title'),
+        options: {
+          titleShown: toggleShowProperty(),
+          titleText: textProperty({
+            label: $t('_dp.product_title'),
           }),
         },
       },

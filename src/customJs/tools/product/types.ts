@@ -13,6 +13,10 @@ export type ProductBase = Readonly<{
     imageShown: boolean;
     image: Image;
   };
+  title: {
+    titleShown: boolean;
+    titleText: string;
+  };
 }>;
 
 export type ProductPropertyGroups = PropertyGroupsFrom<ProductBase>;

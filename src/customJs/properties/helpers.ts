@@ -142,6 +142,24 @@ export const imageProperty: ({
   widget: 'image',
 });
 
+export const textProperty: ({
+  label,
+  defaultValue,
+}: {
+  label: string;
+  defaultValue?: string;
+}) => UnlayerProperty<string> = ({
+  label,
+  defaultValue,
+}: {
+  label: string;
+  defaultValue?: string;
+}) => ({
+  label,
+  defaultValue,
+  widget: 'text',
+});
+
 export const storesDropdownProperty = ({ stores }: { stores: Store[] }) =>
   mappedDropdownProperty({
     label: $t('_dp.store'),
