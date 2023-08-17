@@ -30,7 +30,7 @@ setLinkTypes?.([
   },
 ]);
 
-// Register Properties and tool Social Share Tool
+// Register Properties and tools
 
 registerPropertyEditor(urlPropertyEditorDefinition);
 registerPropertyEditor(socialNetworksPropertyEditorDefinition);
@@ -38,6 +38,9 @@ registerPropertyEditor(promoCodesPropertyEditorDefinition);
 
 registerReactTool(getSocialShareToolDefinition());
 registerReactTool(getPayuButtonToolDefinition());
+registerReactTool(getPromoCodeToolDefinition());
+
+/*eslint no-empty: "error"*/
 if (previewMode) {
-  registerReactTool(getPromoCodeToolDefinition());
+  /* place to register tool on preview mode */
 }
