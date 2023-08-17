@@ -24,6 +24,19 @@ export type Image = {
   maxWidth: Percentage;
 };
 
+export type FontFamily = {
+  label: string;
+  value: string;
+  url: string;
+  defaultFont: boolean;
+};
+
+export type FontWeight = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
+
+export type PixelSize = `${number}px`;
+
+export type Color = string;
+
 export type ObjectWithStringProps = Record<string, any>;
 
 type WidgetComponentProps<

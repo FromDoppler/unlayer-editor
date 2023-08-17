@@ -1,6 +1,14 @@
 import { EMPTY_SELECTION } from '../constants';
 import { $t } from '../localization';
-import { Image, Store, UnlayerProperty } from '../types';
+import {
+  Color,
+  FontFamily,
+  FontWeight,
+  Image,
+  PixelSize,
+  Store,
+  UnlayerProperty,
+} from '../types';
 
 const createOptions = <TValue extends string>(
   items: { value: TValue; label: string }[],
@@ -158,6 +166,50 @@ export const textProperty: ({
   label,
   defaultValue,
   widget: 'text',
+});
+
+export const fontFamilyProperty: (param?: {
+  label?: string;
+}) => UnlayerProperty<FontFamily> = ({
+  label,
+}: {
+  label?: string;
+} = {}) => ({
+  label: label ?? $t('editor.font_family.label'),
+  widget: 'font_family',
+});
+
+export const fontWeightProperty: (param?: {
+  label?: string;
+}) => UnlayerProperty<FontWeight> = ({
+  label,
+}: {
+  label?: string;
+} = {}) => ({
+  label: label ?? $t('editor.font_weight.label'),
+  widget: 'font_weight',
+});
+
+export const fontSizeProperty: (param?: {
+  label?: string;
+}) => UnlayerProperty<PixelSize> = ({
+  label,
+}: {
+  label?: string;
+} = {}) => ({
+  label: label ?? $t('editor.font_size.label'),
+  widget: 'font_size',
+});
+
+export const colorProperty: (param?: {
+  label?: string;
+}) => UnlayerProperty<Color> = ({
+  label,
+}: {
+  label?: string;
+} = {}) => ({
+  label: label ?? $t('editor.color.label'),
+  widget: 'color_picker',
 });
 
 export const storesDropdownProperty = ({ stores }: { stores: Store[] }) =>

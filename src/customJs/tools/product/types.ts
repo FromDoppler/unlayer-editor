@@ -1,5 +1,9 @@
 import {
+  Color,
+  FontFamily,
+  FontWeight,
   Image,
+  PixelSize,
   PropertyGroupsFrom,
   ReactToolDefinitionFrom,
   ToolValuesFrom,
@@ -16,6 +20,10 @@ export type ProductBase = Readonly<{
   title: {
     titleShown: boolean;
     titleText: string;
+    titleFont: FontFamily;
+    titleFontWeight: FontWeight;
+    titleFontSize: PixelSize;
+    titleColor: Color;
   };
 }>;
 

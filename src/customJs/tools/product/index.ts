@@ -4,6 +4,10 @@ import { ProductToolDefinition } from './types';
 import { ASSETS_BASE_URL } from '../../constants';
 import { urlProperty } from '../../properties/url';
 import {
+  colorProperty,
+  fontFamilyProperty,
+  fontSizeProperty,
+  fontWeightProperty,
   imageProperty,
   textProperty,
   toggleShowProperty,
@@ -42,6 +46,10 @@ export const getProductToolDefinition: () =>
           titleText: textProperty({
             label: $t('_dp.product_title'),
           }),
+          titleFont: fontFamilyProperty(),
+          titleFontWeight: fontWeightProperty(),
+          titleFontSize: fontSizeProperty(),
+          titleColor: colorProperty(),
         },
       },
     },
