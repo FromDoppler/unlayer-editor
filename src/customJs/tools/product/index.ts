@@ -3,7 +3,7 @@ import { ProductViewer } from './ProductViewer';
 import { ProductToolDefinition } from './types';
 import { ASSETS_BASE_URL } from '../../constants';
 import { urlProperty } from '../../properties/url';
-import { toggleShowProperty } from '../../properties/helpers';
+import { imageProperty, toggleShowProperty } from '../../properties/helpers';
 
 export const getProductToolDefinition: () =>
   | ProductToolDefinition
@@ -26,6 +26,9 @@ export const getProductToolDefinition: () =>
         title: $t('editor.image.label'),
         options: {
           imageShown: toggleShowProperty(),
+          image: imageProperty({
+            label: $t('_dp.product_image'),
+          }),
         },
       },
     },

@@ -1,4 +1,5 @@
 import {
+  Image,
   PropertyGroupsFrom,
   ReactToolDefinitionFrom,
   ToolValuesFrom,
@@ -10,6 +11,7 @@ export type ProductBase = Readonly<{
   };
   image: {
     imageShown: boolean;
+    image: Image;
   };
 }>;
 

@@ -14,6 +14,16 @@ export type Store = {
   promotionCodeEnabled: boolean;
 };
 
+export type Percentage = `${number}%`;
+
+export type Image = {
+  url: string;
+  width: number;
+  height: number;
+  autoWidth: boolean;
+  maxWidth: Percentage;
+};
+
 export type ObjectWithStringProps = Record<string, any>;
 
 type WidgetComponentProps<

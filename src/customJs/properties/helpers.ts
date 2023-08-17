@@ -1,6 +1,6 @@
 import { EMPTY_SELECTION } from '../constants';
 import { $t } from '../localization';
-import { Store, UnlayerProperty } from '../types';
+import { Image, Store, UnlayerProperty } from '../types';
 
 const createOptions = <TValue extends string>(
   items: { value: TValue; label: string }[],
@@ -131,6 +131,15 @@ export const toggleShowProperty: (param?: {
   label: $t('_dp.show'),
   defaultValue,
   widget: 'toggle',
+});
+
+export const imageProperty: ({
+  label,
+}: {
+  label: string;
+}) => UnlayerProperty<Image> = ({ label }: { label: string }) => ({
+  label,
+  widget: 'image',
 });
 
 export const storesDropdownProperty = ({ stores }: { stores: Store[] }) =>
