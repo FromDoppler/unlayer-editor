@@ -9,6 +9,7 @@ import {
   fontSizeProperty,
   fontWeightProperty,
   imageProperty,
+  richTextProperty,
   textProperty,
   toggleProperty,
   toggleShowProperty,
@@ -100,6 +101,15 @@ export const getProductToolDefinition: () =>
           discountFontWeight: fontWeightProperty(),
           discountFontSize: fontSizeProperty(),
           discountColor: colorProperty(),
+        },
+      },
+      description: {
+        title: $t('_dp.description'),
+        options: {
+          descriptionShown: toggleShowProperty(),
+          descriptionHtml: richTextProperty(),
+          descriptionFont: fontFamilyProperty(),
+          descriptionFontSize: fontSizeProperty(),
         },
       },
     },

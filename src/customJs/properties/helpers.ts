@@ -212,6 +212,21 @@ export const colorProperty: (param?: {
   widget: 'color_picker',
 });
 
+export const richTextProperty: (param?: {
+  label?: string;
+  defaultValue?: string;
+}) => UnlayerProperty<string> = ({
+  label,
+  defaultValue = '',
+}: {
+  label?: string;
+  defaultValue?: string;
+} = {}) => ({
+  label,
+  defaultValue,
+  widget: 'rich_text',
+});
+
 export const storesDropdownProperty = ({ stores }: { stores: Store[] }) =>
   mappedDropdownProperty({
     label: $t('_dp.store'),

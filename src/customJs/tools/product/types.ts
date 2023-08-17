@@ -48,6 +48,12 @@ export type ProductBase = Readonly<{
     discountFontSize: PixelSize;
     discountColor: Color;
   };
+  description: {
+    descriptionShown: boolean;
+    descriptionHtml: string;
+    descriptionFont: FontFamily;
+    descriptionFontSize: PixelSize;
+  };
 }>;
 
 export type ProductPropertyGroups = PropertyGroupsFrom<ProductBase>;

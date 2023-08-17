@@ -5,6 +5,7 @@ import { ASSETS_BASE_URL, HELP_BASE_URL } from '../customJs/constants';
 export const messages_en: IntlMessages = {
   '_dp.alignment': `Alignment`,
   '_dp.big': `Big`,
+  '_dp.description': `Description`,
   '_dp.discount': `Discount`,
   '_dp.discount_text': `Discount text`,
   '_dp.help': `HELP`,
