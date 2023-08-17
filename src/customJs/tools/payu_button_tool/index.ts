@@ -5,7 +5,10 @@ import { ReactToolDefinitionFrom } from '../../types';
 import { PayuButtonHelp } from './PayuButtonHelp';
 import { PayuButtonBase } from './types';
 import { urlProperty } from '../../properties/url';
-import { alignmentProperty, dropdownProperty } from '../../properties/helpers';
+import {
+  alignmentProperty,
+  smallMediumLargeDropdownProperty,
+} from '../../properties/helpers';
 
 export const getPayuButtonToolDefinition: () => ReactToolDefinitionFrom<PayuButtonBase> =
   () => ({
@@ -21,24 +24,10 @@ export const getPayuButtonToolDefinition: () => ReactToolDefinitionFrom<PayuButt
             label: intl.formatMessage({ id: '_dp.pay_button_link' }),
             help: PayuButtonHelp(),
           }),
-          size: dropdownProperty({
+          size: smallMediumLargeDropdownProperty({
             label: intl.formatMessage({ id: '_dp.size' }),
             defaultValue: 'medium',
-            options: [
-              {
-                label: intl.formatMessage({ id: '_dp.small' }),
-                value: 'small',
-              },
-              {
-                label: intl.formatMessage({ id: '_dp.medium' }),
-                value: 'medium',
-              },
-              {
-                label: intl.formatMessage({ id: '_dp.big' }),
-                value: 'large',
-              },
-            ],
-          } as const),
+          }),
           alignment: alignmentProperty(),
         },
       },

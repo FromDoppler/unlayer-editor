@@ -4,7 +4,7 @@ import { SocialShareViewer } from './SocialShareViewer';
 import { ReactToolDefinitionFrom } from '../../types';
 import { SocialShareBase } from './types';
 import { socialNetworksPropertyEditor } from '../../properties/social_networks';
-import { dropdownProperty } from '../../properties/helpers';
+import { smallBigDropdownProperty } from '../../properties/helpers';
 
 export const getSocialShareToolDefinition: () => ReactToolDefinitionFrom<SocialShareBase> =
   () => ({
@@ -17,17 +17,10 @@ export const getSocialShareToolDefinition: () => ReactToolDefinitionFrom<SocialS
         title: intl.formatMessage({ id: '_dp.size' }),
         position: 1,
         options: {
-          social_share_size: dropdownProperty({
+          social_share_size: smallBigDropdownProperty({
             label: undefined,
             defaultValue: 'big',
-            options: [
-              {
-                label: intl.formatMessage({ id: '_dp.small' }),
-                value: 'small',
-              },
-              { label: intl.formatMessage({ id: '_dp.big' }), value: 'big' },
-            ],
-          } as const),
+          }),
         },
       },
       social_share_network: {

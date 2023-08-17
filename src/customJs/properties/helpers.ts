@@ -55,6 +55,48 @@ export const dropdownProperty = <TValue extends string>({
     },
   }) as const;
 
+export const smallBigDropdownProperty = ({
+  label,
+  defaultValue,
+}: {
+  label: string | undefined;
+  defaultValue?: 'small' | 'big';
+}) =>
+  dropdownProperty({
+    label,
+    defaultValue,
+    options: [
+      {
+        label: intl.formatMessage({ id: '_dp.small' }),
+        value: 'small',
+      },
+      { label: intl.formatMessage({ id: '_dp.big' }), value: 'big' },
+    ] as const,
+  });
+
+export const smallMediumLargeDropdownProperty = ({
+  label,
+  defaultValue,
+}: {
+  label: string | undefined;
+  defaultValue?: 'small' | 'medium' | 'large';
+}) =>
+  dropdownProperty({
+    label,
+    defaultValue,
+    options: [
+      {
+        label: intl.formatMessage({ id: '_dp.small' }),
+        value: 'small',
+      },
+      {
+        label: intl.formatMessage({ id: '_dp.medium' }),
+        value: 'medium',
+      },
+      { label: intl.formatMessage({ id: '_dp.big' }), value: 'large' },
+    ] as const,
+  });
+
 export const alignmentProperty = () => ({
   label: intl.formatMessage({ id: 'editor.align.label' }),
   defaultValue: 'center' as const,
