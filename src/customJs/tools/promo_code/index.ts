@@ -1,4 +1,4 @@
-import { intl } from '../../localization';
+import { $t } from '../../localization';
 import { PromoCodeViewer } from './PromoCodeViewer';
 import { ReactToolDefinitionFrom } from '../../types';
 import { PromoCodeBase, PromoCodeValues } from './types';
@@ -24,12 +24,12 @@ export const getPromoCodeToolDefinition: () =>
 
   return {
     name: 'promo_code',
-    label: intl.formatMessage({ id: '_dp.promo_code' }),
+    label: $t('_dp.promo_code'),
     icon: `${ASSETS_BASE_URL}/promotion_code.svg`,
     Component: PromoCodeViewer,
     options: {
       promo_code: {
-        title: intl.formatMessage({ id: '_dp.promo_code' }),
+        title: $t('_dp.promo_code'),
         options: {
           store: storesDropdownProperty({ stores: storesWithPromoCode }),
           promo_code: promoCodesProperty(),
@@ -39,17 +39,17 @@ export const getPromoCodeToolDefinition: () =>
         options: {
           alignment: alignmentProperty(),
           backgroundColor: {
-            label: intl.formatMessage({ id: 'editor.background_color.label' }),
+            label: $t('editor.background_color.label'),
             defaultValue: 'rgba(255,255,255, 0)',
             widget: 'color_picker',
           },
           textColor: {
-            label: intl.formatMessage({ id: 'editor.color.label' }),
+            label: $t('editor.color.label'),
             defaultValue: '#333333',
             widget: 'color_picker',
           },
           fontSize: {
-            label: intl.formatMessage({ id: 'editor.font_size.label' }),
+            label: $t('editor.font_size.label'),
             defaultValue: '36px',
             widget: 'font_size',
           },

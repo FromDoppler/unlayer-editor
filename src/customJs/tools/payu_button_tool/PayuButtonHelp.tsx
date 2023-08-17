@@ -1,5 +1,5 @@
 import { React } from '../../unlayer-react';
-import { intl } from '../../localization';
+import { $t } from '../../localization';
 
 export const PayuButtonHelp = () => (
   <div
@@ -11,14 +11,14 @@ export const PayuButtonHelp = () => (
       fontFamily: 'Roboto,sans-serif',
     }}
   >
-    {intl.formatMessage({ id: '_dp.payu_help' })}{' '}
+    {$t('_dp.payu_help')}{' '}
     <a
       target="_blank"
       style={{ color: '#33AC72', textDecoration: 'none' }}
       rel="noreferrer"
-      href={intl.formatMessage({ id: '_dp.payu_help_link' })}
+      href={$t('_dp.payu_help_link')}
     >
-      {intl.formatMessage({ id: '_dp.help' })}
+      {$t('_dp.help')}
     </a>
   </div>
 );

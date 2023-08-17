@@ -2,6 +2,11 @@ import { createIntl, createIntlCache } from '@formatjs/intl';
 import { messages_en } from '../i18n/en';
 import { messages_es } from '../i18n/es';
 import type { IntlShape } from '@formatjs/intl';
+import {
+  FormatXMLElementFn,
+  PrimitiveType,
+  Options as IntlMessageFormatOptions,
+} from 'intl-messageformat';
 
 export type IntlMessages = typeof messages_es;
 export type IntlMessageId = keyof IntlMessages;
@@ -48,3 +53,9 @@ export const setLocale = (locale: AvailableLanguage) => {
     cache,
   );
 };
+
+export const $t = (
+  id: IntlMessageId,
+  values?: Record<string, PrimitiveType | FormatXMLElementFn<string, string>>,
+  opts?: IntlMessageFormatOptions,
+) => intl.formatMessage({ id }, values, opts);

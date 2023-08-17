@@ -1,5 +1,5 @@
 import { React } from '../../unlayer-react';
-import { intl } from '../../localization';
+import { $t } from '../../localization';
 import { PayuButtonValues } from './types';
 import { ViewerComponent } from '../../types';
 
@@ -18,7 +18,7 @@ export const PayuButtonViewer: ViewerComponent<PayuButtonValues> = ({
       >
         <img
           style={{ width: buttonImgWidth }}
-          src={`${intl.formatMessage({ id: `_dp.payu_${size}_button` })}`}
+          src={$t(`_dp.payu_${size}_button`)}
           alt="payu_button"
         />
       </a>
