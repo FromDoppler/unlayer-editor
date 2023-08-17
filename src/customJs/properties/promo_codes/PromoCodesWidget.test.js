@@ -4,6 +4,7 @@ import { PromoCodesWidget } from './PromoCodesWidget';
 import { EMPTY_SELECTION } from '../../constants';
 import { requestDopplerApp } from '../../utils/dopplerAppBridge';
 import { setLocale } from '../../localization';
+import { messages_es } from '../../../i18n/es';
 
 // Required to initialize intl
 setLocale('es-ES');
@@ -30,8 +31,10 @@ describe('Promocode widget', () => {
     prepareUnlayerGlobalObject();
     render(<PromoCodesWidget {...unlayerPropertyProps} />);
 
-    const container = await screen.findByRole('container');
-    expect(container).toBeDefined();
+    const noPromotioncodesMsg = await screen.findByText(
+      messages_es['_dp.promo_codes_not_availables'],
+    );
+    expect(noPromotioncodesMsg).toBeDefined();
 
     const radioInput = screen.queryByText('promoCodeRadioInput');
     expect(radioInput).toBeNull();
@@ -55,7 +58,7 @@ describe('Promocode widget', () => {
         },
       ]);
       const destructor = () => {};
-      return destructor;
+      return { destructor };
     });
 
     prepareUnlayerGlobalObject();
@@ -90,7 +93,7 @@ describe('Promocode widget', () => {
         },
       ]);
       const destructor = () => {};
-      return destructor;
+      return { destructor };
     });
 
     prepareUnlayerGlobalObject();
@@ -110,7 +113,7 @@ describe('Promocode widget', () => {
         },
       ]);
       const destructor = () => {};
-      return destructor;
+      return { destructor };
     });
 
     prepareUnlayerGlobalObject();
@@ -130,7 +133,7 @@ describe('Promocode widget', () => {
         },
       ]);
       const destructor = () => {};
-      return destructor;
+      return { destructor };
     });
 
     prepareUnlayerGlobalObject();
@@ -152,7 +155,7 @@ describe('Promocode widget', () => {
         },
       ]);
       const destructor = () => {};
-      return destructor;
+      return { destructor };
     });
 
     prepareUnlayerGlobalObject();
@@ -163,18 +166,9 @@ describe('Promocode widget', () => {
   });
 
   it('must be render promo code spinner waiting the request', async () => {
-    requestDopplerApp.mockImplementation((params) => {
-      // params.callback([
-      //   {
-      //     code: 'promoCodeTest',
-      //     type: 'percen',
-      //     value: 100,
-      //     useLimit: 1,
-      //     minPaymentAmount: 1,
-      //   },
-      // ]);
+    requestDopplerApp.mockImplementation(() => {
       const destructor = () => {};
-      return destructor;
+      return { destructor };
     });
 
     prepareUnlayerGlobalObject();
@@ -183,4 +177,48 @@ describe('Promocode widget', () => {
     const spinnerContainer = await screen.findByRole('status');
     expect(spinnerContainer).toBeDefined();
   });
+
+  it('must be render no promo codes available section', async () => {
+    requestDopplerApp.mockImplementation((params) => {
+      params.callback([]);
+      const destructor = () => {};
+      return { destructor };
+    });
+
+    prepareUnlayerGlobalObject();
+    render(<PromoCodesWidget {...unlayerPropertyProps} />);
+
+    const noPromotioncodesMsg = await screen.findAllByText(
+      messages_es['_dp.promo_codes_not_availables'],
+    );
+    expect(noPromotioncodesMsg).toHaveLength(1);
+  });
+
+  it.each([
+    {
+      lang: 'es-ES',
+      expected_msg_translation:
+        'No se encontraron códigos de promoción disponibles en tu tienda',
+    },
+    {
+      lang: 'en-US',
+      expected_msg_translation: 'No promotion codes available in your store',
+    },
+  ])(
+    'must be render no promo codes available message for $lang language',
+    async ({ lang, expected_msg_translation }) => {
+      requestDopplerApp.mockImplementation((params) => {
+        params.callback([]);
+        const destructor = () => {};
+        return { destructor };
+      });
+      prepareUnlayerGlobalObject();
+      setLocale(lang);
+      render(<PromoCodesWidget {...unlayerPropertyProps} />);
+      const noPromotioncodesEsMsg = await screen.findAllByText(
+        expected_msg_translation,
+      );
+      expect(noPromotioncodesEsMsg).toHaveLength(1);
+    },
+  );
 });

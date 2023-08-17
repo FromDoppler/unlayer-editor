@@ -16,6 +16,7 @@ export const messages_en: IntlMessages = {
   '_dp.payu_small_button': `${ASSETS_BASE_URL}/payu-button-small-en.png`,
   '_dp.promo_code': `Promotion Code`,
   '_dp.promo_codes': `Promotion codes`,
+  '_dp.promo_codes_not_availables': `No promotion codes available in your store`,
   '_dp.select_option': `Select an option`,
   '_dp.size': `Size`,
   '_dp.small': `Small`,

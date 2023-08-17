@@ -61,18 +61,7 @@ export const getPromoCodeToolDefinition: () =>
       promo_code: { enabled: values.store !== EMPTY_SELECTION },
     }),
     // See https://docs.unlayer.com/docs/transform-property-values
-    transformer: (
-      values: PromoCodeValues,
-      source: {
-        // The name of the updated property (ie. store or promo_code)
-        name: string;
-        // The new value of the updated property
-        value: any;
-      },
-      // The updated
-    ) => {
-      // TODO: demo purposes, remove this code
-      console.log({ transformer: { values, source } });
+    transformer: (values: PromoCodeValues) => {
       return values;
     },
   };

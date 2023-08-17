@@ -52,7 +52,9 @@ export const PromoCodesWidget: WidgetComponent<
     );
   }
 
-  return (
+  return codeOptions.length === 0 ? (
+    <div>{intl.formatMessage({ id: '_dp.promo_codes_not_availables' })}</div>
+  ) : (
     <div role="container">
       {codeOptions.map((x) => (
         <div className="form-check" style={containerStyle} key={x.value}>
