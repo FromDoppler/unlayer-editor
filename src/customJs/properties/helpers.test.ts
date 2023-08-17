@@ -2,7 +2,7 @@ import { EMPTY_SELECTION } from '../constants';
 import { setLocale } from '../localization';
 import {
   alignmentProperty,
-  dropdownProperty,
+  mappedDropdownProperty,
   storesDropdownProperty,
 } from './helpers';
 
@@ -11,7 +11,7 @@ setLocale('es-ES');
 
 const emptyOption = { value: EMPTY_SELECTION, label: 'Seleccione una opción' };
 
-describe(dropdownProperty.name, () => {
+describe(mappedDropdownProperty.name, () => {
   const demoMap = (x: any) => ({ value: `value-${x}`, label: `label-${x}` });
 
   it('should create a dropdownProperty with the empty value and empty selection when there are more than an item', () => {
@@ -25,7 +25,7 @@ describe(dropdownProperty.name, () => {
     ];
 
     // Act
-    const result = dropdownProperty({
+    const result = mappedDropdownProperty({
       label,
       items,
       map: demoMap,
@@ -53,7 +53,7 @@ describe(dropdownProperty.name, () => {
     ];
 
     // Act
-    const result = dropdownProperty({
+    const result = mappedDropdownProperty({
       label,
       items,
       map: demoMap,
@@ -77,7 +77,7 @@ describe(dropdownProperty.name, () => {
     const expectedOptions = [emptyOption];
 
     // Act
-    const result = dropdownProperty({
+    const result = mappedDropdownProperty({
       label,
       items,
       map: demoMap,

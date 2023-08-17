@@ -5,7 +5,7 @@ import { ReactToolDefinitionFrom } from '../../types';
 import { PayuButtonHelp } from './PayuButtonHelp';
 import { PayuButtonBase } from './types';
 import { urlProperty } from '../../properties/url';
-import { alignmentProperty } from '../../properties/helpers';
+import { alignmentProperty, dropdownProperty } from '../../properties/helpers';
 
 export const getPayuButtonToolDefinition: () => ReactToolDefinitionFrom<PayuButtonBase> =
   () => ({
@@ -21,27 +21,24 @@ export const getPayuButtonToolDefinition: () => ReactToolDefinitionFrom<PayuButt
             label: intl.formatMessage({ id: '_dp.pay_button_link' }),
             help: PayuButtonHelp(),
           }),
-          size: {
+          size: dropdownProperty({
             label: intl.formatMessage({ id: '_dp.size' }),
             defaultValue: 'medium',
-            widget: 'dropdown',
-            data: {
-              options: [
-                {
-                  label: intl.formatMessage({ id: '_dp.small' }),
-                  value: 'small',
-                },
-                {
-                  label: intl.formatMessage({ id: '_dp.medium' }),
-                  value: 'medium',
-                },
-                {
-                  label: intl.formatMessage({ id: '_dp.big' }),
-                  value: 'large',
-                },
-              ],
-            },
-          },
+            options: [
+              {
+                label: intl.formatMessage({ id: '_dp.small' }),
+                value: 'small',
+              },
+              {
+                label: intl.formatMessage({ id: '_dp.medium' }),
+                value: 'medium',
+              },
+              {
+                label: intl.formatMessage({ id: '_dp.big' }),
+                value: 'large',
+              },
+            ],
+          } as const),
           alignment: alignmentProperty(),
         },
       },
