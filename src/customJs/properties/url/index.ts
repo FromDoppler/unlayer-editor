@@ -14,3 +14,16 @@ export const urlPropertyEditorDefinition: ReactPropertyDefinition<
   name: urlPropertyEditor,
   Widget: UrlWidget,
 };
+
+export const urlProperty = ({
+  label,
+  help,
+}: {
+  label?: string;
+  help?: ReactNode;
+} = {}) =>
+  ({
+    label,
+    widget: urlPropertyEditor,
+    data: { help },
+  }) as const;
