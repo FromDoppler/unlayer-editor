@@ -27,6 +27,8 @@ export const messages_en: IntlMessages = {
   '_dp.price_discount_size': `Discount price size`,
   '_dp.prices': `Precios`,
   '_dp.product': `Product`,
+  '_dp.product_button': `Buy Button`,
+  '_dp.product_button_text': `Button text`,
   '_dp.product_image': `Product image`,
   '_dp.product_link': `Product link`,
   '_dp.product_title': `Producto title`,

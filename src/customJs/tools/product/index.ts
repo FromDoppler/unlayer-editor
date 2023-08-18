@@ -4,6 +4,10 @@ import { ProductToolDefinition } from './types';
 import { ASSETS_BASE_URL } from '../../constants';
 import { urlProperty } from '../../properties/url';
 import {
+  autoWidthProperty,
+  borderProperty,
+  borderRadiusProperty,
+  buttonColorsProperty,
   colorProperty,
   fontFamilyProperty,
   fontSizeProperty,
@@ -110,6 +114,22 @@ export const getProductToolDefinition: () =>
           descriptionHtml: richTextProperty(),
           descriptionFont: fontFamilyProperty(),
           descriptionFontSize: fontSizeProperty(),
+        },
+      },
+      button: {
+        title: $t('_dp.product_button'),
+        options: {
+          buttonShown: toggleShowProperty(),
+          buttonText: textProperty({
+            label: $t('_dp.product_button_text'),
+          }),
+          buttonFont: fontFamilyProperty(),
+          buttonFontWeight: fontWeightProperty(),
+          buttonFontSize: fontSizeProperty(),
+          buttonColors: buttonColorsProperty(),
+          buttonAutoWith: autoWidthProperty(),
+          buttonBorder: borderProperty(),
+          buttonBorderRadius: borderRadiusProperty(),
         },
       },
     },

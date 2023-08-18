@@ -27,6 +27,8 @@ export const messages_es = {
   '_dp.price_discount_size': `Tamaño del precio final`,
   '_dp.prices': `Precios`,
   '_dp.product': `Producto`,
+  '_dp.product_button': `Botón de compra`,
+  '_dp.product_button_text': `Texto del botón`,
   '_dp.product_image': `Imagen del producto`,
   '_dp.product_link': `Enlace del producto`,
   '_dp.product_title': `Título del producto`,

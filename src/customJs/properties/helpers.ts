@@ -1,6 +1,10 @@
 import { EMPTY_SELECTION } from '../constants';
 import { $t } from '../localization';
 import {
+  AutoWidth,
+  Border,
+  BorderRadius,
+  ButtonColors,
   Color,
   FontFamily,
   FontWeight,
@@ -211,6 +215,46 @@ export const colorProperty: (param?: {
   label: label ?? $t('editor.color.label'),
   widget: 'color_picker',
 });
+
+export const buttonColorsProperty: () => UnlayerProperty<ButtonColors> =
+  () => ({
+    defaultValue: {
+      color: '#FFFFFF',
+      backgroundColor: '#3AAEE0',
+    },
+    widget: 'button_color',
+  });
+
+export const autoWidthProperty: () => UnlayerProperty<AutoWidth> = () => ({
+  defaultValue: { autoWidth: true, width: '100%' },
+  widget: 'auto_width',
+});
+
+export const borderProperty: () => UnlayerProperty<Border> = () => ({
+  label: $t('editor.border.label'),
+  defaultValue: {
+    borderTopWidth: '0px',
+    borderTopStyle: 'solid',
+    borderTopColor: '#CCCCCC',
+    borderLeftWidth: '0px',
+    borderLeftStyle: 'solid',
+    borderLeftColor: '#CCCCCC',
+    borderRightWidth: '0px',
+    borderRightStyle: 'solid',
+    borderRightColor: '#CCCCCC',
+    borderBottomWidth: '0px',
+    borderBottomStyle: 'solid',
+    borderBottomColor: '#CCCCCC',
+  },
+  widget: 'border',
+});
+
+export const borderRadiusProperty: () => UnlayerProperty<BorderRadius> =
+  () => ({
+    label: $t('editor.rounded_border.label'),
+    defaultValue: '4px',
+    widget: 'border_radius',
+  });
 
 export const richTextProperty: (param?: {
   label?: string;

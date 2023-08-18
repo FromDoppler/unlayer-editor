@@ -1,4 +1,8 @@
 import {
+  AutoWidth,
+  Border,
+  BorderRadius,
+  ButtonColors,
   Color,
   FontFamily,
   FontWeight,
@@ -53,6 +57,17 @@ export type ProductBase = Readonly<{
     descriptionHtml: string;
     descriptionFont: FontFamily;
     descriptionFontSize: PixelSize;
+  };
+  button: {
+    buttonShown: boolean;
+    buttonText: string;
+    buttonFont: FontFamily;
+    buttonFontWeight: FontWeight;
+    buttonFontSize: PixelSize;
+    buttonColors: ButtonColors;
+    buttonAutoWith: AutoWidth;
+    buttonBorder: Border;
+    buttonBorderRadius: BorderRadius;
   };
 }>;
 
