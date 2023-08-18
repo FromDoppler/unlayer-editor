@@ -27,7 +27,7 @@ export const PromoCodesWidget: WidgetComponent<
 
   const containerStyle = {
     margin: '5px',
-    font: '400 1.2em Roboto,sans-serif',
+    font: '400 1em Roboto,sans-serif',
     color: '#333',
   } as const;
 
