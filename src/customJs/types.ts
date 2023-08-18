@@ -154,10 +154,10 @@ export type ReactToolDefinitionFrom<TBase> = ReactToolDefinition<
  * };
  */
 export type PropertyGroupsFrom<TBase> = Readonly<{
-  [Property in keyof TBase]: ProperyGroupsItemFrom<Property, TBase[Property]>;
+  [Property in keyof TBase]: PropertyGroupsItemFrom<Property, TBase[Property]>;
 }>;
 
-type ProperyGroupsItemFrom<Property, TProperty> = Property extends 'default'
+type PropertyGroupsItemFrom<Property, TProperty> = Property extends 'default'
   ? {
       options: PropertyGroupFrom<TProperty>;
     }
