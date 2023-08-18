@@ -25,7 +25,7 @@ export const getPromoCodeToolDefinition: () =>
   return {
     name: 'promo_code',
     label: $t('_dp.promo_code'),
-    icon: `${ASSETS_BASE_URL}/promotion_code.svg`,
+    icon: `${ASSETS_BASE_URL}/promotion_code_v2.svg`,
     Component: PromoCodeViewer,
     options: {
       promo_code: {
