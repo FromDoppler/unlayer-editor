@@ -10,6 +10,8 @@ export const messages_en: IntlMessages = {
   '_dp.discount_text': `Discount text`,
   '_dp.help': `HELP`,
   '_dp.layout': `Layout`,
+  '_dp.layout_00_horizontal': `Horizontal`,
+  '_dp.layout_01_vertical': `Vertical`,
   '_dp.medium': `Medium`,
   '_dp.pay_button_link': `Detailed payment request`,
   '_dp.payu_button': `PayU Button`,

@@ -10,6 +10,8 @@ export const messages_es = {
   '_dp.discount_text': `Texto del descuento`,
   '_dp.help': `HELP`,
   '_dp.layout': `Formato`,
+  '_dp.layout_00_horizontal': `Horizontal`,
+  '_dp.layout_01_vertical': `Vertical`,
   '_dp.medium': `Normal`,
   '_dp.pay_button_link': `Solicitud de pago detallada`,
   '_dp.payu_button': `Pago PayU`,

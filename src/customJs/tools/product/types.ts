@@ -13,12 +13,15 @@ import {
   ToolValuesFrom,
 } from '../../types';
 
+export type ProductLayout = '00_horizontal' | '01_vertical';
+
 export type ProductBase = Readonly<{
   product: {
     productUrl: string;
   };
   layout: {
     backgroundColor: Color;
+    layout: ProductLayout;
   };
   image: {
     imageShown: boolean;

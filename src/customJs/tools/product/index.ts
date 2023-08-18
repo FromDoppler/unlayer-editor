@@ -1,6 +1,6 @@
 import { $t } from '../../localization';
 import { ProductViewer } from './ProductViewer';
-import { ProductToolDefinition } from './types';
+import { ProductToolDefinition, ProductLayout } from './types';
 import { ASSETS_BASE_URL } from '../../constants';
 import { urlProperty } from '../../properties/url';
 import {
@@ -9,6 +9,7 @@ import {
   borderRadiusProperty,
   buttonColorsProperty,
   colorProperty,
+  dropdownProperty,
   fontFamilyProperty,
   fontSizeProperty,
   fontWeightProperty,
@@ -18,6 +19,17 @@ import {
   toggleProperty,
   toggleShowProperty,
 } from '../../properties/helpers';
+import { UnlayerProperty } from '../../types';
+
+const productLayoutProperty: () => UnlayerProperty<ProductLayout> = () =>
+  // TODO: replace this dropdown by a nice component
+  dropdownProperty({
+    label: undefined,
+    options: [
+      { label: $t('_dp.layout_00_horizontal'), value: '00_horizontal' },
+      { label: $t('_dp.layout_01_vertical'), value: '01_vertical' },
+    ],
+  } as const);
 
 export const getProductToolDefinition: () =>
   | ProductToolDefinition
@@ -39,6 +51,7 @@ export const getProductToolDefinition: () =>
       layout: {
         title: $t('_dp.layout'),
         options: {
+          layout: productLayoutProperty(),
           backgroundColor: colorProperty({
             label: $t('editor.background_color.label'),
           }),
