@@ -17,6 +17,9 @@ export type ProductBase = Readonly<{
   product: {
     productUrl: string;
   };
+  layout: {
+    backgroundColor: Color;
+  };
   image: {
     imageShown: boolean;
     image: Image;

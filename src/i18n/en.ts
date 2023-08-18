@@ -9,6 +9,7 @@ export const messages_en: IntlMessages = {
   '_dp.discount': `Discount`,
   '_dp.discount_text': `Discount text`,
   '_dp.help': `HELP`,
+  '_dp.layout': `Layout`,
   '_dp.medium': `Medium`,
   '_dp.pay_button_link': `Detailed payment request`,
   '_dp.payu_button': `PayU Button`,

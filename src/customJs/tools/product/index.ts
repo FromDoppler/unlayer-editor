@@ -36,6 +36,14 @@ export const getProductToolDefinition: () =>
           }),
         },
       },
+      layout: {
+        title: $t('_dp.layout'),
+        options: {
+          backgroundColor: colorProperty({
+            label: $t('editor.background_color.label'),
+          }),
+        },
+      },
       image: {
         title: $t('editor.image.label'),
         options: {
