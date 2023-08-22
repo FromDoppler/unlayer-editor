@@ -7,6 +7,7 @@ import {
   PrimitiveType,
   Options as IntlMessageFormatOptions,
 } from 'intl-messageformat';
+import { ReactElement } from 'react';
 
 export type IntlMessages = typeof messages_es;
 export type IntlMessageId = keyof IntlMessages;
@@ -56,6 +57,12 @@ export const setLocale = (locale: AvailableLanguage) => {
 
 export const $t = (
   id: IntlMessageId,
-  values?: Record<string, PrimitiveType | FormatXMLElementFn<string, string>>,
+  values?: Record<
+    string,
+    | PrimitiveType
+    | FormatXMLElementFn<string, string>
+    | FormatXMLElementFn<string, ReactElement>
+  >,
   opts?: IntlMessageFormatOptions,
-) => intl.formatMessage({ id }, values, opts);
+  // TODO: fix type in values, casted to any for the moment
+) => intl.formatMessage({ id }, values as any, opts);
