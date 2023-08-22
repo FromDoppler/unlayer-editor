@@ -12,6 +12,7 @@ import { getSocialShareToolDefinition } from './tools/social_share_tool';
 import { getPayuButtonToolDefinition } from './tools/payu_button_tool';
 import { getPromoCodeToolDefinition } from './tools/promo_code';
 import { promoCodesPropertyEditorDefinition } from './properties/promo_codes';
+import { getProductToolDefinition } from './tools/product';
 
 const { locale, previewMode } = getConfiguration();
 
@@ -40,7 +41,6 @@ registerReactTool(getSocialShareToolDefinition());
 registerReactTool(getPayuButtonToolDefinition());
 registerReactTool(getPromoCodeToolDefinition());
 
-/*eslint no-empty: "error"*/
 if (previewMode) {
-  /* place to register tool on preview mode */
+  registerReactTool(getProductToolDefinition());
 }

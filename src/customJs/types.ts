@@ -14,6 +14,58 @@ export type Store = {
   promotionCodeEnabled: boolean;
 };
 
+export type Percentage = `${number}%`;
+
+export type Image = {
+  url: string;
+  width: number;
+  height: number;
+  autoWidth: boolean;
+  maxWidth: Percentage;
+};
+
+export type FontFamily = {
+  label: string;
+  value: string;
+  url: string;
+  defaultFont: boolean;
+};
+
+export type FontWeight = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
+
+export type PixelSize = `${number}px`;
+
+export type FourPixelSizes =
+  `${PixelSize} ${PixelSize} ${PixelSize} ${PixelSize}`;
+
+export type Color = string;
+
+export type ButtonColors = {
+  color: Color;
+  backgroundColor: Color;
+};
+
+export type AutoWidth = { autoWidth: boolean; width: Percentage };
+
+export type BorderStyle = 'solid' | 'dotted' | 'dash';
+
+export type Border = {
+  borderTopWidth: PixelSize;
+  borderTopStyle: BorderStyle;
+  borderTopColor: Color;
+  borderLeftWidth: PixelSize;
+  borderLeftStyle: BorderStyle;
+  borderLeftColor: Color;
+  borderRightWidth: PixelSize;
+  borderRightStyle: BorderStyle;
+  borderRightColor: Color;
+  borderBottomWidth: PixelSize;
+  borderBottomStyle: BorderStyle;
+  borderBottomColor: Color;
+};
+
+export type BorderRadius = PixelSize | FourPixelSizes;
+
 export type ObjectWithStringProps = Record<string, any>;
 
 type WidgetComponentProps<
@@ -154,10 +206,10 @@ export type ReactToolDefinitionFrom<TBase> = ReactToolDefinition<
  * };
  */
 export type PropertyGroupsFrom<TBase> = Readonly<{
-  [Property in keyof TBase]: ProperyGroupsItemFrom<Property, TBase[Property]>;
+  [Property in keyof TBase]: PropertyGroupsItemFrom<Property, TBase[Property]>;
 }>;
 
-type ProperyGroupsItemFrom<Property, TProperty> = Property extends 'default'
+type PropertyGroupsItemFrom<Property, TProperty> = Property extends 'default'
   ? {
       options: PropertyGroupFrom<TProperty>;
     }
