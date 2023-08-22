@@ -1,3 +1,4 @@
+import { ProductGalleryValue } from '../../properties/product_gallery/ProductGalleryValue';
 import {
   AutoWidth,
   Border,
@@ -17,6 +18,7 @@ export type ProductLayout = '00_horizontal' | '01_vertical';
 
 export type ProductBase = Readonly<{
   product: {
+    productGallery: ProductGalleryValue | undefined;
     productUrl: string;
   };
   layout: {

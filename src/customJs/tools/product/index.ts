@@ -20,6 +20,7 @@ import {
   toggleShowProperty,
 } from '../../properties/helpers';
 import { UnlayerProperty } from '../../types';
+import { productGalleryProperty } from '../../properties/product_gallery';
 
 const productLayoutProperty: () => UnlayerProperty<ProductLayout> = () =>
   // TODO: replace this dropdown by a nice component
@@ -43,6 +44,7 @@ export const getProductToolDefinition: () =>
       product: {
         title: $t('_dp.product'),
         options: {
+          productGallery: productGalleryProperty(),
           productUrl: urlProperty({
             label: $t('_dp.product_link'),
           }),
