@@ -9,6 +9,17 @@ type Configuration = {
   /** True when there is at least one store with promotionCodeEnabled */
   promotionCodeEnabled: boolean;
   previewMode: boolean;
+  dopplerExternalUrls: DopplerExternalUrls;
+};
+
+export type DopplerExternalUrls = {
+  readonly home: string;
+  readonly campaigns: string;
+  readonly lists: string;
+  readonly controlPanel: string;
+  readonly automation: string;
+  readonly templates: string;
+  readonly integrations: string;
 };
 
 let _configuration: Configuration | undefined;
@@ -28,10 +39,12 @@ export const parseConfigurationDTO = ({
   locale = defaultLanguage,
   stores = [],
   previewMode = false,
+  dopplerExternalUrls = {},
 }: {
   locale?: 'es' | 'en';
   stores?: Store[];
   previewMode?: boolean;
+  dopplerExternalUrls?: Record<string, string>;
 } = {}) => {
   stores = stores.map(parseStoreDTO);
   const promotionCodeEnabled = stores.some((x) => x.promotionCodeEnabled);
@@ -40,8 +53,21 @@ export const parseConfigurationDTO = ({
     stores,
     promotionCodeEnabled,
     previewMode,
+    dopplerExternalUrls: parseDopplerExternalUrlsDTO(dopplerExternalUrls),
   };
 };
+
+const parseDopplerExternalUrlsDTO = (
+  dopplerExternalUrls: Record<string, string>,
+) => ({
+  home: dopplerExternalUrls['home'] || '#',
+  campaigns: dopplerExternalUrls['campaigns'] || '#',
+  lists: dopplerExternalUrls['lists'] || '#',
+  controlPanel: dopplerExternalUrls['controlPanel'] || '#',
+  automation: dopplerExternalUrls['automation'] || '#',
+  templates: dopplerExternalUrls['templates'] || '#',
+  integrations: dopplerExternalUrls['integrations'] || '#',
+});
 
 const parseStoreDTO = ({ name = '', promotionCodeEnabled = false } = {}) => ({
   name,
