@@ -91,8 +91,8 @@ export type WidgetComponent<
 export type ReactPropertyDefinition<
   TPropertyName extends string,
   TPropertyValue,
-  TToolValues,
-  TToolData,
+  TToolValues = void,
+  TToolData = void,
 > = {
   name: TPropertyName;
   Widget: WidgetComponent<TPropertyValue, TToolValues, TToolData>;
