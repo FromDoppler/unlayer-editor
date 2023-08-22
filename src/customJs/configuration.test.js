@@ -21,6 +21,15 @@ const expectedDefaultConfiguration = {
   stores: [],
   promotionCodeEnabled: false,
   previewMode: false,
+  dopplerExternalUrls: {
+    automation: '#',
+    campaigns: '#',
+    controlPanel: '#',
+    home: '#',
+    integrations: '#',
+    lists: '#',
+    templates: '#',
+  },
 };
 
 describe(parseConfigurationDTO.name, () => {
@@ -61,6 +70,15 @@ describe(parseConfigurationDTO.name, () => {
       stores: [],
       promotionCodeEnabled: false,
       previewMode,
+      dopplerExternalUrls: {
+        automation: '#',
+        campaigns: '#',
+        controlPanel: '#',
+        home: '#',
+        integrations: '#',
+        lists: '#',
+        templates: '#',
+      },
     });
   });
 
