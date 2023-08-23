@@ -12,8 +12,6 @@ import {
 } from '../types';
 import { getConfiguration } from '../configuration';
 
-const { previewMode: enableLogging } = getConfiguration();
-
 export const setLinkTypes = (
   linkTypes: { name: LinkType; enabled: boolean }[],
 ) => unlayer.setLinkTypes?.(linkTypes);
@@ -105,6 +103,7 @@ const viewer = <TToolValues,>({
   restOfViewerProps: ObjectWithStringProps;
   restOfToolDefinitions: ObjectWithStringProps;
 }) => {
+  const { previewMode: enableLogging } = getConfiguration();
   const isViewer = true;
   enableLogging &&
     console.log('RENDERING VIEWER', {
@@ -147,6 +146,7 @@ const exporter = <TToolValues,>({
   // restOfExporterParameters and restOfToolDefinitions are here only for debugging process
   // and to evaluate if they could be used in the future.
   // TODO: remove restOfExporterParameters and restOfToolDefinitions when they are not needed
+  const { previewMode: enableLogging } = getConfiguration();
   const isViewer = false;
   enableLogging &&
     console.log('EXPORTING', {
