@@ -4,6 +4,7 @@ import { ProductGalleryValue } from './ProductGalleryValue';
 import { $t } from '../../localization';
 import { getConfiguration } from '../../configuration';
 import { requestDopplerApp } from '../../utils/dopplerAppBridge';
+import { closePropertyEditorBar } from '../../utils/unlayer';
 
 export const ProductGalleryWidget: WidgetComponent<ProductGalleryValue> = ({
   label,
@@ -12,7 +13,12 @@ export const ProductGalleryWidget: WidgetComponent<ProductGalleryValue> = ({
   const searchProduct = () =>
     requestDopplerApp({
       action: 'searchProduct',
-      callback: updateValue,
+      callback: (result: ProductGalleryValue) => {
+        updateValue(result);
+        // Closing property editor right bar on selecting an item from products list is important
+        // because otherwise the description HTML is not updated.
+        closePropertyEditorBar();
+      },
     });
 
   const {

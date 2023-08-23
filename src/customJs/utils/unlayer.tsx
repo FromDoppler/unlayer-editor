@@ -167,3 +167,9 @@ const exporter = <TToolValues,>({
     />,
   );
 };
+
+export const closePropertyEditorBar = () => {
+  // This is a hack to close property editor right bar
+  const outerBody = document.querySelector('#u_body') as any;
+  outerBody?.click?.();
+};
