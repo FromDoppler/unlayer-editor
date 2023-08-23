@@ -1,6 +1,6 @@
 import { $t } from '../../localization';
 import { ProductViewer } from './ProductViewer';
-import { ProductToolDefinition, ProductLayout } from './types';
+import { ProductToolDefinition, ProductLayout, ProductValues } from './types';
 import { ASSETS_BASE_URL } from '../../constants';
 import { urlProperty } from '../../properties/url';
 import {
@@ -21,6 +21,7 @@ import {
 } from '../../properties/helpers';
 import { UnlayerProperty } from '../../types';
 import { productGalleryProperty } from '../../properties/product_gallery';
+import { ProductGalleryValue } from '../../properties/product_gallery/ProductGalleryValue';
 
 const productLayoutProperty: () => UnlayerProperty<ProductLayout> = () =>
   // TODO: replace this dropdown by a nice component
@@ -31,6 +32,42 @@ const productLayoutProperty: () => UnlayerProperty<ProductLayout> = () =>
       { label: $t('_dp.layout_01_vertical'), value: '01_vertical' },
     ],
   } as const);
+
+const transformValuesBasedOnProductGallery: (
+  productValues: ProductValues,
+  productGalleryValue: ProductGalleryValue,
+) => ProductValues = (
+  productValues: ProductValues,
+  {
+    productUrl,
+    imageUrl,
+    title,
+    defaultPriceText,
+    discountPriceText,
+    discountText,
+    descriptionHtml,
+  }: ProductGalleryValue,
+) => ({
+  ...productValues,
+  productGallery: undefined,
+  productUrl: productUrl,
+  image: imageUrl
+    ? {
+        url: imageUrl,
+      }
+    : undefined,
+  imageShown: !!imageUrl,
+  titleText: title ?? '',
+  titleShown: !!title,
+  pricesDefaultPriceText: defaultPriceText ?? '',
+  pricesDefaultPriceShown: !!defaultPriceText,
+  pricesDiscountPriceText: discountPriceText ?? '',
+  pricesDiscountPriceShown: !!discountPriceText,
+  discountText: discountText ?? '',
+  discountShown: !!discountText,
+  descriptionHtml: descriptionHtml ?? '',
+  descriptionShown: !!descriptionHtml,
+});
 
 export const getProductToolDefinition: () =>
   | ProductToolDefinition
@@ -155,6 +192,12 @@ export const getProductToolDefinition: () =>
           buttonBorderRadius: borderRadiusProperty(),
         },
       },
+    },
+    transformer(values, source) {
+      if (source.name === 'productGallery') {
+        values = transformValuesBasedOnProductGallery(values, source.value);
+      }
+      return values;
     },
   };
 };

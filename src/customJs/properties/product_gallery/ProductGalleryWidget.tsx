@@ -3,13 +3,18 @@ import { WidgetComponent } from '../../types';
 import { ProductGalleryValue } from './ProductGalleryValue';
 import { $t } from '../../localization';
 import { getConfiguration } from '../../configuration';
+import { requestDopplerApp } from '../../utils/dopplerAppBridge';
 
 export const ProductGalleryWidget: WidgetComponent<ProductGalleryValue> = ({
   label,
-  // TODO: use these values
-  // value,
-  // updateValue,
+  updateValue,
 }) => {
+  const searchProduct = () =>
+    requestDopplerApp({
+      action: 'searchProduct',
+      callback: updateValue,
+    });
+
   const {
     stores,
     dopplerExternalUrls: { integrations },
@@ -27,6 +32,7 @@ export const ProductGalleryWidget: WidgetComponent<ProductGalleryValue> = ({
               type="button"
               className="btn btn-primary btn-sm"
               disabled={noStores}
+              onClick={searchProduct}
             >
               {$t('_dp.product_gallery_search_product')}
             </button>
