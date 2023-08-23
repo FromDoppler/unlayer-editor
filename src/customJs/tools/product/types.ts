@@ -27,7 +27,7 @@ export type ProductBase = Readonly<{
   };
   image: {
     imageShown: boolean;
-    image: Image;
+    image: Image | undefined;
   };
   title: {
     titleShown: boolean;

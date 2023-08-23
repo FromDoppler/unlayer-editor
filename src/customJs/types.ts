@@ -18,10 +18,10 @@ export type Percentage = `${number}%`;
 
 export type Image = {
   url: string;
-  width: number;
-  height: number;
-  autoWidth: boolean;
-  maxWidth: Percentage;
+  width?: number;
+  height?: number;
+  autoWidth?: boolean;
+  maxWidth?: Percentage;
 };
 
 export type FontFamily = {
