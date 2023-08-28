@@ -13,6 +13,7 @@ import { getPayuButtonToolDefinition } from './tools/payu_button_tool';
 import { getPromoCodeToolDefinition } from './tools/promo_code';
 import { promoCodesPropertyEditorDefinition } from './properties/promo_codes';
 import { getProductToolDefinition } from './tools/product';
+import { productGalleryPropertyEditorDefinition } from './properties/product_gallery';
 
 const { locale, previewMode } = getConfiguration();
 
@@ -36,6 +37,7 @@ setLinkTypes?.([
 registerPropertyEditor(urlPropertyEditorDefinition);
 registerPropertyEditor(socialNetworksPropertyEditorDefinition);
 registerPropertyEditor(promoCodesPropertyEditorDefinition);
+registerPropertyEditor(productGalleryPropertyEditorDefinition);
 
 registerReactTool(getSocialShareToolDefinition());
 registerReactTool(getPayuButtonToolDefinition());
