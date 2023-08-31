@@ -2,14 +2,9 @@ import React, { useRef } from 'react';
 import mergeTags from './external/merge.tags';
 import styled from 'styled-components';
 import { ASSETS_BASE_URL } from './customJs/constants';
-
-import EmailEditor, {
-  User,
-  UnlayerOptions,
-  EditorRef,
-  Design,
-  HtmlExport,
-} from 'react-email-editor';
+import { JSONTemplate, User, AppearanceConfig } from 'state/types/index';
+import { ExportHtmlResult } from 'embed/Config';
+import EmailEditor, { UnlayerOptions, EditorRef } from 'react-email-editor';
 
 const Bar = styled.div`
   flex: 1;
@@ -50,6 +45,7 @@ const App: React.FC = () => {
     signature: userSignature,
   } as User;
   const UnlayerOptionsExtended = {
+    projectId,
     tools: {
       button: {
         icon: `${ASSETS_BASE_URL}/button.svg`,
@@ -64,11 +60,11 @@ const App: React.FC = () => {
           dock: 'left',
         },
       },
-    },
+    } as AppearanceConfig,
     mergeTagsConfig: {
       sort: false,
     },
-    mergeTags: mergeTags,
+    mergeTags,
     user: userExtend,
     customCSS: [`${process.env.PUBLIC_URL}/customJs/main.css`],
     customJS: [
@@ -95,13 +91,13 @@ const App: React.FC = () => {
   } as UnlayerOptions;
 
   const saveDesign = () => {
-    emailEditorRef.current?.saveDesign((design: Design) => {
+    emailEditorRef.current?.editor?.saveDesign((design: JSONTemplate) => {
       console.log('Template data', '\n', design);
     });
   };
 
   const exportHtml = () => {
-    emailEditorRef.current?.exportHtml((data: HtmlExport) => {
+    emailEditorRef.current?.editor?.exportHtml((data: ExportHtmlResult) => {
       const { html } = data;
       console.log('HTML Email data', '\n', html);
     });
@@ -115,7 +111,6 @@ const App: React.FC = () => {
         <button onClick={exportHtml}>Export HTML</button>
       </Bar>
       <EmailEditor
-        projectId={projectId}
         key="email-editor-test"
         ref={emailEditorRef}
         options={UnlayerOptionsExtended}
