@@ -185,34 +185,46 @@ export const fontFamilyProperty: (param?: {
 
 export const fontWeightProperty: (param?: {
   label?: string;
+  defaultValue?: FontWeight;
 }) => UnlayerProperty<FontWeight> = ({
   label,
+  defaultValue,
 }: {
   label?: string;
+  defaultValue?: FontWeight;
 } = {}) => ({
   label: label ?? $t('editor.font_weight.label'),
+  defaultValue: defaultValue,
   widget: 'font_weight',
 });
 
 export const fontSizeProperty: (param?: {
   label?: string;
+  defaultValue?: PixelSize;
 }) => UnlayerProperty<PixelSize> = ({
   label,
+  defaultValue,
 }: {
   label?: string;
+  defaultValue?: PixelSize;
 } = {}) => ({
   label: label ?? $t('editor.font_size.label'),
   widget: 'font_size',
+  defaultValue: defaultValue || '12px',
 });
 
 export const colorProperty: (param?: {
   label?: string;
+  defaultValue?: Color;
 }) => UnlayerProperty<Color> = ({
   label,
+  defaultValue,
 }: {
   label?: string;
+  defaultValue?: Color;
 } = {}) => ({
   label: label ?? $t('editor.color.label'),
+  defaultValue: defaultValue,
   widget: 'color_picker',
 });
 
@@ -220,7 +232,7 @@ export const buttonColorsProperty: () => UnlayerProperty<ButtonColors> =
   () => ({
     defaultValue: {
       color: '#FFFFFF',
-      backgroundColor: '#3AAEE0',
+      backgroundColor: 'rgb(109, 196, 151)',
     },
     widget: 'button_color',
   });
