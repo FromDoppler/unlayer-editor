@@ -110,11 +110,16 @@ export const getProductToolDefinition: () =>
         options: {
           titleShown: toggleShowProperty(),
           titleText: textProperty({
+            defaultValue: $t('_dp.product_title_default_value'),
             label: $t('_dp.product_title'),
           }),
           titleFont: fontFamilyProperty(),
-          titleFontWeight: fontWeightProperty(),
-          titleFontSize: fontSizeProperty(),
+          titleFontWeight: fontWeightProperty({
+            defaultValue: 700,
+          }),
+          titleFontSize: fontSizeProperty({
+            defaultValue: '24px',
+          }),
           titleColor: colorProperty(),
         },
       },
@@ -131,46 +136,59 @@ export const getProductToolDefinition: () =>
           }),
           pricesDefaultPriceText: textProperty({
             label: $t('_dp.price_default'),
+            defaultValue: $t('_dp.product_prices_default_default_value'),
           }),
           pricesDefaultPriceFontSize: fontSizeProperty({
             label: $t('_dp.price_default_size'),
+            defaultValue: '24px',
           }),
           pricesDefaultPriceColor: colorProperty({
             label: $t('_dp.price_default_color'),
+            defaultValue: '#64BF91',
           }),
 
           pricesDiscountPriceShown: toggleProperty({
             label: $t('_dp.price_discount_shown'),
-            defaultValue: true,
+            defaultValue: false,
           }),
           pricesDiscountPriceText: textProperty({
             label: $t('_dp.price_discount'),
+            defaultValue: $t('_dp.product_prices_discount_default_value'),
           }),
           pricesDiscountPriceFontSize: fontSizeProperty({
             label: $t('_dp.price_discount_size'),
+            defaultValue: '24px',
           }),
           pricesDiscountPriceColor: colorProperty({
             label: $t('_dp.price_discount_color'),
+            defaultValue: '#64BF91',
           }),
         },
       },
       discount: {
         title: $t('_dp.discount'),
         options: {
-          discountShown: toggleShowProperty(),
+          discountShown: toggleShowProperty({
+            defaultValue: false,
+          }),
           discountText: textProperty({
             label: $t('_dp.discount_text'),
+            defaultValue: $t('_dp.product_discount_default_value'),
           }),
           discountFont: fontFamilyProperty(),
           discountFontWeight: fontWeightProperty(),
-          discountFontSize: fontSizeProperty(),
+          discountFontSize: fontSizeProperty({
+            defaultValue: '16px',
+          }),
           discountColor: colorProperty(),
         },
       },
       description: {
         title: $t('_dp.description'),
         options: {
-          descriptionShown: toggleShowProperty(),
+          descriptionShown: toggleShowProperty({
+            defaultValue: false,
+          }),
           descriptionHtml: richTextProperty(),
           descriptionFont: fontFamilyProperty(),
           descriptionFontSize: fontSizeProperty(),
@@ -182,10 +200,15 @@ export const getProductToolDefinition: () =>
           buttonShown: toggleShowProperty(),
           buttonText: textProperty({
             label: $t('_dp.product_button_text'),
+            defaultValue: $t('_dp.product_button_default_value'),
           }),
           buttonFont: fontFamilyProperty(),
-          buttonFontWeight: fontWeightProperty(),
-          buttonFontSize: fontSizeProperty(),
+          buttonFontWeight: fontWeightProperty({
+            defaultValue: 700,
+          }),
+          buttonFontSize: fontSizeProperty({
+            defaultValue: '15px',
+          }),
           buttonColors: buttonColorsProperty(),
           buttonAutoWith: autoWidthProperty(),
           buttonBorder: borderProperty(),
