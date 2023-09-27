@@ -2410,10 +2410,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-email-editor@1.5.1":
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/@types/react-email-editor/-/react-email-editor-1.5.1.tgz#b36a5ceb85e27d8eae51735f7c59f39e584e5701"
-  integrity sha512-d6qqfnurOFGFB+JPyLA4QZDLgMdqbftYZSF6BzfYmlsjcysoDawAABdSN/fVRvcBgH5+Ta5/mXeuN+4PvwPRkA==
+"@types/react-email-editor@1.5.2":
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/@types/react-email-editor/-/react-email-editor-1.5.2.tgz#d14b0da2ee50f6c4c8e122a6ef8255123d2a2b7f"
+  integrity sha512-p7QggaisZV5034Li0X8l0T0R1g1Gvu7P7ga79HtymdupsFOgnAvQQsQYKFpNFc31JsG5zmHtv+KDfkqYT7WopA==
   dependencies:
     "@types/react" "*"
 
