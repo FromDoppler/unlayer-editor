@@ -42,7 +42,8 @@ registerPropertyEditor(productGalleryPropertyEditorDefinition);
 registerReactTool(getSocialShareToolDefinition());
 registerReactTool(getPayuButtonToolDefinition());
 registerReactTool(getPromoCodeToolDefinition());
+registerReactTool(getProductToolDefinition());
 
 if (previewMode) {
-  registerReactTool(getProductToolDefinition());
+  /* place to register tool on preview mode */
 }
