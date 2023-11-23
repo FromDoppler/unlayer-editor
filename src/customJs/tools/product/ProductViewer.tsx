@@ -6,25 +6,28 @@ import { ASSETS_BASE_URL } from '../../constants';
 export const ProductViewer: ViewerComponent<ProductValues> = ({ values }) => {
   /* TODO: refact style in case to add more layout */
   const containerStyle = {
-    display: 'flex',
-    flexDirection: values.layout === '00_horizontal' ? 'row' : 'column',
+    display: 'block',
     backgroundColor: values.backgroundColor,
     padding: '5px',
+    margin: '10px',
   } as const;
 
   const imageSectionWidth = `${values.layout === '00_horizontal' ? 40 : 100}%`;
   const descriptionSectionWidth = `${
-    values.imageShown && values.layout === '00_horizontal' ? 60 : 100
+    values.imageShown && values.layout === '00_horizontal' ? 55 : 100
   }%`;
 
+  const sectionDisplay: string =
+    values.layout === '00_horizontal' ? 'inline-block' : 'block';
   const descriptionSectionStyle = {
+    display: sectionDisplay,
     width: descriptionSectionWidth,
   };
 
   const imageSectionStyle = {
     width: imageSectionWidth,
-    display: values.imageShown ? 'flex' : 'none',
-    justifyContent: 'center',
+    display: values.imageShown ? sectionDisplay : 'none',
+    marginRight: `${values.layout === '00_horizontal' ? 5 : 0}%`,
   };
 
   const imageStyle = {
@@ -35,7 +38,7 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({ values }) => {
   } as const;
 
   const titleStyle = {
-    display: values.titleShown ? 'flex' : 'none',
+    display: values.titleShown ? 'block' : 'none',
     fontSize: values.titleFontSize || '24px',
     fontFamily: values.titleFont?.value || 'inherit',
     fontWeight: values.titleFontWeight,
@@ -49,7 +52,7 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({ values }) => {
   };
 
   const pricesStyle = {
-    display: values.pricesShown ? 'flex' : 'none',
+    display: values.pricesShown ? 'block' : 'none',
     fontFamily: values.pricesFont?.value || 'inherit',
     fontWeight: values.pricesFontWeight,
     marginTop: '15px',
@@ -57,7 +60,7 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({ values }) => {
   } as const;
 
   const priceDefaultStyle = {
-    display: values.pricesDefaultPriceShown ? 'flex' : 'none',
+    display: values.pricesDefaultPriceShown ? 'block' : 'none',
     textDecoration: values.pricesDiscountPriceShown ? 'line-through' : 'none',
     marginRight: '20px',
     fontSize: values.pricesDefaultPriceFontSize,
@@ -65,13 +68,13 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({ values }) => {
   };
 
   const priceDiscountStyle = {
-    display: values.pricesDiscountPriceShown ? 'flex' : 'none',
+    display: values.pricesDiscountPriceShown ? 'block' : 'none',
     fontSize: values.pricesDiscountPriceFontSize,
     color: values.pricesDiscountPriceColor,
   };
 
   const discountStyle = {
-    display: values.discountShown ? 'flex' : 'none',
+    display: values.discountShown ? 'block' : 'none',
     fontWeight: values.discountFontWeight,
     fontFamily: values.discountFont?.value || 'inherit',
     fontSize: values.discountFontSize,
@@ -79,8 +82,7 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({ values }) => {
   };
 
   const buttonStyle = {
-    display: values.buttonShown ? 'flex' : 'none',
-    justifyContent: 'center',
+    display: values.buttonShown ? 'block' : 'none',
     fontSize: values.buttonFontSize || '14px',
     fontFamily: values.buttonFont?.value || 'inherit',
     fontWeight: values.buttonFontWeight,
@@ -95,10 +97,11 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({ values }) => {
       ? '100%'
       : values.buttonAutoWith?.width,
     marginTop: '15px',
-    minHeight: '47px',
+    minHeight: '20px',
     padding: '13px 20px',
     lineHeight: '20px',
-  };
+    textAlign: 'center',
+  } as const;
 
   const image =
     values.image?.url || `${ASSETS_BASE_URL}/product_transparent.svg`;

@@ -12,8 +12,7 @@ describe(ProductViewer.name, () => {
     render(<ProductViewer values={values} />);
     const container = await screen.findByRole('container');
     expect(container.style.backgroundColor).toEqual(values.backgroundColor);
-    expect(container.style.display).toEqual('flex');
-    expect(container.style.flexDirection).toEqual('row');
+    expect(container.style.display).toEqual('block');
   });
 
   it('should render the main container with vertical layout', async () => {
@@ -24,7 +23,6 @@ describe(ProductViewer.name, () => {
 
     render(<ProductViewer values={values} />);
     const container = await screen.findByRole('container');
-    expect(container.style.flexDirection).toEqual('column');
   });
 
   describe('image container', () => {
@@ -45,8 +43,7 @@ describe(ProductViewer.name, () => {
 
       render(<ProductViewer values={values} />);
       const imageContainer = screen.getByTestId('image-container');
-      expect(imageContainer.style.display).toEqual('flex');
-      expect(imageContainer.style.justifyContent).toEqual('center');
+      expect(imageContainer.style.display).toEqual('block');
       expect(imageContainer.style.width).toEqual('100%');
     });
 
@@ -115,7 +112,7 @@ describe(ProductViewer.name, () => {
       expect(descriptionContainer.style.width).toEqual('100%');
     });
 
-    it('should render description container with width 60% for horizontal layout ', async () => {
+    it('should render description container with width 55% for horizontal layout ', async () => {
       const values = {
         layout: '00_horizontal',
         imageShown: true,
@@ -123,7 +120,7 @@ describe(ProductViewer.name, () => {
 
       render(<ProductViewer values={values} />);
       const descriptionContainer = screen.getByTestId('description-container');
-      expect(descriptionContainer.style.width).toEqual('60%');
+      expect(descriptionContainer.style.width).toEqual('55%');
     });
 
     it('should render description container full width for horizontal layout when imageShown is false', async () => {
@@ -299,7 +296,7 @@ describe(ProductViewer.name, () => {
 
       render(<ProductViewer values={values} />);
       const discount = screen.getByText(values.discountText);
-      expect(discount.style.display).toEqual('flex');
+      expect(discount.style.display).toEqual('block');
       expect(discount.style.fontSize).toEqual('14px');
       expect(discount.style.color).toEqual('rgb(51, 51, 51)');
       expect(discount.style.fontWeight).toEqual('700');
@@ -353,7 +350,7 @@ describe(ProductViewer.name, () => {
 
       render(<ProductViewer values={values} />);
       const buttton = await screen.findByRole('link');
-      expect(buttton.style.display).toEqual('flex');
+      expect(buttton.style.display).toEqual('block');
       expect(buttton.style.fontSize).toEqual('14px');
       expect(buttton.style.color).toEqual('rgb(51, 51, 51)');
       expect(buttton.style.backgroundColor).toEqual('rgb(109, 196, 151)');
@@ -367,8 +364,8 @@ describe(ProductViewer.name, () => {
       expect(buttton.style.borderRadius).toEqual('5px');
       expect(buttton.style.width).toEqual('50%');
       // default styles values
-      expect(buttton.style.justifyContent).toEqual('center');
-      expect(buttton.style.minHeight).toEqual('47px');
+      expect(buttton.style.textAlign).toEqual('center');
+      expect(buttton.style.minHeight).toEqual('20px');
       expect(buttton.style.padding).toEqual('13px 20px');
       expect(buttton.style.lineHeight).toEqual('20px');
       expect(buttton.style.textDecoration).toEqual('none');
