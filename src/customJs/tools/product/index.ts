@@ -33,6 +33,12 @@ const productLayoutProperty: () => UnlayerProperty<ProductLayout> = () =>
     ],
   } as const);
 
+const isEmptyOrZero = (value: string) => {
+  if (value === '') return true;
+  const numberValue = value.split(' ')[1] || '0';
+  return parseInt(numberValue) === 0;
+};
+
 const transformValuesBasedOnProductGallery: (
   productValues: ProductValues,
   productGalleryValue: ProductGalleryValue,
@@ -62,7 +68,12 @@ const transformValuesBasedOnProductGallery: (
   pricesDefaultPriceText: defaultPriceText ?? '',
   pricesDefaultPriceShown: !!defaultPriceText,
   pricesDiscountPriceText: discountPriceText ?? '',
-  pricesDiscountPriceShown: !!discountPriceText,
+  pricesDiscountPriceShown:
+    !!discountPriceText && !isEmptyOrZero(discountPriceText),
+  pricesDefaultPriceColor:
+    !!discountPriceText && !isEmptyOrZero(discountPriceText)
+      ? '#999'
+      : '#64BF91',
   discountText: discountText ?? '',
   discountShown: !!discountText,
   descriptionHtml: descriptionHtml ?? '',
