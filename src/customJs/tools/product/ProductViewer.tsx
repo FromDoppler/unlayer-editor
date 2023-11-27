@@ -22,12 +22,14 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({ values }) => {
   const descriptionSectionStyle = {
     display: sectionDisplay,
     width: descriptionSectionWidth,
+    verticalAlign: 'top',
   };
 
   const imageSectionStyle = {
     width: imageSectionWidth,
     display: values.imageShown ? sectionDisplay : 'none',
     marginRight: `${values.layout === '00_horizontal' ? 5 : 0}%`,
+    verticalAlign: 'top',
   };
 
   const imageStyle = {
@@ -98,7 +100,7 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({ values }) => {
       : values.buttonAutoWith?.width,
     marginTop: '15px',
     minHeight: '20px',
-    padding: '13px 20px',
+    padding: '13px 0px',
     lineHeight: '20px',
     textAlign: 'center',
   } as const;

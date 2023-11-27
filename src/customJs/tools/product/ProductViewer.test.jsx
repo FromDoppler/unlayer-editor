@@ -7,22 +7,35 @@ describe(ProductViewer.name, () => {
     const values = {
       backgroundColor: 'rgb(255, 255, 255)',
       layout: '00_horizontal',
+      imageShown: true,
     };
 
     render(<ProductViewer values={values} />);
     const container = await screen.findByRole('container');
     expect(container.style.backgroundColor).toEqual(values.backgroundColor);
     expect(container.style.display).toEqual('block');
+    const imageContainer = screen.getByTestId('image-container');
+    expect(imageContainer.style.display).toEqual('inline-block');
+    expect(imageContainer.style.width).toEqual('40%');
+    const descriptionContainer = screen.getByTestId('description-container');
+    expect(descriptionContainer.style.display).toEqual('inline-block');
+    expect(descriptionContainer.style.width).toEqual('55%');
   });
 
   it('should render the main container with vertical layout', async () => {
     const values = {
       backgroundColor: 'rgb(255, 255, 255)',
       layout: '01_vertical',
+      imageShown: true,
     };
 
     render(<ProductViewer values={values} />);
-    const container = await screen.findByRole('container');
+    const imageContainer = screen.getByTestId('image-container');
+    expect(imageContainer.style.display).toEqual('block');
+    expect(imageContainer.style.width).toEqual('100%');
+    const descriptionContainer = screen.getByTestId('description-container');
+    expect(descriptionContainer.style.display).toEqual('block');
+    expect(descriptionContainer.style.width).toEqual('100%');
   });
 
   describe('image container', () => {
@@ -366,7 +379,7 @@ describe(ProductViewer.name, () => {
       // default styles values
       expect(buttton.style.textAlign).toEqual('center');
       expect(buttton.style.minHeight).toEqual('20px');
-      expect(buttton.style.padding).toEqual('13px 20px');
+      expect(buttton.style.padding).toEqual('13px 0px');
       expect(buttton.style.lineHeight).toEqual('20px');
       expect(buttton.style.textDecoration).toEqual('none');
     });
