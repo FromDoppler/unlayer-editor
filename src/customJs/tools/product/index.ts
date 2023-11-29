@@ -36,7 +36,7 @@ const productLayoutProperty: () => UnlayerProperty<ProductLayout> = () =>
 const isEmptyOrZero = (value: string) => {
   if (value === '') return true;
   const numberValue = value.split(' ')[1] || '0';
-  return parseInt(numberValue) === 0;
+  return (parseFloat(numberValue) || 0) === 0;
 };
 
 const transformValuesBasedOnProductGallery: (
