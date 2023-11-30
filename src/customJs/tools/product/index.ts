@@ -33,6 +33,16 @@ const productLayoutProperty: () => UnlayerProperty<ProductLayout> = () =>
     ],
   } as const);
 
+const isEmptyOrZero = (value: string) => {
+  if (value === '') return true;
+  const numberValue = value.split(' ')[1] || '0';
+  return (parseFloat(numberValue) || 0) === 0;
+};
+
+const DEFAULT_GREY_COLOR = '#999';
+const DEFAULT_GREEN_COLOR = '#64BF91';
+const DEFAULT_FONT_SIZE = '24px';
+
 const transformValuesBasedOnProductGallery: (
   productValues: ProductValues,
   productGalleryValue: ProductGalleryValue,
@@ -62,7 +72,12 @@ const transformValuesBasedOnProductGallery: (
   pricesDefaultPriceText: defaultPriceText ?? '',
   pricesDefaultPriceShown: !!defaultPriceText,
   pricesDiscountPriceText: discountPriceText ?? '',
-  pricesDiscountPriceShown: !!discountPriceText,
+  pricesDiscountPriceShown:
+    !!discountPriceText && !isEmptyOrZero(discountPriceText),
+  pricesDefaultPriceColor:
+    !!discountPriceText && !isEmptyOrZero(discountPriceText)
+      ? DEFAULT_GREY_COLOR
+      : DEFAULT_GREEN_COLOR,
   discountText: discountText ?? '',
   discountShown: !!discountText,
   descriptionHtml: descriptionHtml ?? '',
@@ -118,7 +133,7 @@ export const getProductToolDefinition: () =>
             defaultValue: 700,
           }),
           titleFontSize: fontSizeProperty({
-            defaultValue: '24px',
+            defaultValue: DEFAULT_FONT_SIZE,
           }),
           titleColor: colorProperty(),
         },
@@ -140,11 +155,11 @@ export const getProductToolDefinition: () =>
           }),
           pricesDefaultPriceFontSize: fontSizeProperty({
             label: $t('_dp.price_default_size'),
-            defaultValue: '24px',
+            defaultValue: DEFAULT_FONT_SIZE,
           }),
           pricesDefaultPriceColor: colorProperty({
             label: $t('_dp.price_default_color'),
-            defaultValue: '#64BF91',
+            defaultValue: DEFAULT_GREEN_COLOR,
           }),
 
           pricesDiscountPriceShown: toggleProperty({
@@ -157,11 +172,11 @@ export const getProductToolDefinition: () =>
           }),
           pricesDiscountPriceFontSize: fontSizeProperty({
             label: $t('_dp.price_discount_size'),
-            defaultValue: '24px',
+            defaultValue: DEFAULT_FONT_SIZE,
           }),
           pricesDiscountPriceColor: colorProperty({
             label: $t('_dp.price_discount_color'),
-            defaultValue: '#64BF91',
+            defaultValue: DEFAULT_GREEN_COLOR,
           }),
         },
       },

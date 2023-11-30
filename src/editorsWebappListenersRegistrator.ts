@@ -77,8 +77,8 @@ export const registerListeners = () => {
       productUrl: 'https://www.google.com',
       imageUrl: 'https://webappint.fromdoppler.net/images/login-en.png',
       title: 'Product!',
-      defaultPriceText: '$50.00',
-      discountPriceText: '$40.00',
+      defaultPriceText: '$ 50.00',
+      discountPriceText: '$ 1.00',
       discountText: '20%',
       descriptionHtml: '<p>The <b>best</b> product!<p>',
     };
