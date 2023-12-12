@@ -7,7 +7,7 @@ export const productArrangementPropertyEditorDefinition = {
   Widget: ProductArrangementWidget,
 };
 
-export const productArrangementProperty = ({}: {} = {}) =>
+export const productArrangementProperty = () =>
   ({
     widget: ProductArrangementPropertyEditor,
   }) as const;
