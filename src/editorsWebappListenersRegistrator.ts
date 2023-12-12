@@ -75,12 +75,14 @@ export const registerListeners = () => {
     alert('Product Gallery');
     return {
       productUrl: 'https://www.google.com',
-      imageUrl: 'https://webappint.fromdoppler.net/images/login-en.png',
+      imageUrl:
+        'https://s3.amazonaws.com/unroll-images-production/projects%2F6553%2F1604576441796-339575',
       title: 'Product!',
       defaultPriceText: '$ 50.00',
       discountPriceText: '$ 1.00',
       discountText: '20%',
-      descriptionHtml: '<p>The <b>best</b> product!<p>',
+      descriptionHtml:
+        '<p style="font-size: 20px;font-family: "Lobster Two;"> <b>Lorem ipsum dolor</b> sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<p>',
     };
   });
 };
