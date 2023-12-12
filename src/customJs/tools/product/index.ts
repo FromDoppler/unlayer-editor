@@ -32,6 +32,7 @@ const productLayoutProperty: () => UnlayerProperty<ProductLayout> = () =>
       { label: $t('_dp.layout_01_vertical'), value: '01_vertical' },
     ],
   } as const);
+import { productArrangementProperty } from '../../properties/product_arrangement';
 
 const isEmptyOrZero = (value: string) => {
   if (value === '') return true;
@@ -106,6 +107,7 @@ export const getProductToolDefinition: () =>
         title: $t('_dp.layout'),
         options: {
           layout: productLayoutProperty(),
+          arrangement: productArrangementProperty(),
           backgroundColor: colorProperty({
             label: $t('editor.background_color.label'),
           }),
