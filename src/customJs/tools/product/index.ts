@@ -27,6 +27,7 @@ const productLayoutProperty: () => UnlayerProperty<ProductLayout> = () =>
   // TODO: replace this dropdown by a nice component
   dropdownProperty({
     label: undefined,
+    defaultValue: '01_vertical',
     options: [
       { label: $t('_dp.layout_00_horizontal'), value: '00_horizontal' },
       { label: $t('_dp.layout_01_vertical'), value: '01_vertical' },
