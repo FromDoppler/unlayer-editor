@@ -43,7 +43,7 @@ const isEmptyOrZero = (value: string) => {
 
 const DEFAULT_GREY_COLOR = '#999';
 const DEFAULT_GREEN_COLOR = '#64BF91';
-const DEFAULT_FONT_SIZE = '24px';
+const DEFAULT_FONT_SIZE = '20px';
 
 const transformValuesBasedOnProductGallery: (
   productValues: ProductValues,
