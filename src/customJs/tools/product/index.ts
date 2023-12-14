@@ -22,6 +22,7 @@ import {
 import { UnlayerProperty } from '../../types';
 import { productGalleryProperty } from '../../properties/product_gallery';
 import { ProductGalleryValue } from '../../properties/product_gallery/ProductGalleryValue';
+import { productArrangementProperty } from '../../properties/product_arrangement';
 
 const productLayoutProperty: () => UnlayerProperty<ProductLayout> = () =>
   // TODO: replace this dropdown by a nice component
@@ -33,12 +34,18 @@ const productLayoutProperty: () => UnlayerProperty<ProductLayout> = () =>
       { label: $t('_dp.layout_01_vertical'), value: '01_vertical' },
     ],
   } as const);
-import { productArrangementProperty } from '../../properties/product_arrangement';
 
 const isEmptyOrZero = (value: string) => {
   if (value === '') return true;
   const numberValue = value.split(' ')[1] || '0';
   return (parseFloat(numberValue) || 0) === 0;
+};
+
+const stripHtml = (html: string | undefined): string => {
+  const tmp = document.createElement('DIV');
+  if (!html) return '';
+  tmp.innerHTML = html;
+  return tmp.textContent || tmp.innerText || '';
 };
 
 const DEFAULT_GREY_COLOR = '#999';
@@ -82,7 +89,7 @@ const transformValuesBasedOnProductGallery: (
       : DEFAULT_GREEN_COLOR,
   discountText: discountText ?? '',
   discountShown: !!discountText,
-  descriptionHtml: descriptionHtml ?? '',
+  descriptionHtml: stripHtml(descriptionHtml) ?? '',
   descriptionShown: !!descriptionHtml,
 });
 
