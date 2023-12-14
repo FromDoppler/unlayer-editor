@@ -2,6 +2,11 @@ import { React } from '../../unlayer-react';
 import { ViewerComponent } from '../../types';
 import { ProductValues } from './types';
 import { ASSETS_BASE_URL } from '../../constants';
+import { ProductLayoutViewer01 } from './layout/layoutPosition01';
+import { ProductLayoutViewer02 } from './layout/layoutPosition02';
+import { ProductLayoutViewer03 } from './layout/layoutPosition03';
+import { ProductLayoutViewer04 } from './layout/layoutPosition04';
+import { ProductLayoutViewer05 } from './layout/layoutPosition05';
 
 export const ProductViewer: ViewerComponent<ProductValues> = ({ values }) => {
   /* TODO: refact style in case to add more layout */
@@ -108,37 +113,69 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({ values }) => {
   const image =
     values.image?.url || `${ASSETS_BASE_URL}/product_transparent.svg`;
 
+  const productToolElement = {
+    section: {
+      image: {
+        style: imageSectionStyle,
+      },
+      description: {
+        style: descriptionSectionStyle,
+      },
+    },
+    title: {
+      value: values.titleText,
+      style: titleStyle,
+    },
+    image: {
+      value: image,
+      style: imageStyle,
+    },
+    prices: {
+      default: {
+        value: values.pricesDefaultPriceText,
+        style: priceDefaultStyle,
+      },
+      discount: {
+        value: values.pricesDiscountPriceText,
+        style: priceDiscountStyle,
+      },
+      style: pricesStyle,
+    },
+    discount: {
+      value: values.discountText,
+      style: discountStyle,
+    },
+    description: {
+      value: values.descriptionHtml,
+      style: descriptionStyle,
+    },
+    button: {
+      value: values.buttonText,
+      href: values.productUrl ? values.productUrl : '#',
+      style: buttonStyle,
+    },
+  };
+
+  const getLayout = () => {
+    switch (values.arrangement) {
+      case '01_layout':
+        return <ProductLayoutViewer01 values={productToolElement} />;
+      case '02_layout':
+        return <ProductLayoutViewer02 values={productToolElement} />;
+      case '03_layout':
+        return <ProductLayoutViewer03 values={productToolElement} />;
+      case '04_layout':
+        return <ProductLayoutViewer04 values={productToolElement} />;
+      case '05_layout':
+        return <ProductLayoutViewer05 values={productToolElement} />;
+      default:
+        return <ProductLayoutViewer01 values={productToolElement} />;
+    }
+  };
+
   return (
     <div style={containerStyle} role="container">
-      <section style={imageSectionStyle} data-testid="image-container">
-        <img style={imageStyle} src={image} alt="product image" />
-      </section>
-      <section
-        style={descriptionSectionStyle}
-        data-testid="description-container"
-      >
-        <span style={titleStyle}>{values.titleText}</span>
-        <span
-          style={descriptionStyle}
-          dangerouslySetInnerHTML={{ __html: values.descriptionHtml }}
-        />
-        <span style={pricesStyle} data-testid="prices-container">
-          <span style={priceDefaultStyle}>{values.pricesDefaultPriceText}</span>
-          <span style={priceDiscountStyle}>
-            {values.pricesDiscountPriceText}
-          </span>
-        </span>
-        <span style={discountStyle}>{values.discountText}</span>
-        <a
-          style={buttonStyle}
-          role="link"
-          href={values.productUrl ? values.productUrl : '#'}
-          target="_blank"
-          rel="noreferrer"
-        >
-          {values.buttonText}
-        </a>
-      </section>
+      {getLayout()}
     </div>
   );
 };

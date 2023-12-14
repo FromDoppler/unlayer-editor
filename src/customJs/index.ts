@@ -14,6 +14,7 @@ import { getPromoCodeToolDefinition } from './tools/promo_code';
 import { promoCodesPropertyEditorDefinition } from './properties/promo_codes';
 import { getProductToolDefinition } from './tools/product';
 import { productGalleryPropertyEditorDefinition } from './properties/product_gallery';
+import { productArrangementPropertyEditorDefinition } from './properties/product_arrangement';
 
 const { locale, previewMode } = getConfiguration();
 
@@ -38,6 +39,7 @@ registerPropertyEditor(urlPropertyEditorDefinition);
 registerPropertyEditor(socialNetworksPropertyEditorDefinition);
 registerPropertyEditor(promoCodesPropertyEditorDefinition);
 registerPropertyEditor(productGalleryPropertyEditorDefinition);
+registerPropertyEditor(productArrangementPropertyEditorDefinition);
 
 registerReactTool(getSocialShareToolDefinition());
 registerReactTool(getPayuButtonToolDefinition());

@@ -27,11 +27,13 @@ const productLayoutProperty: () => UnlayerProperty<ProductLayout> = () =>
   // TODO: replace this dropdown by a nice component
   dropdownProperty({
     label: undefined,
+    defaultValue: '01_vertical',
     options: [
       { label: $t('_dp.layout_00_horizontal'), value: '00_horizontal' },
       { label: $t('_dp.layout_01_vertical'), value: '01_vertical' },
     ],
   } as const);
+import { productArrangementProperty } from '../../properties/product_arrangement';
 
 const isEmptyOrZero = (value: string) => {
   if (value === '') return true;
@@ -41,7 +43,7 @@ const isEmptyOrZero = (value: string) => {
 
 const DEFAULT_GREY_COLOR = '#999';
 const DEFAULT_GREEN_COLOR = '#64BF91';
-const DEFAULT_FONT_SIZE = '24px';
+const DEFAULT_FONT_SIZE = '20px';
 
 const transformValuesBasedOnProductGallery: (
   productValues: ProductValues,
@@ -106,6 +108,7 @@ export const getProductToolDefinition: () =>
         title: $t('_dp.layout'),
         options: {
           layout: productLayoutProperty(),
+          arrangement: productArrangementProperty(),
           backgroundColor: colorProperty({
             label: $t('editor.background_color.label'),
           }),
