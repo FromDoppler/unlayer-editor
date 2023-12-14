@@ -42,8 +42,8 @@ const isEmptyOrZero = (value: string) => {
 };
 
 const stripHtml = (html: string | undefined): string => {
-  const tmp = document.createElement('DIV');
   if (!html) return '';
+  const tmp = document.createElement('DIV');
   tmp.innerHTML = html;
   return tmp.textContent || tmp.innerText || '';
 };
@@ -89,7 +89,7 @@ const transformValuesBasedOnProductGallery: (
       : DEFAULT_GREEN_COLOR,
   discountText: discountText ?? '',
   discountShown: !!discountText,
-  descriptionHtml: stripHtml(descriptionHtml) ?? '',
+  descriptionHtml: stripHtml(descriptionHtml),
   descriptionShown: !!descriptionHtml,
 });
 
