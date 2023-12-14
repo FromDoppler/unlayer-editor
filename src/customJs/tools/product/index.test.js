@@ -63,11 +63,11 @@ const productGalleryValueMock = {
 
 describe(getProductToolDefinition.name, () => {
   const defaultProductGalleryValue = {
-    roductUrl: 'https://bici.com/test',
+    productUrl: 'https://bici.com/test',
     imageUrl: 'https://bici.com/test.jpg',
     title: 'Bici montain bike 29 cambios',
     defaultPriceText: '$ 5,000.00',
-    discountText: '10%',
+    discountText: '10% OFF!!!',
     descriptionHtml: 'Una bici de montaña',
   };
 
@@ -83,13 +83,8 @@ describe(getProductToolDefinition.name, () => {
     const transform = result.transformer(productGalleryValueMock, {
       name: 'productGallery',
       value: {
-        productUrl: 'https://bici.com/test',
-        imageUrl: 'https://bici.com/test.jpg',
-        title: 'Bici montain bike 29 cambios',
-        defaultPriceText: '$ 5,000.00',
+        ...defaultProductGalleryValue,
         discountPriceText: '$ 3,000.00',
-        discountText: '10% OFF!!!',
-        descriptionHtml: 'Una bici de montaña',
       },
     });
     // Assert
@@ -106,6 +101,25 @@ describe(getProductToolDefinition.name, () => {
     expect(transform.discountText).toEqual('10% OFF!!!');
     expect(transform.productUrl).toEqual('https://bici.com/test');
     expect(transform.image.url).toEqual('https://bici.com/test.jpg');
+  });
+
+  it('should transform html description to text from product gallery item selected', () => {
+    setLocale('es-ES');
+
+    prepareUnlayerGlobalObject();
+    const result = getProductToolDefinition();
+
+    const transform = result.transformer(productGalleryValueMock, {
+      name: 'productGallery',
+      value: {
+        ...defaultProductGalleryValue,
+        descriptionHtml:
+          '<p>Una <strong>bici</strong> de montaña</p><img src="img.jpg" alt="a test">',
+      },
+    });
+    // Assert
+    expect(transform).toBeDefined();
+    expect(transform.descriptionHtml).toEqual('Una bici de montaña');
   });
 
   it.each([
