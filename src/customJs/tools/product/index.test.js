@@ -103,6 +103,25 @@ describe(getProductToolDefinition.name, () => {
     expect(transform.image.url).toEqual('https://bici.com/test.jpg');
   });
 
+  it('should transform html description to text from product gallery item selected', () => {
+    setLocale('es-ES');
+
+    prepareUnlayerGlobalObject();
+    const result = getProductToolDefinition();
+
+    const transform = result.transformer(productGalleryValueMock, {
+      name: 'productGallery',
+      value: {
+        ...defaultProductGalleryValue,
+        descriptionHtml:
+          '<p>Una <strong>bici</strong> de montaña</p><img src="img.jpg" alt="a test">',
+      },
+    });
+    // Assert
+    expect(transform).toBeDefined();
+    expect(transform.descriptionHtml).toEqual('Una bici de montaña');
+  });
+
   it.each([
     {
       discountPriceText: '$ 1.00',
