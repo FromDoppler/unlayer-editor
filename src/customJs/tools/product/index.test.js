@@ -63,11 +63,11 @@ const productGalleryValueMock = {
 
 describe(getProductToolDefinition.name, () => {
   const defaultProductGalleryValue = {
-    roductUrl: 'https://bici.com/test',
+    productUrl: 'https://bici.com/test',
     imageUrl: 'https://bici.com/test.jpg',
     title: 'Bici montain bike 29 cambios',
     defaultPriceText: '$ 5,000.00',
-    discountText: '10%',
+    discountText: '10% OFF!!!',
     descriptionHtml: 'Una bici de montaña',
   };
 
@@ -83,13 +83,8 @@ describe(getProductToolDefinition.name, () => {
     const transform = result.transformer(productGalleryValueMock, {
       name: 'productGallery',
       value: {
-        productUrl: 'https://bici.com/test',
-        imageUrl: 'https://bici.com/test.jpg',
-        title: 'Bici montain bike 29 cambios',
-        defaultPriceText: '$ 5,000.00',
+        ...defaultProductGalleryValue,
         discountPriceText: '$ 3,000.00',
-        discountText: '10% OFF!!!',
-        descriptionHtml: 'Una bici de montaña',
       },
     });
     // Assert
