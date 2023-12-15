@@ -14,7 +14,7 @@ export const ProductArrangementWidget: WidgetComponent<ProductArrangement> = ({
     '05_layout',
   ];
   const btnStyle = {
-    backgroundColor: '#FFF',
+    backgroundColor: '#F9F9F9',
     border: 'none',
     width: '100px',
     height: '100px',
@@ -40,7 +40,7 @@ export const ProductArrangementWidget: WidgetComponent<ProductArrangement> = ({
                 onClick={() => updateValue(x)}
               >
                 <img
-                  src={`${ASSETS_BASE_URL}/product_layout/${x}.svg`}
+                  src={`${ASSETS_BASE_URL}/product_arrangement/${x}.svg`}
                   alt={x}
                   width="100"
                   height="100"
