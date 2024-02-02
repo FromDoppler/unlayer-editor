@@ -134,6 +134,7 @@ export type ReactToolDefinition<
   name: string;
   label: string;
   icon: string;
+  is_dynamic?: boolean;
   Component: ViewerComponent<TToolValues>;
   options: TToolOptions;
   validator?: ({
