@@ -158,7 +158,7 @@ const exporter = <TToolValues,>({
       restOfToolDefinitions,
       values,
     });
-  return ReactDOMServer.renderToStaticMarkup(
+  const stringHTMLComponent = ReactDOMServer.renderToStaticMarkup(
     <Component
       values={values}
       displayMode={displayMode}
@@ -166,6 +166,9 @@ const exporter = <TToolValues,>({
       toolInfo={toolInfo}
     />,
   );
+  return restOfToolDefinitions.is_dynamic
+    ? restOfToolDefinitions.createDynamicContet(stringHTMLComponent, values)
+    : stringHTMLComponent;
 };
 
 export const closePropertyEditorBar = () => {
