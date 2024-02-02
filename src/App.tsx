@@ -71,6 +71,7 @@ const App: React.FC = () => {
       `window["unlayer-extensions-configuration"] = {
         locale: "es",
         previewMode: true,
+        abandonedCartCampaign: true,
         stores: [
           { name: "MercadoShops", promotionCodeEnabled: true },
           { name: "Magento", promotionCodeEnabled: false },

@@ -16,7 +16,7 @@ import { getProductToolDefinition } from './tools/product';
 import { productGalleryPropertyEditorDefinition } from './properties/product_gallery';
 import { productArrangementPropertyEditorDefinition } from './properties/product_arrangement';
 
-const { locale, previewMode } = getConfiguration();
+const { locale, previewMode, abandonedCartCampaign } = getConfiguration();
 
 const unlayerLocales = {
   es: 'es-ES',
