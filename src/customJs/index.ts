@@ -15,6 +15,7 @@ import { promoCodesPropertyEditorDefinition } from './properties/promo_codes';
 import { getProductToolDefinition } from './tools/product';
 import { productGalleryPropertyEditorDefinition } from './properties/product_gallery';
 import { productArrangementPropertyEditorDefinition } from './properties/product_arrangement';
+import { getAbandonedCartToolDefinition } from './tools/abandoned_cart_tool';
 
 const { locale, previewMode, abandonedCartCampaign } = getConfiguration();
 
@@ -46,6 +47,9 @@ registerReactTool(getPayuButtonToolDefinition());
 registerReactTool(getPromoCodeToolDefinition());
 registerReactTool(getProductToolDefinition());
 
+if (abandonedCartCampaign) {
+  registerReactTool(getAbandonedCartToolDefinition());
+}
 if (previewMode) {
   /* place to register tool on preview mode */
 }
