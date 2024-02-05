@@ -77,7 +77,7 @@ describe(ProductViewer.name, () => {
       };
 
       render(<ProductViewer values={values} />);
-      const image = screen.getByAltText('product image');
+      const image = screen.getByAltText('abandoned cart image');
       expect(image.style.objectFit).toEqual('contain');
       expect(image.style.height).toEqual('auto');
       expect(image.style.width).toEqual('100%');
@@ -97,7 +97,7 @@ describe(ProductViewer.name, () => {
       };
 
       render(<ProductViewer values={values} />);
-      const image = screen.getByAltText('product image');
+      const image = screen.getByAltText('abandoned cart image');
       expect(image.style.width).toEqual('80%');
     });
   });

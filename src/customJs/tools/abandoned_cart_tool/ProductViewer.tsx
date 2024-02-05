@@ -131,7 +131,7 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({ values }) => {
               <img
                 style={imageStyle}
                 src={productToolElement.image.value}
-                alt="product image"
+                alt="abandoned cart image"
               />
             </a>
           </section>
