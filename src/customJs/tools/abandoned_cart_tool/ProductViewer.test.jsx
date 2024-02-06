@@ -49,7 +49,7 @@ describe(ProductViewer.name, () => {
       expect(imageContainer.style.display).toEqual('none');
     });
 
-    it('should render image container when imageShown is true with full width', async () => {
+    it('should render image container with full width when imageShown is true', async () => {
       const values = {
         imageShown: true,
       };
@@ -60,7 +60,7 @@ describe(ProductViewer.name, () => {
       expect(imageContainer.style.width).toEqual('100%');
     });
 
-    it('should render image container with width to 40% with horizontal layout ', async () => {
+    it('should render image container with a width of 40% with a horizontal layout', async () => {
       const values = {
         imageShown: true,
         layout: '00_horizontal',
@@ -103,7 +103,7 @@ describe(ProductViewer.name, () => {
   });
 
   describe('description container', () => {
-    it('should render description container full width for vertical layout ', async () => {
+    it('should render description container full width for vertical layout', async () => {
       const values = {
         layout: '01_vertical',
       };
@@ -113,7 +113,7 @@ describe(ProductViewer.name, () => {
       expect(descriptionContainer.style.width).toEqual('100%');
     });
 
-    it('should render description container with width 55% for horizontal layout ', async () => {
+    it('should render description container with width 55% for horizontal layout', async () => {
       const values = {
         layout: '00_horizontal',
         imageShown: true,
