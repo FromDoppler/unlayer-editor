@@ -20,6 +20,7 @@ const expectedDefaultConfiguration = {
   locale: 'es',
   stores: [],
   promotionCodeEnabled: false,
+  abandonedCartCampaign: false,
   previewMode: false,
   dopplerExternalUrls: {
     automation: '#',
@@ -59,7 +60,8 @@ describe(parseConfigurationDTO.name, () => {
     // Arrange
     const locale = 'en';
     const previewMode = true;
-    const input = { locale, previewMode };
+    const abandonedCartCampaign = true;
+    const input = { locale, previewMode, abandonedCartCampaign };
 
     // Act
     const result = parseConfigurationDTO(input);
@@ -69,6 +71,7 @@ describe(parseConfigurationDTO.name, () => {
       locale,
       stores: [],
       promotionCodeEnabled: false,
+      abandonedCartCampaign: true,
       previewMode,
       dopplerExternalUrls: {
         automation: '#',
