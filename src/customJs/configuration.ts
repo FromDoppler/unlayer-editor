@@ -9,6 +9,7 @@ type Configuration = {
   /** True when there is at least one store with promotionCodeEnabled */
   promotionCodeEnabled: boolean;
   abandonedCartCampaign: boolean;
+  visitedProductsCampaign: boolean;
   previewMode: boolean;
   dopplerExternalUrls: DopplerExternalUrls;
 };
@@ -42,12 +43,14 @@ export const parseConfigurationDTO = ({
   previewMode = false,
   dopplerExternalUrls = {},
   abandonedCartCampaign = false,
+  visitedProductsCampaign = false,
 }: {
   locale?: 'es' | 'en';
   stores?: Store[];
   previewMode?: boolean;
   dopplerExternalUrls?: Record<string, string>;
   abandonedCartCampaign?: boolean;
+  visitedProductsCampaign?: boolean;
 } = {}) => {
   stores = stores.map(parseStoreDTO);
   const promotionCodeEnabled = stores.some((x) => x.promotionCodeEnabled);
@@ -56,6 +59,7 @@ export const parseConfigurationDTO = ({
     stores,
     promotionCodeEnabled,
     abandonedCartCampaign,
+    visitedProductsCampaign,
     previewMode,
     dopplerExternalUrls: parseDopplerExternalUrlsDTO(dopplerExternalUrls),
   };
