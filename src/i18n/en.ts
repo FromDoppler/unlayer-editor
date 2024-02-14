@@ -3,9 +3,9 @@ import { ASSETS_BASE_URL, HELP_BASE_URL } from '../customJs/constants';
 
 // Based on https://github.com/unlayer/translations/blob/a72f2d5c18e873c1b2832a71ae75d62faa4daeec/en.json
 export const messages_en: IntlMessages = {
+  '_dp.abandoned_cart': `Abandoned Cart`,
   '_dp.alignment': `Alignment`,
   '_dp.big': `Big`,
-  '_dp.cart': `Abandoned Cart`,
   '_dp.cart_item_structure': `Structure`,
   '_dp.cart_item_structure_option_0': `All products`,
   '_dp.cart_item_structure_option_1': `Last product`,
@@ -48,6 +48,7 @@ export const messages_en: IntlMessages = {
   '_dp.product_link': `Product link`,
   '_dp.product_prices_default_default_value': `U$10`,
   '_dp.product_prices_discount_default_value': `U$8`,
+  '_dp.product_retargeting': `Product Retargeting`,
   '_dp.product_title': `Producto title`,
   '_dp.product_title_default_value': `Write a title`,
   '_dp.promo_code': `Promotion Code`,

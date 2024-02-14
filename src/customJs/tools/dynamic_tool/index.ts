@@ -1,7 +1,7 @@
 import { $t } from '../../localization';
 import { ProductViewer } from './ProductViewer';
 import { ProductToolDefinition, ProductLayout, ItemsStructure } from './types';
-import { ASSETS_BASE_URL } from '../../constants';
+import { ASSETS_BASE_URL, DYNAMIC_TOOL_TYPE } from '../../constants';
 import {
   autoWidthProperty,
   borderProperty,
@@ -41,16 +41,16 @@ const itemStructuretProperty: () => UnlayerProperty<ItemsStructure> = () =>
 
 const DEFAULT_GREEN_COLOR = '#64BF91';
 const DEFAULT_FONT_SIZE = '20px';
-const icon = `${ASSETS_BASE_URL}/cart_v3.svg`;
 
-export const getAbandonedCartToolDefinition: () =>
-  | ProductToolDefinition
-  | undefined = () => {
+export const getDynamicToolDefinition: (
+  dynamicToolType: DYNAMIC_TOOL_TYPE,
+) => ProductToolDefinition | undefined = (dynamicToolType) => {
   return {
     name: 'dynamic',
-    label: $t('_dp.cart'),
-    icon: icon,
+    label: $t(`_dp.${dynamicToolType}`),
+    icon: `${ASSETS_BASE_URL}/${dynamicToolType}_v3.svg`,
     is_dynamic: true,
+    dynamicToolType: dynamicToolType,
     usageLimit: 1,
     Component: ProductViewer,
     options: {
@@ -133,7 +133,7 @@ export const getAbandonedCartToolDefinition: () =>
       const htmlDinamicComponent = htmlComponent
         .replace(
           /^.[div]*/,
-          `<DynamicContent action="abandoned_cart" items="${values.structure}"`,
+          `<DynamicContent action="${dynamicToolType}" items="${values.structure}"`,
         )
         .replace(/<\/div>$/, '</DynamicContent>');
       return htmlDinamicComponent;
