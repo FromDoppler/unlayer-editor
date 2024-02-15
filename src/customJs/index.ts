@@ -15,9 +15,10 @@ import { promoCodesPropertyEditorDefinition } from './properties/promo_codes';
 import { getProductToolDefinition } from './tools/product';
 import { productGalleryPropertyEditorDefinition } from './properties/product_gallery';
 import { productArrangementPropertyEditorDefinition } from './properties/product_arrangement';
-import { getAbandonedCartToolDefinition } from './tools/abandoned_cart_tool';
+import { getDynamicToolDefinition } from './tools/dynamic_tool';
 
-const { locale, previewMode, abandonedCartCampaign } = getConfiguration();
+const { locale, previewMode, abandonedCartCampaign, visitedProductsCampaign } =
+  getConfiguration();
 
 const unlayerLocales = {
   es: 'es-ES',
@@ -48,8 +49,13 @@ registerReactTool(getPromoCodeToolDefinition());
 registerReactTool(getProductToolDefinition());
 
 if (abandonedCartCampaign) {
-  registerReactTool(getAbandonedCartToolDefinition());
+  registerReactTool(getDynamicToolDefinition('abandoned_cart'));
 }
+
+if (visitedProductsCampaign) {
+  registerReactTool(getDynamicToolDefinition('product_retargeting'));
+}
+
 if (previewMode) {
   /* place to register tool on preview mode */
 }

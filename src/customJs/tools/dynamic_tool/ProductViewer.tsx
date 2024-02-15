@@ -1,9 +1,11 @@
 import { React } from '../../unlayer-react';
 import { ViewerComponent } from '../../types';
-import { ASSETS_BASE_URL } from '../../constants';
 import { ProductValues } from './types';
 
-export const ProductViewer: ViewerComponent<ProductValues> = ({ values }) => {
+export const ProductViewer: ViewerComponent<ProductValues> = ({
+  values,
+  ...rest
+}) => {
   const containerStyle = {
     display: 'block',
     backgroundColor: values.backgroundColor,
@@ -24,7 +26,7 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({ values }) => {
     verticalAlign: 'top',
   };
 
-  const image = `${ASSETS_BASE_URL}/cart_v3.svg`;
+  const image = rest.toolInfo.icon;
 
   const imageSectionStyle = {
     width: imageSectionWidth,

@@ -3,9 +3,9 @@ import { ASSETS_BASE_URL, HELP_BASE_URL } from '../customJs/constants';
 
 // Based on https://github.com/unlayer/translations/blob/a72f2d5c18e873c1b2832a71ae75d62faa4daeec/es.json
 export const messages_es = {
+  '_dp.abandoned_cart': `Carrito Abandonado`,
   '_dp.alignment': `Alineación`,
   '_dp.big': `Grande`,
-  '_dp.cart': `Carrito Abandonado`,
   '_dp.cart_item_structure': `Estructura`,
   '_dp.cart_item_structure_option_0': `Todos los productos`,
   '_dp.cart_item_structure_option_1': `Último producto`,
@@ -48,6 +48,7 @@ export const messages_es = {
   '_dp.product_link': `Enlace del producto`,
   '_dp.product_prices_default_default_value': `$10.000`,
   '_dp.product_prices_discount_default_value': `$8.000`,
+  '_dp.product_retargeting': `Producto Visitado`,
   '_dp.product_title': `Título del producto`,
   '_dp.product_title_default_value': `Escribe un titulo`,
   '_dp.promo_code': `Código Promocional`,

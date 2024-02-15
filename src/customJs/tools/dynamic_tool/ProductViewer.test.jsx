@@ -3,6 +3,12 @@ import { render, screen } from '@testing-library/react';
 import { ProductViewer } from './ProductViewer';
 
 describe(ProductViewer.name, () => {
+  const rest = {
+    toolInfo: {
+      icon: 'https://cdn.fromdoppler.com/unlayer-editor/assets/cart_v3.svg',
+    },
+  };
+
   it('should render the main container with horizontal layout', async () => {
     const values = {
       backgroundColor: 'rgb(255, 255, 255)',
@@ -10,7 +16,7 @@ describe(ProductViewer.name, () => {
       imageShown: true,
     };
 
-    render(<ProductViewer values={values} />);
+    render(<ProductViewer values={values} {...rest} />);
     const container = await screen.findByRole('container');
     expect(container.style.backgroundColor).toEqual(values.backgroundColor);
     expect(container.style.display).toEqual('block');
@@ -29,7 +35,7 @@ describe(ProductViewer.name, () => {
       imageShown: true,
     };
 
-    render(<ProductViewer values={values} />);
+    render(<ProductViewer values={values} {...rest} />);
     const imageContainer = screen.getByTestId('image-container');
     expect(imageContainer.style.display).toEqual('block');
     expect(imageContainer.style.width).toEqual('100%');
@@ -44,7 +50,7 @@ describe(ProductViewer.name, () => {
         imageShown: false,
       };
 
-      render(<ProductViewer values={values} />);
+      render(<ProductViewer values={values} {...rest} />);
       const imageContainer = screen.getByTestId('image-container');
       expect(imageContainer.style.display).toEqual('none');
     });
@@ -54,7 +60,7 @@ describe(ProductViewer.name, () => {
         imageShown: true,
       };
 
-      render(<ProductViewer values={values} />);
+      render(<ProductViewer values={values} {...rest} />);
       const imageContainer = screen.getByTestId('image-container');
       expect(imageContainer.style.display).toEqual('block');
       expect(imageContainer.style.width).toEqual('100%');
@@ -66,7 +72,7 @@ describe(ProductViewer.name, () => {
         layout: '00_horizontal',
       };
 
-      render(<ProductViewer values={values} />);
+      render(<ProductViewer values={values} {...rest} />);
       const imageContainer = screen.getByTestId('image-container');
       expect(imageContainer.style.width).toEqual('40%');
     });
@@ -76,7 +82,7 @@ describe(ProductViewer.name, () => {
         imageShown: true,
       };
 
-      render(<ProductViewer values={values} />);
+      render(<ProductViewer values={values} {...rest} />);
       const image = screen.getByAltText('abandoned cart image');
       expect(image.style.objectFit).toEqual('contain');
       expect(image.style.height).toEqual('auto');
@@ -96,7 +102,7 @@ describe(ProductViewer.name, () => {
         },
       };
 
-      render(<ProductViewer values={values} />);
+      render(<ProductViewer values={values} {...rest} />);
       const image = screen.getByAltText('abandoned cart image');
       expect(image.style.width).toEqual('80%');
     });
@@ -108,7 +114,7 @@ describe(ProductViewer.name, () => {
         layout: '01_vertical',
       };
 
-      render(<ProductViewer values={values} />);
+      render(<ProductViewer values={values} {...rest} />);
       const descriptionContainer = screen.getByTestId('description-container');
       expect(descriptionContainer.style.width).toEqual('100%');
     });
@@ -119,7 +125,7 @@ describe(ProductViewer.name, () => {
         imageShown: true,
       };
 
-      render(<ProductViewer values={values} />);
+      render(<ProductViewer values={values} {...rest} />);
       const descriptionContainer = screen.getByTestId('description-container');
       expect(descriptionContainer.style.width).toEqual('55%');
     });
@@ -129,7 +135,7 @@ describe(ProductViewer.name, () => {
         layout: '00_horizontal',
       };
 
-      render(<ProductViewer values={values} />);
+      render(<ProductViewer values={values} {...rest} />);
       const descriptionContainer = screen.getByTestId('description-container');
       expect(descriptionContainer.style.width).toEqual('100%');
     });
@@ -144,7 +150,7 @@ describe(ProductViewer.name, () => {
         },
       };
 
-      render(<ProductViewer values={values} />);
+      render(<ProductViewer values={values} {...rest} />);
       const titleSpan = screen.getByText('[[[DC:TITLE]]]');
       expect(titleSpan.style.color).toEqual('rgb(51, 51, 51)');
       expect(titleSpan.style.fontWeight).toEqual('700');
@@ -158,7 +164,7 @@ describe(ProductViewer.name, () => {
         titleShown: false,
       };
 
-      render(<ProductViewer values={values} />);
+      render(<ProductViewer values={values} {...rest} />);
       const titleSpan = screen.getByText('[[[DC:TITLE]]]');
       expect(titleSpan.style.display).toEqual('none');
     });
@@ -174,7 +180,7 @@ describe(ProductViewer.name, () => {
         },
       };
 
-      render(<ProductViewer values={values} />);
+      render(<ProductViewer values={values} {...rest} />);
       const priceSpan = screen.getByText('[[[DC:PRICE]]]');
       expect(priceSpan.style.fontSize).toEqual('14px');
       expect(priceSpan.style.color).toEqual('rgb(51, 51, 51)');
@@ -187,7 +193,7 @@ describe(ProductViewer.name, () => {
         priceShown: false,
       };
 
-      render(<ProductViewer values={values} />);
+      render(<ProductViewer values={values} {...rest} />);
       const priceSpan = screen.getByText('[[[DC:PRICE]]]');
       expect(priceSpan.style.display).toEqual('none');
     });
@@ -226,7 +232,7 @@ describe(ProductViewer.name, () => {
         },
       };
 
-      render(<ProductViewer values={values} />);
+      render(<ProductViewer values={values} {...rest} />);
       const buttton = await screen.findByRole('link');
       expect(buttton.style.display).toEqual('block');
       expect(buttton.style.fontSize).toEqual('14px');
@@ -255,7 +261,7 @@ describe(ProductViewer.name, () => {
         buttonText: 'btnComprar',
       };
 
-      render(<ProductViewer values={values} />);
+      render(<ProductViewer values={values} {...rest} />);
       const buttton = screen.getByText('btnComprar');
       expect(buttton.style.display).toEqual('none');
     });
@@ -269,7 +275,7 @@ describe(ProductViewer.name, () => {
         buttonText: 'Comprar',
       };
 
-      render(<ProductViewer values={values} />);
+      render(<ProductViewer values={values} {...rest} />);
       const button = await screen.findByRole('link');
       expect(button.style.width).toEqual('100%');
     });
@@ -280,7 +286,7 @@ describe(ProductViewer.name, () => {
         buttonText: 'Comprar',
       };
 
-      render(<ProductViewer values={values} />);
+      render(<ProductViewer values={values} {...rest} />);
       const button = screen.getByText('Comprar');
       expect(button).toBeDefined();
     });
@@ -291,7 +297,7 @@ describe(ProductViewer.name, () => {
         buttonText: 'Comprar',
       };
 
-      render(<ProductViewer values={values} />);
+      render(<ProductViewer values={values} {...rest} />);
       const button = screen.getByText('Comprar');
       expect(button).toBeDefined();
     });
@@ -302,7 +308,7 @@ describe(ProductViewer.name, () => {
         buttonText: 'Comprar',
       };
       /* NOTE: html add http://localhost/ when the link is a string */
-      render(<ProductViewer values={values} />);
+      render(<ProductViewer values={values} {...rest} />);
       const button = screen.getByText('Comprar');
       expect(button.href).toEqual('http://localhost/[[[DC:URL]]]');
       expect(button.target).toEqual('_blank');
@@ -316,7 +322,7 @@ describe(ProductViewer.name, () => {
         },
       };
 
-      render(<ProductViewer values={values} />);
+      render(<ProductViewer values={values} {...rest} />);
       const img = screen.getByRole('img');
       expect(img.style.width).toEqual('100%');
     });
@@ -327,7 +333,7 @@ describe(ProductViewer.name, () => {
         structure: 2,
       };
 
-      render(<ProductViewer values={values} />);
+      render(<ProductViewer values={values} {...rest} />);
       const titles = await screen.findAllByText('[[[DC:TITLE]]]');
       expect(titles).toHaveLength(2);
 
@@ -341,7 +347,7 @@ describe(ProductViewer.name, () => {
         structure: 3,
       };
 
-      render(<ProductViewer values={values} />);
+      render(<ProductViewer values={values} {...rest} />);
       const titles = await screen.findAllByText('[[[DC:TITLE]]]');
       expect(titles).toHaveLength(3);
 
