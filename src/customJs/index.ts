@@ -16,6 +16,7 @@ import { getProductToolDefinition } from './tools/product';
 import { productGalleryPropertyEditorDefinition } from './properties/product_gallery';
 import { productArrangementPropertyEditorDefinition } from './properties/product_arrangement';
 import { getDynamicToolDefinition } from './tools/dynamic_tool';
+import { DYNAMIC_TOOL_TYPE } from './constants';
 
 const {
   locale,
@@ -55,15 +56,20 @@ registerReactTool(getPromoCodeToolDefinition());
 registerReactTool(getProductToolDefinition());
 
 if (abandonedCartCampaign) {
-  registerReactTool(getDynamicToolDefinition('abandoned_cart'));
+  registerReactTool(
+    getDynamicToolDefinition(<DYNAMIC_TOOL_TYPE>'abandoned_cart'),
+  );
 }
 
 if (visitedProductsCampaign) {
-  registerReactTool(getDynamicToolDefinition('product_retargeting'));
+  registerReactTool(
+    getDynamicToolDefinition(<DYNAMIC_TOOL_TYPE>'product_retargeting'),
+  );
+}
 
 if (confirmationOrderCampaign || pendingOrderCampaign) {
   registerReactTool(
-    getDynamicToolDefinition('order_details'),
+    getDynamicToolDefinition(<DYNAMIC_TOOL_TYPE>'order_details'),
   );
 }
 
