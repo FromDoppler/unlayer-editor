@@ -170,7 +170,9 @@ export const getDynamicToolDefinition: (
       const htmlDinamicComponent = htmlComponent
         .replace(
           /^.[div]*/,
-          `<DynamicContent action="${dynamicToolType}" items="${values.structure}"`,
+          `<DynamicContent action="${dynamicToolType}" items="${
+            values.structure || 0
+          }"`,
         )
         .replace(/<\/div>$/, '</DynamicContent>');
       return htmlDinamicComponent;
