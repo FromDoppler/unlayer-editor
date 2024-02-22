@@ -22,6 +22,8 @@ const expectedDefaultConfiguration = {
   promotionCodeEnabled: false,
   abandonedCartCampaign: false,
   visitedProductsCampaign: false,
+  confirmationOrderCampaign: false,
+  pendingOrderCampaign: false,
   previewMode: false,
   dopplerExternalUrls: {
     automation: '#',
@@ -63,11 +65,15 @@ describe(parseConfigurationDTO.name, () => {
     const previewMode = true;
     const abandonedCartCampaign = true;
     const visitedProductsCampaign = false;
+    const confirmationOrderCampaign = false;
+    const pendingOrderCampaign = false;
     const input = {
       locale,
       previewMode,
       abandonedCartCampaign,
       visitedProductsCampaign,
+      confirmationOrderCampaign,
+      pendingOrderCampaign,
     };
 
     // Act
@@ -80,6 +86,8 @@ describe(parseConfigurationDTO.name, () => {
       promotionCodeEnabled: false,
       abandonedCartCampaign: true,
       visitedProductsCampaign: false,
+      confirmationOrderCampaign: false,
+      pendingOrderCampaign: false,
       previewMode,
       dopplerExternalUrls: {
         automation: '#',

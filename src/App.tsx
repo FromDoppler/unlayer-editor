@@ -72,7 +72,9 @@ const App: React.FC = () => {
         locale: "es",
         previewMode: true,
         abandonedCartCampaign: true,
-        visitedProductsCampaign: true,
+        visitedProductsCampaign: false,
+        confirmationOrderCampaign: false,
+        pendingOrderCampaign: true,
         stores: [
           { name: "MercadoShops", promotionCodeEnabled: true },
           { name: "Magento", promotionCodeEnabled: false },
