@@ -45,6 +45,19 @@ const itemStructuretProperty: () => UnlayerProperty<ItemsStructure> = () =>
     ],
   } as const);
 
+const atributesByToolType: Record<DYNAMIC_TOOL_TYPE, OptionTool[]> = {
+  abandoned_cart: ['product', 'layout', 'image', 'title', 'price', 'button'],
+  product_retargeting: [
+    'product',
+    'layout',
+    'image',
+    'title',
+    'price',
+    'button',
+  ],
+  order_details: ['layout', 'image', 'title', 'quantity', 'price'],
+};
+
 const DEFAULT_GREEN_COLOR = '#64BF91';
 const DEFAULT_FONT_SIZE = '20px';
 
