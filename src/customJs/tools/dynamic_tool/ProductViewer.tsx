@@ -1,6 +1,7 @@
 import { React } from '../../unlayer-react';
 import { ViewerComponent } from '../../types';
 import { ProductValues } from './types';
+import { $t } from '../../localization';
 
 export const ProductViewer: ViewerComponent<ProductValues> = ({
   values,
@@ -53,6 +54,15 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
     color: values.titleColor,
   };
 
+  const quantityStyle = {
+    display: values.quantityShown ? 'block' : 'none',
+    fontSize: values.quantityFontSize || '18px',
+    fontFamily: values.quantityFont?.value || 'inherit',
+    fontWeight: values.quantityFontWeight,
+    color: values.quantityColor,
+    marginTop: '15px',
+  };
+
   const pricesStyle = {
     display: values.priceShown ? 'block' : 'none',
     fontFamily: values.priceFont?.value || 'inherit',
@@ -97,6 +107,10 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
     title: {
       value: '[[[DC:TITLE]]]',
       style: titleStyle,
+    },
+    quantity: {
+      value: ` ${$t('_dp.quantity')}: [[[DC:QUANTITY]]]`,
+      style: quantityStyle,
     },
     image: {
       dynamic_value: '[[[DC:IMAGE]]]',
@@ -143,6 +157,9 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
           >
             <span style={productToolElement.title.style}>
               {productToolElement.title.value}
+            </span>
+            <span style={productToolElement.quantity.style}>
+              {productToolElement.quantity.value}
             </span>
             <span style={productToolElement.price.style}>
               {productToolElement.price.value}

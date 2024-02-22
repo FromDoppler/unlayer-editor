@@ -1,6 +1,7 @@
 import { React } from '../../unlayer-react';
 import { render, screen } from '@testing-library/react';
 import { ProductViewer } from './ProductViewer';
+import { setLocale } from '../../localization';
 
 describe(ProductViewer.name, () => {
   const rest = {
@@ -8,6 +9,7 @@ describe(ProductViewer.name, () => {
       icon: 'https://cdn.fromdoppler.com/unlayer-editor/assets/cart_v3.svg',
     },
   };
+  setLocale('es-ES');
 
   it('should render the main container with horizontal layout', async () => {
     const values = {
@@ -167,6 +169,34 @@ describe(ProductViewer.name, () => {
       render(<ProductViewer values={values} {...rest} />);
       const titleSpan = screen.getByText('[[[DC:TITLE]]]');
       expect(titleSpan.style.display).toEqual('none');
+    });
+
+    it('should render quantity with specific style', async () => {
+      const values = {
+        quantityColor: 'rgb(51, 51, 51)',
+        quantityFontWeight: '700',
+        quantityFontSize: '22px',
+        quantityFont: {
+          value: 'arial',
+        },
+      };
+
+      render(<ProductViewer values={values} {...rest} />);
+      const quantitySpan = screen.getByText('Cantidad: [[[DC:QUANTITY]]]');
+      expect(quantitySpan.style.color).toEqual('rgb(51, 51, 51)');
+      expect(quantitySpan.style.fontWeight).toEqual('700');
+      expect(quantitySpan.style.fontSize).toEqual('22px');
+      expect(quantitySpan.style.fontFamily).toEqual('arial');
+    });
+
+    it('should render quantity with style display none when quantityShown is false', async () => {
+      const values = {
+        quantityShown: false,
+      };
+
+      render(<ProductViewer values={values} {...rest} />);
+      const quantitySpan = screen.getByText('Cantidad: [[[DC:QUANTITY]]]');
+      expect(quantitySpan.style.display).toEqual('none');
     });
 
     it('should render price span with specific style', async () => {
