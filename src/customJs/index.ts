@@ -17,8 +17,14 @@ import { productGalleryPropertyEditorDefinition } from './properties/product_gal
 import { productArrangementPropertyEditorDefinition } from './properties/product_arrangement';
 import { getDynamicToolDefinition } from './tools/dynamic_tool';
 
-const { locale, previewMode, abandonedCartCampaign, visitedProductsCampaign } =
-  getConfiguration();
+const {
+  locale,
+  previewMode,
+  abandonedCartCampaign,
+  visitedProductsCampaign,
+  confirmationOrderCampaign,
+  pendingOrderCampaign,
+} = getConfiguration();
 
 const unlayerLocales = {
   es: 'es-ES',
@@ -54,6 +60,11 @@ if (abandonedCartCampaign) {
 
 if (visitedProductsCampaign) {
   registerReactTool(getDynamicToolDefinition('product_retargeting'));
+
+if (confirmationOrderCampaign || pendingOrderCampaign) {
+  registerReactTool(
+    getDynamicToolDefinition('order_details'),
+  );
 }
 
 if (previewMode) {
