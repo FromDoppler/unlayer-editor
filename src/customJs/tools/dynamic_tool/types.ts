@@ -42,6 +42,13 @@ export type ProductBase = Readonly<{
     titleFontSize: PixelSize;
     titleColor: Color;
   };
+  quantity: {
+    quantityShown: boolean;
+    quantityFont: FontFamily;
+    quantityFontWeight: FontWeight;
+    quantityFontSize: PixelSize;
+    quantityColor: Color;
+  };
   price: {
     priceShown: boolean;
     priceFont: FontFamily;
