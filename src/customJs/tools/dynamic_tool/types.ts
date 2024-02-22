@@ -71,6 +71,6 @@ export type ProductBase = Readonly<{
 
 export type ProductPropertyGroups = PropertyGroupsFrom<ProductBase>;
 
-export type ProductValues = ToolValuesFrom<ProductBase>;
+export type ProductValues = ToolValuesFrom<Record<OptionTool, any>>;
 
-export type ProductToolDefinition = ReactToolDefinitionFrom<ProductBase>;
+export type ProductToolDefinition = ReactToolDefinitionFrom<ProductValues>;
