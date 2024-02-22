@@ -14,6 +14,14 @@ import {
 
 export type ItemsStructure = '0' | '1' | '2' | '3';
 export type ProductLayout = '00_horizontal' | '01_vertical';
+export type OptionTool =
+  | 'product'
+  | 'layout'
+  | 'image'
+  | 'title'
+  | 'quantity'
+  | 'price'
+  | 'button';
 
 export type ProductBase = Readonly<{
   product: {
