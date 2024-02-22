@@ -64,20 +64,6 @@ const DEFAULT_FONT_SIZE = '20px';
 export const getDynamicToolDefinition: (
   dynamicToolType: DYNAMIC_TOOL_TYPE,
 ) => ProductToolDefinition | undefined = (dynamicToolType) => {
-  return {
-    name: `dynamic_${dynamicToolType}`,
-    label: $t(`_dp.${dynamicToolType}`),
-    icon: `${ASSETS_BASE_URL}/${dynamicToolType}_v3.svg`,
-    is_dynamic: true,
-    dynamicToolType: dynamicToolType,
-    usageLimit: 1,
-    Component: ProductViewer,
-    options: {
-      product: {
-        title: $t('_dp.cart_item_structure'),
-        options: {
-          structure: itemStructuretProperty(),
-        },
   const options: ProductPropertyGroups = {
     product: {
       title: $t('_dp.cart_item_structure'),
@@ -166,6 +152,20 @@ export const getDynamicToolDefinition: (
       },
     },
   };
+
+  const toolOptionByType = Object.fromEntries(
+    atributesByToolType[dynamicToolType].map((t) => [t, options[t]]),
+  );
+
+  return {
+    name: 'dynamic',
+    label: $t(`_dp.${dynamicToolType}`),
+    icon: `${ASSETS_BASE_URL}/${dynamicToolType}_v4.svg`,
+    is_dynamic: true,
+    dynamicToolType: dynamicToolType,
+    usageLimit: 1,
+    Component: ProductViewer,
+    options: toolOptionByType,
     createDynamicContet(htmlComponent: string, values: any) {
       const htmlDinamicComponent = htmlComponent
         .replace(
