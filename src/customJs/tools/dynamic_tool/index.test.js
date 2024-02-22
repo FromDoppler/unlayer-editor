@@ -102,6 +102,52 @@ describe(getDynamicToolDefinition.name, () => {
   });
 });
 
+//it('should has the option for order_details type', () => {
+
+it.each([
+  {
+    data: {
+      type: 'abandoned_cart',
+    },
+    expectedResult: {
+      options: ['product', 'layout', 'image', 'title', 'price', 'button'],
+    },
+  },
+  {
+    data: {
+      type: 'product_retargeting',
+    },
+    expectedResult: {
+      options: ['product', 'layout', 'image', 'title', 'price', 'button'],
+    },
+  },
+  {
+    data: {
+      type: 'order_details',
+    },
+    expectedResult: {
+      options: ['layout', 'image', 'title', 'quantity', 'price'],
+    },
+  },
+])(
+  'Should be defined the custom option by type $data,type',
+  ({ data, expectedResult }) => {
+    // Arrange
+    setLocale('es-ES');
+    prepareUnlayerGlobalObject();
+
+    // Act
+    const result = getDynamicToolDefinition(data.type);
+
+    // Assert
+    expect(result).toBeDefined();
+    expect(result.options).toBeDefined();
+    expectedResult.options.map((item) => {
+      expect(result.options[item]).toBeDefined();
+    });
+  },
+);
+
 function prepareUnlayerGlobalObject() {
   window.unlayer = {
     setLocale: jest.fn(),
