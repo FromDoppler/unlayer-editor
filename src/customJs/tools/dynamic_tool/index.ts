@@ -46,7 +46,7 @@ export const getDynamicToolDefinition: (
   dynamicToolType: DYNAMIC_TOOL_TYPE,
 ) => ProductToolDefinition | undefined = (dynamicToolType) => {
   return {
-    name: 'dynamic',
+    name: `dynamic_${dynamicToolType}`,
     label: $t(`_dp.${dynamicToolType}`),
     icon: `${ASSETS_BASE_URL}/${dynamicToolType}_v3.svg`,
     is_dynamic: true,
