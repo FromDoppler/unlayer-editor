@@ -14,6 +14,14 @@ import {
 
 export type ItemsStructure = '0' | '1' | '2' | '3';
 export type ProductLayout = '00_horizontal' | '01_vertical';
+export type OptionTool =
+  | 'product'
+  | 'layout'
+  | 'image'
+  | 'title'
+  | 'quantity'
+  | 'price'
+  | 'button';
 
 export type ProductBase = Readonly<{
   product: {
@@ -33,6 +41,13 @@ export type ProductBase = Readonly<{
     titleFontWeight: FontWeight;
     titleFontSize: PixelSize;
     titleColor: Color;
+  };
+  quantity: {
+    quantityShown: boolean;
+    quantityFont: FontFamily;
+    quantityFontWeight: FontWeight;
+    quantityFontSize: PixelSize;
+    quantityColor: Color;
   };
   price: {
     priceShown: boolean;
@@ -56,6 +71,6 @@ export type ProductBase = Readonly<{
 
 export type ProductPropertyGroups = PropertyGroupsFrom<ProductBase>;
 
-export type ProductValues = ToolValuesFrom<ProductBase>;
+export type ProductValues = ToolValuesFrom<Record<OptionTool, any>>;
 
-export type ProductToolDefinition = ReactToolDefinitionFrom<ProductBase>;
+export type ProductToolDefinition = ReactToolDefinitionFrom<ProductValues>;
