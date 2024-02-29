@@ -72,8 +72,8 @@ const App: React.FC = () => {
         locale: "es",
         previewMode: true,
         abandonedCartCampaign: true,
-        visitedProductsCampaign: false,
-        confirmationOrderCampaign: false,
+        visitedProductsCampaign: true,
+        confirmationOrderCampaign: true,
         pendingOrderCampaign: true,
         stores: [
           { name: "MercadoShops", promotionCodeEnabled: true },

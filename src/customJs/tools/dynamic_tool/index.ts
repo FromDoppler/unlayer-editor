@@ -158,7 +158,7 @@ export const getDynamicToolDefinition: (
   );
 
   return {
-    name: 'dynamic',
+    name: `dynamic_${dynamicToolType}`,
     label: $t(`_dp.${dynamicToolType}`),
     icon: `${ASSETS_BASE_URL}/${dynamicToolType}_v4.svg`,
     is_dynamic: true,
