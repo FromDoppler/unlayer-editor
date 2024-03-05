@@ -25,6 +25,7 @@ const {
   visitedProductsCampaign,
   confirmationOrderCampaign,
   pendingOrderCampaign,
+  bestSellingEnabled,
 } = getConfiguration();
 
 const unlayerLocales = {
@@ -70,6 +71,12 @@ if (visitedProductsCampaign) {
 if (confirmationOrderCampaign || pendingOrderCampaign) {
   registerReactTool(
     getDynamicToolDefinition(<DYNAMIC_TOOL_TYPE>'order_details'),
+  );
+}
+
+if (bestSellingEnabled) {
+  registerReactTool(
+    getDynamicToolDefinition(<DYNAMIC_TOOL_TYPE>'best_selling'),
   );
 }
 

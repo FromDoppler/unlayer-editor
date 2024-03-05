@@ -5,6 +5,7 @@ import { ASSETS_BASE_URL, HELP_BASE_URL } from '../customJs/constants';
 export const messages_en: IntlMessages = {
   '_dp.abandoned_cart': `Abandoned Cart`,
   '_dp.alignment': `Alignment`,
+  '_dp.best_selling': `Best Selling`,
   '_dp.best_selling_structure_option_1': `1 product`,
   '_dp.best_selling_structure_option_2': `2 products`,
   '_dp.best_selling_structure_option_3': `3 products`,

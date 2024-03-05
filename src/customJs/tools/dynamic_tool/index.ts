@@ -70,6 +70,7 @@ const atributesByToolType: Record<DYNAMIC_TOOL_TYPE, OptionTool[]> = {
     'button',
   ],
   order_details: ['layout', 'image', 'title', 'quantity', 'price'],
+  best_selling: ['bestSelling', 'image', 'title', 'price', 'button'],
 };
 
 const DEFAULT_GREEN_COLOR = '#64BF91';
