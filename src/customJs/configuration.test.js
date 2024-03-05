@@ -24,6 +24,7 @@ const expectedDefaultConfiguration = {
   visitedProductsCampaign: false,
   confirmationOrderCampaign: false,
   pendingOrderCampaign: false,
+  bestSellingEnabled: false,
   previewMode: false,
   dopplerExternalUrls: {
     automation: '#',
@@ -67,6 +68,7 @@ describe(parseConfigurationDTO.name, () => {
     const visitedProductsCampaign = false;
     const confirmationOrderCampaign = false;
     const pendingOrderCampaign = false;
+    const bestSellingEnabled = false;
     const input = {
       locale,
       previewMode,
@@ -88,6 +90,7 @@ describe(parseConfigurationDTO.name, () => {
       visitedProductsCampaign: false,
       confirmationOrderCampaign: false,
       pendingOrderCampaign: false,
+      bestSellingEnabled: false,
       previewMode,
       dopplerExternalUrls: {
         automation: '#',

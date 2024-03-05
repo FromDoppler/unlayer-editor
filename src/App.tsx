@@ -75,6 +75,7 @@ const App: React.FC = () => {
         visitedProductsCampaign: true,
         confirmationOrderCampaign: true,
         pendingOrderCampaign: true,
+        bestSellingEnabled: true,
         stores: [
           { name: "MercadoShops", promotionCodeEnabled: true },
           { name: "Magento", promotionCodeEnabled: false },
