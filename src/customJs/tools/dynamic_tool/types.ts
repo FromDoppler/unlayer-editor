@@ -13,9 +13,11 @@ import {
 } from '../../types';
 
 export type ItemsStructure = '0' | '1' | '2' | '3';
+export type BestSellingStructure = '1' | '2' | '3' | '4';
 export type ProductLayout = '00_horizontal' | '01_vertical';
 export type OptionTool =
   | 'product'
+  | 'bestSelling'
   | 'layout'
   | 'image'
   | 'title'
@@ -26,6 +28,9 @@ export type OptionTool =
 export type ProductBase = Readonly<{
   product: {
     structure: ItemsStructure;
+  };
+  bestSelling: {
+    structure: BestSellingStructure;
   };
   layout: {
     backgroundColor: Color;
