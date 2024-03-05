@@ -12,6 +12,7 @@ type Configuration = {
   visitedProductsCampaign: boolean;
   confirmationOrderCampaign: boolean;
   pendingOrderCampaign: boolean;
+  bestSellingEnabled: boolean;
   previewMode: boolean;
   dopplerExternalUrls: DopplerExternalUrls;
 };
@@ -48,6 +49,7 @@ export const parseConfigurationDTO = ({
   visitedProductsCampaign = false,
   confirmationOrderCampaign = false,
   pendingOrderCampaign = false,
+  bestSellingEnabled = false,
 }: {
   locale?: 'es' | 'en';
   stores?: Store[];
@@ -57,6 +59,7 @@ export const parseConfigurationDTO = ({
   visitedProductsCampaign?: boolean;
   confirmationOrderCampaign?: boolean;
   pendingOrderCampaign?: boolean;
+  bestSellingEnabled?: boolean;
 } = {}) => {
   stores = stores.map(parseStoreDTO);
   const promotionCodeEnabled = stores.some((x) => x.promotionCodeEnabled);
@@ -68,6 +71,7 @@ export const parseConfigurationDTO = ({
     visitedProductsCampaign,
     confirmationOrderCampaign,
     pendingOrderCampaign,
+    bestSellingEnabled,
     previewMode,
     dopplerExternalUrls: parseDopplerExternalUrlsDTO(dopplerExternalUrls),
   };
