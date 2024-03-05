@@ -7,11 +7,13 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
   values,
   ...rest
 }) => {
+  const isBestSelling = rest.toolInfo.name === 'dynamic_best_selling';
   const containerStyle = {
-    display: 'block',
+    display: isBestSelling ? 'inline-block' : 'block',
     backgroundColor: values.backgroundColor,
     padding: '5px',
-    margin: '10px',
+    margin: isBestSelling ? '0px' : '10px',
+    width: isBestSelling ? 100 / values.structure + '%' : '100%',
   } as const;
 
   const imageSectionWidth = `${values.layout === '00_horizontal' ? 40 : 100}%`;
@@ -128,7 +130,9 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
     },
   };
 
-  const arrayStructure = new Array([1, 1, 2, 3][values.structure]).fill('item');
+  const arrayStructure = new Array([1, 1, 2, 3, 4][values.structure]).fill(
+    'item',
+  );
 
   return (
     <div>
