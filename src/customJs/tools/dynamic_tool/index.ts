@@ -64,6 +64,7 @@ const DEFAULT_FONT_SIZE = '20px';
 export const getDynamicToolDefinition: (
   dynamicToolType: DYNAMIC_TOOL_TYPE,
 ) => ProductToolDefinition | undefined = (dynamicToolType) => {
+  const usageLimit = dynamicToolType !== 'best_selling' ? 1 : undefined;
   const options: ProductPropertyGroups = {
     product: {
       title: $t('_dp.cart_item_structure'),
@@ -163,7 +164,7 @@ export const getDynamicToolDefinition: (
     icon: `${ASSETS_BASE_URL}/${dynamicToolType}_v4.svg`,
     is_dynamic: true,
     dynamicToolType: dynamicToolType,
-    usageLimit: 1,
+    usageLimit: usageLimit,
     Component: ProductViewer,
     options: toolOptionByType,
     createDynamicContet(htmlComponent: string, values: any) {
