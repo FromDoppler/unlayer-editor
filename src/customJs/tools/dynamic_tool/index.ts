@@ -6,6 +6,7 @@ import {
   ItemsStructure,
   OptionTool,
   ProductPropertyGroups,
+  BestSellingStructure,
 } from './types';
 import { ASSETS_BASE_URL, DYNAMIC_TOOL_TYPE } from '../../constants';
 import {
@@ -45,6 +46,19 @@ const itemStructuretProperty: () => UnlayerProperty<ItemsStructure> = () =>
     ],
   } as const);
 
+const bestSellingStructureProperty: () => UnlayerProperty<BestSellingStructure> =
+  () =>
+    dropdownProperty({
+      label: undefined,
+      defaultValue: '3',
+      options: [
+        { label: $t('_dp.best_selling_structure_option_1'), value: '1' },
+        { label: $t('_dp.best_selling_structure_option_2'), value: '2' },
+        { label: $t('_dp.best_selling_structure_option_3'), value: '3' },
+        { label: $t('_dp.best_selling_structure_option_4'), value: '4' },
+      ],
+    } as const);
+
 const atributesByToolType: Record<DYNAMIC_TOOL_TYPE, OptionTool[]> = {
   abandoned_cart: ['product', 'layout', 'image', 'title', 'price', 'button'],
   product_retargeting: [
@@ -70,6 +84,12 @@ export const getDynamicToolDefinition: (
       title: $t('_dp.cart_item_structure'),
       options: {
         structure: itemStructuretProperty(),
+      },
+    },
+    bestSelling: {
+      title: $t('_dp.cart_item_structure'),
+      options: {
+        structure: bestSellingStructureProperty(),
       },
     },
     layout: {
