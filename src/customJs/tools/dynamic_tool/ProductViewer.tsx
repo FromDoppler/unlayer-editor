@@ -8,12 +8,15 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
   ...rest
 }) => {
   const isBestSelling = rest.toolInfo.name === 'dynamic_best_selling';
+  const mainContainerStyle = {
+    textAlign: 'center',
+  } as const;
   const containerStyle = {
     display: isBestSelling ? 'inline-block' : 'block',
     backgroundColor: values.backgroundColor,
     padding: '5px',
     margin: isBestSelling ? '0px' : '10px',
-    width: isBestSelling ? 100 / values.structure + '%' : '100%',
+    width: isBestSelling ? 90 / values.structure + '%' : '100%',
   } as const;
 
   const imageSectionWidth = `${values.layout === '00_horizontal' ? 40 : 100}%`;
@@ -135,7 +138,7 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
   );
 
   return (
-    <div>
+    <div style={mainContainerStyle}>
       {arrayStructure.map((_, i) => (
         <div style={containerStyle} role="container" key={i}>
           <section
