@@ -26,6 +26,8 @@ const {
   confirmationOrderCampaign,
   pendingOrderCampaign,
   bestSellingEnabled,
+  crossSellingEnabled,
+  newProductsEnabled,
 } = getConfiguration();
 
 const unlayerLocales = {
@@ -74,10 +76,8 @@ if (confirmationOrderCampaign || pendingOrderCampaign) {
   );
 }
 
-if (bestSellingEnabled) {
-  registerReactTool(
-    getDynamicToolDefinition(<DYNAMIC_TOOL_TYPE>'best_selling'),
-  );
+if (bestSellingEnabled || crossSellingEnabled || newProductsEnabled) {
+  registerReactTool(getDynamicToolDefinition(<DYNAMIC_TOOL_TYPE>'recommended'));
 }
 
 if (previewMode) {

@@ -10,7 +10,7 @@ export type DYNAMIC_TOOL_TYPE =
   | 'abandoned_cart'
   | 'product_retargeting'
   | 'order_details'
-  | 'best_selling';
+  | 'recommended';
 
 export const SOCIAL_NETWORKS = [
   {
