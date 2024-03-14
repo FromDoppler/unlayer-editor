@@ -13,6 +13,8 @@ type Configuration = {
   confirmationOrderCampaign: boolean;
   pendingOrderCampaign: boolean;
   bestSellingEnabled: boolean;
+  crossSellingEnabled: boolean;
+  newProductsEnabled: boolean;
   previewMode: boolean;
   dopplerExternalUrls: DopplerExternalUrls;
 };
@@ -50,6 +52,8 @@ export const parseConfigurationDTO = ({
   confirmationOrderCampaign = false,
   pendingOrderCampaign = false,
   bestSellingEnabled = false,
+  crossSellingEnabled = false,
+  newProductsEnabled = false,
 }: {
   locale?: 'es' | 'en';
   stores?: Store[];
@@ -60,6 +64,8 @@ export const parseConfigurationDTO = ({
   confirmationOrderCampaign?: boolean;
   pendingOrderCampaign?: boolean;
   bestSellingEnabled?: boolean;
+  crossSellingEnabled?: boolean;
+  newProductsEnabled?: boolean;
 } = {}) => {
   stores = stores.map(parseStoreDTO);
   const promotionCodeEnabled = stores.some((x) => x.promotionCodeEnabled);
@@ -72,6 +78,8 @@ export const parseConfigurationDTO = ({
     confirmationOrderCampaign,
     pendingOrderCampaign,
     bestSellingEnabled,
+    crossSellingEnabled,
+    newProductsEnabled,
     previewMode,
     dopplerExternalUrls: parseDopplerExternalUrlsDTO(dopplerExternalUrls),
   };
