@@ -7,6 +7,7 @@ import {
   OptionTool,
   ProductPropertyGroups,
   RecommendedStructure,
+  RecommendedType,
 } from './types';
 import { ASSETS_BASE_URL, DYNAMIC_TOOL_TYPE } from '../../constants';
 import {
@@ -23,6 +24,10 @@ import {
   toggleShowProperty,
 } from '../../properties/helpers';
 import { UnlayerProperty } from '../../types';
+import { getConfiguration } from '../../configuration';
+
+const { bestSellingEnabled, crossSellingEnabled, newProductsEnabled } =
+  getConfiguration();
 
 const productLayoutProperty: () => UnlayerProperty<ProductLayout> = () =>
   dropdownProperty({
@@ -59,6 +64,37 @@ const recommendedStructureProperty: () => UnlayerProperty<RecommendedStructure> 
       ],
     } as const);
 
+const getRecommended_type_options: () => any = () => {
+  return [
+    {
+      label: $t('_dp.recommended_type_best_selling'),
+      value: 'best_selling',
+      enabled: bestSellingEnabled,
+    },
+    {
+      label: $t('_dp.recommended_type_cross_selling'),
+      value: 'cross_selling',
+      enabled: crossSellingEnabled,
+    },
+    {
+      label: $t('_dp.recommended_type_new_products'),
+      value: 'new_products',
+      enabled: newProductsEnabled,
+    },
+  ]
+    .filter(({ enabled }) => !!enabled)
+    .map(({ label, value }) => {
+      return { label: label, value: value };
+    });
+};
+
+const recommendedTypeProperty: () => UnlayerProperty<RecommendedType> = () =>
+  dropdownProperty({
+    label: undefined,
+    defaultValue: 'best_selling',
+    options: getRecommended_type_options(),
+  } as const);
+
 const atributesByToolType: Record<DYNAMIC_TOOL_TYPE, OptionTool[]> = {
   abandoned_cart: ['product', 'layout', 'image', 'title', 'price', 'button'],
   product_retargeting: [
@@ -71,6 +107,7 @@ const atributesByToolType: Record<DYNAMIC_TOOL_TYPE, OptionTool[]> = {
   ],
   order_details: ['layout', 'image', 'title', 'quantity', 'price'],
   recommended: [
+    'recommendedType',
     'recommendedStructure',
     'image',
     'title',
