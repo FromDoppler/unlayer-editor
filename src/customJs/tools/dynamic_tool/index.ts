@@ -238,10 +238,11 @@ export const getDynamicToolDefinition: (
     Component: ProductViewer,
     options: toolOptionByType,
     createDynamicContet(htmlComponent: string, values: any) {
+      const dynamicAction = values.type || dynamicToolType;
       const htmlDinamicComponent = htmlComponent
         .replace(
           /^.[div]*/,
-          `<DynamicContent action="${dynamicToolType}" items="${
+          `<DynamicContent action="${dynamicAction}" items="${
             values.structure || 0
           }"`,
         )
