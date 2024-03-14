@@ -6,7 +6,7 @@ import {
   ItemsStructure,
   OptionTool,
   ProductPropertyGroups,
-  BestSellingStructure,
+  RecommendedStructure,
 } from './types';
 import { ASSETS_BASE_URL, DYNAMIC_TOOL_TYPE } from '../../constants';
 import {
@@ -46,16 +46,16 @@ const itemStructuretProperty: () => UnlayerProperty<ItemsStructure> = () =>
     ],
   } as const);
 
-const bestSellingStructureProperty: () => UnlayerProperty<BestSellingStructure> =
+const recommendedStructureProperty: () => UnlayerProperty<RecommendedStructure> =
   () =>
     dropdownProperty({
       label: undefined,
       defaultValue: '3',
       options: [
-        { label: $t('_dp.best_selling_structure_option_1'), value: '1' },
-        { label: $t('_dp.best_selling_structure_option_2'), value: '2' },
-        { label: $t('_dp.best_selling_structure_option_3'), value: '3' },
-        { label: $t('_dp.best_selling_structure_option_4'), value: '4' },
+        { label: $t('_dp.recommended_structure_option_1'), value: '1' },
+        { label: $t('_dp.recommended_structure_option_2'), value: '2' },
+        { label: $t('_dp.recommended_structure_option_3'), value: '3' },
+        { label: $t('_dp.recommended_structure_option_4'), value: '4' },
       ],
     } as const);
 
@@ -70,7 +70,13 @@ const atributesByToolType: Record<DYNAMIC_TOOL_TYPE, OptionTool[]> = {
     'button',
   ],
   order_details: ['layout', 'image', 'title', 'quantity', 'price'],
-  best_selling: ['bestSelling', 'image', 'title', 'price', 'button'],
+  recommended: [
+    'recommendedStructure',
+    'image',
+    'title',
+    'price',
+    'button',
+  ],
 };
 
 const DEFAULT_GREEN_COLOR = '#64BF91';
@@ -79,7 +85,7 @@ const DEFAULT_FONT_SIZE = '20px';
 export const getDynamicToolDefinition: (
   dynamicToolType: DYNAMIC_TOOL_TYPE,
 ) => ProductToolDefinition | undefined = (dynamicToolType) => {
-  const usageLimit = dynamicToolType !== 'best_selling' ? 1 : undefined;
+  const usageLimit = dynamicToolType !== 'recommended' ? 1 : undefined;
   const options: ProductPropertyGroups = {
     product: {
       title: $t('_dp.cart_item_structure'),
@@ -87,10 +93,16 @@ export const getDynamicToolDefinition: (
         structure: itemStructuretProperty(),
       },
     },
-    bestSelling: {
+    recommendedType: {
       title: $t('_dp.cart_item_structure'),
       options: {
-        structure: bestSellingStructureProperty(),
+        type: recommendedTypeProperty(),
+      },
+    },
+    recommendedStructure: {
+      title: $t('_dp.cart_item_structure'),
+      options: {
+        structure: recommendedStructureProperty(),
       },
     },
     layout: {
@@ -182,7 +194,7 @@ export const getDynamicToolDefinition: (
   return {
     name: `dynamic_${dynamicToolType}`,
     label: $t(`_dp.${dynamicToolType}`),
-    icon: `${ASSETS_BASE_URL}/${dynamicToolType}_v4.svg`,
+    icon: `${ASSETS_BASE_URL}/${dynamicToolType}_v5.svg`,
     is_dynamic: true,
     dynamicToolType: dynamicToolType,
     usageLimit: usageLimit,

@@ -7,16 +7,16 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
   values,
   ...rest
 }) => {
-  const isBestSelling = rest.toolInfo.name === 'dynamic_best_selling';
+  const isRecommended = rest.toolInfo.name === 'dynamic_recommended';
   const mainContainerStyle = {
     textAlign: 'center',
   } as const;
   const containerStyle = {
-    display: isBestSelling ? 'inline-block' : 'block',
+    display: isRecommended ? 'inline-block' : 'block',
     backgroundColor: values.backgroundColor,
     padding: '5px',
-    margin: isBestSelling ? '0px' : '10px',
-    width: isBestSelling ? 90 / values.structure + '%' : '100%',
+    margin: isRecommended ? '0px' : '10px',
+    width: isRecommended ? 90 / values.structure + '%' : '100%',
   } as const;
 
   const imageSectionWidth = `${values.layout === '00_horizontal' ? 40 : 100}%`;
