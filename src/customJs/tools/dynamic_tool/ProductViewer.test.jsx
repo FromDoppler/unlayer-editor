@@ -384,5 +384,25 @@ describe(ProductViewer.name, () => {
       const prices = await screen.findAllByText('[[[DC:PRICE]]]');
       expect(prices).toHaveLength(3);
     });
+
+    it('should render 2 containers with inline-block display style for recommended tool type and structure with 2 items', async () => {
+      const values = {
+        structure: 2,
+      };
+
+      const restWithRecommendedType = {
+        ...rest,
+        toolInfo: {
+          name: 'dynamic_recommended',
+        },
+      };
+
+      render(<ProductViewer values={values} {...restWithRecommendedType} />);
+      const containers = await screen.getAllByRole('container');
+      expect(containers).toHaveLength(2);
+      const container = containers[0];
+      expect(container.style.display).toEqual('inline-block');
+      expect(container.style.width).toEqual('45%');
+    });
   });
 });

@@ -100,9 +100,31 @@ describe(getDynamicToolDefinition.name, () => {
     expect(transform).toBeDefined();
     expect(transform).toEqual(htmlCartTransformed);
   });
-});
 
-//it('should has the option for order_details type', () => {
+  it('should create recommended dynamic html content for recommended type with RecommendedType = best_selling', () => {
+    setLocale('es-ES');
+
+    prepareUnlayerGlobalObject();
+    const result = getDynamicToolDefinition('recommended');
+    const dynamicValueMock2 = {
+      ...dynamicValueMock,
+      type: 'best_selling',
+    };
+
+    const htmlRecommended =
+      '<div><div style="display:block;" role="container"><section style="width:40%;display:inline-block;margin-right:5%;vertical-align:top" data-testid="image-container"><a role="link" href="[[[DC:URL]]]" target="_blank" rel="noreferrer"><img style="width:100%;object-fit:contain;height:auto;padding:5px" src="https://cdn.fromdoppler.com/unlayer-editor/assets/recommended_v2.svg" alt="product image"/></a></section><section style="display:inline-block;width:55%;vertical-align:top" data-testid="description-container"><span style="display:block;font-size:20px;font-family:inherit;font-weight:700">[[[DC:TITLE]]]</span><span style="display:block;font-family:inherit;font-size:20px;margin-top:15px;color:#64BF91">[[[DC:PRICE]]]</span><a style="display:block;font-size:15px;font-family:inherit;font-weight:700;color:#FFFFFF;background-color:rgb(109, 196, 151);text-decoration:none;border-style:solid solid solid solid;border-color:#CCCCCC #CCCCCC #CCCCCC #CCCCCC;border-width:0px 0px 0px 0px;border-radius:4px;width:100%;margin-top:15px;min-height:20px;padding:13px 0px;line-height:20px;text-align:center" role="link" href="[[[DC:URL]]]" target="_blank" rel="noreferrer">Comprar</a></section></div><div style="display:block;padding:5px;margin:10px" role="container"><section style="width:40%;display:inline-block;margin-right:5%;vertical-align:top" data-testid="image-container"><a role="link" href="[[[DC:URL]]]" target="_blank" rel="noreferrer"><img style="width:100%;object-fit:contain;height:auto;padding:5px" src="https://cdn.fromdoppler.com/unlayer-editor/assets/recommended_v2.svg" alt="product image"/></a></section><section style="display:inline-block;width:55%;vertical-align:top" data-testid="description-container"><span style="display:block;font-size:20px;font-family:inherit;font-weight:700">[[[DC:TITLE]]]</span><span style="display:block;font-family:inherit;font-size:20px;margin-top:15px;color:#64BF91">[[[DC:PRICE]]]</span><a style="display:block;font-size:15px;font-family:inherit;font-weight:700;color:#FFFFFF;background-color:rgb(109, 196, 151);text-decoration:none;border-style:solid solid solid solid;border-color:#CCCCCC #CCCCCC #CCCCCC #CCCCCC;border-width:0px 0px 0px 0px;border-radius:4px;width:100%;margin-top:15px;min-height:20px;padding:13px 0px;line-height:20px;text-align:center" role="link" href="[[[DC:URL]]]" target="_blank" rel="noreferrer">Comprar</a></section></div></div>';
+    const htmlRecommendedTransformed =
+      '<DynamicContent action="best_selling" items="2"><div style="display:block;" role="container"><section style="width:40%;display:inline-block;margin-right:5%;vertical-align:top" data-testid="image-container"><a role="link" href="[[[DC:URL]]]" target="_blank" rel="noreferrer"><img style="width:100%;object-fit:contain;height:auto;padding:5px" src="https://cdn.fromdoppler.com/unlayer-editor/assets/recommended_v2.svg" alt="product image"/></a></section><section style="display:inline-block;width:55%;vertical-align:top" data-testid="description-container"><span style="display:block;font-size:20px;font-family:inherit;font-weight:700">[[[DC:TITLE]]]</span><span style="display:block;font-family:inherit;font-size:20px;margin-top:15px;color:#64BF91">[[[DC:PRICE]]]</span><a style="display:block;font-size:15px;font-family:inherit;font-weight:700;color:#FFFFFF;background-color:rgb(109, 196, 151);text-decoration:none;border-style:solid solid solid solid;border-color:#CCCCCC #CCCCCC #CCCCCC #CCCCCC;border-width:0px 0px 0px 0px;border-radius:4px;width:100%;margin-top:15px;min-height:20px;padding:13px 0px;line-height:20px;text-align:center" role="link" href="[[[DC:URL]]]" target="_blank" rel="noreferrer">Comprar</a></section></div><div style="display:block;padding:5px;margin:10px" role="container"><section style="width:40%;display:inline-block;margin-right:5%;vertical-align:top" data-testid="image-container"><a role="link" href="[[[DC:URL]]]" target="_blank" rel="noreferrer"><img style="width:100%;object-fit:contain;height:auto;padding:5px" src="https://cdn.fromdoppler.com/unlayer-editor/assets/recommended_v2.svg" alt="product image"/></a></section><section style="display:inline-block;width:55%;vertical-align:top" data-testid="description-container"><span style="display:block;font-size:20px;font-family:inherit;font-weight:700">[[[DC:TITLE]]]</span><span style="display:block;font-family:inherit;font-size:20px;margin-top:15px;color:#64BF91">[[[DC:PRICE]]]</span><a style="display:block;font-size:15px;font-family:inherit;font-weight:700;color:#FFFFFF;background-color:rgb(109, 196, 151);text-decoration:none;border-style:solid solid solid solid;border-color:#CCCCCC #CCCCCC #CCCCCC #CCCCCC;border-width:0px 0px 0px 0px;border-radius:4px;width:100%;margin-top:15px;min-height:20px;padding:13px 0px;line-height:20px;text-align:center" role="link" href="[[[DC:URL]]]" target="_blank" rel="noreferrer">Comprar</a></section></div></DynamicContent>';
+    const transform = result.createDynamicContet(
+      htmlRecommended,
+      dynamicValueMock2,
+    );
+
+    //Assert
+    expect(transform).toBeDefined();
+    expect(transform).toEqual(htmlRecommendedTransformed);
+  });
+});
 
 it.each([
   {
@@ -127,6 +149,21 @@ it.each([
     },
     expectedResult: {
       options: ['layout', 'image', 'title', 'quantity', 'price'],
+    },
+  },
+  {
+    data: {
+      type: 'recommended',
+    },
+    expectedResult: {
+      options: [
+        'recommendedType',
+        'recommendedStructure',
+        'image',
+        'title',
+        'price',
+        'button',
+      ],
     },
   },
 ])(
