@@ -50,9 +50,9 @@ export const recommendedStructureProperty: () => UnlayerProperty<RecommendedStru
       ],
     } as const);
 
-type RecommendOption = { label: string; value: RecommendedType };
+type RecommendedOption = { label: string; value: RecommendedType };
 export const getRecommended_type_options: () => Readonly<
-  [RecommendOption, ...RecommendOption[]]
+  [RecommendedOption, ...RecommendedOption[]]
 > = () => {
   return [
     {
@@ -73,8 +73,8 @@ export const getRecommended_type_options: () => Readonly<
   ]
     .filter(({ enabled }) => !!enabled)
     .map(({ label, value }) => {
-      return <RecommendOption>{ label: label, value: value };
-    }) as [RecommendOption, ...RecommendOption[]];
+      return <RecommendedOption>{ label: label, value: value };
+    }) as [RecommendedOption, ...RecommendedOption[]];
 };
 
 export const recommendedTypeProperty: () => UnlayerProperty<RecommendedType> =
