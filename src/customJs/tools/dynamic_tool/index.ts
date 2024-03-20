@@ -1,12 +1,6 @@
 import { $t } from '../../localization';
 import { ProductViewer } from './ProductViewer';
-import {
-  ProductToolDefinition,
-  ProductLayout,
-  ItemsStructure,
-  OptionTool,
-  ProductPropertyGroups,
-} from './types';
+import { ProductToolDefinition, ProductPropertyGroups } from './types';
 import { ASSETS_BASE_URL, DYNAMIC_TOOL_TYPE } from '../../constants';
 import {
   autoWidthProperty,
@@ -14,49 +8,19 @@ import {
   borderRadiusProperty,
   buttonColorsProperty,
   colorProperty,
-  dropdownProperty,
   fontFamilyProperty,
   fontSizeProperty,
   fontWeightProperty,
   textProperty,
   toggleShowProperty,
 } from '../../properties/helpers';
-import { UnlayerProperty } from '../../types';
-
-const productLayoutProperty: () => UnlayerProperty<ProductLayout> = () =>
-  dropdownProperty({
-    label: undefined,
-    defaultValue: '00_horizontal',
-    options: [
-      { label: $t('_dp.layout_00_horizontal'), value: '00_horizontal' },
-      { label: $t('_dp.layout_01_vertical'), value: '01_vertical' },
-    ],
-  } as const);
-
-const itemStructuretProperty: () => UnlayerProperty<ItemsStructure> = () =>
-  dropdownProperty({
-    label: undefined,
-    defaultValue: '1',
-    options: [
-      { label: $t('_dp.cart_item_structure_option_0'), value: '0' },
-      { label: $t('_dp.cart_item_structure_option_1'), value: '1' },
-      { label: $t('_dp.cart_item_structure_option_2'), value: '2' },
-      { label: $t('_dp.cart_item_structure_option_3'), value: '3' },
-    ],
-  } as const);
-
-const atributesByToolType: Record<DYNAMIC_TOOL_TYPE, OptionTool[]> = {
-  abandoned_cart: ['product', 'layout', 'image', 'title', 'price', 'button'],
-  product_retargeting: [
-    'product',
-    'layout',
-    'image',
-    'title',
-    'price',
-    'button',
-  ],
-  order_details: ['layout', 'image', 'title', 'quantity', 'price'],
-};
+import {
+  itemStructuretProperty,
+  recommendedTypeProperty,
+  recommendedStructureProperty,
+  productLayoutProperty,
+  atributesByToolType,
+} from './propertyHelper';
 
 const DEFAULT_GREEN_COLOR = '#64BF91';
 const DEFAULT_FONT_SIZE = '20px';
@@ -64,11 +28,24 @@ const DEFAULT_FONT_SIZE = '20px';
 export const getDynamicToolDefinition: (
   dynamicToolType: DYNAMIC_TOOL_TYPE,
 ) => ProductToolDefinition | undefined = (dynamicToolType) => {
+  const usageLimit = dynamicToolType !== 'recommended' ? 1 : undefined;
   const options: ProductPropertyGroups = {
     product: {
       title: $t('_dp.cart_item_structure'),
       options: {
         structure: itemStructuretProperty(),
+      },
+    },
+    recommendedType: {
+      title: $t('_dp.cart_item_structure'),
+      options: {
+        type: recommendedTypeProperty(),
+      },
+    },
+    recommendedStructure: {
+      title: $t('_dp.cart_item_structure'),
+      options: {
+        structure: recommendedStructureProperty(),
       },
     },
     layout: {
@@ -160,17 +137,18 @@ export const getDynamicToolDefinition: (
   return {
     name: `dynamic_${dynamicToolType}`,
     label: $t(`_dp.${dynamicToolType}`),
-    icon: `${ASSETS_BASE_URL}/${dynamicToolType}_v4.svg`,
+    icon: `${ASSETS_BASE_URL}/${dynamicToolType}_v5.svg`,
     is_dynamic: true,
     dynamicToolType: dynamicToolType,
-    usageLimit: 1,
+    usageLimit: usageLimit,
     Component: ProductViewer,
     options: toolOptionByType,
     createDynamicContet(htmlComponent: string, values: any) {
+      const dynamicAction = values.type || dynamicToolType;
       const htmlDinamicComponent = htmlComponent
         .replace(
           /^.[div]*/,
-          `<DynamicContent action="${dynamicToolType}" items="${
+          `<DynamicContent action="${dynamicAction}" items="${
             values.structure || 0
           }"`,
         )

@@ -13,9 +13,13 @@ import {
 } from '../../types';
 
 export type ItemsStructure = '0' | '1' | '2' | '3';
+export type RecommendedStructure = '1' | '2' | '3' | '4';
+export type RecommendedType = 'best_selling' | 'cross_selling' | 'new_products';
 export type ProductLayout = '00_horizontal' | '01_vertical';
 export type OptionTool =
   | 'product'
+  | 'recommendedType'
+  | 'recommendedStructure'
   | 'layout'
   | 'image'
   | 'title'
@@ -26,6 +30,12 @@ export type OptionTool =
 export type ProductBase = Readonly<{
   product: {
     structure: ItemsStructure;
+  };
+  recommendedType: {
+    type: RecommendedType;
+  };
+  recommendedStructure: {
+    structure: RecommendedStructure;
   };
   layout: {
     backgroundColor: Color;

@@ -7,11 +7,16 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
   values,
   ...rest
 }) => {
+  const isRecommended = rest.toolInfo.name === 'dynamic_recommended';
+  const mainContainerStyle = {
+    textAlign: 'center',
+  } as const;
   const containerStyle = {
-    display: 'block',
+    display: isRecommended ? 'inline-block' : 'block',
     backgroundColor: values.backgroundColor,
     padding: '5px',
-    margin: '10px',
+    margin: isRecommended ? '0px' : '10px',
+    width: isRecommended ? 90 / values.structure + '%' : '100%',
   } as const;
 
   const imageSectionWidth = `${values.layout === '00_horizontal' ? 40 : 100}%`;
@@ -128,10 +133,12 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
     },
   };
 
-  const arrayStructure = new Array([1, 1, 2, 3][values.structure]).fill('item');
+  const arrayStructure = new Array([1, 1, 2, 3, 4][values.structure]).fill(
+    'item',
+  );
 
   return (
-    <div>
+    <div style={mainContainerStyle}>
       {arrayStructure.map((_, i) => (
         <div style={containerStyle} role="container" key={i}>
           <section
