@@ -20,7 +20,7 @@ export const getSocialShareToolDefinition: () => ReactToolDefinitionFrom<SocialS
         position: 1,
         options: {
           social_share_size: smallBigDropdownProperty({
-            label: undefined,
+            label: $t('_dp.size'),
             defaultValue: 'big',
           }),
         },
