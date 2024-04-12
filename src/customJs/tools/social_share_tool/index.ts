@@ -16,7 +16,7 @@ export const getSocialShareToolDefinition: () => ReactToolDefinitionFrom<SocialS
     Component: SocialShareViewer,
     options: {
       social_share_size: {
-        title: $t('_dp.size'),
+        title: $t('_dp.appearance'),
         position: 1,
         options: {
           social_share_size: smallBigDropdownProperty({
