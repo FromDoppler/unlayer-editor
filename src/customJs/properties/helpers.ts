@@ -134,13 +134,16 @@ export const toggleProperty: ({
 });
 
 export const toggleShowProperty: (param?: {
-  defaultValue: boolean;
+  defaultValue?: boolean;
+  label?: string;
 }) => UnlayerProperty<boolean> = ({
   defaultValue = true,
+  label = $t('_dp.show'),
 }: {
   defaultValue?: boolean;
+  label?: string;
 } = {}) => ({
-  label: $t('_dp.show'),
+  label: label,
   defaultValue,
   widget: 'toggle',
 });
