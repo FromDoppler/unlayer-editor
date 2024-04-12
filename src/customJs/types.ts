@@ -1,7 +1,11 @@
-import { SOCIAL_NETWORKS } from './constants';
 import { ReactNode } from './unlayer-react';
 
-export type SocialNetworkId = (typeof SOCIAL_NETWORKS)[number]['id'];
+export type SocialNetworkId =
+  | 'facebook_shared_property'
+  | 'linkedin_shared_property'
+  | 'twitter_shared_property'
+  | 'pinterest_shared_property'
+  | 'whatsapp_shared_property';
 
 export type Alignment = 'center' | 'justify' | 'left' | 'right';
 
