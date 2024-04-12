@@ -1,9 +1,4 @@
-import {
-  Alignment,
-  PropertyGroupsFrom,
-  SocialNetworkId,
-  ToolValuesFrom,
-} from '../../types';
+import { Alignment, PropertyGroupsFrom, ToolValuesFrom } from '../../types';
 
 export type SocialShareBase = {
   social_share_size: {

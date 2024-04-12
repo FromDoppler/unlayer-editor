@@ -7,7 +7,6 @@ import {
   registerReactTool,
 } from './utils/unlayer';
 import { urlPropertyEditorDefinition } from './properties/url';
-import { socialNetworksPropertyEditorDefinition } from './properties/social_networks';
 import { getSocialShareToolDefinition } from './tools/social_share_tool';
 import { getPayuButtonToolDefinition } from './tools/payu_button_tool';
 import { getPromoCodeToolDefinition } from './tools/promo_code';
@@ -48,7 +47,6 @@ setLinkTypes?.([
 // Register Properties and tools
 
 registerPropertyEditor(urlPropertyEditorDefinition);
-registerPropertyEditor(socialNetworksPropertyEditorDefinition);
 registerPropertyEditor(promoCodesPropertyEditorDefinition);
 registerPropertyEditor(productGalleryPropertyEditorDefinition);
 registerPropertyEditor(productArrangementPropertyEditorDefinition);
