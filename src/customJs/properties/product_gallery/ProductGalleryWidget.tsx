@@ -36,6 +36,7 @@ export const ProductGalleryWidget: WidgetComponent<ProductGalleryValue> = ({
           <div>
             <button
               type="button"
+              style={{ height: '40px' }}
               className="btn btn-primary btn-sm"
               disabled={noStores}
               onClick={searchProduct}

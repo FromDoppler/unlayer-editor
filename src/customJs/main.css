@@ -69,3 +69,23 @@
   > label {
   border-color: rgb(38, 38, 38);
 }
+
+.blockbuilder-widget .btn.btn-primary {
+  --outline-color: #262626;
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+  padding: 0.4rem 0.85rem;
+  line-height: 1rem;
+  background-color: rgb(38, 38, 38);
+  color: rgb(255, 255, 255);
+  font-family: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border: 1px solid rgb(38, 38, 38);
+  border-radius: 2px;
+  outline: 0px solid var(--outline-color);
+  outline-offset: 2px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
