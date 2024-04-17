@@ -15,3 +15,57 @@
   max-width: 100px;
   height: 100px;
 }
+
+.input-group.horizontal {
+  display: flex;
+  flex-direction: row;
+}
+
+.input-group > input.input {
+  display: flex;
+  flex: 1 1 0%;
+  line-height: 1.25rem;
+  padding: 0.75rem 1rem;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgb(125, 125, 125);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(212, 212, 212);
+}
+.input-group > input.input:focus {
+  color: rgb(38, 38, 38);
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(38, 38, 38);
+  outline: 0px;
+}
+
+.input-group.horizontal > label {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  margin: 0px;
+  padding: 0px 1rem;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgb(38, 38, 38);
+  background-color: rgb(244, 244, 244);
+  border: 1px solid rgb(212, 212, 212);
+  border-radius: 2px;
+}
+
+.input-group.horizontal.left > label + * {
+  margin-left: -1px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.input-group.horizontal:has(
+    .input:focus,
+    .input:focus-visible,
+    .input[data-focus-visible]
+  )
+  > label {
+  border-color: rgb(38, 38, 38);
+}
