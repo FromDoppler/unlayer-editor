@@ -1,9 +1,17 @@
-.blockbuilder-content-tools
+.blockbuilder-tools-panel
+  .blockbuilder-content-tools
   .blockbuilder-content-tool
   .blockbuilder-content-tool-name {
   text-transform: none;
   overflow-wrap: inherit;
   text-overflow: unset;
   white-space: unset;
-  line-height: 1.5;
+  line-height: 1.2;
+}
+
+.blockbuilder-tools-panel
+  .blockbuilder-content-tools
+  .blockbuilder-tool[data-mode='icon'] {
+  max-width: 100px;
+  height: 100px;
 }
