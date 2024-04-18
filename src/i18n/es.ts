@@ -5,6 +5,7 @@ import { ASSETS_BASE_URL, HELP_BASE_URL } from '../customJs/constants';
 export const messages_es = {
   '_dp.abandoned_cart': `Carrito Abandonado`,
   '_dp.alignment': `Alineación`,
+  '_dp.appearance': `Apariencia`,
   '_dp.big': `Grande`,
   '_dp.cart_item_structure': `Estructura`,
   '_dp.cart_item_structure_option_0': `Todos los productos`,

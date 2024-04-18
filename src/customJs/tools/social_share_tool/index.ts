@@ -1,10 +1,12 @@
 import { $t } from '../../localization';
-import { ASSETS_BASE_URL, SOCIAL_NETWORKS } from '../../constants';
+import { ASSETS_BASE_URL } from '../../constants';
 import { SocialShareViewer } from './SocialShareViewer';
 import { ReactToolDefinitionFrom } from '../../types';
 import { SocialShareBase } from './types';
-import { socialNetworksPropertyEditor } from '../../properties/social_networks';
-import { smallBigDropdownProperty } from '../../properties/helpers';
+import {
+  smallBigDropdownProperty,
+  toggleShowProperty,
+} from '../../properties/helpers';
 
 export const getSocialShareToolDefinition: () => ReactToolDefinitionFrom<SocialShareBase> =
   () => ({
@@ -14,11 +16,11 @@ export const getSocialShareToolDefinition: () => ReactToolDefinitionFrom<SocialS
     Component: SocialShareViewer,
     options: {
       social_share_size: {
-        title: $t('_dp.size'),
+        title: $t('_dp.appearance'),
         position: 1,
         options: {
           social_share_size: smallBigDropdownProperty({
-            label: undefined,
+            label: $t('_dp.size'),
             defaultValue: 'big',
           }),
         },
@@ -27,13 +29,26 @@ export const getSocialShareToolDefinition: () => ReactToolDefinitionFrom<SocialS
         title: $t('_dp.social_networks'),
         position: 2,
         options: {
-          social_share_available: {
-            data: {
-              options: SOCIAL_NETWORKS,
-            },
-            defaultValue: SOCIAL_NETWORKS.map(({ id }) => id),
-            widget: socialNetworksPropertyEditor,
-          },
+          facebook_shared_property: toggleShowProperty({
+            label: 'Facebook',
+            defaultValue: true,
+          }),
+          linkedin_shared_property: toggleShowProperty({
+            label: 'Linkedin',
+            defaultValue: true,
+          }),
+          twitter_shared_property: toggleShowProperty({
+            label: 'Twitter',
+            defaultValue: true,
+          }),
+          pinterest_shared_property: toggleShowProperty({
+            label: 'Pinterest',
+            defaultValue: true,
+          }),
+          whatsapp_shared_property: toggleShowProperty({
+            label: 'Whatsapp',
+            defaultValue: true,
+          }),
         },
       },
       social_share_align: {
