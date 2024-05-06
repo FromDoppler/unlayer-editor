@@ -1,6 +1,7 @@
 import { EMPTY_SELECTION } from '../constants';
 import { $t } from '../localization';
 import {
+  Alignment,
   AutoWidth,
   Border,
   BorderRadius,
@@ -109,9 +110,15 @@ export const smallMediumLargeDropdownProperty = ({
     ] as const,
   });
 
-export const alignmentProperty = () => ({
+export const alignmentProperty: (param?: {
+  defaultValue?: Alignment;
+}) => UnlayerProperty<Alignment> = ({
+  defaultValue = 'center' as Alignment,
+}: {
+  defaultValue?: Alignment;
+} = {}) => ({
   label: $t('editor.align.label'),
-  defaultValue: 'center' as const,
+  defaultValue,
   widget: 'alignment',
 });
 
