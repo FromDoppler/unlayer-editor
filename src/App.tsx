@@ -79,6 +79,8 @@ const App: React.FC = () => {
         bestSellingEnabled: true,
         newProductsEnabled: true,
         crossSellingEnabled: false,
+        rssCampaign: true,
+        rssShowPreview: true,
         stores: [
           { name: "MercadoShops", promotionCodeEnabled: true },
           { name: "Magento", promotionCodeEnabled: false },
