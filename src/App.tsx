@@ -51,6 +51,7 @@ const App: React.FC = () => {
         icon: `${ASSETS_BASE_URL}/button.svg`,
       },
     },
+    version: 'latest',
     features: {
       preheaderText: false,
     },
@@ -78,6 +79,8 @@ const App: React.FC = () => {
         bestSellingEnabled: true,
         newProductsEnabled: true,
         crossSellingEnabled: false,
+        rssCampaign: true,
+        rssShowPreview: true,
         stores: [
           { name: "MercadoShops", promotionCodeEnabled: true },
           { name: "Magento", promotionCodeEnabled: false },

@@ -16,6 +16,7 @@ import { productGalleryPropertyEditorDefinition } from './properties/product_gal
 import { productArrangementPropertyEditorDefinition } from './properties/product_arrangement';
 import { getDynamicToolDefinition } from './tools/dynamic_tool';
 import { DYNAMIC_TOOL_TYPE } from './constants';
+import { getRssHeaderToolDefinition } from './tools/rss';
 
 const {
   locale,
@@ -27,6 +28,7 @@ const {
   bestSellingEnabled,
   crossSellingEnabled,
   newProductsEnabled,
+  rssCampaign,
 } = getConfiguration();
 
 const unlayerLocales = {
@@ -76,6 +78,10 @@ if (confirmationOrderCampaign || pendingOrderCampaign) {
 
 if (bestSellingEnabled || crossSellingEnabled || newProductsEnabled) {
   registerReactTool(getDynamicToolDefinition(<DYNAMIC_TOOL_TYPE>'recommended'));
+}
+
+if (rssCampaign) {
+  registerReactTool(getRssHeaderToolDefinition());
 }
 
 if (previewMode) {

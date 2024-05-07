@@ -27,6 +27,8 @@ const expectedDefaultConfiguration = {
   bestSellingEnabled: false,
   newProductsEnabled: false,
   crossSellingEnabled: false,
+  rssCampaign: false,
+  rssShowPreview: false,
   previewMode: false,
   dopplerExternalUrls: {
     automation: '#',
@@ -73,6 +75,8 @@ describe(parseConfigurationDTO.name, () => {
     const bestSellingEnabled = false;
     const newProductsEnabled = false;
     const crossSellingEnabled = false;
+    const rssCampaign = false;
+    const rssShowPreview = false;
     const input = {
       locale,
       previewMode,
@@ -97,6 +101,8 @@ describe(parseConfigurationDTO.name, () => {
       bestSellingEnabled: false,
       newProductsEnabled: false,
       crossSellingEnabled: false,
+      rssCampaign: false,
+      rssShowPreview: false,
       previewMode,
       dopplerExternalUrls: {
         automation: '#',
