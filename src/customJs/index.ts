@@ -80,7 +80,7 @@ if (bestSellingEnabled || crossSellingEnabled || newProductsEnabled) {
   registerReactTool(getDynamicToolDefinition(<DYNAMIC_TOOL_TYPE>'recommended'));
 }
 
-if (rssCampaign) {
+if (rssCampaign && previewMode) {
   registerReactTool(getRssHeaderToolDefinition());
 }
 
