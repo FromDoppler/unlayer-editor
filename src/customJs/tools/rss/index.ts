@@ -33,7 +33,7 @@ export const getRssHeaderToolDefinition: () =>
   return {
     name: 'rss',
     label: 'Rss',
-    icon: `${ASSETS_BASE_URL}/rss_v1.svg`,
+    icon: `${ASSETS_BASE_URL}/rss_v3.svg`,
     usageLimit: 1,
     Component: RssViewer,
     options: {
