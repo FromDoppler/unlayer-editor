@@ -57,6 +57,8 @@ export const messages_en: IntlMessages = {
   '_dp.promo_code': `Promotion Code`,
   '_dp.promo_codes': `Promotion codes`,
   '_dp.promo_codes_not_availables': `No promotion codes available in your store`,
+  '_dp.qr_content': `QR content`,
+  '_dp.qr_link': `QR link`,
   '_dp.quantity': `Quantity`,
   '_dp.recommended': `Recommended`,
   '_dp.recommended_structure_option_1': `1 product`,
