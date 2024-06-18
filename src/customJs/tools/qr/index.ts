@@ -9,7 +9,7 @@ import { UnlayerProperty } from '../../types';
 
 export const sizeProperty: () => UnlayerProperty<number> = () => ({
   label: $t('_dp.size'),
-  defaultValue: 100,
+  defaultValue: 240,
   widget: 'counter',
 });
 
