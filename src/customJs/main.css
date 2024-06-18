@@ -25,12 +25,14 @@
   display: flex;
   flex: 1 1 0%;
   line-height: 1.25rem;
-  padding: 0.75rem 1rem;
   font-size: 13px;
   font-weight: 400;
   color: rgb(125, 125, 125);
   background-color: rgb(255, 255, 255);
   border: 1px solid rgb(212, 212, 212);
+}
+.input-group > input[type='url'].input {
+  padding: 0.75rem 1rem;
 }
 .input-group > input.input:focus {
   color: rgb(38, 38, 38);
