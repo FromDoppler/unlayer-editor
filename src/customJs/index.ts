@@ -17,6 +17,7 @@ import { productArrangementPropertyEditorDefinition } from './properties/product
 import { getDynamicToolDefinition } from './tools/dynamic_tool';
 import { DYNAMIC_TOOL_TYPE } from './constants';
 import { getRssHeaderToolDefinition } from './tools/rss';
+import { getQrToolDefinition } from './tools/qr';
 
 const {
   locale,
@@ -57,6 +58,7 @@ registerReactTool(getSocialShareToolDefinition());
 registerReactTool(getPayuButtonToolDefinition());
 registerReactTool(getPromoCodeToolDefinition());
 registerReactTool(getProductToolDefinition());
+registerReactTool(getQrToolDefinition());
 
 if (abandonedCartCampaign) {
   registerReactTool(

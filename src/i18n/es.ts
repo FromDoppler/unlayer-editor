@@ -57,6 +57,8 @@ export const messages_es = {
   '_dp.promo_code': `Código Promocional`,
   '_dp.promo_codes': `Códigos de promoción`,
   '_dp.promo_codes_not_availables': `No se encontraron códigos de promoción disponibles en tu tienda`,
+  '_dp.qr_content': `Contenido del QR`,
+  '_dp.qr_link': `Enlace del QR`,
   '_dp.quantity': `Cantidad`,
   '_dp.recommended': `Producto Recomendado`,
   '_dp.recommended_structure_option_1': `1 producto`,
