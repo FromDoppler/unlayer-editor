@@ -1993,10 +1993,10 @@
   dependencies:
     undici-types "~5.26.4"
 
-"@types/node@20.12.10":
-  version "20.12.10"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.12.10.tgz#8f0c3f12b0f075eee1fe20c1afb417e9765bef76"
-  integrity sha512-Eem5pH9pmWBHoGAT8Dr5fdc5rYA+4NAovdM4EktRPVAAiJhmWWfQrA0cFhAbOsQdSfIHjAud6YdkbL69+zSKjw==
+"@types/node@20.14.5":
+  version "20.14.5"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.14.5.tgz#fe35e3022ebe58b8f201580eb24e1fcfc0f2487d"
+  integrity sha512-aoRR+fJkZT2l0aGOJhuA8frnCSoNX6W7U2mpNq63+BxBIj5BQFt8rHy627kijCmm63ijdSdwvGgpUsU6MBsZZA==
   dependencies:
     undici-types "~5.26.4"
 
