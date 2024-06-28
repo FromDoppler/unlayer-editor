@@ -69,7 +69,8 @@ const getComponentName = (values: QrValues): string => {
 };
 
 const getImageFile = (values: QrValues) => {
-  const binary = atob(getQrImage(values).split(',')[1]),
+  const imageData = getQrImage(values);
+  const binary = atob(imageData.split(',')[1]),
     array: number[] = [];
   for (let i = 0; i < binary.length; i++) array.push(binary.charCodeAt(i));
   const blob = new Blob([new Uint8Array(array)], { type: 'image/png' });
