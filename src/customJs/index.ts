@@ -18,6 +18,7 @@ import { getDynamicToolDefinition } from './tools/dynamic_tool';
 import { DYNAMIC_TOOL_TYPE } from './constants';
 import { getRssHeaderToolDefinition } from './tools/rss';
 import { getQrToolDefinition } from './tools/qr';
+import { qrPropertyEditorDefinition } from './properties/qr';
 
 const {
   locale,
@@ -53,6 +54,7 @@ registerPropertyEditor(urlPropertyEditorDefinition);
 registerPropertyEditor(promoCodesPropertyEditorDefinition);
 registerPropertyEditor(productGalleryPropertyEditorDefinition);
 registerPropertyEditor(productArrangementPropertyEditorDefinition);
+registerPropertyEditor(qrPropertyEditorDefinition);
 
 registerReactTool(getSocialShareToolDefinition());
 registerReactTool(getPayuButtonToolDefinition());
