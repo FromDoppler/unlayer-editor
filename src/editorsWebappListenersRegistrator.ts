@@ -71,6 +71,12 @@ export const registerListeners = () => {
       : [];
   });
 
+  registerListener('getImageUrlFile', async (qrImageFile) => {
+    console.log(qrImageFile);
+    await timeout(500);
+    return 'http://www.pngall.com/wp-content/uploads/2/QR-Code-PNG-HD-Image-180x180.png';
+  });
+
   registerListener('searchProduct', async () => {
     alert('Product Gallery');
     return {
