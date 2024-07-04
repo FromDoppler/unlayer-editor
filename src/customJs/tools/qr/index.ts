@@ -1,11 +1,10 @@
 import { $t } from '../../localization';
 import { QrViewer } from './QrViewer';
-
 import { QrToolDefinition } from './types';
 import { ASSETS_BASE_URL } from '../../constants';
 import { alignmentProperty, colorProperty } from '../../properties/helpers';
-import { urlProperty } from '../../properties/url';
 import { UnlayerProperty } from '../../types';
+import { qrProperty } from '../../properties/qr';
 
 export const sizeProperty: () => UnlayerProperty<number> = () => ({
   label: $t('_dp.size'),
@@ -18,7 +17,6 @@ export const getQrToolDefinition: () => QrToolDefinition | undefined = () => {
     name: 'qr',
     label: 'QR',
     icon: `${ASSETS_BASE_URL}/QR_v4.svg`,
-
     Component: QrViewer,
     options: {
       layout: {
@@ -32,7 +30,11 @@ export const getQrToolDefinition: () => QrToolDefinition | undefined = () => {
       content: {
         title: $t('_dp.qr_content'),
         options: {
-          qrValue: urlProperty({
+          qr: qrProperty({
+            defaultValue: {
+              qrValue: '',
+              qrUrlImage: '',
+            },
             label: $t('_dp.qr_link'),
           }),
         },

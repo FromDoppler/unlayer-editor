@@ -1,3 +1,4 @@
+import { QRProperty } from '../../properties/qr/types';
 import {
   Alignment,
   Color,
@@ -11,7 +12,7 @@ export type QrBase = Readonly<{
     backgroundColor: Color;
   };
   content: {
-    qrValue: string;
+    qr: QRProperty;
   };
   format: {
     qrSize: number;
