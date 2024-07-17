@@ -55,7 +55,7 @@
     "react-dom": "18.3.1",
     "react-email-editor": "1.7.11",
     "style-loader": "4.0.0",
-    "styled-components": "6.1.11",
+    "styled-components": "6.1.12",
     "ts-loader": "9.5.1",
     "typescript": "5.5.3",
     "webpack": "5.93.0",
