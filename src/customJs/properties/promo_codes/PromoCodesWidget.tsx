@@ -112,6 +112,5 @@ const usePromoCodes = ({ store }: { store: string }) => {
 };
 
 const mapCodeOption = (item: PromoCodeItem): CodeOption => {
-  const label = item.type === 'money' ? `$${item.value}` : `${item.value}%`;
-  return { label: label, value: item.code };
+  return { label: item.formattedValue, value: item.code };
 };
