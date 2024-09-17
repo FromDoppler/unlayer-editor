@@ -155,8 +155,7 @@ describe('Promocode widget', () => {
           code: 'promoCodeTest',
           type: 'percen',
           value: 100,
-          useLimit: 1,
-          minPaymentAmount: 1,
+          formattedValue: '100 %',
         },
       ]);
       const destructor = () => {};
