@@ -9,10 +9,7 @@ export type StoreDependentToolValues = {
 
 export type PromoCodeItem = {
   code: string;
-  type: 'percent' | 'money';
+  type: 'percent' | 'money' | 'shipping';
   value: number;
-  startDate: Date | undefined; // TODO: verify type
-  endDate: Date | undefined; // TODO: verify type
-  useLimit: number;
-  minPaymentAmount: number;
+  formattedValue: string;
 };

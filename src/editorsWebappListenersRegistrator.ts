@@ -5,27 +5,44 @@ const UNLAYER_ORIGIN = 'https://editor.unlayer.com';
 // DUMMY DATA
 
 const promoCodesDummyValues = {
-  MercadoShops: [
+  mercadoshops: [
     {
-      code: 'abc-1',
+      code: 'meli-1',
       type: 'money',
       value: 1000,
-      useLimit: 1,
-      minPaymentAmount: 1,
+      formattedValue: '$ 1,000.00',
     },
     {
-      code: 'cde-2',
+      code: 'meli-2',
       type: 'money',
       value: 1500,
-      useLimit: 1,
-      minPaymentAmount: 1,
+      formattedValue: '$ 1,500.00',
     },
     {
-      code: 'efg-3',
+      code: 'meli-3',
       type: 'percen',
       value: 15,
-      useLimit: 1,
-      minPaymentAmount: 1,
+      formattedValue: '15 %',
+    },
+  ],
+  tiendanube: [
+    {
+      code: 'nube-1',
+      type: 'money',
+      value: 1000,
+      formattedValue: '$ 1,000.00',
+    },
+    {
+      code: 'nube-2',
+      type: 'money',
+      value: 1500,
+      formattedValue: '$ 1,500.00',
+    },
+    {
+      code: 'nube-3',
+      type: 'percen',
+      formattedValue: '15 %',
+      value: 15,
     },
   ],
 };
@@ -66,9 +83,7 @@ const registerListener = <TParameters, TResult>(
 export const registerListeners = () => {
   registerListener('getPromoCodes', async ({ store }: { store: string }) => {
     await timeout(1000);
-    return store.toLocaleLowerCase() === 'mercadoshops'
-      ? promoCodesDummyValues.MercadoShops
-      : [];
+    return promoCodesDummyValues[store.toLocaleLowerCase()] || [];
   });
 
   registerListener('getImageUrlFile', async (qrImageFile) => {

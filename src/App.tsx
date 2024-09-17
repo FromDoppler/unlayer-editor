@@ -84,7 +84,7 @@ const App: React.FC = () => {
         stores: [
           { name: "MercadoShops", promotionCodeEnabled: true },
           { name: "Magento", promotionCodeEnabled: false },
-          { name: "Tiendanube", promotionCodeEnabled: false }
+          { name: "Tiendanube", promotionCodeEnabled: true }
         ],
         dopplerExternalUrls: {
           home: "https://webappqa.fromdoppler.net/dashboard",

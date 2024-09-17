@@ -55,6 +55,7 @@ describe('Promocode widget', () => {
           code: 'abc-1',
           type: 'money',
           value: 1000,
+          formattedValue: '$ 1,000.00',
         },
       ]);
       const destructor = () => {};
@@ -85,11 +86,13 @@ describe('Promocode widget', () => {
           code: 'abc-1',
           type: 'money',
           value: 1000,
+          formattedValue: '$ 1,000.00',
         },
         {
           code: 'abc-2',
           type: 'money',
           value: 1000,
+          formattedValue: '$ 1,000.00',
         },
       ]);
       const destructor = () => {};
@@ -110,6 +113,7 @@ describe('Promocode widget', () => {
           code: 'abc-1',
           type: 'money',
           value: 1000,
+          formattedValue: '$ 1,000.00',
         },
       ]);
       const destructor = () => {};
@@ -119,7 +123,7 @@ describe('Promocode widget', () => {
     prepareUnlayerGlobalObject();
     render(<PromoCodesWidget {...unlayerPropertyProps} />);
 
-    const labelSpan = await screen.findByText('$1000');
+    const labelSpan = await screen.findByText('$ 1,000.00');
     expect(labelSpan).toBeDefined();
   });
 
@@ -130,6 +134,7 @@ describe('Promocode widget', () => {
           code: 'abc-1',
           type: 'percen',
           value: 100,
+          formattedValue: '100 %',
         },
       ]);
       const destructor = () => {};
@@ -139,7 +144,7 @@ describe('Promocode widget', () => {
     prepareUnlayerGlobalObject();
     render(<PromoCodesWidget {...unlayerPropertyProps} />);
 
-    const labelSpan = await screen.findByText('100%');
+    const labelSpan = await screen.findByText('100 %');
     expect(labelSpan).toBeDefined();
   });
 
@@ -150,8 +155,7 @@ describe('Promocode widget', () => {
           code: 'promoCodeTest',
           type: 'percen',
           value: 100,
-          useLimit: 1,
-          minPaymentAmount: 1,
+          formattedValue: '100 %',
         },
       ]);
       const destructor = () => {};
