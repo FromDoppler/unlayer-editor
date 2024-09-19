@@ -32,8 +32,7 @@ export const PromoCodesWidget: WidgetComponent<
     color: '#333',
   } as const;
 
-  
-  const labelStyle = { 
+  const labelStyle = {
     width: '100%',
     display: 'flex',
   } as const;

@@ -27,19 +27,19 @@ const promoCodesDummyValues = {
   ],
   tiendanube: [
     {
-      code: 'nube-1',
+      code: 'nube-1-code',
       type: 'money',
       value: 1000,
-      formattedValue: '$ 1,000.00',
+      formattedValue: '$ 250,000.00',
     },
     {
       code: 'nube-2',
-      type: 'money',
-      value: 1500,
-      formattedValue: '$ 1,500.00',
+      type: 'shipping',
+      value: 0,
+      formattedValue: '-',
     },
     {
-      code: 'nube-3',
+      code: 'nube-3-percent',
       type: 'percen',
       formattedValue: '15 %',
       value: 15,
