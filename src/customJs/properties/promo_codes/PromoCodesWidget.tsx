@@ -26,14 +26,20 @@ export const PromoCodesWidget: WidgetComponent<
   } as const;
 
   const containerStyle = {
+    display: 'flex',
     margin: '5px',
     font: '400 1em Roboto,sans-serif',
     color: '#333',
   } as const;
 
+  const labelStyle = {
+    width: '100%',
+    display: 'flex',
+  } as const;
+
   const spanCodeStyle = {
     margin: '0 5px',
-    width: '70%',
+    width: '55%',
     fontWeight: 600,
   } as const;
 
@@ -68,6 +74,7 @@ export const PromoCodesWidget: WidgetComponent<
           />
           <label
             className="form-check-label"
+            style={labelStyle}
             onClick={() => updateValue(x.value)}
           >
             <span style={spanCodeStyle}>{x.value}</span>
