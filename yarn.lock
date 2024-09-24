@@ -1715,10 +1715,10 @@
   dependencies:
     tslib "^2.4.0"
 
-"@formatjs/intl@2.10.4":
-  version "2.10.4"
-  resolved "https://registry.yarnpkg.com/@formatjs/intl/-/intl-2.10.4.tgz#e1819e0858fb05ca65923a020f346bc74e894e92"
-  integrity sha512-56483O+HVcL0c7VucAS2tyH020mt9XTozZO67cwtGg0a7KWDukS/FzW3OnvaHmTHDuYsoPIzO+ZHVfU6fT/bJw==
+"@formatjs/intl@2.10.5":
+  version "2.10.5"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl/-/intl-2.10.5.tgz#1a83960fc1871f476385e006f2fee23cc439f416"
+  integrity sha512-f9qPNNgLrh2KvoFvHGIfcPTmNGbyy7lyyV4/P6JioDqtTE7Akdmgt+ZzVndr+yMLZnssUShyTMXxM/6aV9eVuQ==
   dependencies:
     "@formatjs/ecma402-abstract" "2.0.0"
     "@formatjs/fast-memoize" "2.2.0"
