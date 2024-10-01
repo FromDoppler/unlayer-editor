@@ -46,6 +46,7 @@ const App: React.FC = () => {
   } as User;
   const UnlayerOptionsExtended = {
     projectId,
+    displayMode: 'popup',
     tools: {
       button: {
         icon: `${ASSETS_BASE_URL}/button.svg`,
