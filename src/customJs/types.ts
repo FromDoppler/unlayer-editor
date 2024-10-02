@@ -1,5 +1,15 @@
 import { ReactNode } from './unlayer-react';
 
+export type TabDefinition = {
+  name: string;
+  label: string;
+  icon: string;
+  supportedDisplayModes: string[];
+  renderer: {
+    Panel: any;
+  };
+};
+
 export type SocialNetworkId =
   | 'facebook_shared_property'
   | 'linkedin_shared_property'
@@ -284,3 +294,5 @@ type ValidatorError = {
   title: string;
   description: string;
 };
+
+

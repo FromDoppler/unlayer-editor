@@ -66,16 +66,6 @@ registerReactTool(getPromoCodeToolDefinition());
 registerReactTool(getProductToolDefinition());
 registerReactTool(getQrToolDefinition());
 
-const myTabDefinition = {
-  name: 'my_tab',
-  label: 'My Tab',
-  icon: 'fa-smile',
-  supportedDisplayModes: ['popup'],
-  renderer: {Panel:MyPanel}
-  }
-
-
-registerTab(myTabDefinition);
 
 if (abandonedCartCampaign) {
   registerReactTool(
