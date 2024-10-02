@@ -5,6 +5,7 @@ import {
   setLinkTypes,
   registerPropertyEditor,
   registerReactTool,
+  registerTab,
 } from './utils/unlayer';
 import { urlPropertyEditorDefinition } from './properties/url';
 import { getSocialShareToolDefinition } from './tools/social_share_tool';
@@ -19,6 +20,8 @@ import { DYNAMIC_TOOL_TYPE } from './constants';
 import { getRssHeaderToolDefinition } from './tools/rss';
 import { getQrToolDefinition } from './tools/qr';
 import { qrPropertyEditorDefinition } from './properties/qr';
+import { getNewTestToolDefinition } from './tools/new_test_tool';
+import MyPanel from './components/MyPanel';
 
 const {
   locale,
@@ -55,12 +58,24 @@ registerPropertyEditor(promoCodesPropertyEditorDefinition);
 registerPropertyEditor(productGalleryPropertyEditorDefinition);
 registerPropertyEditor(productArrangementPropertyEditorDefinition);
 registerPropertyEditor(qrPropertyEditorDefinition);
+registerReactTool(getNewTestToolDefinition());
 
 registerReactTool(getSocialShareToolDefinition());
 registerReactTool(getPayuButtonToolDefinition());
 registerReactTool(getPromoCodeToolDefinition());
 registerReactTool(getProductToolDefinition());
 registerReactTool(getQrToolDefinition());
+
+const myTabDefinition = {
+  name: 'my_tab',
+  label: 'My Tab',
+  icon: 'fa-smile',
+  supportedDisplayModes: ['popup'],
+  renderer: {Panel:MyPanel}
+  }
+
+
+registerTab(myTabDefinition);
 
 if (abandonedCartCampaign) {
   registerReactTool(
