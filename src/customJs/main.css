@@ -91,3 +91,33 @@
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
+/* customTabStyles.css */
+
+.custom-tab {
+  font-family: Arial, sans-serif;
+  padding: 10px;
+}
+
+.custom-tab h3,
+.custom-tab h4 {
+  margin: 15px 0 10px;
+}
+
+.custom-tab input[type="text"],
+.custom-tab input[type="number"] {
+  width: calc(100% - 20px);
+  padding: 5px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.custom-tab label {
+  display: block;
+  margin: 10px 0;
+}
+
+.custom-tab input[type="radio"] {
+  margin-right: 10px;
+}

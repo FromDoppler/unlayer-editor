@@ -9,7 +9,7 @@ const getNewTestToolDefinition: () => ReactToolDefinitionFrom<NewTestBase> =
 () => ({
     name: 'new-test-tool',
     label: 'New Test Tool',
-    icon: 'new-test-tool-icon',
+    icon: 'fa-smile',
     Component: NewTestViewer,
     options: {
       basic_configuration_section: {

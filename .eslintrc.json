@@ -33,7 +33,9 @@
     "@typescript-eslint/no-namespace": "off",
     "prettier/prettier": "off",
     "react/prop-types": "off",
-    "jest/valid-title": "off"
+    "jest/valid-title": "off",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off"
   },
   "globals": {
     "unlayer": "readonly"

@@ -5,6 +5,12 @@ import { ASSETS_BASE_URL } from './customJs/constants';
 import { JSONTemplate, User, AppearanceConfig } from 'state/types/index';
 import { ExportHtmlResult } from 'embed/Config';
 import EmailEditor, { UnlayerOptions, EditorRef } from 'react-email-editor';
+import { MyTabProps } from './customJs/tabs/custom_tab/types';
+
+
+interface DopplerJSONTemplate extends JSONTemplate {
+  behaviorData: MyTabProps
+}
 
 const Bar = styled.div`
   flex: 1;
@@ -102,7 +108,7 @@ const App: React.FC = () => {
   } as UnlayerOptions;
 
   const saveDesign = () => {
-    emailEditorRef.current?.editor?.saveDesign((design: JSONTemplate) => {
+    emailEditorRef.current?.editor?.saveDesign((design: DopplerJSONTemplate) => {
       console.log('Template data', '\n', design);
     });
   };
@@ -114,19 +120,26 @@ const App: React.FC = () => {
     });
   };
 
+  const onReady = (data) => {
+    console.log('<<<<<<<<<>>>>>>>>>>>>>',data)
+  };
+ 
+  
   return (
-    <div className="App" data-testid="email-editor-test">
-      <Bar>
-        <h1>Doppler Unlayer Editor POC</h1>
-        <button onClick={saveDesign}>Save Design</button>
-        <button onClick={exportHtml}>Export HTML</button>
-      </Bar>
-      <EmailEditor
-        key="email-editor-test"
-        ref={emailEditorRef}
-        options={UnlayerOptionsExtended}
-      />
-    </div>
+      <div className="App" data-testid="email-editor-test">
+        <Bar>
+          <h1>Doppler Unlayer Editor POC</h1>
+          <button onClick={saveDesign}>Save Design</button>
+          <button onClick={exportHtml}>Export HTML</button>
+        </Bar>
+        <EmailEditor
+          key="email-editor-test"
+          ref={emailEditorRef}
+          options={UnlayerOptionsExtended}
+          onReady={onReady}
+        />
+      </div>
+
   );
 };
 

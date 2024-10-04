@@ -1,15 +1,5 @@
 import { ReactNode } from './unlayer-react';
 
-export type TabDefinition = {
-  name: string;
-  label: string;
-  icon: string;
-  supportedDisplayModes: string[];
-  renderer: {
-    Panel: any;
-  };
-};
-
 export type SocialNetworkId =
   | 'facebook_shared_property'
   | 'linkedin_shared_property'
@@ -173,6 +163,16 @@ export type ReactToolDefinition<
   // TODO: add other properties and remove `& ObjectWithStringProps`;
 } & ObjectWithStringProps;
 
+export type ReactTabDefinition = {
+  name: string;
+  label: string;
+  icon: string;
+  supportedDisplayModes: string[];
+  renderer: {
+    Panel: any;
+  };
+};
+
 export type ReactToolDefinitionFrom<TBase> = ReactToolDefinition<
   ToolValuesFrom<TBase>,
   PropertyGroupsFrom<TBase>
@@ -294,5 +294,3 @@ type ValidatorError = {
   title: string;
   description: string;
 };
-
-

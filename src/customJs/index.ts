@@ -21,7 +21,8 @@ import { getRssHeaderToolDefinition } from './tools/rss';
 import { getQrToolDefinition } from './tools/qr';
 import { qrPropertyEditorDefinition } from './properties/qr';
 import { getNewTestToolDefinition } from './tools/new_test_tool';
-import MyPanel from './components/MyPanel';
+import { getCustomTabDefinition } from './tabs/custom_tab';
+
 
 const {
   locale,
@@ -66,16 +67,7 @@ registerReactTool(getPromoCodeToolDefinition());
 registerReactTool(getProductToolDefinition());
 registerReactTool(getQrToolDefinition());
 
-const myTabDefinition = {
-  name: 'my_tab',
-  label: 'My Tab',
-  icon: 'fa-smile',
-  supportedDisplayModes: ['popup'],
-  renderer: {Panel:MyPanel}
-  }
-
-
-registerTab(myTabDefinition);
+registerTab(getCustomTabDefinition());
 
 if (abandonedCartCampaign) {
   registerReactTool(
@@ -106,3 +98,5 @@ if (rssCampaign) {
 if (previewMode) {
   /* place to register tool on preview mode */
 }
+
+

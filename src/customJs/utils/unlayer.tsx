@@ -9,7 +9,7 @@ import {
   ReactToolDefinition,
   ToolInfo,
   ViewerComponent,
-  TabDefinition,
+  ReactTabDefinition,
 } from '../types';
 import { getConfiguration } from '../configuration';
 
@@ -35,8 +35,8 @@ export const registerReactTool = <TToolValues, TToolOptions>(
   toolDefinition?: ReactToolDefinition<TToolValues, TToolOptions>,
 ) => toolDefinition && unlayer.registerTool(createTool(toolDefinition));
 
-export const registerTab = (tabDefinition: TabDefinition) => {
-  (window as any).unlayer.registerTab(tabDefinition);
+export const registerTab = (tabDefinition: ReactTabDefinition) => {
+  unlayer.registerTab(tabDefinition);
 };
 
 const createTool = <TToolValues, TToolOptions>({
