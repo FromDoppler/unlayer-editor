@@ -28,10 +28,16 @@ export const getPromoCodeToolDefinition: () =>
     icon: `${ASSETS_BASE_URL}/promotion_code_v2.svg`,
     Component: PromoCodeViewer,
     options: {
-      promo_code: {
+      promo_code_store: {
         title: $t('_dp.promo_code'),
         options: {
           store: storesDropdownProperty({ stores: storesWithPromoCode }),
+          isDynamic: toggleShowProperty({
+            defaultValue: false,
+            label: $t('_dp.promo_code_coupon_type'),
+          }),
+        },
+      },
       promo_code: {
         title: $t('_dp.promo_code'),
         options: {
