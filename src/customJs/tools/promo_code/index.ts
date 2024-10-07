@@ -127,7 +127,34 @@ export const getPromoCodeToolDefinition: () =>
     },
     // See https://docs.unlayer.com/docs/property-states
     propertyStates: (values: PromoCodeValues) => ({
+      isDynamic: {
+        enabled:
+          storesWithPromoCodeDynamic.filter(({ name }) => name == values.store)
+            .length > 0,
+      },
       code: { enabled: !values.isDynamic && values.store !== EMPTY_SELECTION },
+      code_type: { enabled: values.isDynamic },
+      code_value: {
+        enabled: values.isDynamic && values.code_type !== 'shipping',
+      },
+      min_price: { enabled: values.isDynamic },
+      expire_days: { enabled: values.isDynamic },
+      advance_options: {
+        enabled: values.isDynamic && values.code_type !== 'shipping',
+      },
+      prefixe_code: { enabled: values.isDynamic && values.advance_options },
+      includes_shipping: {
+        enabled:
+          values.isDynamic &&
+          values.advance_options &&
+          values.code_type !== 'shipping',
+      },
+      first_consumer_purchase: {
+        enabled: values.isDynamic && values.advance_options,
+      },
+      combines_with_other_discounts: {
+        enabled: values.isDynamic && values.advance_options,
+      },
     }),
     // See https://docs.unlayer.com/docs/transform-property-values
     transformer: (values: PromoCodeValues) => {
