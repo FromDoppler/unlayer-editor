@@ -23,6 +23,8 @@ const CustomTabViewer: React.FC<MyTabProps> = () => {
       ...prevData,
       [name]: fieldValue,
     }));
+
+    window.parent.postMessage(JSON.stringify(formData), 'http://localhost:3000/');
   };
 
   return (

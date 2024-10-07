@@ -120,11 +120,14 @@ const App: React.FC = () => {
     });
   };
 
-  const onReady = (data) => {
-    console.log('<<<<<<<<<>>>>>>>>>>>>>',data)
-  };
- 
-  
+  window.addEventListener('message', (evento) => {
+    console.log('ABC', evento.data)
+    if(evento.data === undefined) {
+      console.log(JSON.parse(evento.data))
+    }
+  });
+
+
   return (
       <div className="App" data-testid="email-editor-test">
         <Bar>
@@ -136,7 +139,6 @@ const App: React.FC = () => {
           key="email-editor-test"
           ref={emailEditorRef}
           options={UnlayerOptionsExtended}
-          onReady={onReady}
         />
       </div>
 
