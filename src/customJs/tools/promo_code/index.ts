@@ -1,13 +1,16 @@
 import { $t } from '../../localization';
 import { PromoCodeViewer } from './PromoCodeViewer';
-import { ReactToolDefinitionFrom } from '../../types';
-import { PromoCodeBase, PromoCodeValues } from './types';
+import { ReactToolDefinitionFrom, UnlayerProperty } from '../../types';
+import { PromoCodeBase, PromoCodeValues, PromoCodeTypes } from './types';
 import { getConfiguration } from '../../configuration';
 import { ASSETS_BASE_URL, EMPTY_SELECTION } from '../../constants';
 import { promoCodesProperty } from '../../properties/promo_codes';
 import {
   alignmentProperty,
+  dropdownProperty,
   storesDropdownProperty,
+  textProperty,
+  toggleShowProperty,
 } from '../../properties/helpers';
 
 export const getPromoCodeToolDefinition: () =>
@@ -18,9 +21,24 @@ export const getPromoCodeToolDefinition: () =>
     ({ promotionCodeEnabled }) => promotionCodeEnabled,
   );
 
+  const storesWithPromoCodeDynamic = stores.filter(
+    ({ promotionCodeDynamicEnabled }) => promotionCodeDynamicEnabled,
+  );
+
   if (storesWithPromoCode.length === 0) {
     return undefined;
   }
+
+  const PromoCodeTypeProperty: () => UnlayerProperty<PromoCodeTypes> = () =>
+    dropdownProperty({
+      label: $t('_dp.promo_code_type'),
+      defaultValue: 'percent',
+      options: [
+        { label: $t('_dp.promo_code_type_percent'), value: 'percent' },
+        { label: $t('_dp.promo_code_type_amount'), value: 'money' },
+        { label: $t('_dp.promo_code_type_shipping'), value: 'shipping' },
+      ],
+    } as const);
 
   return {
     name: 'promo_code',
@@ -44,6 +62,46 @@ export const getPromoCodeToolDefinition: () =>
           code: promoCodesProperty(),
         },
       },
+      dynamic_code: {
+        title: $t('_dp.promo_code_dynamic_type_title'),
+        options: {
+          code_type: PromoCodeTypeProperty(),
+          code_value: textProperty({
+            label: $t('_dp.promo_code_dynamic_value'),
+            defaultValue: '5',
+          }),
+          expire_days: textProperty({
+            label: $t('_dp.promo_code_dynamic_validate_days'),
+            defaultValue: '45',
+          }),
+          min_price: textProperty({
+            label: $t('_dp.promo_code_dynamic_min_price'),
+            defaultValue: '0',
+          }),
+          advance_options: toggleShowProperty({
+            defaultValue: false,
+            label: $t('_dp.promo_code_dynamic_advance_setting'),
+          }),
+        },
+      },
+      promo_code_advance: {
+        title: 'Opciones avanzadas',
+        options: {
+          prefixe_code: textProperty({
+            label: $t('_dp.promo_code_dynamic_prefixe'),
+          }),
+          includes_shipping: toggleShowProperty({
+            defaultValue: false,
+            label: $t('_dp.promo_code_dynamic_includes_shipping'),
+          }),
+          first_consumer_purchase: toggleShowProperty({
+            defaultValue: false,
+            label: $t('_dp.promo_code_dynamic_first_consumer_purchase'),
+          }),
+          combines_with_other_discounts: toggleShowProperty({
+            defaultValue: false,
+            label: $t('_dp.promo_code_dynamic_combines_with_other_discounts'),
+          }),
         },
       },
       default: {
