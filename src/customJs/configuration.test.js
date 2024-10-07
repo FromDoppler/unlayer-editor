@@ -84,6 +84,11 @@ describe(parseConfigurationDTO.name, () => {
       visitedProductsCampaign,
       confirmationOrderCampaign,
       pendingOrderCampaign,
+      bestSellingEnabled,
+      newProductsEnabled,
+      crossSellingEnabled,
+      rssCampaign,
+      rssShowPreview,
     };
 
     // Act
