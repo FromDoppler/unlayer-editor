@@ -16,6 +16,7 @@ export type LinkType = 'phone' | 'email' | 'sms';
 export type Store = {
   name: string;
   promotionCodeEnabled: boolean;
+  promotionCodeDynamicEnabled: boolean;
 };
 
 export type Percentage = `${number}%`;

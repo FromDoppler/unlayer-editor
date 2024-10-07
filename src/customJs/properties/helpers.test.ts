@@ -116,10 +116,12 @@ describe(storesDropdownProperty.name, () => {
       {
         name: 'store1',
         promotionCodeEnabled: true,
+        promotionCodeDynamicEnabled: false,
       },
       {
         name: 'store2',
         promotionCodeEnabled: false,
+        promotionCodeDynamicEnabled: false,
       },
     ];
     const expectedOptions = [

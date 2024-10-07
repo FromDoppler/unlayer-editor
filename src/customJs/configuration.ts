@@ -105,7 +105,12 @@ const parseDopplerExternalUrlsDTO = (
   integrations: dopplerExternalUrls['integrations'] || '#',
 });
 
-const parseStoreDTO = ({ name = '', promotionCodeEnabled = false } = {}) => ({
+const parseStoreDTO = ({
+  name = '',
+  promotionCodeEnabled = false,
+  promotionCodeDynamicEnabled = false,
+} = {}) => ({
   name,
   promotionCodeEnabled,
+  promotionCodeDynamicEnabled,
 });
