@@ -4,7 +4,9 @@ import { Alignment, PropertyGroupsFrom, ToolValuesFrom } from '../../types';
 export type PromoCodeBase = {
   promo_code: {
     store: string | EMPTY_SELECTION;
-    promo_code: string | EMPTY_SELECTION;
+  promo_code: {
+    code: string | EMPTY_SELECTION;
+  };
   };
   default: {
     alignment: Alignment;
