@@ -32,7 +32,12 @@ export const getPromoCodeToolDefinition: () =>
         title: $t('_dp.promo_code'),
         options: {
           store: storesDropdownProperty({ stores: storesWithPromoCode }),
-          promo_code: promoCodesProperty(),
+      promo_code: {
+        title: $t('_dp.promo_code'),
+        options: {
+          code: promoCodesProperty(),
+        },
+      },
         },
       },
       default: {
@@ -58,7 +63,7 @@ export const getPromoCodeToolDefinition: () =>
     },
     // See https://docs.unlayer.com/docs/property-states
     propertyStates: (values: PromoCodeValues) => ({
-      promo_code: { enabled: values.store !== EMPTY_SELECTION },
+      code: { enabled: !values.isDynamic && values.store !== EMPTY_SELECTION },
     }),
     // See https://docs.unlayer.com/docs/transform-property-values
     transformer: (values: PromoCodeValues) => {
