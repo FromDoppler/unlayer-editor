@@ -84,6 +84,11 @@ describe(parseConfigurationDTO.name, () => {
       visitedProductsCampaign,
       confirmationOrderCampaign,
       pendingOrderCampaign,
+      bestSellingEnabled,
+      newProductsEnabled,
+      crossSellingEnabled,
+      rssCampaign,
+      rssShowPreview,
     };
 
     // Act
@@ -125,10 +130,26 @@ describe(parseConfigurationDTO.name, () => {
       { name: 'store2', promotionCodeEnabled: true },
     ];
     const expectedStores = [
-      { name: '', promotionCodeEnabled: false },
-      { name: '', promotionCodeEnabled: true },
-      { name: 'store1', promotionCodeEnabled: false },
-      { name: 'store2', promotionCodeEnabled: true },
+      {
+        name: '',
+        promotionCodeEnabled: false,
+        promotionCodeDynamicEnabled: false,
+      },
+      {
+        name: '',
+        promotionCodeEnabled: true,
+        promotionCodeDynamicEnabled: false,
+      },
+      {
+        name: 'store1',
+        promotionCodeEnabled: false,
+        promotionCodeDynamicEnabled: false,
+      },
+      {
+        name: 'store2',
+        promotionCodeEnabled: true,
+        promotionCodeDynamicEnabled: false,
+      },
     ];
 
     // Act
