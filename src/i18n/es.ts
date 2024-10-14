@@ -56,6 +56,7 @@ export const messages_es = {
   '_dp.product_title_default_value': `Escribe un titulo`,
   '_dp.promo_code': `Código Promocional`,
   '_dp.promo_code_coupon_type': `Crear código promocional dinámico`,
+  '_dp.promo_code_dynamic_advance': `Opciones avanzadas`,
   '_dp.promo_code_dynamic_advance_setting': `Ver opciones avanzadas`,
   '_dp.promo_code_dynamic_combines_with_other_discounts': `Combinar con otros descuentos`,
   '_dp.promo_code_dynamic_first_consumer_purchase': `Valido solo para la primer compra`,

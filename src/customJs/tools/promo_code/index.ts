@@ -85,7 +85,7 @@ export const getPromoCodeToolDefinition: () =>
         },
       },
       promo_code_advance: {
-        title: 'Opciones avanzadas',
+        title: $t('_dp.promo_code_dynamic_advance'),
         options: {
           prefixe_code: textProperty({
             label: $t('_dp.promo_code_dynamic_prefixe'),
