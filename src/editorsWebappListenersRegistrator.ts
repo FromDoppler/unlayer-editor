@@ -1,3 +1,5 @@
+//import { DynamicPromoCodeDependentToolValues } from './customJs/tools/promo_code/types';
+import { DynamicPromoCodeDependentToolValues } from './customJs/properties/dynamic_promo_code/types';
 import { timeout } from './customJs/utils/promises';
 
 const UNLAYER_ORIGIN = 'https://editor.unlayer.com';
@@ -85,6 +87,15 @@ export const registerListeners = () => {
     await timeout(1000);
     return promoCodesDummyValues[store.toLocaleLowerCase()] || [];
   });
+
+  registerListener(
+    'getPromoCodeDynamicId',
+    async (values: DynamicPromoCodeDependentToolValues) => {
+      await timeout(1000);
+      console.log('getPromoCodeDynamicId', values);
+      return '10102024';
+    },
+  );
 
   registerListener('getImageUrlFile', async (qrImageFile) => {
     console.log(qrImageFile);
