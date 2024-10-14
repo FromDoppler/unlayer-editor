@@ -9,7 +9,7 @@ export const PromoCodeViewer: ViewerComponent<PromoCodeValues> = ({
   ...rest
 }) => {
   const promoCodeValue = values.isDynamic
-    ? '[[[DC-COUPON-CODE]]]'
+    ? '[[[DC:COUPON_CODE]]]'
     : values.code;
   return !values.isDynamic && values.code === EMPTY_SELECTION ? (
     <EmptyViewer {...rest} />
