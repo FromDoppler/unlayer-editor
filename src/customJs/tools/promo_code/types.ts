@@ -4,7 +4,7 @@ import { Alignment, PropertyGroupsFrom, ToolValuesFrom } from '../../types';
 export type PromoCodeTypes = 'percent' | 'money' | 'shipping';
 
 export type PromoCodeBase = {
-  promo_code_store: {
+  store_promo_code: {
     store: string | EMPTY_SELECTION;
     isDynamic: boolean;
   };
@@ -12,11 +12,11 @@ export type PromoCodeBase = {
     code: string | EMPTY_SELECTION;
   };
   dynamic_code: {
-    code_type: PromoCodeTypes;
-    code_value: string;
     expire_days: string;
+    type: PromoCodeTypes;
+    amount: string;
     min_price: string;
-    advance_options: boolean;
+    advanced_options: boolean;
   };
   promo_code_advance: {
     prefixe_code: string;

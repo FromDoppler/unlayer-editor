@@ -46,7 +46,7 @@ export const getPromoCodeToolDefinition: () =>
     icon: `${ASSETS_BASE_URL}/promotion_code_v2.svg`,
     Component: PromoCodeViewer,
     options: {
-      promo_code_store: {
+      store_promo_code: {
         title: $t('_dp.promo_code'),
         options: {
           store: storesDropdownProperty({ stores: storesWithPromoCode }),
@@ -65,8 +65,8 @@ export const getPromoCodeToolDefinition: () =>
       dynamic_code: {
         title: $t('_dp.promo_code_dynamic_type_title'),
         options: {
-          code_type: PromoCodeTypeProperty(),
-          code_value: textProperty({
+          type: PromoCodeTypeProperty(),
+          amount: textProperty({
             label: $t('_dp.promo_code_dynamic_value'),
             defaultValue: '5',
           }),
@@ -78,7 +78,7 @@ export const getPromoCodeToolDefinition: () =>
             label: $t('_dp.promo_code_dynamic_min_price'),
             defaultValue: '0',
           }),
-          advance_options: toggleShowProperty({
+          advanced_options: toggleShowProperty({
             defaultValue: false,
             label: $t('_dp.promo_code_dynamic_advance_setting'),
           }),
@@ -132,28 +132,30 @@ export const getPromoCodeToolDefinition: () =>
           storesWithPromoCodeDynamic.filter(({ name }) => name == values.store)
             .length > 0,
       },
-      code: { enabled: !values.isDynamic && values.store !== EMPTY_SELECTION },
-      code_type: { enabled: values.isDynamic },
-      code_value: {
-        enabled: values.isDynamic && values.code_type !== 'shipping',
+      code: {
+        enabled: !values.isDynamic && values.store !== EMPTY_SELECTION,
+      },
+      type: { enabled: values.isDynamic },
+      amount: {
+        enabled: values.isDynamic && values.type !== 'shipping',
       },
       min_price: { enabled: values.isDynamic },
       expire_days: { enabled: values.isDynamic },
-      advance_options: {
-        enabled: values.isDynamic && values.code_type !== 'shipping',
+      advanced_options: {
+        enabled: values.isDynamic && values.type !== 'shipping',
       },
-      prefixe_code: { enabled: values.isDynamic && values.advance_options },
+      prefixe_code: { enabled: values.isDynamic && values.advanced_options },
       includes_shipping: {
         enabled:
           values.isDynamic &&
-          values.advance_options &&
-          values.code_type !== 'shipping',
+          values.advanced_options &&
+          values.type !== 'shipping',
       },
       first_consumer_purchase: {
-        enabled: values.isDynamic && values.advance_options,
+        enabled: values.isDynamic && values.advanced_options,
       },
       combines_with_other_discounts: {
-        enabled: values.isDynamic && values.advance_options,
+        enabled: values.isDynamic && values.advanced_options,
       },
     }),
     // See https://docs.unlayer.com/docs/transform-property-values
