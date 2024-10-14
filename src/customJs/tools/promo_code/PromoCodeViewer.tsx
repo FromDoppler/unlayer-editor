@@ -8,7 +8,10 @@ export const PromoCodeViewer: ViewerComponent<PromoCodeValues> = ({
   values,
   ...rest
 }) => {
-  return values.promo_code === EMPTY_SELECTION ? (
+  const promoCodeValue = values.isDynamic
+    ? '[[[DC:COUPON_CODE]]]'
+    : values.code;
+  return !values.isDynamic && values.code === EMPTY_SELECTION ? (
     <EmptyViewer {...rest} />
   ) : (
     <div
@@ -19,7 +22,7 @@ export const PromoCodeViewer: ViewerComponent<PromoCodeValues> = ({
       role="container"
     >
       <span style={{ color: values.textColor, fontSize: values.fontSize }}>
-        {values.promo_code}
+        {promoCodeValue}
       </span>
     </div>
   );
