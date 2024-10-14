@@ -23,7 +23,7 @@ export const dynamicPromoCodeWidget: WidgetComponent<
 }) => {
   useEffect(() => {
     updateValue(value);
-
+    const DEBOUNCE_TIME_MS = 2000; // 2 seg
     const dynamicProperties = {
       dynamicId: value,
       type: type,
@@ -44,7 +44,7 @@ export const dynamicPromoCodeWidget: WidgetComponent<
           updateValue(value);
         },
       });
-    }, 2000);
+    }, DEBOUNCE_TIME_MS);
     return () => clearTimeout(getData);
   }, [
     type,
