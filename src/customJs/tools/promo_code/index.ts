@@ -16,13 +16,15 @@ import {
 export const getPromoCodeToolDefinition: () =>
   | ReactToolDefinitionFrom<PromoCodeBase>
   | undefined = () => {
-  const { stores } = getConfiguration();
+  const { stores, previewMode } = getConfiguration();
   const storesWithPromoCode = stores.filter(
     ({ promotionCodeEnabled }) => promotionCodeEnabled,
   );
 
+  /* WARN: remove preview mode when promotionCodeDynamicEnabled is Working */
   const storesWithPromoCodeDynamic = stores.filter(
-    ({ promotionCodeDynamicEnabled }) => promotionCodeDynamicEnabled,
+    ({ promotionCodeDynamicEnabled }) =>
+      promotionCodeDynamicEnabled || previewMode,
   );
 
   if (storesWithPromoCode.length === 0) {
