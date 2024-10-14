@@ -12,6 +12,7 @@ import {
   textProperty,
   toggleShowProperty,
 } from '../../properties/helpers';
+import { dynamicIdProperty } from '../../properties/dynamic_promo_code';
 
 export const getPromoCodeToolDefinition: () =>
   | ReactToolDefinitionFrom<PromoCodeBase>
@@ -80,6 +81,7 @@ export const getPromoCodeToolDefinition: () =>
             label: $t('_dp.promo_code_dynamic_min_price'),
             defaultValue: '0',
           }),
+          dynamic_id: dynamicIdProperty(),
           advanced_options: toggleShowProperty({
             defaultValue: false,
             label: $t('_dp.promo_code_dynamic_advance_setting'),

@@ -12,6 +12,7 @@ export type PromoCodeBase = {
     code: string | EMPTY_SELECTION;
   };
   dynamic_code: {
+    dynamic_id: string;
     expire_days: string;
     type: PromoCodeTypes;
     amount: string;
