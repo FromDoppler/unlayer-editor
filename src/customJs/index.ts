@@ -53,7 +53,7 @@ setLinkTypes?.([
   },
 ]);
 
-// Register Properties 
+// Register Properties
 
 registerPropertyEditor(urlPropertyEditorDefinition);
 registerPropertyEditor(promoCodesPropertyEditorDefinition);
@@ -62,11 +62,11 @@ registerPropertyEditor(productArrangementPropertyEditorDefinition);
 registerPropertyEditor(qrPropertyEditorDefinition);
 
 // Register Tools
-if(qrCode){
+if (qrCode) {
   registerReactTool(getQrToolDefinition());
 }
 
-if(product) {
+if (product) {
   registerReactTool(getProductToolDefinition());
 }
 
@@ -78,7 +78,7 @@ if (socialShare) {
   registerReactTool(getSocialShareToolDefinition());
 }
 
-if(payButton) {
+if (payButton) {
   registerReactTool(getPayuButtonToolDefinition());
 }
 
