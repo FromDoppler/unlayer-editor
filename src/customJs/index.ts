@@ -31,6 +31,11 @@ const {
   crossSellingEnabled,
   newProductsEnabled,
   rssCampaign,
+  socialShare,
+  payButton,
+  promoCode,
+  product,
+  qrCode,
 } = getConfiguration();
 
 const unlayerLocales = {
@@ -48,7 +53,7 @@ setLinkTypes?.([
   },
 ]);
 
-// Register Properties and tools
+// Register Properties
 
 registerPropertyEditor(urlPropertyEditorDefinition);
 registerPropertyEditor(promoCodesPropertyEditorDefinition);
@@ -56,11 +61,26 @@ registerPropertyEditor(productGalleryPropertyEditorDefinition);
 registerPropertyEditor(productArrangementPropertyEditorDefinition);
 registerPropertyEditor(qrPropertyEditorDefinition);
 
-registerReactTool(getSocialShareToolDefinition());
-registerReactTool(getPayuButtonToolDefinition());
-registerReactTool(getPromoCodeToolDefinition());
-registerReactTool(getProductToolDefinition());
-registerReactTool(getQrToolDefinition());
+// Register Tools
+if (qrCode) {
+  registerReactTool(getQrToolDefinition());
+}
+
+if (product) {
+  registerReactTool(getProductToolDefinition());
+}
+
+if (promoCode) {
+  registerReactTool(getPromoCodeToolDefinition());
+}
+
+if (socialShare) {
+  registerReactTool(getSocialShareToolDefinition());
+}
+
+if (payButton) {
+  registerReactTool(getPayuButtonToolDefinition());
+}
 
 if (abandonedCartCampaign) {
   registerReactTool(
