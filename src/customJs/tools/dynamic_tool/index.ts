@@ -148,6 +148,8 @@ export const getDynamicToolDefinition: (
     atributesByToolType[dynamicToolType].map((t) => [t, options[t]]),
   );
 
+
+  console.log(unlayer)
   const label = customLabelIcon
     ? {
         product_retargeting: $t('_dp.products'),

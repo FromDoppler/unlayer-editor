@@ -35,6 +35,7 @@ const expectedDefaultConfiguration = {
   promoCode: true,
   product: true,
   qrCode: true,
+  customLabelIcon: false,
   dopplerExternalUrls: {
     automation: '#',
     campaigns: '#',
@@ -87,6 +88,7 @@ describe(parseConfigurationDTO.name, () => {
     const promoCode = false;
     const product = false;
     const qrCode = false;
+    const customLabelIcon = false;
     const input = {
       locale,
       previewMode,
@@ -104,6 +106,7 @@ describe(parseConfigurationDTO.name, () => {
       promoCode,
       product,
       qrCode,
+      customLabelIcon
     };
 
     // Act
@@ -129,6 +132,7 @@ describe(parseConfigurationDTO.name, () => {
       promoCode: false,
       product: false,
       qrCode: false,
+      customLabelIcon: false,
       dopplerExternalUrls: {
         automation: '#',
         campaigns: '#',
