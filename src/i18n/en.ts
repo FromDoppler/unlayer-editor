@@ -40,6 +40,8 @@ export const messages_en: IntlMessages = {
   '_dp.price_discount_size': `Discount price size`,
   '_dp.prices': `Prices`,
   '_dp.product': `Product`,
+  '_dp.products': `Products`,
+  '_dp.best_sellers': `Best Sellers`,
   '_dp.product_button': `Buy Button`,
   '_dp.product_button_default_value': `Buy Now`,
   '_dp.product_button_text': `Button text`,

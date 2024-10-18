@@ -40,6 +40,8 @@ export const messages_es = {
   '_dp.price_discount_size': `Tamaño del precio final`,
   '_dp.prices': `Precios`,
   '_dp.product': `Producto`,
+  '_dp.products': `Productos`,
+  '_dp.best_sellers': `Más vendidos`,
   '_dp.product_button': `Botón de compra`,
   '_dp.product_button_default_value': `Comprar`,
   '_dp.product_button_text': `Texto del botón`,

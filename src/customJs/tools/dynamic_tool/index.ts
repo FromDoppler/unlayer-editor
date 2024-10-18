@@ -26,8 +26,8 @@ const DEFAULT_GREEN_COLOR = '#64BF91';
 const DEFAULT_FONT_SIZE = '20px';
 
 export const getDynamicToolDefinition: (
-  dynamicToolType: DYNAMIC_TOOL_TYPE,
-) => ProductToolDefinition | undefined = (dynamicToolType) => {
+  dynamicToolType: DYNAMIC_TOOL_TYPE, customLabelIcon?: boolean
+) => ProductToolDefinition | undefined = (dynamicToolType, customLabelIcon) => {
   const usageLimit = dynamicToolType !== 'recommended' ? 1 : undefined;
   const options: ProductPropertyGroups = {
     product: {
@@ -78,6 +78,20 @@ export const getDynamicToolDefinition: (
         titleColor: colorProperty(),
       },
     },
+     description: {
+        title: $t('_dp.description'),
+        options: {
+          descriptionShown: toggleShowProperty({defaultValue:false}),
+          descriptionFont: fontFamilyProperty(),
+          descriptionFontWeight: fontWeightProperty({
+            defaultValue: 400,
+          }),
+          descriptionFontSize: fontSizeProperty({
+            defaultValue: '16px',
+          }),
+          descriptionColor: colorProperty(),
+        },
+      },
     quantity: {
       title: $t('_dp.quantity'),
       options: {
@@ -134,10 +148,22 @@ export const getDynamicToolDefinition: (
     atributesByToolType[dynamicToolType].map((t) => [t, options[t]]),
   );
 
+  const label = customLabelIcon
+    ? {
+        product_retargeting: $t('_dp.products'),
+        recommended: $t('_dp.best_sellers'),
+      }[dynamicToolType] || $t(`_dp.${dynamicToolType}`)
+    : $t(`_dp.${dynamicToolType}`);
+
+  const icon = {
+    product_retargeting: `${ASSETS_BASE_URL}/product_v2.svg`,
+  }[dynamicToolType] || `${ASSETS_BASE_URL}/${dynamicToolType}_v5.svg`;
+
+
   return {
     name: `dynamic_${dynamicToolType}`,
-    label: $t(`_dp.${dynamicToolType}`),
-    icon: `${ASSETS_BASE_URL}/${dynamicToolType}_v5.svg`,
+    label: label,
+    icon: icon,
     is_dynamic: true,
     dynamicToolType: dynamicToolType,
     usageLimit: usageLimit,
