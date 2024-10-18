@@ -59,6 +59,15 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
     color: values.titleColor,
   };
 
+  const descriptionStyle = {
+    display: values.descriptionShown ? 'block' : 'none',
+    fontSize: values.descriptionFontSize || '16px',
+    fontFamily: values.descriptionFont?.value || 'inherit',
+    fontWeight: values.descriptionFontWeight,
+    color: values.descriptionColor,
+    marginTop: '15px',
+  };
+
   const quantityStyle = {
     display: values.quantityShown ? 'block' : 'none',
     fontSize: values.quantityFontSize || '18px',
@@ -131,7 +140,11 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
       href: '[[[DC:URL]]]',
       style: buttonStyle,
     },
-  };
+    description: {
+      value: '[[[DC:DESCRIPTION]]]',
+      style: descriptionStyle,
+    },
+  }
 
   const arrayStructure = new Array([1, 1, 2, 3, 4][values.structure]).fill(
     'item',
@@ -170,6 +183,9 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
             </span>
             <span style={productToolElement.price.style}>
               {productToolElement.price.value}
+            </span>
+            <span style={productToolElement.description.style}>
+              {productToolElement.description.value}
             </span>
             <a
               style={productToolElement.button.style}

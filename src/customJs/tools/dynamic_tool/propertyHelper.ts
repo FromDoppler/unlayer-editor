@@ -92,6 +92,7 @@ export const atributesByToolType: Record<DYNAMIC_TOOL_TYPE, OptionTool[]> = {
     'layout',
     'image',
     'title',
+    'description',
     'price',
     'button',
   ],
