@@ -157,9 +157,9 @@ export const getDynamicToolDefinition: (
     : $t(`_dp.${dynamicToolType}`);
 
   const icon =
-    {
-      product_retargeting: `${ASSETS_BASE_URL}/product_v2.svg`,
-    }[dynamicToolType] || `${ASSETS_BASE_URL}/${dynamicToolType}_v5.svg`;
+    customLabelIcon && dynamicToolType === 'product_retargeting'
+      ? `${ASSETS_BASE_URL}/product_v2.svg`
+      : `${ASSETS_BASE_URL}/${dynamicToolType}_v5.svg`;
 
   return {
     name: `dynamic_${dynamicToolType}`,
