@@ -144,7 +144,7 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
       value: '[[[DC:DESCRIPTION]]]',
       style: descriptionStyle,
     },
-  }
+  };
 
   const arrayStructure = new Array([1, 1, 2, 3, 4][values.structure]).fill(
     'item',

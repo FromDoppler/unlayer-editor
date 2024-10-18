@@ -106,7 +106,7 @@ describe(parseConfigurationDTO.name, () => {
       promoCode,
       product,
       qrCode,
-      customLabelIcon
+      customLabelIcon,
     };
 
     // Act

@@ -54,7 +54,6 @@ setLinkTypes?.([
   },
 ]);
 
-
 // Register Properties
 
 registerPropertyEditor(urlPropertyEditorDefinition);
@@ -92,10 +91,12 @@ if (abandonedCartCampaign) {
 
 if (visitedProductsCampaign) {
   registerReactTool(
-    getDynamicToolDefinition(<DYNAMIC_TOOL_TYPE>'product_retargeting', customLabelIcon),
+    getDynamicToolDefinition(
+      <DYNAMIC_TOOL_TYPE>'product_retargeting',
+      customLabelIcon,
+    ),
   );
 }
-
 
 if (confirmationOrderCampaign || pendingOrderCampaign) {
   registerReactTool(
@@ -104,7 +105,9 @@ if (confirmationOrderCampaign || pendingOrderCampaign) {
 }
 
 if (bestSellingEnabled || crossSellingEnabled || newProductsEnabled) {
-  registerReactTool(getDynamicToolDefinition(<DYNAMIC_TOOL_TYPE>'recommended', customLabelIcon));
+  registerReactTool(
+    getDynamicToolDefinition(<DYNAMIC_TOOL_TYPE>'recommended', customLabelIcon),
+  );
 }
 
 if (rssCampaign) {
