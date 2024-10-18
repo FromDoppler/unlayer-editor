@@ -75,7 +75,7 @@ const App: React.FC = () => {
         abandonedCartCampaign: true,
         visitedProductsCampaign: true,
         confirmationOrderCampaign: true,
-        customLabelIcon: true,
+        customLabelIcon: false,
         pendingOrderCampaign: true,
         bestSellingEnabled: true,
         newProductsEnabled: true,
