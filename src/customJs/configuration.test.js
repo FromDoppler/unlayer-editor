@@ -30,6 +30,11 @@ const expectedDefaultConfiguration = {
   rssCampaign: false,
   rssShowPreview: false,
   previewMode: false,
+  socialShare: true,
+  payButton: true,
+  promoCode: true,
+  product: true,
+  qrCode: true,
   dopplerExternalUrls: {
     automation: '#',
     campaigns: '#',
@@ -77,6 +82,11 @@ describe(parseConfigurationDTO.name, () => {
     const crossSellingEnabled = false;
     const rssCampaign = false;
     const rssShowPreview = false;
+    const socialShare = false;
+    const payButton = false;
+    const promoCode = false;
+    const product = false;
+    const qrCode = false;
     const input = {
       locale,
       previewMode,
@@ -89,6 +99,11 @@ describe(parseConfigurationDTO.name, () => {
       crossSellingEnabled,
       rssCampaign,
       rssShowPreview,
+      socialShare,
+      payButton,
+      promoCode,
+      product,
+      qrCode,
     };
 
     // Act
@@ -109,6 +124,11 @@ describe(parseConfigurationDTO.name, () => {
       rssCampaign: false,
       rssShowPreview: false,
       previewMode,
+      socialShare: false,
+      payButton: false,
+      promoCode: false,
+      product: false,
+      qrCode: false,
       dopplerExternalUrls: {
         automation: '#',
         campaigns: '#',

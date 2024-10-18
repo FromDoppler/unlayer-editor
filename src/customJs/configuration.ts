@@ -18,6 +18,11 @@ type Configuration = {
   rssCampaign: boolean;
   rssShowPreview: boolean;
   previewMode: boolean;
+  socialShare: boolean;
+  payButton: boolean;
+  promoCode: boolean;
+  product: boolean;
+  qrCode: boolean;
   dopplerExternalUrls: DopplerExternalUrls;
 };
 
@@ -58,6 +63,11 @@ export const parseConfigurationDTO = ({
   newProductsEnabled = false,
   rssCampaign = false,
   rssShowPreview = false,
+  socialShare = true,
+  payButton = true,
+  promoCode = true,
+  product = true,
+  qrCode = true,
 }: {
   locale?: 'es' | 'en';
   stores?: Store[];
@@ -72,6 +82,11 @@ export const parseConfigurationDTO = ({
   newProductsEnabled?: boolean;
   rssCampaign?: boolean;
   rssShowPreview?: boolean;
+  socialShare?: boolean;
+  payButton?: boolean;
+  promoCode?: boolean;
+  product?: boolean;
+  qrCode?: boolean;
 } = {}) => {
   stores = stores.map(parseStoreDTO);
   const promotionCodeEnabled = stores.some((x) => x.promotionCodeEnabled);
@@ -89,6 +104,11 @@ export const parseConfigurationDTO = ({
     rssCampaign,
     rssShowPreview,
     previewMode,
+    socialShare,
+    payButton,
+    promoCode,
+    product,
+    qrCode,
     dopplerExternalUrls: parseDopplerExternalUrlsDTO(dopplerExternalUrls),
   };
 };
