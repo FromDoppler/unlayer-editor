@@ -25,7 +25,8 @@ const {
   previewMode,
   abandonedCartCampaign,
   visitedProductsCampaign,
-  customLabelIcon,
+  recommendedProductsEnabled,
+  productCompletedEnabled,
   confirmationOrderCampaign,
   pendingOrderCampaign,
   bestSellingEnabled,
@@ -91,10 +92,18 @@ if (abandonedCartCampaign) {
 
 if (visitedProductsCampaign) {
   registerReactTool(
-    getDynamicToolDefinition(
-      <DYNAMIC_TOOL_TYPE>'product_retargeting',
-      customLabelIcon,
-    ),
+    getDynamicToolDefinition(<DYNAMIC_TOOL_TYPE>'product_retargeting'),
+  );
+}
+if (productCompletedEnabled) {
+  registerReactTool(
+    getDynamicToolDefinition(<DYNAMIC_TOOL_TYPE>'product_completed'),
+  );
+}
+
+if (recommendedProductsEnabled) {
+  registerReactTool(
+    getDynamicToolDefinition(<DYNAMIC_TOOL_TYPE>'recommended_products'),
   );
 }
 
@@ -105,9 +114,7 @@ if (confirmationOrderCampaign || pendingOrderCampaign) {
 }
 
 if (bestSellingEnabled || crossSellingEnabled || newProductsEnabled) {
-  registerReactTool(
-    getDynamicToolDefinition(<DYNAMIC_TOOL_TYPE>'recommended', customLabelIcon),
-  );
+  registerReactTool(getDynamicToolDefinition(<DYNAMIC_TOOL_TYPE>'recommended'));
 }
 
 if (rssCampaign) {

@@ -27,8 +27,7 @@ const DEFAULT_FONT_SIZE = '20px';
 
 export const getDynamicToolDefinition: (
   dynamicToolType: DYNAMIC_TOOL_TYPE,
-  customLabelIcon?: boolean,
-) => ProductToolDefinition | undefined = (dynamicToolType, customLabelIcon) => {
+) => ProductToolDefinition | undefined = (dynamicToolType) => {
   const usageLimit = dynamicToolType !== 'recommended' ? 1 : undefined;
   const options: ProductPropertyGroups = {
     product: {
@@ -79,18 +78,18 @@ export const getDynamicToolDefinition: (
         titleColor: colorProperty(),
       },
     },
-    description: {
-      title: $t('_dp.description'),
+    info: {
+      title: $t('_dp.info'),
       options: {
-        descriptionShown: toggleShowProperty({ defaultValue: false }),
-        descriptionFont: fontFamilyProperty(),
-        descriptionFontWeight: fontWeightProperty({
+        infoShown: toggleShowProperty(),
+        infoFont: fontFamilyProperty(),
+        infoFontWeight: fontWeightProperty({
           defaultValue: 400,
         }),
-        descriptionFontSize: fontSizeProperty({
+        infoFontSize: fontSizeProperty({
           defaultValue: '16px',
         }),
-        descriptionColor: colorProperty(),
+        infoColor: colorProperty(),
       },
     },
     quantity: {
@@ -149,22 +148,10 @@ export const getDynamicToolDefinition: (
     atributesByToolType[dynamicToolType].map((t) => [t, options[t]]),
   );
 
-  const label = customLabelIcon
-    ? {
-        product_retargeting: $t('_dp.products'),
-        recommended: $t('_dp.best_sellers'),
-      }[dynamicToolType] || $t(`_dp.${dynamicToolType}`)
-    : $t(`_dp.${dynamicToolType}`);
-
-  const icon =
-    customLabelIcon && dynamicToolType === 'product_retargeting'
-      ? `${ASSETS_BASE_URL}/product_v2.svg`
-      : `${ASSETS_BASE_URL}/${dynamicToolType}_v5.svg`;
-
   return {
     name: `dynamic_${dynamicToolType}`,
-    label: label,
-    icon: icon,
+    label: $t(`_dp.${dynamicToolType}`),
+    icon: `${ASSETS_BASE_URL}/${dynamicToolType}_v5.svg`,
     is_dynamic: true,
     dynamicToolType: dynamicToolType,
     usageLimit: usageLimit,

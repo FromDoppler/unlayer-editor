@@ -23,7 +23,7 @@ export type OptionTool =
   | 'layout'
   | 'image'
   | 'title'
-  | 'description'
+  | 'info'
   | 'quantity'
   | 'price'
   | 'button';
@@ -53,12 +53,12 @@ export type ProductBase = Readonly<{
     titleFontSize: PixelSize;
     titleColor: Color;
   };
-  description: {
-    descriptionShown: boolean;
-    descriptionFont: FontFamily;
-    descriptionFontWeight: FontWeight;
-    descriptionFontSize: PixelSize;
-    descriptionColor: Color;
+  info: {
+    infoShown: boolean;
+    infoFont: FontFamily;
+    infoFontWeight: FontWeight;
+    infoFontSize: PixelSize;
+    infoColor: Color;
   };
   quantity: {
     quantityShown: boolean;
