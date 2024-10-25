@@ -104,7 +104,7 @@ export const atributesByToolType: Record<DYNAMIC_TOOL_TYPE, OptionTool[]> = {
     'price',
     'button',
   ],
-  recommended_products: [
+  recommended_product: [
     'recommendedStructure',
     'image',
     'title',
@@ -112,7 +112,7 @@ export const atributesByToolType: Record<DYNAMIC_TOOL_TYPE, OptionTool[]> = {
     'info',
     'button',
   ],
-  product_completed: [
+  products_completed: [
     'product',
     'layout',
     'image',

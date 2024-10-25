@@ -97,13 +97,13 @@ if (visitedProductsCampaign) {
 }
 if (productCompletedEnabled) {
   registerReactTool(
-    getDynamicToolDefinition(<DYNAMIC_TOOL_TYPE>'product_completed'),
+    getDynamicToolDefinition(<DYNAMIC_TOOL_TYPE>'products_completed'),
   );
 }
 
 if (recommendedProductsEnabled) {
   registerReactTool(
-    getDynamicToolDefinition(<DYNAMIC_TOOL_TYPE>'recommended_products'),
+    getDynamicToolDefinition(<DYNAMIC_TOOL_TYPE>'recommended_product'),
   );
 }
 

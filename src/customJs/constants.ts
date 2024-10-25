@@ -11,5 +11,5 @@ export type DYNAMIC_TOOL_TYPE =
   | 'product_retargeting'
   | 'order_details'
   | 'recommended'
-  | 'product_completed'
-  | 'recommended_products';
+  | 'products_completed'
+  | 'recommended_product';

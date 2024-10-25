@@ -9,7 +9,7 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
 }) => {
   const isRecommended =
     rest.toolInfo.name === 'dynamic_recommended' ||
-    rest.toolInfo.name === 'dynamic_recommended_products';
+    rest.toolInfo.name === 'dynamic_recommended_product';
   const mainContainerStyle = {
     textAlign: isRecommended ? 'center' : 'left',
   } as const;
