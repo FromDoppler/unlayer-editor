@@ -37,7 +37,7 @@
     "@babel/preset-env": "7.25.9",
     "@babel/preset-react": "7.25.9",
     "@babel/preset-typescript": "^7.22.5",
-    "@formatjs/intl": "2.10.9",
+    "@formatjs/intl": "2.10.11",
     "@types/react-dnd": "^3.0.2",
     "babel-loader": "9.2.1",
     "concurrently": "9.0.1",
