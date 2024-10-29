@@ -10,4 +10,6 @@ export type DYNAMIC_TOOL_TYPE =
   | 'abandoned_cart'
   | 'product_retargeting'
   | 'order_details'
-  | 'recommended';
+  | 'recommended'
+  | 'products_completed'
+  | 'recommended_product';

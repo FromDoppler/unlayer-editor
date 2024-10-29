@@ -7,7 +7,9 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
   values,
   ...rest
 }) => {
-  const isRecommended = rest.toolInfo.name === 'dynamic_recommended';
+  const isRecommended =
+    rest.toolInfo.name === 'dynamic_recommended' ||
+    rest.toolInfo.name === 'dynamic_recommended_product';
   const mainContainerStyle = {
     textAlign: isRecommended ? 'center' : 'left',
   } as const;
@@ -57,6 +59,15 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
     fontFamily: values.titleFont?.value || 'inherit',
     fontWeight: values.titleFontWeight,
     color: values.titleColor,
+  };
+
+  const infoStyle = {
+    display: values.infoShown ? 'block' : 'none',
+    fontSize: values.infoFontSize || '16px',
+    fontFamily: values.infoFont?.value || 'inherit',
+    fontWeight: values.infoFontWeight,
+    color: values.infoColor,
+    marginTop: '15px',
   };
 
   const quantityStyle = {
@@ -131,6 +142,10 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
       href: '[[[DC:URL]]]',
       style: buttonStyle,
     },
+    info: {
+      value: '[[[DC:INFO]]]',
+      style: infoStyle,
+    },
   };
 
   const arrayStructure = new Array([1, 1, 2, 3, 4][values.structure]).fill(
@@ -170,6 +185,9 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
             </span>
             <span style={productToolElement.price.style}>
               {productToolElement.price.value}
+            </span>
+            <span style={productToolElement.info.style}>
+              {productToolElement.info.value}
             </span>
             <a
               style={productToolElement.button.style}

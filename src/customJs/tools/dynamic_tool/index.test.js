@@ -166,6 +166,38 @@ it.each([
       ],
     },
   },
+  {
+    data: {
+      type: 'recommended_product',
+    },
+    expectedResult: {
+      options: [
+        'recommendedStructure',
+        'image',
+        'title',
+        'price',
+        'info',
+        'button',
+      ],
+    },
+  },
+  {
+    data: {
+      type: 'products_completed',
+    },
+    expectedResult: {
+      options: [
+        'product',
+        'layout',
+        'image',
+        'title',
+        'info',
+        'price',
+        'info',
+        'button',
+      ],
+    },
+  },
 ])(
   'Should be defined the custom option by type $data,type',
   ({ data, expectedResult }) => {
@@ -175,12 +207,14 @@ it.each([
 
     // Act
     const result = getDynamicToolDefinition(data.type);
-
     // Assert
     expect(result).toBeDefined();
     expect(result.options).toBeDefined();
     expectedResult.options.map((item) => {
       expect(result.options[item]).toBeDefined();
+    });
+    Object.keys(result.options).forEach((option) => {
+      expect(expectedResult.options.includes(option)).toBe(true);
     });
   },
 );

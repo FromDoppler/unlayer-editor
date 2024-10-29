@@ -78,6 +78,20 @@ export const getDynamicToolDefinition: (
         titleColor: colorProperty(),
       },
     },
+    info: {
+      title: $t('_dp.info'),
+      options: {
+        infoShown: toggleShowProperty(),
+        infoFont: fontFamilyProperty(),
+        infoFontWeight: fontWeightProperty({
+          defaultValue: 400,
+        }),
+        infoFontSize: fontSizeProperty({
+          defaultValue: '16px',
+        }),
+        infoColor: colorProperty(),
+      },
+    },
     quantity: {
       title: $t('_dp.quantity'),
       options: {

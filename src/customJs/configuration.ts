@@ -10,6 +10,8 @@ type Configuration = {
   promotionCodeEnabled: boolean;
   abandonedCartCampaign: boolean;
   visitedProductsCampaign: boolean;
+  recommendedProductsEnabled: boolean;
+  productCompletedEnabled: boolean;
   confirmationOrderCampaign: boolean;
   pendingOrderCampaign: boolean;
   bestSellingEnabled: boolean;
@@ -56,6 +58,8 @@ export const parseConfigurationDTO = ({
   dopplerExternalUrls = {},
   abandonedCartCampaign = false,
   visitedProductsCampaign = false,
+  recommendedProductsEnabled = false,
+  productCompletedEnabled = false,
   confirmationOrderCampaign = false,
   pendingOrderCampaign = false,
   bestSellingEnabled = false,
@@ -75,6 +79,8 @@ export const parseConfigurationDTO = ({
   dopplerExternalUrls?: Record<string, string>;
   abandonedCartCampaign?: boolean;
   visitedProductsCampaign?: boolean;
+  recommendedProductsEnabled?: boolean;
+  productCompletedEnabled?: boolean;
   confirmationOrderCampaign?: boolean;
   pendingOrderCampaign?: boolean;
   bestSellingEnabled?: boolean;
@@ -96,6 +102,8 @@ export const parseConfigurationDTO = ({
     promotionCodeEnabled,
     abandonedCartCampaign,
     visitedProductsCampaign,
+    recommendedProductsEnabled,
+    productCompletedEnabled,
     confirmationOrderCampaign,
     pendingOrderCampaign,
     bestSellingEnabled,

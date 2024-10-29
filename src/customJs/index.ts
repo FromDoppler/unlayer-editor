@@ -25,6 +25,8 @@ const {
   previewMode,
   abandonedCartCampaign,
   visitedProductsCampaign,
+  recommendedProductsEnabled,
+  productCompletedEnabled,
   confirmationOrderCampaign,
   pendingOrderCampaign,
   bestSellingEnabled,
@@ -91,6 +93,17 @@ if (abandonedCartCampaign) {
 if (visitedProductsCampaign) {
   registerReactTool(
     getDynamicToolDefinition(<DYNAMIC_TOOL_TYPE>'product_retargeting'),
+  );
+}
+if (productCompletedEnabled) {
+  registerReactTool(
+    getDynamicToolDefinition(<DYNAMIC_TOOL_TYPE>'products_completed'),
+  );
+}
+
+if (recommendedProductsEnabled) {
+  registerReactTool(
+    getDynamicToolDefinition(<DYNAMIC_TOOL_TYPE>'recommended_product'),
   );
 }
 

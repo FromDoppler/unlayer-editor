@@ -35,6 +35,8 @@ const expectedDefaultConfiguration = {
   promoCode: true,
   product: true,
   qrCode: true,
+  productCompletedEnabled: false,
+  recommendedProductsEnabled: false,
   dopplerExternalUrls: {
     automation: '#',
     campaigns: '#',
@@ -87,6 +89,8 @@ describe(parseConfigurationDTO.name, () => {
     const promoCode = false;
     const product = false;
     const qrCode = false;
+    const productCompletedEnabled = false;
+    const recommendedProductsEnabled = false;
     const input = {
       locale,
       previewMode,
@@ -104,6 +108,8 @@ describe(parseConfigurationDTO.name, () => {
       promoCode,
       product,
       qrCode,
+      productCompletedEnabled,
+      recommendedProductsEnabled,
     };
 
     // Act
@@ -129,6 +135,8 @@ describe(parseConfigurationDTO.name, () => {
       promoCode: false,
       product: false,
       qrCode: false,
+      productCompletedEnabled: false,
+      recommendedProductsEnabled: false,
       dopplerExternalUrls: {
         automation: '#',
         campaigns: '#',
