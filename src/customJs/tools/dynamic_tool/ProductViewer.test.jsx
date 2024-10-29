@@ -199,6 +199,36 @@ describe(ProductViewer.name, () => {
       expect(quantitySpan.style.display).toEqual('none');
     });
 
+    it('should render info span with specific style', async () => {
+      const values = {
+        infoShown: true,
+        infoFontWeight: '700',
+        infoFontSize: '14px',
+        infoColor: 'rgb(51, 51, 51)',
+        infoFont: {
+          value: 'arial',
+        },
+      };
+
+      render(<ProductViewer values={values} {...rest} />);
+      const infoSpan = screen.getByText('[[[DC:INFO]]]');
+      expect(infoSpan.style.fontSize).toEqual('14px');
+      expect(infoSpan.style.color).toEqual('rgb(51, 51, 51)');
+      expect(infoSpan.style.fontWeight).toEqual('700');
+      expect(infoSpan.style.fontFamily).toEqual('arial');
+    });
+
+    it('should render info with style display none when infoShown is false', async () => {
+      const values = {
+        tifoText: 'titulo del producto',
+        infoShown: false,
+      };
+
+      render(<ProductViewer values={values} {...rest} />);
+      const infoSpan = screen.getByText('[[[DC:INFO]]]');
+      expect(infoSpan.style.display).toEqual('none');
+    });
+
     it('should render price span with specific style', async () => {
       const values = {
         priceShown: true,
