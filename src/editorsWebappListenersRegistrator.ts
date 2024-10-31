@@ -1,4 +1,3 @@
-//import { DynamicPromoCodeDependentToolValues } from './customJs/tools/promo_code/types';
 import { DynamicPromoCodeDependentToolValues } from './customJs/properties/dynamic_promo_code/types';
 import { timeout } from './customJs/utils/promises';
 
@@ -93,7 +92,7 @@ export const registerListeners = () => {
     async (values: DynamicPromoCodeDependentToolValues) => {
       await timeout(1000);
       console.log('getPromoCodeDynamicId', values);
-      return '10102024';
+      return { promoCodeId: 10102024 };
     },
   );
 

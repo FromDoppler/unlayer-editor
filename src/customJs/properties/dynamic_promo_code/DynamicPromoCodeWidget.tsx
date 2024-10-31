@@ -3,6 +3,10 @@ import { WidgetComponent } from '../../types';
 import { DynamicPromoCodeDependentToolValues } from './types';
 import { requestDopplerApp } from '../../utils/dopplerAppBridge';
 
+type ResultDynamicPromoCodeId = {
+  promoCodeId: number;
+};
+
 export const DynamicPromoCodeWidget: WidgetComponent<
   string,
   DynamicPromoCodeDependentToolValues,
@@ -22,10 +26,9 @@ export const DynamicPromoCodeWidget: WidgetComponent<
   },
 }) => {
   useEffect(() => {
-    updateValue(value);
     const DEBOUNCE_TIME_MS = 2000; // 2 seg
     const dynamicProperties = {
-      dynamicId: value,
+      dynamic_id: value,
       type: type,
       value: amount,
       expire_days: expire_days,
@@ -40,8 +43,8 @@ export const DynamicPromoCodeWidget: WidgetComponent<
       requestDopplerApp({
         action: 'getPromoCodeDynamicId',
         dynamicProperties,
-        callback: (value: string) => {
-          updateValue(value);
+        callback: (value: ResultDynamicPromoCodeId) => {
+          updateValue(value.promoCodeId.toString());
         },
       });
     }, DEBOUNCE_TIME_MS);
