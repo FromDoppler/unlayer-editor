@@ -3,7 +3,7 @@ import { WidgetComponent } from '../../types';
 import { DynamicPromoCodeDependentToolValues } from './types';
 import { requestDopplerApp } from '../../utils/dopplerAppBridge';
 
-export const dynamicPromoCodeWidget: WidgetComponent<
+export const DynamicPromoCodeWidget: WidgetComponent<
   string,
   DynamicPromoCodeDependentToolValues,
   void

@@ -1,5 +1,5 @@
 import { ReactPropertyDefinition } from '../../types';
-import { dynamicPromoCodeWidget } from './DynamicPromoCodeWidget';
+import { DynamicPromoCodeWidget } from './DynamicPromoCodeWidget';
 import { DynamicPromoCodeDependentToolValues } from './types';
 
 export const dynamicPromoCodePropertyEditor = 'promo_dynamic_id';
@@ -11,7 +11,7 @@ export const dynamicPromoCodePropertyEditorDefinition: ReactPropertyDefinition<
   void
 > = {
   name: dynamicPromoCodePropertyEditor,
-  Widget: dynamicPromoCodeWidget,
+  Widget: DynamicPromoCodeWidget,
 };
 
 export const dynamicIdProperty = ({
