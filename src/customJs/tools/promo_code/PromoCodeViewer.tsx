@@ -14,16 +14,26 @@ export const PromoCodeViewer: ViewerComponent<PromoCodeValues> = ({
   return !values.isDynamic && values.code === EMPTY_SELECTION ? (
     <EmptyViewer {...rest} />
   ) : (
-    <div
-      style={{
-        textAlign: values.alignment,
-        backgroundColor: values.backgroundColor,
-      }}
-      role="container"
-    >
-      <span style={{ color: values.textColor, fontSize: values.fontSize }}>
-        {promoCodeValue}
-      </span>
+    <div>
+      <section
+        style={{
+          display: 'block',
+          padding: '5px',
+          textAlign: values.alignment,
+          backgroundColor: values.backgroundColor,
+        }}
+        role="container"
+      >
+        <span
+          style={{
+            color: values.textColor,
+            fontSize: values.fontSize,
+            width: '100%',
+          }}
+        >
+          {promoCodeValue}
+        </span>
+      </section>
     </div>
   );
 };

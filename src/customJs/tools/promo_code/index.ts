@@ -12,19 +12,18 @@ import {
   textProperty,
   toggleShowProperty,
 } from '../../properties/helpers';
+import { dynamicIdProperty } from '../../properties/dynamic_promo_code';
 
 export const getPromoCodeToolDefinition: () =>
   | ReactToolDefinitionFrom<PromoCodeBase>
   | undefined = () => {
-  const { stores, previewMode } = getConfiguration();
+  const { stores } = getConfiguration();
   const storesWithPromoCode = stores.filter(
     ({ promotionCodeEnabled }) => promotionCodeEnabled,
   );
 
-  /* WARN: remove preview mode when promotionCodeDynamicEnabled is Working */
   const storesWithPromoCodeDynamic = stores.filter(
-    ({ promotionCodeDynamicEnabled }) =>
-      promotionCodeDynamicEnabled || previewMode,
+    ({ promotionCodeDynamicEnabled }) => promotionCodeDynamicEnabled,
   );
 
   if (storesWithPromoCode.length === 0) {
@@ -46,6 +45,7 @@ export const getPromoCodeToolDefinition: () =>
     name: 'promo_code',
     label: $t('_dp.promo_code'),
     icon: `${ASSETS_BASE_URL}/promotion_code_v2.svg`,
+    is_dynamic: true,
     Component: PromoCodeViewer,
     options: {
       store_promo_code: {
@@ -80,6 +80,7 @@ export const getPromoCodeToolDefinition: () =>
             label: $t('_dp.promo_code_dynamic_min_price'),
             defaultValue: '0',
           }),
+          dynamic_id: dynamicIdProperty(),
           advanced_options: toggleShowProperty({
             defaultValue: false,
             label: $t('_dp.promo_code_dynamic_advance_setting'),
@@ -143,8 +144,9 @@ export const getPromoCodeToolDefinition: () =>
       },
       min_price: { enabled: values.isDynamic },
       expire_days: { enabled: values.isDynamic },
+      dynamic_id: { enabled: values.isDynamic },
       advanced_options: {
-        enabled: values.isDynamic && values.type !== 'shipping',
+        enabled: values.isDynamic,
       },
       prefixe_code: { enabled: values.isDynamic && values.advanced_options },
       includes_shipping: {
@@ -163,6 +165,15 @@ export const getPromoCodeToolDefinition: () =>
     // See https://docs.unlayer.com/docs/transform-property-values
     transformer: (values: PromoCodeValues) => {
       return values;
+    },
+    createDynamicContet(htmlComponent: string, values: any) {
+      /* Set values.dynamic_id when request be working*/
+      const dynamic_id =
+        values.dynamic_id === undefined ? '10102024' : values.dynamic_id;
+      const htmlDinamicComponent = htmlComponent
+        .replace(/^.[div]*/, `<DynamicPromoCode dynamicId="${dynamic_id}"`)
+        .replace(/<\/div>$/, '</DynamicPromoCode>');
+      return htmlDinamicComponent;
     },
   };
 };
