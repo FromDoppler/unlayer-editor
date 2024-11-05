@@ -17,15 +17,13 @@ import { dynamicIdProperty } from '../../properties/dynamic_promo_code';
 export const getPromoCodeToolDefinition: () =>
   | ReactToolDefinitionFrom<PromoCodeBase>
   | undefined = () => {
-  const { stores, previewMode } = getConfiguration();
+  const { stores } = getConfiguration();
   const storesWithPromoCode = stores.filter(
     ({ promotionCodeEnabled }) => promotionCodeEnabled,
   );
 
-  /* WARN: remove preview mode when promotionCodeDynamicEnabled is Working */
   const storesWithPromoCodeDynamic = stores.filter(
-    ({ promotionCodeDynamicEnabled }) =>
-      promotionCodeDynamicEnabled || previewMode,
+    ({ promotionCodeDynamicEnabled }) => promotionCodeDynamicEnabled,
   );
 
   if (storesWithPromoCode.length === 0) {
