@@ -146,8 +146,9 @@ export const getPromoCodeToolDefinition: () =>
       },
       min_price: { enabled: values.isDynamic },
       expire_days: { enabled: values.isDynamic },
+      dynamic_id: { enabled: values.isDynamic },
       advanced_options: {
-        enabled: values.isDynamic && values.type !== 'shipping',
+        enabled: values.isDynamic,
       },
       prefixe_code: { enabled: values.isDynamic && values.advanced_options },
       includes_shipping: {
