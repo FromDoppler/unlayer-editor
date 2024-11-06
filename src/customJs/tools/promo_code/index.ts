@@ -167,12 +167,15 @@ export const getPromoCodeToolDefinition: () =>
       return values;
     },
     createDynamicContet(htmlComponent: string, values: any) {
-      /* Set values.dynamic_id when request be working*/
       const dynamic_id =
-        values.dynamic_id === undefined ? '10102024' : values.dynamic_id;
-      const htmlDinamicComponent = htmlComponent
-        .replace(/^.[div]*/, `<DynamicPromoCode dynamicId="${dynamic_id}"`)
-        .replace(/<\/div>$/, '</DynamicPromoCode>');
+        values.dynamic_id === undefined
+          ? ''
+          : ` dynamicId="${values.dynamic_id}"`;
+      const htmlDinamicComponent = values.isDynamic
+        ? htmlComponent
+            .replace(/^.[div]*/, `<DynamicPromoCode${dynamic_id}`)
+            .replace(/<\/div>$/, '</DynamicPromoCode>')
+        : htmlComponent;
       return htmlDinamicComponent;
     },
   };
