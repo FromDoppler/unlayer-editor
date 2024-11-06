@@ -431,4 +431,63 @@ describe(sut.name, () => {
       widget: 'toggle',
     });
   });
+
+  it('should create dynamic html content for PromoCode when isDynamic = true', () => {
+    setLocale('es-ES');
+
+    const result = sut();
+    const dynamicValueMock = {
+      isDynamic: true,
+      dynamic_id: '1',
+    };
+
+    const html =
+      '<div><section style="display:block;padding:5px;text-align:center;background-color:rgba(255,255,255, 0)" role="container"><span style="color:#333333;font-size:36px;width:100%">[[[DC:COUPON_CODE]]]</span></section></div>';
+    const htmlTransformed =
+      '<DynamicPromoCode dynamicId="1"><section style="display:block;padding:5px;text-align:center;background-color:rgba(255,255,255, 0)" role="container"><span style="color:#333333;font-size:36px;width:100%">[[[DC:COUPON_CODE]]]</span></section></DynamicPromoCode>';
+    const transform = result!.createDynamicContet(html, dynamicValueMock);
+
+    //Assert
+    expect(transform).toBeDefined();
+    expect(transform).toEqual(htmlTransformed);
+  });
+
+  it('should create dynamic html content for PromoCode without dynamicId property when isDynamic = true and not exist dynamic_id', () => {
+    setLocale('es-ES');
+
+    const result = sut();
+    const dynamicValueMock = {
+      isDynamic: true,
+      dynamic_id: undefined,
+    };
+
+    const html =
+      '<div><section style="display:block;padding:5px;text-align:center;background-color:rgba(255,255,255, 0)" role="container"><span style="color:#333333;font-size:36px;width:100%">[[[DC:COUPON_CODE]]]</span></section></div>';
+    const htmlTransformed =
+      '<DynamicPromoCode><section style="display:block;padding:5px;text-align:center;background-color:rgba(255,255,255, 0)" role="container"><span style="color:#333333;font-size:36px;width:100%">[[[DC:COUPON_CODE]]]</span></section></DynamicPromoCode>';
+    const transform = result!.createDynamicContet(html, dynamicValueMock);
+
+    //Assert
+    expect(transform).toBeDefined();
+    expect(transform).toEqual(htmlTransformed);
+  });
+
+  it('should create a static html content for PromoCode when isDynamic = false', () => {
+    setLocale('es-ES');
+
+    const result = sut();
+    const dynamicValueMock = {
+      isDynamic: false,
+    };
+
+    const html =
+      '<div><section style="display:block;padding:5px;text-align:center;background-color:rgba(255,255,255, 0)" role="container"><span style="color:#333333;font-size:36px;width:100%">STATIC-CODE</span></section></div>';
+    const htmlTransformed =
+      '<div><section style="display:block;padding:5px;text-align:center;background-color:rgba(255,255,255, 0)" role="container"><span style="color:#333333;font-size:36px;width:100%">STATIC-CODE</span></section></div>';
+    const transform = result!.createDynamicContet(html, dynamicValueMock);
+
+    //Assert
+    expect(transform).toBeDefined();
+    expect(transform).toEqual(htmlTransformed);
+  });
 });
