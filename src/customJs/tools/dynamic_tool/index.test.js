@@ -184,7 +184,6 @@ it.each([
         'layout',
         'image',
         'title',
-        'info',
         'price',
         'info',
         'button',
