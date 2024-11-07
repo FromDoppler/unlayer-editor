@@ -156,14 +156,7 @@ it.each([
       type: 'recommended',
     },
     expectedResult: {
-      options: [
-        'recommendedType',
-        'recommendedStructure',
-        'image',
-        'title',
-        'price',
-        'button',
-      ],
+      options: ['recommendedStructure', 'image', 'title', 'price', 'button'],
     },
   },
   {
@@ -172,7 +165,7 @@ it.each([
     },
     expectedResult: {
       options: [
-        'recommendedStructure',
+        'recommendedProductStructure',
         'image',
         'title',
         'price',
@@ -191,7 +184,6 @@ it.each([
         'layout',
         'image',
         'title',
-        'info',
         'price',
         'info',
         'button',

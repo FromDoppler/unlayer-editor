@@ -20,6 +20,7 @@ export type OptionTool =
   | 'product'
   | 'recommendedType'
   | 'recommendedStructure'
+  | 'recommendedProductStructure'
   | 'layout'
   | 'image'
   | 'title'
@@ -32,10 +33,11 @@ export type ProductBase = Readonly<{
   product: {
     structure: ItemsStructure;
   };
-  recommendedType: {
-    type: RecommendedType;
+  recommendedProductStructure: {
+    structure: RecommendedStructure;
   };
   recommendedStructure: {
+    type: RecommendedType;
     structure: RecommendedStructure;
   };
   layout: {
