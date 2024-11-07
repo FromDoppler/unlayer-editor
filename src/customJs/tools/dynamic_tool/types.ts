@@ -36,6 +36,7 @@ export type ProductBase = Readonly<{
     type: RecommendedType;
   };
   recommendedStructure: {
+    type: RecommendedType;
     structure: RecommendedStructure;
   };
   layout: {

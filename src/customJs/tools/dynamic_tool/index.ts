@@ -45,6 +45,7 @@ export const getDynamicToolDefinition: (
     recommendedStructure: {
       title: $t('_dp.cart_item_structure'),
       options: {
+        type: recommendedTypeProperty(),
         structure: recommendedStructureProperty(),
       },
     },
