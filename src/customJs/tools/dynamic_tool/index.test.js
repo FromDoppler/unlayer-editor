@@ -165,7 +165,7 @@ it.each([
     },
     expectedResult: {
       options: [
-        'recommendedStructure',
+        'recommendedProductStructure',
         'image',
         'title',
         'price',
