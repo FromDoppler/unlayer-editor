@@ -19,12 +19,15 @@ import { DYNAMIC_TOOL_TYPE } from './constants';
 import { getRssHeaderToolDefinition } from './tools/rss';
 import { getQrToolDefinition } from './tools/qr';
 import { qrPropertyEditorDefinition } from './properties/qr';
+import { dynamicPromoCodePropertyEditorDefinition } from './properties/dynamic_promo_code';
 
 const {
   locale,
   previewMode,
   abandonedCartCampaign,
   visitedProductsCampaign,
+  recommendedProductsEnabled,
+  productCompletedEnabled,
   confirmationOrderCampaign,
   pendingOrderCampaign,
   bestSellingEnabled,
@@ -60,6 +63,7 @@ registerPropertyEditor(promoCodesPropertyEditorDefinition);
 registerPropertyEditor(productGalleryPropertyEditorDefinition);
 registerPropertyEditor(productArrangementPropertyEditorDefinition);
 registerPropertyEditor(qrPropertyEditorDefinition);
+registerPropertyEditor(dynamicPromoCodePropertyEditorDefinition);
 
 // Register Tools
 if (qrCode) {
@@ -91,6 +95,17 @@ if (abandonedCartCampaign) {
 if (visitedProductsCampaign) {
   registerReactTool(
     getDynamicToolDefinition(<DYNAMIC_TOOL_TYPE>'product_retargeting'),
+  );
+}
+if (productCompletedEnabled) {
+  registerReactTool(
+    getDynamicToolDefinition(<DYNAMIC_TOOL_TYPE>'products_completed'),
+  );
+}
+
+if (recommendedProductsEnabled) {
+  registerReactTool(
+    getDynamicToolDefinition(<DYNAMIC_TOOL_TYPE>'recommended_product'),
   );
 }
 

@@ -156,12 +156,36 @@ it.each([
       type: 'recommended',
     },
     expectedResult: {
+      options: ['recommendedStructure', 'image', 'title', 'price', 'button'],
+    },
+  },
+  {
+    data: {
+      type: 'recommended_product',
+    },
+    expectedResult: {
       options: [
-        'recommendedType',
-        'recommendedStructure',
+        'recommendedProductStructure',
         'image',
         'title',
         'price',
+        'info',
+        'button',
+      ],
+    },
+  },
+  {
+    data: {
+      type: 'products_completed',
+    },
+    expectedResult: {
+      options: [
+        'product',
+        'layout',
+        'image',
+        'title',
+        'price',
+        'info',
         'button',
       ],
     },
@@ -175,12 +199,14 @@ it.each([
 
     // Act
     const result = getDynamicToolDefinition(data.type);
-
     // Assert
     expect(result).toBeDefined();
     expect(result.options).toBeDefined();
     expectedResult.options.map((item) => {
       expect(result.options[item]).toBeDefined();
+    });
+    Object.keys(result.options).forEach((option) => {
+      expect(expectedResult.options.includes(option)).toBe(true);
     });
   },
 );

@@ -36,15 +36,16 @@ export const getDynamicToolDefinition: (
         structure: itemStructuretProperty(),
       },
     },
-    recommendedType: {
+    recommendedProductStructure: {
       title: $t('_dp.cart_item_structure'),
       options: {
-        type: recommendedTypeProperty(),
+        structure: recommendedStructureProperty(),
       },
     },
     recommendedStructure: {
       title: $t('_dp.cart_item_structure'),
       options: {
+        type: recommendedTypeProperty(),
         structure: recommendedStructureProperty(),
       },
     },
@@ -76,6 +77,20 @@ export const getDynamicToolDefinition: (
           defaultValue: DEFAULT_FONT_SIZE,
         }),
         titleColor: colorProperty(),
+      },
+    },
+    info: {
+      title: $t('_dp.info'),
+      options: {
+        infoShown: toggleShowProperty(),
+        infoFont: fontFamilyProperty(),
+        infoFontWeight: fontWeightProperty({
+          defaultValue: 400,
+        }),
+        infoFontSize: fontSizeProperty({
+          defaultValue: '16px',
+        }),
+        infoColor: colorProperty(),
       },
     },
     quantity: {

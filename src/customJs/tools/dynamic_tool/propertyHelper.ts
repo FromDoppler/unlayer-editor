@@ -40,7 +40,7 @@ export const itemStructuretProperty: () => UnlayerProperty<ItemsStructure> =
 export const recommendedStructureProperty: () => UnlayerProperty<RecommendedStructure> =
   () =>
     dropdownProperty({
-      label: undefined,
+      label: $t('_dp.recommended_structure'),
       defaultValue: '3',
       options: [
         { label: $t('_dp.recommended_structure_option_1'), value: '1' },
@@ -80,7 +80,7 @@ export const getRecommended_type_options: () => Readonly<
 export const recommendedTypeProperty: () => UnlayerProperty<RecommendedType> =
   () =>
     dropdownProperty({
-      label: undefined,
+      label: $t('_dp.recommended_type'),
       defaultValue: 'best_selling',
       options: getRecommended_type_options(),
     } as const);
@@ -96,12 +96,22 @@ export const atributesByToolType: Record<DYNAMIC_TOOL_TYPE, OptionTool[]> = {
     'button',
   ],
   order_details: ['layout', 'image', 'title', 'quantity', 'price'],
-  recommended: [
-    'recommendedType',
-    'recommendedStructure',
+  recommended: ['recommendedStructure', 'image', 'title', 'price', 'button'],
+  recommended_product: [
+    'recommendedProductStructure',
     'image',
     'title',
     'price',
+    'info',
+    'button',
+  ],
+  products_completed: [
+    'product',
+    'layout',
+    'image',
+    'title',
+    'price',
+    'info',
     'button',
   ],
 };

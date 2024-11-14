@@ -20,9 +20,11 @@ export type OptionTool =
   | 'product'
   | 'recommendedType'
   | 'recommendedStructure'
+  | 'recommendedProductStructure'
   | 'layout'
   | 'image'
   | 'title'
+  | 'info'
   | 'quantity'
   | 'price'
   | 'button';
@@ -31,10 +33,11 @@ export type ProductBase = Readonly<{
   product: {
     structure: ItemsStructure;
   };
-  recommendedType: {
-    type: RecommendedType;
+  recommendedProductStructure: {
+    structure: RecommendedStructure;
   };
   recommendedStructure: {
+    type: RecommendedType;
     structure: RecommendedStructure;
   };
   layout: {
@@ -51,6 +54,13 @@ export type ProductBase = Readonly<{
     titleFontWeight: FontWeight;
     titleFontSize: PixelSize;
     titleColor: Color;
+  };
+  info: {
+    infoShown: boolean;
+    infoFont: FontFamily;
+    infoFontWeight: FontWeight;
+    infoFontSize: PixelSize;
+    infoColor: Color;
   };
   quantity: {
     quantityShown: boolean;
