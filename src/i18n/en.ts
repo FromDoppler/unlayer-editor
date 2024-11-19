@@ -617,6 +617,8 @@ export const messages_en: IntlMessages = {
   'tabs.audit.rules.menu.empty_links.title': `Menu links are empty`,
   'tabs.audit.rules.payu_button.empty_links.description': `Without a link, PayU buttons will not work when a user clicks on it. Add a link to the following PayU buttons.`,
   'tabs.audit.rules.payu_button.empty_links.title': `PayU button links are empty`,
+  'tabs.audit.rules.promo_code.id_undefined.description': `Automations require the dynamic code to be correctly configured.`,
+  'tabs.audit.rules.promo_code.id_undefined.title': `The dynamic promotion code required to be set`,
   'tabs.audit.take_me_to_fix': `Take me to fix`,
   'tones.bold': `Bold`,
   'tones.friendly': `Friendly`,

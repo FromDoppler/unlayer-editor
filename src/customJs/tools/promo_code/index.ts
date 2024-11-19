@@ -162,6 +162,20 @@ export const getPromoCodeToolDefinition: () =>
         enabled: values.isDynamic && values.advanced_options,
       },
     }),
+    validator: ({ defaultErrors, values }) => {
+      if (values.isDynamic && !values.dynamic_id) {
+        defaultErrors.push({
+          id: 'PROMO_CODE_DYNAMIC_ID_REQUIRED_ERROR',
+          icon: `${ASSETS_BASE_URL}/promotion_code_audit1.svg`,
+          severity: 'ERROR',
+          title: $t('tabs.audit.rules.promo_code.id_undefined.title'),
+          description: $t(
+            'tabs.audit.rules.promo_code.id_undefined.description',
+          ),
+        });
+      }
+      return defaultErrors;
+    },
     // See https://docs.unlayer.com/docs/transform-property-values
     transformer: (values: PromoCodeValues) => {
       return values;

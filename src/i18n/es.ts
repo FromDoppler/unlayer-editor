@@ -617,6 +617,8 @@ export const messages_es = {
   'tabs.audit.rules.menu.empty_links.title': `Los enlaces del menú están vacíos`,
   'tabs.audit.rules.payu_button.empty_links.description': `Los botones de pago PayU no funcionarán cuando el usuario los pulse si no tienen enlace de solicitud de pago. Añade un enlace a los siguientes botones.`,
   'tabs.audit.rules.payu_button.empty_links.title': `Los enlaces de solicitud de pago en los botones de pago PayU están vacíos`,
+  'tabs.audit.rules.promo_code.id_undefined.description': `Las automatizaciones necesitan que se encuentre correctamente configurado el código dinámico`,
+  'tabs.audit.rules.promo_code.id_undefined.title': `El código de promoción dinámico requiere configurarse.`,
   'tabs.audit.take_me_to_fix': `Llévame a arreglarlo`,
   'tones.bold': `Atrevido`,
   'tones.friendly': `Amistoso`,
