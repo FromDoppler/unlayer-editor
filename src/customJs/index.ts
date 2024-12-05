@@ -20,6 +20,7 @@ import { getRssHeaderToolDefinition } from './tools/rss';
 import { getQrToolDefinition } from './tools/qr';
 import { qrPropertyEditorDefinition } from './properties/qr';
 import { dynamicPromoCodePropertyEditorDefinition } from './properties/dynamic_promo_code';
+import { getSmartFormToolDefinition } from './tools/smartforms';
 
 const {
   locale,
@@ -39,6 +40,7 @@ const {
   promoCode,
   product,
   qrCode,
+  smartForm,
 } = getConfiguration();
 
 const unlayerLocales = {
@@ -66,6 +68,9 @@ registerPropertyEditor(qrPropertyEditorDefinition);
 registerPropertyEditor(dynamicPromoCodePropertyEditorDefinition);
 
 // Register Tools
+if (smartForm) {
+  registerReactTool(getSmartFormToolDefinition());
+}
 if (qrCode) {
   registerReactTool(getQrToolDefinition());
 }

@@ -1,11 +1,13 @@
 // See https://github.com/FromDoppler/doppler-editors-webapp/blob/main/src/abstractions/domain/DopplerEditorSettings.ts
 // and unlayerExtensionsConfiguration in UnlayerEditorWrapper.tsx
 
-import { Store } from './types';
+import { CustomField, Store, SubscriptionList, FieldOption } from './types';
 
 type Configuration = {
   locale: 'en' | 'es';
   stores: Store[];
+  customFields: CustomField[];
+  subscritionsList: SubscriptionList[];
   /** True when there is at least one store with promotionCodeEnabled */
   promotionCodeEnabled: boolean;
   abandonedCartCampaign: boolean;
@@ -25,6 +27,7 @@ type Configuration = {
   promoCode: boolean;
   product: boolean;
   qrCode: boolean;
+  smartForm: boolean;
   dopplerExternalUrls: DopplerExternalUrls;
 };
 
@@ -54,6 +57,8 @@ export const getConfiguration = () =>
 export const parseConfigurationDTO = ({
   locale = defaultLanguage,
   stores = [],
+  customFields = [],
+  subscritionsList = [],
   previewMode = false,
   dopplerExternalUrls = {},
   abandonedCartCampaign = false,
@@ -72,9 +77,12 @@ export const parseConfigurationDTO = ({
   promoCode = true,
   product = true,
   qrCode = true,
+  smartForm = false,
 }: {
   locale?: 'es' | 'en';
   stores?: Store[];
+  customFields?: CustomField[];
+  subscritionsList?: SubscriptionList[];
   previewMode?: boolean;
   dopplerExternalUrls?: Record<string, string>;
   abandonedCartCampaign?: boolean;
@@ -93,12 +101,17 @@ export const parseConfigurationDTO = ({
   promoCode?: boolean;
   product?: boolean;
   qrCode?: boolean;
+  smartForm?: boolean;
 } = {}) => {
   stores = stores.map(parseStoreDTO);
+  customFields = customFields.map(parseCustomFieldDTO);
+  subscritionsList = subscritionsList.map(parseSubscriptionListDTO);
   const promotionCodeEnabled = stores.some((x) => x.promotionCodeEnabled);
   return {
     locale,
     stores,
+    customFields,
+    subscritionsList,
     promotionCodeEnabled,
     abandonedCartCampaign,
     visitedProductsCampaign,
@@ -117,6 +130,7 @@ export const parseConfigurationDTO = ({
     promoCode,
     product,
     qrCode,
+    smartForm,
     dopplerExternalUrls: parseDopplerExternalUrlsDTO(dopplerExternalUrls),
   };
 };
@@ -141,4 +155,33 @@ const parseStoreDTO = ({
   name,
   promotionCodeEnabled,
   promotionCodeDynamicEnabled,
+});
+
+const parseCustomFieldDTO = ({
+  custom = false,
+  id = '',
+  label = '',
+  value = '',
+  type = 'text' as CustomField['type'],
+  required = false,
+  options = <FieldOption[]>[],
+} = {}) => ({
+  custom,
+  id,
+  label,
+  value,
+  type,
+  required,
+  options: options.map(parseSFieldOptionDTO),
+});
+
+const parseSubscriptionListDTO = ({ id = '', name = '' } = {}) => ({
+  id,
+  name,
+});
+
+const parseSFieldOptionDTO = ({ id = '', label = '', value = '' } = {}) => ({
+  id,
+  label,
+  value,
 });

@@ -10,6 +10,7 @@ import {
   FontFamily,
   FontWeight,
   Image,
+  Percentage,
   PixelSize,
   Store,
   UnlayerProperty,
@@ -112,13 +113,17 @@ export const smallMediumLargeDropdownProperty = ({
 
 export const alignmentProperty: (param?: {
   defaultValue?: Alignment;
+  hidden?: boolean;
 }) => UnlayerProperty<Alignment> = ({
   defaultValue = 'center' as Alignment,
+  hidden = false,
 }: {
   defaultValue?: Alignment;
+  hidden?: boolean;
 } = {}) => ({
   label: $t('editor.align.label'),
   defaultValue,
+  hidden,
   widget: 'alignment',
 });
 
@@ -184,58 +189,78 @@ export const textProperty: ({
 
 export const fontFamilyProperty: (param?: {
   label?: string;
+  hidden?: boolean;
 }) => UnlayerProperty<FontFamily> = ({
   label,
+  hidden,
 }: {
   label?: string;
+  hidden?: boolean;
 } = {}) => ({
   label: label ?? $t('editor.font_family.label'),
   widget: 'font_family',
+  hidden: hidden ?? false,
 });
 
 export const fontWeightProperty: (param?: {
   label?: string;
   defaultValue?: FontWeight;
+  hidden?: boolean;
 }) => UnlayerProperty<FontWeight> = ({
   label,
   defaultValue,
+  hidden,
 }: {
   label?: string;
   defaultValue?: FontWeight;
+  hidden?: boolean;
 } = {}) => ({
   label: label ?? $t('editor.font_weight.label'),
   defaultValue: defaultValue,
+  hidden: hidden ?? false,
   widget: 'font_weight',
 });
 
 export const fontSizeProperty: (param?: {
   label?: string;
   defaultValue?: PixelSize;
+  hidden?: boolean;
 }) => UnlayerProperty<PixelSize> = ({
   label,
   defaultValue,
+  hidden,
 }: {
   label?: string;
   defaultValue?: PixelSize;
+  hidden?: boolean;
 } = {}) => ({
   label: label ?? $t('editor.font_size.label'),
   widget: 'font_size',
   defaultValue: defaultValue || '12px',
+  hidden: hidden ?? false,
 });
 
 export const colorProperty: (param?: {
   label?: string;
   defaultValue?: Color;
+  hidden?: boolean;
+  overrideAllowed?: boolean;
 }) => UnlayerProperty<Color> = ({
   label,
   defaultValue,
+  hidden,
+  overrideAllowed,
 }: {
   label?: string;
   defaultValue?: Color;
+  hidden?: boolean;
+  overrideAllowed?: boolean;
 } = {}) => ({
   label: label ?? $t('editor.color.label'),
   defaultValue: defaultValue,
   widget: 'color_picker',
+  hidden: hidden ?? false,
+  overrideAllowed: overrideAllowed ?? false,
 });
 
 export const buttonColorsProperty: () => UnlayerProperty<ButtonColors> =
@@ -247,36 +272,62 @@ export const buttonColorsProperty: () => UnlayerProperty<ButtonColors> =
     widget: 'button_color',
   });
 
-export const autoWidthProperty: () => UnlayerProperty<AutoWidth> = () => ({
-  defaultValue: { autoWidth: true, width: '100%' },
+export const autoWidthProperty: (param?: {
+  defaultValue?: Percentage;
+  hidden?: boolean;
+}) => UnlayerProperty<AutoWidth> = ({
+  defaultValue = '100%',
+  hidden = false,
+}: {
+  defaultValue?: Percentage;
+  hidden?: boolean;
+} = {}) => ({
+  defaultValue: { autoWidth: true, width: defaultValue },
+  hidden: hidden,
   widget: 'auto_width',
 });
 
-export const borderProperty: () => UnlayerProperty<Border> = () => ({
+export const borderProperty: (param?: {
+  defaultValue?: PixelSize;
+  hidden?: boolean;
+}) => UnlayerProperty<Border> = ({
+  defaultValue = '0px',
+  hidden,
+}: {
+  defaultValue?: PixelSize;
+  hidden?: boolean;
+} = {}) => ({
   label: $t('editor.border.label'),
+  hidden: hidden ?? false,
   defaultValue: {
-    borderTopWidth: '0px',
+    borderTopWidth: defaultValue,
     borderTopStyle: 'solid',
     borderTopColor: '#CCCCCC',
-    borderLeftWidth: '0px',
+    borderLeftWidth: defaultValue,
     borderLeftStyle: 'solid',
     borderLeftColor: '#CCCCCC',
-    borderRightWidth: '0px',
+    borderRightWidth: defaultValue,
     borderRightStyle: 'solid',
     borderRightColor: '#CCCCCC',
-    borderBottomWidth: '0px',
+    borderBottomWidth: defaultValue,
     borderBottomStyle: 'solid',
     borderBottomColor: '#CCCCCC',
   },
   widget: 'border',
 });
 
-export const borderRadiusProperty: () => UnlayerProperty<BorderRadius> =
-  () => ({
-    label: $t('editor.rounded_border.label'),
-    defaultValue: '4px',
-    widget: 'border_radius',
-  });
+export const borderRadiusProperty: (param?: {
+  hidden?: boolean;
+}) => UnlayerProperty<BorderRadius> = ({
+  hidden,
+}: {
+  hidden?: boolean;
+} = {}) => ({
+  label: $t('editor.rounded_border.label'),
+  defaultValue: '4px',
+  widget: 'border_radius',
+  hidden: hidden ?? false,
+});
 
 export const richTextProperty: (param?: {
   label?: string;

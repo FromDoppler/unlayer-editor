@@ -19,6 +19,8 @@ describe(getConfiguration.name, () => {
 const expectedDefaultConfiguration = {
   locale: 'es',
   stores: [],
+  customFields: [],
+  subscritionsList: [],
   promotionCodeEnabled: false,
   abandonedCartCampaign: false,
   visitedProductsCampaign: false,
@@ -35,6 +37,7 @@ const expectedDefaultConfiguration = {
   promoCode: true,
   product: true,
   qrCode: true,
+  smartForm: false,
   productCompletedEnabled: false,
   recommendedProductsEnabled: false,
   dopplerExternalUrls: {
@@ -89,6 +92,7 @@ describe(parseConfigurationDTO.name, () => {
     const promoCode = false;
     const product = false;
     const qrCode = false;
+    const smartForm = false;
     const productCompletedEnabled = false;
     const recommendedProductsEnabled = false;
     const input = {
@@ -108,6 +112,7 @@ describe(parseConfigurationDTO.name, () => {
       promoCode,
       product,
       qrCode,
+      smartForm,
       productCompletedEnabled,
       recommendedProductsEnabled,
     };
@@ -119,6 +124,8 @@ describe(parseConfigurationDTO.name, () => {
     expect(result).toEqual({
       locale,
       stores: [],
+      customFields: [],
+      subscritionsList: [],
       promotionCodeEnabled: false,
       abandonedCartCampaign: true,
       visitedProductsCampaign: false,
@@ -135,6 +142,7 @@ describe(parseConfigurationDTO.name, () => {
       promoCode: false,
       product: false,
       qrCode: false,
+      smartForm: false,
       productCompletedEnabled: false,
       recommendedProductsEnabled: false,
       dopplerExternalUrls: {

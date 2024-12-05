@@ -19,6 +19,27 @@ export type Store = {
   promotionCodeDynamicEnabled: boolean;
 };
 
+export type FieldOption = {
+  id: string;
+  label: string;
+  value: string;
+};
+
+export type CustomField = {
+  custom: boolean;
+  id: string;
+  label: string;
+  value: string;
+  type: 'text' | 'email' | 'number' | 'date' | 'checkbox' | 'select' | 'radio';
+  required: boolean;
+  options?: FieldOption[];
+};
+
+export type SubscriptionList = {
+  id: string;
+  name: string;
+};
+
 export type Percentage = `${number}%`;
 
 export type Image = {
@@ -39,6 +60,8 @@ export type FontFamily = {
 export type FontWeight = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
 
 export type PixelSize = `${number}px`;
+
+export type TripplePixelSizes = `${PixelSize} ${PixelSize} ${PixelSize}`;
 
 export type FourPixelSizes =
   `${PixelSize} ${PixelSize} ${PixelSize} ${PixelSize}`;
@@ -70,6 +93,8 @@ export type Border = {
 };
 
 export type BorderRadius = PixelSize | FourPixelSizes;
+export type Padding = PixelSize | TripplePixelSizes | FourPixelSizes;
+export type Margin = PixelSize | TripplePixelSizes | FourPixelSizes;
 
 export type ObjectWithStringProps = Record<string, any>;
 
