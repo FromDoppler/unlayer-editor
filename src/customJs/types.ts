@@ -19,24 +19,30 @@ export type Store = {
   promotionCodeDynamicEnabled: boolean;
 };
 
-export type FieldOption = {
-  id: string;
-  label: string;
-  value: string;
-};
-
 export type CustomField = {
-  custom: boolean;
-  id: string;
-  label: string;
-  value: string;
-  type: 'text' | 'email' | 'number' | 'date' | 'checkbox' | 'select' | 'radio';
+  predefined: boolean;
+  name: string;
+  sample: string;
+  type:
+    | 'string'
+    | 'phone'
+    | 'email'
+    | 'number'
+    | 'date'
+    | 'gender'
+    | 'boolean'
+    | 'permission'
+    | 'country'
+    | 'text'
+    | 'checkbox'
+    | 'select'
+    | 'radio';
   required: boolean;
-  options?: FieldOption[];
+  allowedValues?: string[];
 };
 
 export type SubscriptionList = {
-  id: string;
+  listId: string;
   name: string;
 };
 

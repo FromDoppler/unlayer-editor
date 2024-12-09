@@ -73,29 +73,157 @@ const App: React.FC = () => {
     user: userExtend,
     customCSS: [`${process.env.PUBLIC_URL}/customJs/main.css`],
     customJS: [
-      `window["smartFormData"] = {
-    subscritionsList : [
+      `window["user-data"] = {
+    fields : [
         {
-            id: '1',
+            "name": "telefonito",
+            "predefined": false,
+            "private": true,
+            "readonly": false,
+            "type": "phone",
+            "sample": "",
+            "required": false,
+            "_links": []
+        },
+        {
+            "name": "interes",
+            "predefined": false,
+            "private": true,
+            "readonly": false,
+            "type": "string",
+            "sample": "",
+            "required": false,
+            "_links": []
+        },
+        {
+            "name": "binario",
+            "predefined": false,
+            "private": true,
+            "readonly": false,
+            "type": "boolean",
+            "sample": "",
+            "required": false,
+            "_links": []
+        },
+        {
+            "name": "permiso",
+            "predefined": false,
+            "private": false,
+            "readonly": false,
+            "type": "permission",
+            "sample": "",
+            "permissionHTML": "<p>esto es un permiso de algo</p>",
+            "required": false,
+            "_links": []
+        },
+        {
+            "name": "numero",
+            "predefined": false,
+            "private": true,
+            "readonly": false,
+            "type": "number",
+            "sample": "",
+            "required": false,
+            "_links": []
+        },
+        {
+            "name": "aniversario",
+            "predefined": false,
+            "private": true,
+            "readonly": false,
+            "type": "date",
+            "sample": "",
+            "required": false,
+            "_links": []
+        },
+        {
+            "name": "FIRSTNAME",
+            "predefined": true,
+            "private": false,
+            "readonly": false,
+            "type": "string",
+            "sample": "FIRST_NAME",
+            "required": false,
+            "_links": []
+        },
+        {
+            "name": "LASTNAME",
+            "predefined": true,
+            "private": false,
+            "readonly": false,
+            "type": "string",
+            "sample": "LAST_NAME",
+            "required": false,
+            "_links": []
+        },
+        {
+            "name": "EMAIL",
+            "predefined": true,
+            "private": false,
+            "readonly": true,
+            "type": "email",
+            "sample": "EMAIL",
+            "required": true,
+            "_links": []
+        },
+        {
+            "name": "GENDER",
+            "predefined": true,
+            "private": false,
+            "readonly": false,
+            "type": "gender",
+            "sample": "GENDER",
+            "required": false,
+            "allowedValues": [
+                "M",
+                "F",
+                "N"
+            ],
+            "_links": []
+        },
+        {
+            "name": "BIRTHDAY",
+            "predefined": true,
+            "private": false,
+            "readonly": false,
+            "type": "date",
+            "sample": "BIRTHDAY",
+            "required": false,
+            "_links": []
+        },
+        {
+            "name": "COUNTRY",
+            "predefined": true,
+            "private": false,
+            "readonly": false,
+            "type": "country",
+            "sample": "COUNTRY",
+            "required": false,
+            "_links": []
+        }
+        ],
+        subscriptionList : [
+        {
+            listId: '1',
             name: 'Lista 1',
         },
         {
-            id: '2',
+            listId: '2',
             name: 'Lista 2',
         },
         {
-            id: '3',
+            listId: '3',
             name: 'Hot Leads',
         },
         {
-            id: '4',
+            listId: '4',
             name: 'Comercial List ',
         },
         {
-            id: '5',
+            listId: '5',
             name: 'Meli List',
         }
-    ],
+        ],
     }`,
       `window["unlayer-extensions-configuration"] = {
         locale: "es",
@@ -117,172 +245,7 @@ const App: React.FC = () => {
         { name: "Magento", promotionCodeEnabled: false },
         { name: "Tiendanube", promotionCodeEnabled: true, promotionCodeDynamicEnabled: true }
         ],
-        customFields : [
-        {
-            "id": "Descuento",
-            "label": "Descuento",
-            "type": "checkbox",
-            "custom": true,
-            "required": false,
-            "value": "Descuento"
-        },
-        {
-            "id": "BirthdayClient",
-            "label": "BirthdayClient",
-            "type": "date",
-            "custom": true,
-            "required": false,
-            "value": "BirthdayClient"
-        },
-        {
-            "id": "RFM_Frequency",
-            "label": "RFM_Frequency",
-            "type": "number",
-            "custom": true,
-            "required": false,
-            "value": "RFM_Frequency"
-        },
-        {
-            "id": "Lista",
-            "label": "Lista",
-            "type": "text",
-            "custom": true,
-            "required": false,
-            "value": "Lista"
-        },
-        {
-            "id": "PrimeraCompra",
-            "label": "PrimeraCompra",
-            "type": "date",
-            "custom": true,
-            "required": false,
-            "value": "PrimeraCompra"
-        },
-        {
-            "id": "BIRTHDAY",
-            "label": "BIRTHDAY",
-            "type": "date",
-            "custom": true,
-            "required": false,
-            "value": "BIRTHDAY"
-        },
-        {
-            "id": "COUNTRY",
-            "label": "COUNTRY",
-            "type": "select",
-            "custom": true,
-            "required": false,
-            "value": "COUNTRY",
-            "options": [
-                {
-                    "id": "Afghanistan",
-                    "label": "Afghanistan",
-                    "value": "AF"
-                },
-                {
-                    "id": "Albania",
-                    "label": "Albania",
-                    "value": "AL"
-                },
-                {
-                    "id": "Algeria",
-                    "label": "Algeria",
-                    "value": "DZ"
-                },
-                {
-                    "id": "Andorra",
-                    "label": "Andorra",
-                    "value": "AD"
-                },
-                {
-                    "id": "Angola",
-                    "label": "Angola",
-                    "value": "AO"
-                },
-                {
-                    "id": "Antigua and Barbuda",
-                    "label": "Antigua and Barbuda",
-                    "value": "AG"
-                },
-                {
-                    "id": "Argentina",
-                    "label": "Argentina",
-                    "value": "AR"
-                },
-            ]
-        },
-        {
-            "id": "EMAIL",
-            "label": "EMAIL",
-            "type": "email",
-            "custom": true,
-            "required": true,
-            "value": "EMAIL"
-        },
-        {
-            "id": "FIRSTNAME",
-            "label": "FIRSTNAME",
-            "type": "text",
-            "custom": true,
-            "required": false,
-            "value": "FIRSTNAME"
-        },
-        {
-            "id": "GENDER",
-            "label": "GENDER",
-            "type": "radio",
-            "custom": true,
-            "required": false,
-            "value": "GENDER",
-            "options": [
-                {
-                    "id": "M",
-                    "label": "M",
-                    "value": "M"
-                },
-                {
-                    "id": "F",
-                    "label": "F",
-                    "value": "F"
-                },
-                {
-                    "id": "N",
-                    "label": "N",
-                    "value": "N"
-                }
-            ]
-        },
-        {
-            "id": "LASTNAME",
-            "label": "LASTNAME",
-            "type": "text",
-            "custom": true,
-            "required": false,
-            "value": "LASTNAME"
-        }
-        ],
-        subscritionsList : [
-        {
-            id: '1',
-            name: 'Lista 1',
-        },
-        {
-            id: '2',
-            name: 'Lista 2',
-        },
-        {
-            id: '3',
-            name: 'Hot Leads',
-        },
-        {
-            id: '4',
-            name: 'Comercial List ',
-        },
-        {
-            id: '5',
-            name: 'Meli List',
-        }
-        ],
+
         dopplerExternalUrls: {
         home: "https://webappqa.fromdoppler.net/dashboard",
         campaigns: "https://appqa.fromdoppler.net/Campaigns/Draft/",

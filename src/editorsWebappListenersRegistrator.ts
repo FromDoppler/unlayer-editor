@@ -102,6 +102,65 @@ export const registerListeners = () => {
     return 'http://www.pngall.com/wp-content/uploads/2/QR-Code-PNG-HD-Image-180x180.png';
   });
 
+  registerListener('action1', async () => {
+    await timeout(500);
+    return { success: true, message: 'Acción completada' };
+  });
+
+  registerListener('getFields', async () => {
+    console.log('getFields');
+    // await timeout(500);
+    return {
+      fields: [
+        {
+          name: 'telefonito',
+          predefined: false,
+          private: true,
+          readonly: false,
+          type: 'phone',
+          sample: '',
+          required: false,
+          _links: [],
+        },
+        {
+          name: 'interes',
+          predefined: false,
+          private: true,
+          readonly: false,
+          type: 'string',
+          sample: '',
+          required: false,
+          _links: [],
+        },
+      ],
+    };
+  });
+
+  registerListener('getSubscriptionList', async () => {
+    console.log('getSubscriptionList');
+    await timeout(500);
+    return {
+      subscriptionList: [
+        {
+          listId: 45184985,
+          name: 'Lista test',
+          currentStatus: 'ready',
+          subscribersCount: 4,
+          creationDate: '2021-05-20T13:30:22.377-03:00',
+          hasEventsAssociated: true,
+        },
+        {
+          listId: 45184795,
+          name: 'Lista test 2',
+          currentStatus: 'ready',
+          subscribersCount: 2,
+          creationDate: '2021-05-19T19:47:27.917-03:00',
+          hasEventsAssociated: true,
+        },
+      ],
+    };
+  });
+
   registerListener('searchProduct', async () => {
     alert('Product Gallery');
     return {

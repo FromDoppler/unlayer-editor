@@ -1,105 +1,25 @@
 import { $t } from '../../localization';
 import { SmartFormViewer } from './smartFormViewer';
-import {
-  CustomField,
-  ReactToolDefinitionFrom,
-  SubscriptionList,
-  UnlayerProperty,
-} from '../../types';
-import { ListOption, SmartFormBase } from './types';
+import { ReactToolDefinitionFrom } from '../../types';
+import { SmartFormBase } from './types';
 import { ASSETS_BASE_URL } from '../../constants';
-import { getConfiguration } from '../../configuration';
 import {
   alignmentProperty,
   autoWidthProperty,
   borderProperty,
   borderRadiusProperty,
   colorProperty,
-  dropdownProperty,
   fontSizeProperty,
   richTextProperty,
 } from '../../properties/helpers';
+import {
+  behaviorListProperty,
+  congratsBehaviorListProperty,
+  SubscriptionListProperty,
+  availableFields,
+} from './helper';
 
 const DEFAULT_GREEN_COLOR = '#64BF91';
-const behaviorListProperty: () => UnlayerProperty<string> = () =>
-  dropdownProperty({
-    label: $t('_dp.smart_forms.behavior.label'),
-    defaultValue: '2',
-    options: [
-      { label: '2', value: '2' },
-      { label: '3', value: '3' },
-      { label: '4', value: '4' },
-      { label: '5', value: '5' },
-      { label: $t('_dp.smart_forms.behavior.option_0'), value: '0' },
-    ],
-  } as const);
-
-const congratsBehaviorListProperty: () => UnlayerProperty<string> = () =>
-  dropdownProperty({
-    label: $t('_dp.smart_forms.behavior.action.label'),
-    defaultValue: '0',
-    options: [
-      { label: $t('_dp.smart_forms.behavior.action.option_0'), value: '0' },
-    ],
-  } as const);
-
-const mapListOption = (list: SubscriptionList): ListOption => {
-  return { label: list.name, value: list.id };
-};
-
-/*
-TODO Create a custom property for list manager
-*/
-const emptySubscriptionList = [{ label: 'Seleccione una lista', value: '-1' }];
-const subscriptionList =
-  getConfiguration().subscritionsList?.map(mapListOption);
-const subscriptionOptionList = (
-  subscriptionList.length == 0 ? emptySubscriptionList : subscriptionList
-) as [ListOption, ...ListOption[]];
-
-const SubscriptionListProperty: () => UnlayerProperty<string> = () =>
-  dropdownProperty({
-    label: $t('_dp.smart_forms.action.label'),
-    options: subscriptionOptionList,
-  } as const);
-
-const getFieldCompatibleType = (type: CustomField['type']): string => {
-  switch (type) {
-    case 'text':
-    case 'date':
-    case 'number':
-    case 'email':
-      return type;
-    case 'select':
-    case 'radio':
-      return 'dropdown';
-    default:
-      return 'undefined';
-  }
-};
-
-const optionToString = (options: ListOption[] | undefined) => {
-  return options
-    ?.reduce((stringOptions, option: ListOption) => {
-      return stringOptions.concat(
-        option.label.concat('|').concat(option.value).concat('\n'),
-      );
-    }, '')
-    ?.slice(0, -1);
-};
-
-const availableFields = getConfiguration().customFields?.map(
-  (field: CustomField) => {
-    return {
-      name: field.id,
-      type: getFieldCompatibleType(field.type),
-      label: field.label,
-      required: field.required,
-      show_label: true,
-      options: optionToString(field.options),
-    };
-  },
-);
 
 export const getSmartFormToolDefinition: () =>
   | ReactToolDefinitionFrom<SmartFormBase>

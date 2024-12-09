@@ -19,8 +19,6 @@ describe(getConfiguration.name, () => {
 const expectedDefaultConfiguration = {
   locale: 'es',
   stores: [],
-  customFields: [],
-  subscritionsList: [],
   promotionCodeEnabled: false,
   abandonedCartCampaign: false,
   visitedProductsCampaign: false,
@@ -124,8 +122,6 @@ describe(parseConfigurationDTO.name, () => {
     expect(result).toEqual({
       locale,
       stores: [],
-      customFields: [],
-      subscritionsList: [],
       promotionCodeEnabled: false,
       abandonedCartCampaign: true,
       visitedProductsCampaign: false,
