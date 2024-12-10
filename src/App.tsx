@@ -237,20 +237,20 @@ const App: React.FC = () => {
         rssShowPreview: true,
         smartForm: true,
         stores: [
-          { name: "MercadoShops", promotionCodeEnabled: true },
-          { name: "Magento", promotionCodeEnabled: false },
-          { name: "Tiendanube", promotionCodeEnabled: true, promotionCodeDynamicEnabled: true }
+        { name: "MercadoShops", promotionCodeEnabled: true },
+        { name: "Magento", promotionCodeEnabled: false },
+        { name: "Tiendanube", promotionCodeEnabled: true, promotionCodeDynamicEnabled: true }
         ],
         dopplerExternalUrls: {
-          home: "https://webappqa.fromdoppler.net/dashboard",
-          campaigns: "https://appqa.fromdoppler.net/Campaigns/Draft/",
-          lists: "https://appqa.fromdoppler.net/Lists/SubscribersList",
-          controlPanel: "https://webappqa.fromdoppler.net/control-panel",
-          automation: "https://appqa.fromdoppler.net/Automation/Automation/AutomationApp",
-          templates: "https://appqa.fromdoppler.net/Templates/Main",
-          integrations: "https://webappqa.fromdoppler.net/integrations"
+        home: "https://webappqa.fromdoppler.net/dashboard",
+        campaigns: "https://appqa.fromdoppler.net/Campaigns/Draft/",
+        lists: "https://appqa.fromdoppler.net/Lists/SubscribersList",
+        controlPanel: "https://webappqa.fromdoppler.net/control-panel",
+        automation: "https://appqa.fromdoppler.net/Automation/Automation/AutomationApp",
+        templates: "https://appqa.fromdoppler.net/Templates/Main",
+        integrations: "https://webappqa.fromdoppler.net/integrations"
         },
-      };`,
+    };`,
       `${process.env.PUBLIC_URL}/customJs/index.js`,
     ],
   } as UnlayerOptions;
