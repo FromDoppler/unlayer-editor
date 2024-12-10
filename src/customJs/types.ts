@@ -40,6 +40,8 @@ export type FontWeight = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
 
 export type PixelSize = `${number}px`;
 
+export type TripplePixelSizes = `${PixelSize} ${PixelSize} ${PixelSize}`;
+
 export type FourPixelSizes =
   `${PixelSize} ${PixelSize} ${PixelSize} ${PixelSize}`;
 
@@ -70,6 +72,8 @@ export type Border = {
 };
 
 export type BorderRadius = PixelSize | FourPixelSizes;
+export type Padding = PixelSize | TripplePixelSizes | FourPixelSizes;
+export type Margin = PixelSize | TripplePixelSizes | FourPixelSizes;
 
 export type ObjectWithStringProps = Record<string, any>;
 
