@@ -69,6 +69,158 @@ const App: React.FC = () => {
     user: userExtend,
     customCSS: [`${process.env.PUBLIC_URL}/customJs/main.css`],
     customJS: [
+      `window["user-data1"] = {
+        fields : [
+            {
+                "name": "telefonito",
+                "predefined": false,
+                "private": true,
+                "readonly": false,
+                "type": "phone",
+                "sample": "",
+                "required": false,
+                "_links": []
+            },
+            {
+                "name": "interes",
+                "predefined": false,
+                "private": true,
+                "readonly": false,
+                "type": "string",
+                "sample": "",
+                "required": false,
+                "_links": []
+            },
+            {
+                "name": "binario",
+                "predefined": false,
+                "private": true,
+                "readonly": false,
+                "type": "boolean",
+                "sample": "",
+                "required": false,
+                "_links": []
+            },
+            {
+                "name": "permiso",
+                "predefined": false,
+                "private": false,
+                "readonly": false,
+                "type": "permission",
+                "sample": "",
+                "permissionHTML": "<p>esto es un permiso de algo</p>",
+                "required": false,
+                "_links": []
+            },
+            {
+                "name": "numero",
+                "predefined": false,
+                "private": true,
+                "readonly": false,
+                "type": "number",
+                "sample": "",
+                "required": false,
+                "_links": []
+            },
+            {
+                "name": "aniversario",
+                "predefined": false,
+                "private": true,
+                "readonly": false,
+                "type": "date",
+                "sample": "",
+                "required": false,
+                "_links": []
+            },
+            {
+                "name": "FIRSTNAME",
+                "predefined": true,
+                "private": false,
+                "readonly": false,
+                "type": "string",
+                "sample": "FIRST_NAME",
+                "required": false,
+                "_links": []
+            },
+            {
+                "name": "LASTNAME",
+                "predefined": true,
+                "private": false,
+                "readonly": false,
+                "type": "string",
+                "sample": "LAST_NAME",
+                "required": false,
+                "_links": []
+            },
+            {
+                "name": "EMAIL",
+                "predefined": true,
+                "private": false,
+                "readonly": true,
+                "type": "email",
+                "sample": "EMAIL",
+                "required": true,
+                "_links": []
+            },
+            {
+                "name": "GENDER",
+                "predefined": true,
+                "private": false,
+                "readonly": false,
+                "type": "gender",
+                "sample": "GENDER",
+                "required": false,
+                "allowedValues": [
+                    "M",
+                    "F",
+                    "N"
+                ],
+                "_links": []
+            },
+            {
+                "name": "BIRTHDAY",
+                "predefined": true,
+                "private": false,
+                "readonly": false,
+                "type": "date",
+                "sample": "BIRTHDAY",
+                "required": false,
+                "_links": []
+            },
+            {
+                "name": "COUNTRY",
+                "predefined": true,
+                "private": false,
+                "readonly": false,
+                "type": "country",
+                "sample": "COUNTRY",
+                "required": false,
+                "_links": []
+            }
+            ],
+            subscriptionList : [
+            {
+                listId: '1',
+                name: 'Lista 1',
+            },
+            {
+                listId: '2',
+                name: 'Lista 2',
+            },
+            {
+                listId: '3',
+                name: 'Hot Leads',
+            },
+            {
+                listId: '4',
+                name: 'Comercial List ',
+            },
+            {
+                listId: '5',
+                name: 'Meli List',
+            }
+            ],
+        }`,
       `window["unlayer-extensions-configuration"] = {
         locale: "es",
         previewMode: true,
@@ -83,6 +235,7 @@ const App: React.FC = () => {
         crossSellingEnabled: false,
         rssCampaign: true,
         rssShowPreview: true,
+        smartForm: true,
         stores: [
           { name: "MercadoShops", promotionCodeEnabled: true },
           { name: "Magento", promotionCodeEnabled: false },
