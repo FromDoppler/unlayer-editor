@@ -46,6 +46,7 @@ const App: React.FC = () => {
   } as User;
   const UnlayerOptionsExtended = {
     projectId,
+    displayMode: 'popup',
     tools: {
       button: {
         icon: `${ASSETS_BASE_URL}/button.svg`,
@@ -72,7 +73,7 @@ const App: React.FC = () => {
     user: userExtend,
     customCSS: [`${process.env.PUBLIC_URL}/customJs/main.css`],
     customJS: [
-      `window["user-data1"] = {
+      `window["user-data"] = {
         fields : [
             {
                 "name": "telefonito",
