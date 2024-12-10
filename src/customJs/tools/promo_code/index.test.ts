@@ -55,6 +55,7 @@ describe(sut.name, () => {
       label: messages_es['editor.align.label'],
       defaultValue: 'center',
       widget: 'alignment',
+      hidden: false,
     });
 
     expect(result?.options.default.options.backgroundColor).toEqual({

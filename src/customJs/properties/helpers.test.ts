@@ -105,6 +105,7 @@ describe(alignmentProperty.name, () => {
       defaultValue: 'center',
       label: 'Alineación',
       widget: 'alignment',
+      hidden: false,
     });
   });
 });
