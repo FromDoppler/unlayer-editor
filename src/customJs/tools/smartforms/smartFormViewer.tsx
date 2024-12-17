@@ -155,6 +155,8 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
           style={formStyle}
           data-field-instance={values.display}
           data-target-id-list={values.list}
+          data-action-on-finish={values.congratBehavior}
+          data-action-on-finish-url={values.congratUrl}
         >
           <div color="#000">
             {fields.map((field) => (
