@@ -1,3 +1,4 @@
+import { UrlValue } from '../../properties/url/UrlValue';
 import {
   Alignment,
   AutoWidth,
@@ -12,6 +13,8 @@ import {
 } from '../../types';
 
 export type ListOption = { value: string; label: string };
+
+export type SmartFormAction = 'message' | 'url';
 
 export type CustomField = {
   predefined: boolean;
@@ -53,7 +56,8 @@ export type UnlayerField = {
 export type SmartFormBase = {
   behavior: {
     display: string;
-    congratBehavior: string;
+    congratBehavior: SmartFormAction;
+    congratUrl: UrlValue;
     descriptionHtml: string;
   };
   formAction: {

@@ -108,6 +108,8 @@ export const messages_en: IntlMessages = {
   '_dp.smart_forms.action.title': `List Manager`,
   '_dp.smart_forms.behavior.action.label': `Action for form completed`,
   '_dp.smart_forms.behavior.action.option_0': `Show congrats message`,
+  '_dp.smart_forms.behavior.action.option_1': `Redirect a webpage`,
+  '_dp.smart_forms.behavior.congratsUrl.label': `Open new tab at`,
   '_dp.smart_forms.behavior.label': `Visible field by print`,
   '_dp.smart_forms.behavior.message': `The message that the user sees when the form is completed `,
   '_dp.smart_forms.behavior.option_0': `All`,
