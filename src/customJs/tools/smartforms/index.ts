@@ -1,7 +1,7 @@
 import { $t } from '../../localization';
 import { SmartFormViewer } from './smartFormViewer';
 import { ReactToolDefinitionFrom } from '../../types';
-import { SmartFormBase } from './types';
+import { SmartFormBase, SmartFormValues } from './types';
 import { ASSETS_BASE_URL } from '../../constants';
 import {
   alignmentProperty,
@@ -18,6 +18,7 @@ import {
   SubscriptionListProperty,
   availableFields,
 } from './helper';
+import { urlProperty } from '../../properties/url';
 
 const DEFAULT_GREEN_COLOR = '#64BF91';
 
@@ -36,6 +37,9 @@ export const getSmartFormToolDefinition: () =>
         options: {
           display: behaviorListProperty(),
           congratBehavior: congratsBehaviorListProperty(),
+          congratUrl: urlProperty({
+            label: $t('_dp.smart_forms.behavior.congratsUrl.label'),
+          }),
           descriptionHtml: richTextProperty({
             label: $t('_dp.smart_forms.behavior.message'),
           }),

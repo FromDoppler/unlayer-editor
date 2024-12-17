@@ -31,6 +31,7 @@ export const congratsBehaviorListProperty: () => UnlayerProperty<SmartFormAction
           label: $t('_dp.smart_forms.behavior.action.option_0'),
           value: 'message',
         },
+        { label: $t('_dp.smart_forms.behavior.action.option_1'), value: 'url' },
       ],
     } as const);
 

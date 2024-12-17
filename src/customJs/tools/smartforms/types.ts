@@ -1,3 +1,4 @@
+import { UrlValue } from '../../properties/url/UrlValue';
 import {
   Alignment,
   AutoWidth,
@@ -56,6 +57,7 @@ export type SmartFormBase = {
   behavior: {
     display: string;
     congratBehavior: SmartFormAction;
+    congratUrl: UrlValue;
     descriptionHtml: string;
   };
   formAction: {
