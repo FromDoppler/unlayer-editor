@@ -290,6 +290,8 @@ describe(ProductViewer.name, () => {
           autoWidth: false,
           width: '50%',
         },
+        buttonPadding: '13px 0px',
+        buttonMargin: '15px 0px 0px',
       };
 
       render(<ProductViewer values={values} {...rest} />);
@@ -307,10 +309,11 @@ describe(ProductViewer.name, () => {
       expect(buttton.style.borderWidth).toEqual('1px 3px 4px 2px');
       expect(buttton.style.borderRadius).toEqual('5px');
       expect(buttton.style.width).toEqual('50%');
+      expect(buttton.style.padding).toEqual('13px 0px');
+      expect(buttton.style.margin).toEqual('15px 0px 0px');
       // default styles values
       expect(buttton.style.textAlign).toEqual('center');
       expect(buttton.style.minHeight).toEqual('20px');
-      expect(buttton.style.padding).toEqual('13px 0px');
       expect(buttton.style.lineHeight).toEqual('20px');
       expect(buttton.style.textDecoration).toEqual('none');
     });
