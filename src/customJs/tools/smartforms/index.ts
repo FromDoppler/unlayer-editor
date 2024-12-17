@@ -216,5 +216,13 @@ export const getSmartFormToolDefinition: () =>
         },
       },
     },
+    propertyStates: (values: SmartFormValues) => ({
+      congratUrl: {
+        enabled: values.congratBehavior === 'url',
+      },
+      descriptionHtml: {
+        enabled: values.congratBehavior === 'message',
+      },
+    }),
   };
 };
