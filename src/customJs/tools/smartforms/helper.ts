@@ -1,7 +1,12 @@
 import { $t } from '../../localization';
 import { dropdownProperty } from '../../properties/helpers';
 import { UnlayerProperty } from '../../types';
-import { CustomField, ListOption, SubscriptionList } from './types';
+import {
+  CustomField,
+  ListOption,
+  SmartFormAction,
+  SubscriptionList,
+} from './types';
 
 export const behaviorListProperty: () => UnlayerProperty<string> = () =>
   dropdownProperty({
@@ -16,14 +21,18 @@ export const behaviorListProperty: () => UnlayerProperty<string> = () =>
     ],
   } as const);
 
-export const congratsBehaviorListProperty: () => UnlayerProperty<string> = () =>
-  dropdownProperty({
-    label: $t('_dp.smart_forms.behavior.action.label'),
-    defaultValue: '0',
-    options: [
-      { label: $t('_dp.smart_forms.behavior.action.option_0'), value: '0' },
-    ],
-  } as const);
+export const congratsBehaviorListProperty: () => UnlayerProperty<SmartFormAction> =
+  () =>
+    dropdownProperty({
+      label: $t('_dp.smart_forms.behavior.action.label'),
+      defaultValue: 'message',
+      options: [
+        {
+          label: $t('_dp.smart_forms.behavior.action.option_0'),
+          value: 'message',
+        },
+      ],
+    } as const);
 
 const mapListOption = (list: SubscriptionList): ListOption => {
   return { label: list.name, value: list.listId };

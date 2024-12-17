@@ -13,6 +13,8 @@ import {
 
 export type ListOption = { value: string; label: string };
 
+export type SmartFormAction = 'message' | 'url';
+
 export type CustomField = {
   predefined: boolean;
   name: string;
@@ -53,7 +55,7 @@ export type UnlayerField = {
 export type SmartFormBase = {
   behavior: {
     display: string;
-    congratBehavior: string;
+    congratBehavior: SmartFormAction;
     descriptionHtml: string;
   };
   formAction: {
