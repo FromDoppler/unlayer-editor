@@ -103,9 +103,9 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
     width: values.buttonAutoWith?.autoWidth
       ? '100%'
       : values.buttonAutoWith?.width,
-    marginTop: '15px',
+    padding: values.buttonPadding,
+    margin: values.buttonMargin,
     minHeight: '20px',
-    padding: '13px 0px',
     lineHeight: '20px',
     textAlign: 'center',
   } as const;

@@ -238,6 +238,16 @@ export const getProductToolDefinition: () =>
           buttonAutoWith: autoWidthProperty(),
           buttonBorder: borderProperty(),
           buttonBorderRadius: borderRadiusProperty(),
+          buttonPadding: {
+            label: 'Padding',
+            defaultValue: '13px 0px 13px',
+            widget: 'padding',
+          },
+          buttonMargin: {
+            label: 'Margin',
+            defaultValue: '15px 0px 0px',
+            widget: 'margin',
+          },
         },
       },
     },

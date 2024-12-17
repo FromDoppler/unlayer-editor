@@ -6,6 +6,8 @@ import {
   Color,
   FontFamily,
   FontWeight,
+  Margin,
+  Padding,
   PixelSize,
   PropertyGroupsFrom,
   ReactToolDefinitionFrom,
@@ -86,6 +88,8 @@ export type ProductBase = Readonly<{
     buttonAutoWith: AutoWidth;
     buttonBorder: Border;
     buttonBorderRadius: BorderRadius;
+    buttonPadding: Padding;
+    buttonMargin: Margin;
   };
 }>;
 
