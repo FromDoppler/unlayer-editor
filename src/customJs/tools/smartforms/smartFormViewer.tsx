@@ -172,7 +172,7 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
           <div color="#000">
             {fields.map((field) => (
               <div style={fieldContentStyle} key={field.name}>
-                <div style={labelStyle}>
+                <div style={labelStyle} id={'fieldset_'.concat(field.name)}>
                   <label>
                     {field.show_label ? field.label : ''}{' '}
                     {field.required ? '*' : ''}
