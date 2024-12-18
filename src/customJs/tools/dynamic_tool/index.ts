@@ -3,6 +3,7 @@ import { ProductViewer } from './ProductViewer';
 import { ProductToolDefinition, ProductPropertyGroups } from './types';
 import { ASSETS_BASE_URL, DYNAMIC_TOOL_TYPE } from '../../constants';
 import {
+  alignmentProperty,
   autoWidthProperty,
   borderProperty,
   borderRadiusProperty,
@@ -69,6 +70,7 @@ export const getDynamicToolDefinition: (
       title: $t('_dp.title'),
       options: {
         titleShown: toggleShowProperty(),
+        titleAlignment: alignmentProperty(),
         titleFont: fontFamilyProperty(),
         titleFontWeight: fontWeightProperty({
           defaultValue: 700,
@@ -83,6 +85,7 @@ export const getDynamicToolDefinition: (
       title: $t('_dp.info'),
       options: {
         infoShown: toggleShowProperty(),
+        infoAlignment: alignmentProperty(),
         infoFont: fontFamilyProperty(),
         infoFontWeight: fontWeightProperty({
           defaultValue: 400,
@@ -97,6 +100,7 @@ export const getDynamicToolDefinition: (
       title: $t('_dp.quantity'),
       options: {
         quantityShown: toggleShowProperty(),
+        quantityAlignment: alignmentProperty(),
         quantityFont: fontFamilyProperty(),
         quantityFontWeight: fontWeightProperty(),
         quantityFontSize: fontSizeProperty({
@@ -110,6 +114,7 @@ export const getDynamicToolDefinition: (
       title: $t('_dp.price'),
       options: {
         priceShown: toggleShowProperty(),
+        priceAlignment: alignmentProperty(),
         priceFont: fontFamilyProperty(),
         priceFontWeight: fontWeightProperty(),
         priceFontSize: fontSizeProperty({

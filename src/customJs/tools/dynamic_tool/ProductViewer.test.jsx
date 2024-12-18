@@ -150,6 +150,7 @@ describe(ProductViewer.name, () => {
         titleFont: {
           value: 'arial',
         },
+        titleAlignment: 'right',
       };
 
       render(<ProductViewer values={values} {...rest} />);
@@ -158,6 +159,7 @@ describe(ProductViewer.name, () => {
       expect(titleSpan.style.fontWeight).toEqual('700');
       expect(titleSpan.style.fontSize).toEqual('22px');
       expect(titleSpan.style.fontFamily).toEqual('arial');
+      expect(titleSpan.style.textAlign).toEqual('right');
     });
 
     it('should render title with style display none when titleShown is false', async () => {
@@ -179,6 +181,7 @@ describe(ProductViewer.name, () => {
         quantityFont: {
           value: 'arial',
         },
+        quantityAlignment: 'right',
       };
 
       render(<ProductViewer values={values} {...rest} />);
@@ -187,6 +190,7 @@ describe(ProductViewer.name, () => {
       expect(quantitySpan.style.fontWeight).toEqual('700');
       expect(quantitySpan.style.fontSize).toEqual('22px');
       expect(quantitySpan.style.fontFamily).toEqual('arial');
+      expect(quantitySpan.style.textAlign).toEqual('right');
     });
 
     it('should render quantity with style display none when quantityShown is false', async () => {
@@ -208,6 +212,7 @@ describe(ProductViewer.name, () => {
         infoFont: {
           value: 'arial',
         },
+        infoAlignment: 'right',
       };
 
       render(<ProductViewer values={values} {...rest} />);
@@ -216,6 +221,7 @@ describe(ProductViewer.name, () => {
       expect(infoSpan.style.color).toEqual('rgb(51, 51, 51)');
       expect(infoSpan.style.fontWeight).toEqual('700');
       expect(infoSpan.style.fontFamily).toEqual('arial');
+      expect(infoSpan.style.textAlign).toEqual('right');
     });
 
     it('should render info with style display none when infoShown is false', async () => {
@@ -238,6 +244,7 @@ describe(ProductViewer.name, () => {
         priceFont: {
           value: 'arial',
         },
+        priceAlignment: 'left',
       };
 
       render(<ProductViewer values={values} {...rest} />);
@@ -246,6 +253,7 @@ describe(ProductViewer.name, () => {
       expect(priceSpan.style.color).toEqual('rgb(51, 51, 51)');
       expect(priceSpan.style.fontWeight).toEqual('700');
       expect(priceSpan.style.fontFamily).toEqual('arial');
+      expect(priceSpan.style.textAlign).toEqual('left');
     });
 
     it('should render prices span with style display none when priceShown is false', async () => {

@@ -55,6 +55,7 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
 
   const titleStyle = {
     display: values.titleShown ? 'block' : 'none',
+    textAlign: values.titleAlignment || 'inherit',
     fontSize: values.titleFontSize || '24px',
     fontFamily: values.titleFont?.value || 'inherit',
     fontWeight: values.titleFontWeight,
@@ -63,6 +64,7 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
 
   const infoStyle = {
     display: values.infoShown ? 'block' : 'none',
+    textAlign: values.infoAlignment || 'inherit',
     fontSize: values.infoFontSize || '16px',
     fontFamily: values.infoFont?.value || 'inherit',
     fontWeight: values.infoFontWeight,
@@ -72,6 +74,7 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
 
   const quantityStyle = {
     display: values.quantityShown ? 'block' : 'none',
+    textAlign: values.quantityAlignment || 'inherit',
     fontSize: values.quantityFontSize || '18px',
     fontFamily: values.quantityFont?.value || 'inherit',
     fontWeight: values.quantityFontWeight,
@@ -81,6 +84,7 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
 
   const pricesStyle = {
     display: values.priceShown ? 'block' : 'none',
+    textAlign: values.priceAlignment || 'inherit',
     fontFamily: values.priceFont?.value || 'inherit',
     fontWeight: values.priceFontWeight,
     fontSize: values.priceFontSize,

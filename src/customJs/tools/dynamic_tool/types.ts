@@ -1,4 +1,5 @@
 import {
+  Alignment,
   AutoWidth,
   Border,
   BorderRadius,
@@ -52,6 +53,7 @@ export type ProductBase = Readonly<{
   };
   title: {
     titleShown: boolean;
+    titleAlignment: Alignment;
     titleFont: FontFamily;
     titleFontWeight: FontWeight;
     titleFontSize: PixelSize;
@@ -59,6 +61,7 @@ export type ProductBase = Readonly<{
   };
   info: {
     infoShown: boolean;
+    infoAlignment: Alignment;
     infoFont: FontFamily;
     infoFontWeight: FontWeight;
     infoFontSize: PixelSize;
@@ -66,6 +69,7 @@ export type ProductBase = Readonly<{
   };
   quantity: {
     quantityShown: boolean;
+    quantityAlignment: Alignment;
     quantityFont: FontFamily;
     quantityFontWeight: FontWeight;
     quantityFontSize: PixelSize;
@@ -73,6 +77,7 @@ export type ProductBase = Readonly<{
   };
   price: {
     priceShown: boolean;
+    priceAlignment: Alignment;
     priceFont: FontFamily;
     priceFontWeight: FontWeight;
     priceFontSize: PixelSize;
