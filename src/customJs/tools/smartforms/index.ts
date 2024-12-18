@@ -61,24 +61,7 @@ export const getSmartFormToolDefinition: () =>
             },
 
             label: $t('_dp.smart_forms.field.label'),
-            defaultValue: [
-              {
-                name: 'email',
-                type: 'email',
-                label: 'Email',
-                placeholder_text: `${$t('_dp.smart_forms.field.placeholder.enter')} email`,
-                show_label: !0,
-                required: !0,
-              },
-              {
-                name: 'name',
-                type: 'text',
-                label: 'Nombre',
-                placeholder_text: `${$t('_dp.smart_forms.field.placeholder.enter')} nombre`,
-                show_label: !0,
-                required: !0,
-              },
-            ],
+            defaultValue: [],
             widget: 'fields',
           },
           fieldBorder: borderProperty({
