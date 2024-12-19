@@ -21,7 +21,7 @@
     "dotenv": "16.4.7",
     "dotenv-flow-webpack": "2.0.0",
     "eclint": "2.8.1",
-    "eslint": "8.57.1",
+    "eslint": "9.17.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-jest": "28.9.0",
     "eslint-plugin-prettier": "5.2.1",
@@ -84,7 +84,7 @@
     "fix-format": "yarn prettier-fix && yarn eclint-fix",
     "eclint-fix": "eclint fix",
     "eclint-check": "eclint check",
-    "eslint-check": "eslint --ext .ts --ext .tsx .",
+    "eslint-check": "eslint . --ext .ts --ext .tsx",
     "prettier-fix": "prettier --write \"**/**\"",
     "prettier-check": "prettier --check \"**/**\""
   },
