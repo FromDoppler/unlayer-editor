@@ -124,7 +124,7 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
       case 'number':
       case 'date':
       case 'hidden':
-        return `<input type= "text"' ${field.required ? 'required' : ''}
+        return `<input type= "${field.type}"' ${field.required ? 'required' : ''}
           name="${field.name}"
           id= "dp_sf_${field.name}"
           placeholder="${field.placeholder_text}"
