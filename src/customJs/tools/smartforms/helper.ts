@@ -25,8 +25,12 @@ export const congratsBehaviorListProperty: () => UnlayerProperty<SmartFormAction
   () =>
     dropdownProperty({
       label: $t('_dp.smart_forms.behavior.action.label'),
-      defaultValue: 'message',
+      defaultValue: 'close',
       options: [
+        {
+          label: $t('_dp.smart_forms.behavior.action.option_2'),
+          value: 'close',
+        },
         {
           label: $t('_dp.smart_forms.behavior.action.option_0'),
           value: 'message',
