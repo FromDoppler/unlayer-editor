@@ -47,7 +47,7 @@ const userData = (window as any)['user-data'] || {
   subscriptionList: [],
   fields: [],
 };
-
+console.log(userData);
 const emptySubscriptionList = [
   { label: '_dp.smart_forms.action.label', value: '-1' },
 ];
