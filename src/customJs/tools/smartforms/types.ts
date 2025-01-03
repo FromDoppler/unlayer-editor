@@ -14,7 +14,7 @@ import {
 
 export type ListOption = { value: string; label: string };
 
-export type SmartFormAction = 'message' | 'url';
+export type SmartFormAction = 'message' | 'url' | 'close';
 
 export type CustomField = {
   predefined: boolean;

@@ -109,6 +109,7 @@ export const messages_es = {
   '_dp.smart_forms.behavior.action.label': `Acción al finalizar el formulario`,
   '_dp.smart_forms.behavior.action.option_0': `Mostrar mensaje de agradecimiento`,
   '_dp.smart_forms.behavior.action.option_1': `Redireccionar a pagina web`,
+  '_dp.smart_forms.behavior.action.option_2': `Cerrar Popup`,
   '_dp.smart_forms.behavior.congratsUrl.label': `Abrir nueva pestaña`,
   '_dp.smart_forms.behavior.label': `Campos a visualizar por impresion`,
   '_dp.smart_forms.behavior.message': `Mensaje que visualizará el usuario al completar el formulario`,
