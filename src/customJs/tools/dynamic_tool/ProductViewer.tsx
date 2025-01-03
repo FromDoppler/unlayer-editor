@@ -51,6 +51,8 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
     objectFit: 'contain',
     height: 'auto',
     padding: '5px',
+    minHeight: isRecommended ? '150px' : '50px',
+    maxHeight: isRecommended ? '150px' : '100%',
   } as const;
 
   const titleStyle = {
@@ -60,6 +62,8 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
     fontFamily: values.titleFont?.value || 'inherit',
     fontWeight: values.titleFontWeight,
     color: values.titleColor,
+    height: isRecommended ? '50px' : '100%',
+    overflow: isRecommended ? 'hidden' : 'visible',
   };
 
   const infoStyle = {
