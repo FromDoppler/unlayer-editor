@@ -199,6 +199,13 @@ const App: React.FC = () => {
                 "type": "country",
                 "sample": "COUNTRY",
                 "required": false,
+                "allowedValues": [
+                  "AR|Argentina",
+                  "US|United States",
+                  "BR|Brazil",
+                  "MX|Mexico",
+                  "CL|Chile",
+                ],
                 "_links": []
             }
             ],
