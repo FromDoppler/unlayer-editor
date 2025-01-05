@@ -70,10 +70,10 @@ const getFieldCompatibleType = (type: CustomField['type']): string => {
     case 'email':
       return type;
     case 'string':
-    case 'country':
       return 'text';
     case 'phone':
       return 'tel';
+    case 'country':
     case 'select':
     case 'radio':
     case 'gender':

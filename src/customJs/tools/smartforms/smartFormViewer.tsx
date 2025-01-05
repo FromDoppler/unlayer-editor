@@ -34,7 +34,7 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
     return list.reduce((options, option) => {
       const optVal = option.split('|');
       return options.concat(
-        `<option value="${optVal[1] || optVal[0]}">${optVal[0]}</option>`,
+        `<option value="${optVal[0]}">${optVal[1] || optVal[0]}</option>`,
       );
     }, '');
   };
