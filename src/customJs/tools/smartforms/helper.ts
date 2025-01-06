@@ -70,10 +70,10 @@ const getFieldCompatibleType = (type: CustomField['type']): string => {
     case 'email':
       return type;
     case 'string':
-    case 'country':
       return 'text';
     case 'phone':
       return 'tel';
+    case 'country':
     case 'select':
     case 'radio':
     case 'gender':
@@ -93,13 +93,19 @@ const optionToString = (options: string[] | undefined) => {
     ?.slice(0, -1);
 };
 
-export const availableFields = userData.fields?.map((field: CustomField) => {
-  return {
-    name: field.name,
-    type: getFieldCompatibleType(field.type),
-    label: field.name,
-    required: field.required,
-    show_label: true,
-    options: optionToString(field.allowedValues),
-  };
-});
+const fieldFilter = (field: CustomField) => {
+  return field.name !== 'EMAIL';
+};
+
+export const availableFields = userData.fields
+  ?.filter(fieldFilter)
+  .map((field: CustomField) => {
+    return {
+      name: field.name,
+      type: getFieldCompatibleType(field.type),
+      label: field.name,
+      required: field.required,
+      show_label: true,
+      options: optionToString(field.allowedValues),
+    };
+  });
