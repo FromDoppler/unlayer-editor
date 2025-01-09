@@ -257,9 +257,9 @@ export const getSmartFormToolDefinition: () =>
           id: 'SMART_FORM_CONGRATS_URL_INVALID_ERROR',
           icon: `${ASSETS_BASE_URL}/form1.svg`,
           severity: 'ERROR',
-          title: $t('tabs.audit.rules.smart_form.congrats_url_valid.title'),
+          title: $t('tabs.audit.rules.smart_form.congrats_url_invalid.title'),
           description: $t(
-            'tabs.audit.rules.smart_form.congrats_url_valid.description',
+            'tabs.audit.rules.smart_form.congrats_url_invalid.description',
           ),
         });
       }
