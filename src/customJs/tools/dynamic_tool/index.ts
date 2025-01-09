@@ -79,6 +79,11 @@ export const getDynamicToolDefinition: (
           defaultValue: DEFAULT_FONT_SIZE,
         }),
         titleColor: colorProperty(),
+        titleMargin: {
+          label: 'Margin',
+          defaultValue: '0px',
+          widget: 'margin',
+        },
       },
     },
     info: {
@@ -94,6 +99,11 @@ export const getDynamicToolDefinition: (
           defaultValue: '16px',
         }),
         infoColor: colorProperty(),
+        infoMargin: {
+          label: 'Margin',
+          defaultValue: '15px 0px 0px',
+          widget: 'margin',
+        },
       },
     },
     quantity: {
@@ -108,6 +118,11 @@ export const getDynamicToolDefinition: (
           defaultValue: '18px',
         }),
         quantityColor: colorProperty(),
+        quantityMargin: {
+          label: 'Margin',
+          defaultValue: '15px 0px 0px',
+          widget: 'margin',
+        },
       },
     },
     price: {
@@ -125,6 +140,11 @@ export const getDynamicToolDefinition: (
           label: $t('editor.text_color.label'),
           defaultValue: DEFAULT_GREEN_COLOR,
         }),
+        priceMargin: {
+          label: 'Margin',
+          defaultValue: '15px 0px 0px',
+          widget: 'margin',
+        },
       },
     },
     button: {

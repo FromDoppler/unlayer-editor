@@ -73,7 +73,7 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
     fontFamily: values.infoFont?.value || 'inherit',
     fontWeight: values.infoFontWeight,
     color: values.infoColor,
-    marginTop: '15px',
+    margin: values.infoMargin,
   };
 
   const quantityStyle = {
@@ -83,7 +83,7 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
     fontFamily: values.quantityFont?.value || 'inherit',
     fontWeight: values.quantityFontWeight,
     color: values.quantityColor,
-    marginTop: '15px',
+    margin: values.quantityMargin,
   };
 
   const pricesStyle = {
@@ -92,7 +92,7 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
     fontFamily: values.priceFont?.value || 'inherit',
     fontWeight: values.priceFontWeight,
     fontSize: values.priceFontSize,
-    marginTop: '15px',
+    margin: values.priceMargin,
     color: values.priceColor,
   } as const;
 

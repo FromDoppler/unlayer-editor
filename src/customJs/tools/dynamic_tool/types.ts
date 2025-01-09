@@ -58,6 +58,7 @@ export type ProductBase = Readonly<{
     titleFontWeight: FontWeight;
     titleFontSize: PixelSize;
     titleColor: Color;
+    titleMargin: Margin;
   };
   info: {
     infoShown: boolean;
@@ -66,6 +67,7 @@ export type ProductBase = Readonly<{
     infoFontWeight: FontWeight;
     infoFontSize: PixelSize;
     infoColor: Color;
+    infoMargin: Margin;
   };
   quantity: {
     quantityShown: boolean;
@@ -74,6 +76,7 @@ export type ProductBase = Readonly<{
     quantityFontWeight: FontWeight;
     quantityFontSize: PixelSize;
     quantityColor: Color;
+    quantityMargin: Margin;
   };
   price: {
     priceShown: boolean;
@@ -82,6 +85,7 @@ export type ProductBase = Readonly<{
     priceFontWeight: FontWeight;
     priceFontSize: PixelSize;
     priceColor: Color;
+    priceMargin: Margin;
   };
   button: {
     buttonShown: boolean;
