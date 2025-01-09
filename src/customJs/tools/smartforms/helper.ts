@@ -56,6 +56,7 @@ const subscriptionList = userData.subscriptionList?.map(mapListOption) || [];
 export const SubscriptionListProperty: () => UnlayerProperty<string> = () =>
   dropdownProperty({
     label: $t('_dp.smart_forms.action.label'),
+    defaultValue: '',
     options:
       subscriptionList.length > 0
         ? subscriptionList
