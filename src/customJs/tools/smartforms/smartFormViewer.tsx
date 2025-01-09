@@ -96,6 +96,7 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
     overflow: 'hidden',
     cursor: 'pointer',
     textDecoration: 'none',
+    fontWeight: values.buttonFontWeight,
     padding: values.buttonPadding,
     margin: values.buttonMargin,
     fontSize: values.buttonFontSize,

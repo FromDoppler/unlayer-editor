@@ -10,6 +10,7 @@ import {
   borderRadiusProperty,
   colorProperty,
   fontSizeProperty,
+  fontWeightProperty,
   richTextProperty,
 } from '../../properties/helpers';
 import {
@@ -156,6 +157,10 @@ export const getSmartFormToolDefinition: () =>
             hidden: !0,
           }),
           buttonAlign: alignmentProperty({
+            hidden: !0,
+          }),
+          buttonFontWeight: fontWeightProperty({
+            defaultValue: 700,
             hidden: !0,
           }),
           buttonWidth: {
