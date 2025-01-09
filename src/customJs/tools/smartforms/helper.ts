@@ -56,6 +56,7 @@ const subscriptionList = userData.subscriptionList?.map(mapListOption) || [];
 export const SubscriptionListProperty: () => UnlayerProperty<string> = () =>
   dropdownProperty({
     label: $t('_dp.smart_forms.action.label'),
+    defaultValue: '',
     options:
       subscriptionList.length > 0
         ? subscriptionList
@@ -109,3 +110,11 @@ export const availableFields = userData.fields
       options: optionToString(field.allowedValues),
     };
   });
+
+export const isValidUrl = (url: string) => {
+  /* eslint-disable no-useless-escape */
+  const URL_VALID_REGEX = new RegExp(
+    /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{0,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/g,
+  );
+  return URL_VALID_REGEX.test(url);
+};

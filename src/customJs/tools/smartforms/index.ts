@@ -17,6 +17,7 @@ import {
   congratsBehaviorListProperty,
   SubscriptionListProperty,
   availableFields,
+  isValidUrl,
 } from './helper';
 import { urlProperty } from '../../properties/url';
 
@@ -207,5 +208,62 @@ export const getSmartFormToolDefinition: () =>
         enabled: values.congratBehavior === 'message',
       },
     }),
+    validator: ({ defaultErrors, values }) => {
+      if (values.list === '') {
+        defaultErrors.push({
+          id: 'SMART_FORM_TARGET_LIST_REQUIRED_ERROR',
+          icon: `${ASSETS_BASE_URL}/form1.svg`,
+          severity: 'ERROR',
+          title: $t(
+            'tabs.audit.rules.smart_form.subscription_list_undefined.title',
+          ),
+          description: $t(
+            'tabs.audit.rules.smart_form.subscription_list_undefined.description',
+          ),
+        });
+      }
+
+      if (
+        values.congratBehavior === 'message' &&
+        values.descriptionHtml === ''
+      ) {
+        defaultErrors.push({
+          id: 'SMART_FORM_CONGRATS_MESSAGE_REQUIRED_ERROR',
+          icon: `${ASSETS_BASE_URL}/form1.svg`,
+          severity: 'ERROR',
+          title: $t(
+            'tabs.audit.rules.smart_form.congrats_message_undefined.title',
+          ),
+          description: $t(
+            'tabs.audit.rules.smart_form.congrats_message_undefined.description',
+          ),
+        });
+      } else if (values.congratBehavior === 'url' && !values.congratUrl) {
+        defaultErrors.push({
+          id: 'SMART_FORM_CONGRATS_URL_REQUIRED_ERROR',
+          icon: `${ASSETS_BASE_URL}/form1.svg`,
+          severity: 'ERROR',
+          title: $t('tabs.audit.rules.smart_form.congrats_url_undefined.title'),
+          description: $t(
+            'tabs.audit.rules.smart_form.congrats_url_undefined.description',
+          ),
+        });
+      } else if (
+        values.congratBehavior === 'url' &&
+        values.congratUrl &&
+        !isValidUrl(values.congratUrl)
+      ) {
+        defaultErrors.push({
+          id: 'SMART_FORM_CONGRATS_URL_INVALID_ERROR',
+          icon: `${ASSETS_BASE_URL}/form1.svg`,
+          severity: 'ERROR',
+          title: $t('tabs.audit.rules.smart_form.congrats_url_invalid.title'),
+          description: $t(
+            'tabs.audit.rules.smart_form.congrats_url_invalid.description',
+          ),
+        });
+      }
+      return defaultErrors;
+    },
   };
 };

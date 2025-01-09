@@ -54,6 +54,7 @@ const App: React.FC = () => {
     },
     version: 'latest',
     features: {
+      audit: true,
       preheaderText: false,
       textEditor: {
         inlineFontControls: true, // enabled for see rich_text compoenent full style
