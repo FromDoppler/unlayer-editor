@@ -5,6 +5,7 @@ import {
   Border,
   BorderRadius,
   Color,
+  FontWeight,
   Margin,
   Padding,
   PixelSize,
@@ -87,6 +88,7 @@ export type SmartFormBase = {
     buttonText: string;
     buttonBackgroundColor: Color;
     buttonColor: Color;
+    buttonFontWeight: FontWeight;
     buttonAlign: Alignment;
     buttonWidth: AutoWidth;
     buttonFontSize: PixelSize;
