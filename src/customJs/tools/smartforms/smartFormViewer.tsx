@@ -144,13 +144,12 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
       case 'checkbox':
         return getCheboxList(field);
       case 'textarea':
-        return `<textarea type= "text"' ${field.required ? 'required' : ''}
+        return `<textarea ${field.required ? 'required' : ''}
         name="${field.name}"
-        id= "dp_sf_${field.name}"
+        id="dp_sf_${field.name}"
         placeholder="${field.placeholder_text}"
         class="v-field-font-size-font-size"
-        style="${inputStyle}>"
-        </textarea>`;
+        style="${inputStyle}"></textarea>`;
       default:
         return '';
     }
