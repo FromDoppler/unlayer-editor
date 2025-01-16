@@ -55,15 +55,18 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
     maxHeight: isRecommended ? '150px' : '100%',
   } as const;
 
+  const titlRecommendedStyle = isRecommended
+    ? { height: '50px', overflow: 'hidden' }
+    : {};
+
   const titleStyle = {
+    ...titlRecommendedStyle,
     display: values.titleShown ? 'block' : 'none',
     textAlign: values.titleAlignment || 'inherit',
     fontSize: values.titleFontSize || '24px',
     fontFamily: values.titleFont?.value || 'inherit',
     fontWeight: values.titleFontWeight,
     color: values.titleColor,
-    height: isRecommended ? '50px' : '100%',
-    overflow: isRecommended ? 'hidden' : 'visible',
   };
 
   const infoStyle = {
