@@ -63,7 +63,19 @@ export const getSmartFormToolDefinition: () =>
             },
 
             label: $t('_dp.smart_forms.field.label'),
-            defaultValue: [],
+            defaultValue: [
+              {
+                name: 'EMAIL',
+                meta_data: {
+                  name: 'EMAIL',
+                },
+                type: 'email',
+                label: 'Email',
+                placeholder_text: `${$t('_dp.smart_forms.field.placeholder.enter')} email`,
+                show_label: true,
+                required: true,
+              },
+            ],
             widget: 'fields',
           },
           fieldBorder: borderProperty({
@@ -215,8 +227,14 @@ export const getSmartFormToolDefinition: () =>
     }),
 
     transformer: (values, source) => {
-      const { name } = source;
+      const { name, value } = source;
       if (name === 'fields') {
+        const emailIndex = value.findIndex(({ name }) => name === 'EMAIL');
+        if (emailIndex > 0) {
+          const emailField = value[emailIndex];
+          value.splice(emailIndex, 1);
+          value.splice(0, 0, emailField);
+        }
         addEventListener('click', getClick, true);
       }
       return values;
