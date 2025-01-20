@@ -1,7 +1,7 @@
 import { $t } from '../../localization';
 import { SmartFormViewer } from './smartFormViewer';
 import { ReactToolDefinitionFrom } from '../../types';
-import { SmartFormBase, SmartFormValues } from './types';
+import { SmartFormBase, SmartFormValues, UnlayerField } from './types';
 import { ASSETS_BASE_URL } from '../../constants';
 import {
   alignmentProperty,
@@ -63,7 +63,19 @@ export const getSmartFormToolDefinition: () =>
             },
 
             label: $t('_dp.smart_forms.field.label'),
-            defaultValue: [],
+            defaultValue: [
+              {
+                name: 'EMAIL',
+                meta_data: {
+                  name: 'EMAIL',
+                },
+                type: 'email',
+                label: 'Email',
+                placeholder_text: `${$t('_dp.smart_forms.field.placeholder.enter')} email`,
+                show_label: true,
+                required: true,
+              },
+            ],
             widget: 'fields',
           },
           fieldBorder: borderProperty({
@@ -213,6 +225,20 @@ export const getSmartFormToolDefinition: () =>
         enabled: values.congratBehavior === 'message',
       },
     }),
+
+    transformer: (values, source) => {
+      const { name, value } = source;
+      if (name === 'fields') {
+        const emailIndex = value.findIndex(({ name }) => name === 'EMAIL');
+        if (emailIndex > 0) {
+          const emailField = value[emailIndex];
+          value.splice(emailIndex, 1);
+          value.splice(0, 0, emailField);
+        }
+        addEventListener('click', getClick, true);
+      }
+      return values;
+    },
     validator: ({ defaultErrors, values }) => {
       if (values.list === '') {
         defaultErrors.push({
@@ -271,4 +297,39 @@ export const getSmartFormToolDefinition: () =>
       return defaultErrors;
     },
   };
+};
+
+/* Note: temporal function for manipulating UNLAYER field edit modal */
+const getClick = (event: any) => {
+  if (event.target.className == 'col-12') {
+    const modalBody = document.querySelectorAll(
+      '.blockbuilder-fields-widget-modal > div > div ',
+    )[1];
+    if (!modalBody) {
+      return;
+    }
+    const modalfooter = document.querySelectorAll(
+      '.blockbuilder-fields-widget-modal > div > div ',
+    )[2];
+    const forms = modalBody.getElementsByTagName('form');
+    const inputs = modalBody.getElementsByTagName('input');
+    const inputName = inputs[0].value;
+    const currentField = availableFields.find((field: UnlayerField) => {
+      return field.name == inputName;
+    });
+
+    //disabled change type update
+    const buttonType = modalBody.getElementsByTagName('button')[0];
+    buttonType['disabled'] = currentField.type !== 'text';
+
+    //disabled dropdown values update
+    const inputOption = modalBody.getElementsByTagName('textarea')[0];
+    if (inputOption) inputOption['disabled'] = currentField.type !== 'text';
+
+    const buttonEliminate = modalfooter.getElementsByTagName('button')[1];
+    buttonEliminate['disabled'] = inputName === 'EMAIL';
+
+    //remove name fieldset
+    forms[0].remove();
+  }
 };
