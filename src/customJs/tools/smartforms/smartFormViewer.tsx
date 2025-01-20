@@ -1,7 +1,6 @@
 import { React } from '../../unlayer-react';
 import { ViewerComponent } from '../../types';
 import { UnlayerField } from './types';
-import { $t } from '../../localization';
 
 export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
   const formSectionStyle = {
@@ -105,20 +104,6 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
     backgroundColor: values.buttonBackgroundColor,
   } as const;
 
-  const fields = [
-    {
-      name: 'EMAIL',
-      meta_data: {
-        name: 'EMAIL',
-      },
-      type: 'email',
-      label: 'Email',
-      placeholder_text: `${$t('_dp.smart_forms.field.placeholder.enter')} email`,
-      show_label: true,
-      required: true,
-    },
-  ].concat(values.fields || []);
-
   const renderSwitch = (field: UnlayerField) => {
     switch (field.type) {
       case 'text':
@@ -173,7 +158,7 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
           data-action-on-finish-url={congratUrlEncode}
         >
           <div color="#000">
-            {fields.map((field) => (
+            {values.fields.map((field) => (
               <div
                 style={fieldContentStyle}
                 key={field.name}
