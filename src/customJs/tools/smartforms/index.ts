@@ -215,8 +215,14 @@ export const getSmartFormToolDefinition: () =>
     }),
 
     transformer: (values, source) => {
-      const { name } = source;
+      const { name, value } = source;
       if (name === 'fields') {
+        const emailIndex = value.findIndex(({ name }) => name === 'EMAIL');
+        if (emailIndex > 0) {
+          const emailField = value[emailIndex];
+          value.splice(emailIndex, 1);
+          value.splice(0, 0, emailField);
+        }
         addEventListener('click', getClick, true);
       }
       return values;
