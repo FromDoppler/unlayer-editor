@@ -94,20 +94,19 @@ const optionToString = (options: string[] | undefined) => {
     ?.slice(0, -1);
 };
 
-export const availableFields = userData.fields
-  ?.map((field: CustomField) => {
-    return {
-      meta_data: {
-        ...field,
-      },
-      name: field.name,
-      type: getFieldCompatibleType(field.type),
-      label: field.name,
-      required: field.required,
-      show_label: true,
-      options: optionToString(field.allowedValues),
-    };
-  });
+export const availableFields = userData.fields?.map((field: CustomField) => {
+  return {
+    meta_data: {
+      ...field,
+    },
+    name: field.name,
+    type: getFieldCompatibleType(field.type),
+    label: field.name,
+    required: field.required,
+    show_label: true,
+    options: optionToString(field.allowedValues),
+  };
+});
 
 export const isValidUrl = (url: string) => {
   /* eslint-disable no-useless-escape */
