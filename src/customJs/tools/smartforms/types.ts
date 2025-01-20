@@ -45,6 +45,9 @@ export type SubscriptionList = {
 };
 
 export type UnlayerField = {
+  meta_data: {
+    name: string;
+  };
   name: string;
   type: string;
   label: string;

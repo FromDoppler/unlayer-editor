@@ -102,6 +102,9 @@ export const availableFields = userData.fields
   ?.filter(fieldFilter)
   .map((field: CustomField) => {
     return {
+      meta_data: {
+        ...field,
+      },
       name: field.name,
       type: getFieldCompatibleType(field.type),
       label: field.name,

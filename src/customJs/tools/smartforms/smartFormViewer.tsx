@@ -108,6 +108,9 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
   const fields = [
     {
       name: 'EMAIL',
+      meta_data: {
+        name: 'EMAIL',
+      },
       type: 'email',
       label: 'Email',
       placeholder_text: `${$t('_dp.smart_forms.field.placeholder.enter')} email`,
@@ -126,8 +129,8 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
       case 'date':
       case 'hidden':
         return `<input type= "${field.type}"' ${field.required ? 'required' : ''}
-          name="${field.name}"
-          id= "dp_sf_${field.name}"
+          name="${field.meta_data.name}"
+          id= "dp_sf_${field.meta_data.name}"
           placeholder="${field.placeholder_text}"
           class="v-field-font-size-font-size"
           style="${inputStyle}"
