@@ -94,13 +94,8 @@ const optionToString = (options: string[] | undefined) => {
     ?.slice(0, -1);
 };
 
-const fieldFilter = (field: CustomField) => {
-  return field.name !== 'EMAIL';
-};
-
 export const availableFields = userData.fields
-  ?.filter(fieldFilter)
-  .map((field: CustomField) => {
+  ?.map((field: CustomField) => {
     return {
       meta_data: {
         ...field,
