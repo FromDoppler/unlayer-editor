@@ -32,6 +32,7 @@ export const getSmartFormToolDefinition: () =>
     label: $t('_dp.smart_forms.label'),
     icon: `${ASSETS_BASE_URL}/form1.svg`,
     usageLimit: 1,
+    modalUpdate: addEventListener('click', getClick, true),
     Component: SmartFormViewer,
     options: {
       behavior: {
@@ -235,7 +236,6 @@ export const getSmartFormToolDefinition: () =>
           value.splice(emailIndex, 1);
           value.splice(0, 0, emailField);
         }
-        addEventListener('click', getClick, true);
       }
       return values;
     },
