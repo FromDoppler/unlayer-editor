@@ -94,31 +94,25 @@ const optionToString = (options: string[] | undefined) => {
     ?.slice(0, -1);
 };
 
-const fieldFilter = (field: CustomField) => {
-  return field.name !== 'EMAIL';
-};
-
 const booleanAllowedValues = () => {
   return ['true|Si', 'false|No'] as string[];
 }; // [$t('_dp.smart_forms.dropdown.option_true'),  $t('_dp.smart_forms.dropdown.option_false')];
 
-export const availableFields = userData.fields
-  ?.filter(fieldFilter)
-  .map((field: CustomField) => {
-    return {
-      meta_data: {
-        ...field,
-      },
-      name: field.name,
-      type: getFieldCompatibleType(field.type),
-      label: field.name,
-      required: field.required,
-      show_label: true,
-      options: optionToString(
-        field.type === 'boolean' ? booleanAllowedValues() : field.allowedValues,
-      ),
-    };
-  });
+export const availableFields = userData.fields?.map((field: CustomField) => {
+  return {
+    meta_data: {
+      ...field,
+    },
+    name: field.name,
+    type: getFieldCompatibleType(field.type),
+    label: field.name,
+    required: field.required,
+    show_label: true,
+    options: optionToString(
+      field.type === 'boolean' ? booleanAllowedValues() : field.allowedValues,
+    ),
+  };
+});
 
 export const isValidUrl = (url: string) => {
   /* eslint-disable no-useless-escape */
