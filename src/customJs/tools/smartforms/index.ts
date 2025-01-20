@@ -287,7 +287,12 @@ const getClick = (event: any) => {
     const modalBody = document.querySelectorAll(
       '.blockbuilder-fields-widget-modal > div > div ',
     )[1];
-    //const modalfooter = document.querySelectorAll(".blockbuilder-fields-widget-modal > div > div ")[2];
+    if (!modalBody) {
+      return;
+    }
+    const modalfooter = document.querySelectorAll(
+      '.blockbuilder-fields-widget-modal > div > div ',
+    )[2];
     const forms = modalBody.getElementsByTagName('form');
     const inputs = modalBody.getElementsByTagName('input');
     const inputName = inputs[0].value;
@@ -303,8 +308,8 @@ const getClick = (event: any) => {
     const inputOption = modalBody.getElementsByTagName('textarea')[0];
     if (inputOption) inputOption['disabled'] = currentField.type !== 'text';
 
-    //const buttonEliminate = modalfooter.getElementsByTagName("button")[1];
-    //buttonEliminate['disabled'] = true;
+    const buttonEliminate = modalfooter.getElementsByTagName('button')[1];
+    buttonEliminate['disabled'] = inputName === 'EMAIL';
 
     //remove name fieldset
     forms[0].remove();
