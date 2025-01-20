@@ -98,6 +98,10 @@ const fieldFilter = (field: CustomField) => {
   return field.name !== 'EMAIL';
 };
 
+const booleanAllowedValues = () => {
+  return ['true|Si', 'false|No'] as string[];
+}; // [$t('_dp.smart_forms.dropdown.option_true'),  $t('_dp.smart_forms.dropdown.option_false')];
+
 export const availableFields = userData.fields
   ?.filter(fieldFilter)
   .map((field: CustomField) => {
@@ -110,7 +114,9 @@ export const availableFields = userData.fields
       label: field.name,
       required: field.required,
       show_label: true,
-      options: optionToString(field.allowedValues),
+      options: optionToString(
+        field.type === 'boolean' ? booleanAllowedValues() : field.allowedValues,
+      ),
     };
   });
 

@@ -115,6 +115,8 @@ export const messages_es = {
   '_dp.smart_forms.behavior.message': `Mensaje que visualizará el usuario al completar el formulario`,
   '_dp.smart_forms.behavior.option_0': `Todos`,
   '_dp.smart_forms.behavior.title': `Comportamiento de formulario`,
+  '_dp.smart_forms.dropdown.option_false': `No`,
+  '_dp.smart_forms.dropdown.option_true': `Si`,
   '_dp.smart_forms.field.label': `Agregar campo`,
   '_dp.smart_forms.field.placeholder.enter': `Ingrese`,
   '_dp.smart_forms.field.title': `Administración de campos`,

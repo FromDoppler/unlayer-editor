@@ -115,6 +115,8 @@ export const messages_en: IntlMessages = {
   '_dp.smart_forms.behavior.message': `The message that the user sees when the form is completed `,
   '_dp.smart_forms.behavior.option_0': `All`,
   '_dp.smart_forms.behavior.title': `Form behavior`,
+  '_dp.smart_forms.dropdown.option_false': `No`,
+  '_dp.smart_forms.dropdown.option_true': `Yes`,
   '_dp.smart_forms.field.label': `Add field`,
   '_dp.smart_forms.field.placeholder.enter': `Enter`,
   '_dp.smart_forms.field.title': `Fiels manager`,
