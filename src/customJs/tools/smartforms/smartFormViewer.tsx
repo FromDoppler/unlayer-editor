@@ -55,8 +55,8 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
         return options.concat(
           `<label style="${labelStyle}">
             <input type="checkbox"
-              id= "dp_sf_${field.name}"
-              name="${field.name}"
+              id= "dp_sf_${field.meta_data.name}"
+              name="${field.meta_data.name}"
               value="${optVal[1] || optVal[0]}"
               style="${inputStyle}">
               <span style="vertical-align: middle;">${optVal[0]}</span>
@@ -132,8 +132,8 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
             </label>`;
         }
         return `<select ${field.required ? 'required' : ''}
-            name="${field.name}"
-            id= "dp_sf_${field.name}"
+            name="${field.meta_data.name}"
+            id= "dp_sf_${field.meta_data.name}"
             placeholder="${field.placeholder_text}"
             class="v-field-font-size-font-size"
             style="${inputStyle}">
@@ -143,8 +143,8 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
         return getCheboxList(field);
       case 'textarea':
         return `<textarea ${field.required ? 'required' : ''}
-        name="${field.name}"
-        id="dp_sf_${field.name}"
+        name="${field.meta_data.name}"
+        id="dp_sf_${field.meta_data.name}"
         placeholder="${field.placeholder_text}"
         class="v-field-font-size-font-size"
         style="${inputStyle}"></textarea>`;
@@ -171,8 +171,8 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
             {values.fields.map((field) => (
               <div
                 style={fieldContentStyle}
-                key={field.name}
-                id={'fieldset_'.concat(field.name)}
+                key={field.meta_data.name}
+                id={`fieldset_${field.meta_data.name}`}
               >
                 <div style={labelStyle}>
                   <label>
