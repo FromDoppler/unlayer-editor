@@ -376,6 +376,7 @@ describe(ProductViewer.name, () => {
     it('should render buy button with link dynamic url product', async () => {
       const values = {
         buttonShown: true,
+        buttonTarget: '_blank',
         buttonText: 'Comprar',
       };
       /* NOTE: html add http://localhost/ when the link is a string */
@@ -383,6 +384,18 @@ describe(ProductViewer.name, () => {
       const button = screen.getByText('Comprar');
       expect(button.href).toEqual('http://localhost/[[[DC:URL]]]');
       expect(button.target).toEqual('_blank');
+    });
+
+    it('should render buy button with target at the same tab', async () => {
+      const values = {
+        buttonShown: true,
+        buttonText: 'Comprar',
+        buttonTarget: '_self',
+      };
+      /* NOTE: html add http://localhost/ when the link is a string */
+      render(<ProductViewer values={values} {...rest} />);
+      const button = screen.getByText('Comprar');
+      expect(button.target).toEqual('_self');
     });
 
     it('should render image with style width 100% when autoWidth is true', async () => {

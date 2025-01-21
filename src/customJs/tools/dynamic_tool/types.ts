@@ -31,6 +31,7 @@ export type OptionTool =
   | 'quantity'
   | 'price'
   | 'button';
+export type LinkTarget = '_self' | '_blank';
 
 export type ProductBase = Readonly<{
   product: {
@@ -89,6 +90,7 @@ export type ProductBase = Readonly<{
   };
   button: {
     buttonShown: boolean;
+    buttonTarget: LinkTarget;
     buttonText: string;
     buttonFont: FontFamily;
     buttonFontWeight: FontWeight;
