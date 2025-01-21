@@ -150,6 +150,7 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
     },
     button: {
       value: values.buttonText,
+      target: values.buttonTarget || '_blank',
       href: '[[[DC:URL]]]',
       style: buttonStyle,
     },
@@ -174,7 +175,7 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
             <a
               role="link"
               href={productToolElement.button.href}
-              target="_blank"
+              target={productToolElement.button.target}
               rel="noreferrer"
             >
               <img
@@ -204,7 +205,7 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({
               style={productToolElement.button.style}
               role="link"
               href={productToolElement.button.href}
-              target="_blank"
+              target={productToolElement.button.target}
               rel="noreferrer"
             >
               {productToolElement.button.value}

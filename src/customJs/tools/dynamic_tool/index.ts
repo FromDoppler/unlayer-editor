@@ -21,6 +21,7 @@ import {
   recommendedStructureProperty,
   productLayoutProperty,
   atributesByToolType,
+  linkTargettProperty,
 } from './propertyHelper';
 
 const DEFAULT_GREEN_COLOR = '#64BF91';
@@ -151,6 +152,7 @@ export const getDynamicToolDefinition: (
       title: $t('_dp.product_button'),
       options: {
         buttonShown: toggleShowProperty(),
+        buttonTarget: linkTargettProperty(),
         buttonText: textProperty({
           label: $t('_dp.product_button_text'),
           defaultValue: $t('_dp.product_button_default_value'),

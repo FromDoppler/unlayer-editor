@@ -9,6 +9,7 @@ import {
   RecommendedStructure,
   RecommendedType,
   OptionTool,
+  LinkTarget,
 } from './types';
 
 const { bestSellingEnabled, crossSellingEnabled, newProductsEnabled } =
@@ -21,6 +22,16 @@ export const productLayoutProperty: () => UnlayerProperty<ProductLayout> = () =>
     options: [
       { label: $t('_dp.layout_00_horizontal'), value: '00_horizontal' },
       { label: $t('_dp.layout_01_vertical'), value: '01_vertical' },
+    ],
+  } as const);
+
+export const linkTargettProperty: () => UnlayerProperty<LinkTarget> = () =>
+  dropdownProperty({
+    label: $t('editor.link.target'),
+    defaultValue: '_blank',
+    options: [
+      { label: $t('editor.link.new_tab'), value: '_blank' },
+      { label: $t('editor.link.same_tab'), value: '_self' },
     ],
   } as const);
 
