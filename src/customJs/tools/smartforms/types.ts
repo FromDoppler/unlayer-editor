@@ -47,6 +47,7 @@ export type SubscriptionList = {
 export type UnlayerField = {
   meta_data: {
     name: string;
+    type: CustomField['type'];
   };
   name: string;
   type: string;

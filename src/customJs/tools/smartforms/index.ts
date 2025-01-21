@@ -69,6 +69,7 @@ export const getSmartFormToolDefinition: () =>
                 name: 'EMAIL',
                 meta_data: {
                   name: 'EMAIL',
+                  type: 'email',
                 },
                 type: 'email',
                 label: 'Email',

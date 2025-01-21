@@ -121,6 +121,16 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
           style="${inputStyle}"
           />`;
       case 'dropdown':
+        if (
+          field.meta_data.type === 'boolean' ||
+          field.meta_data.type === 'permission'
+        ) {
+          return `<style>.slider::before{content:"";position:absolute;height:20px;width:20px;left:4px;bottom:2px;background-color:#fff;border-radius:50%;transition:transform .3s} .toggle-switch input:checked+.slider { background-color:#64bf91!important; } .toggle-switch input:checked+.slider::before{transform:translateX(26px)}</style>
+            <label class="toggle-switch" style="position: relative;display: inline-block; width: 50px; height: 24px;">
+              <input name="${field.meta_data.name}" id="dp_sf_${field.meta_data.name}" type="checkbox" style="opacity:0;width: 0;height:0;"/>
+              <span class="slider" style="position: absolute;cursor: pointer; background-color: #ccc;border-radius: 24px;width: 100%;height: 100%;transition: background-color 0.3s;left: -2px; top:3px;"></span>
+            </label>`;
+        }
         return `<select ${field.required ? 'required' : ''}
             name="${field.name}"
             id= "dp_sf_${field.name}"
