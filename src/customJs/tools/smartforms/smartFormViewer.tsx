@@ -55,9 +55,10 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
         return options.concat(
           `<label style="${labelStyle}">
             <input type="checkbox"
-              id= "dp_sf_${field.name}"
-              name="${field.name}"
+              id= "dp_sf_${field.meta_data.name}"
+              name="${field.meta_data.name}"
               value="${optVal[1] || optVal[0]}"
+              data-type="checkboxlist"
               style="${inputStyle}">
               <span style="vertical-align: middle;">${optVal[0]}</span>
           </label>`,
@@ -121,9 +122,19 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
           style="${inputStyle}"
           />`;
       case 'dropdown':
+        if (
+          field.meta_data.type === 'boolean' ||
+          field.meta_data.type === 'permission'
+        ) {
+          return `<style>.slider::before{content:"";position:absolute;height:20px;width:20px;left:4px;bottom:2px;background-color:#fff;border-radius:50%;transition:transform .3s} .toggle-switch input:checked+.slider { background-color:#64bf91!important; } .toggle-switch input:checked+.slider::before{transform:translateX(26px)}</style>
+            <label class="toggle-switch" style="position: relative;display: inline-block; width: 50px; height: 24px;">
+              <input data-type="toggle" name="${field.meta_data.name}" id="dp_sf_${field.meta_data.name}" type="checkbox" style="opacity:0;width: 0;height:0;"/>
+              <span class="slider" style="position: absolute;cursor: pointer; background-color: #ccc;border-radius: 24px;width: 100%;height: 100%;transition: background-color 0.3s;left: -2px; top:3px;"></span>
+            </label>`;
+        }
         return `<select ${field.required ? 'required' : ''}
-            name="${field.name}"
-            id= "dp_sf_${field.name}"
+            name="${field.meta_data.name}"
+            id= "dp_sf_${field.meta_data.name}"
             placeholder="${field.placeholder_text}"
             class="v-field-font-size-font-size"
             style="${inputStyle}">
@@ -133,8 +144,8 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
         return getCheboxList(field);
       case 'textarea':
         return `<textarea ${field.required ? 'required' : ''}
-        name="${field.name}"
-        id="dp_sf_${field.name}"
+        name="${field.meta_data.name}"
+        id="dp_sf_${field.meta_data.name}"
         placeholder="${field.placeholder_text}"
         class="v-field-font-size-font-size"
         style="${inputStyle}"></textarea>`;
@@ -161,8 +172,8 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
             {values.fields.map((field) => (
               <div
                 style={fieldContentStyle}
-                key={field.name}
-                id={'fieldset_'.concat(field.name)}
+                key={field.meta_data.name}
+                id={`fieldset_${field.meta_data.name}`}
               >
                 <div style={labelStyle}>
                   <label>
