@@ -642,6 +642,8 @@ export const messages_es = {
   'tabs.audit.rules.smart_form.congrats_url_invalid.title': `Ingresa una URL válida`,
   'tabs.audit.rules.smart_form.congrats_url_undefined.description': `Para continuar, debes ingresar una URL a la que serán redireccionados tus clientes al completar el Formulario.`,
   'tabs.audit.rules.smart_form.congrats_url_undefined.title': `Ingresa una URL de destino`,
+  'tabs.audit.rules.smart_form.subscription_list_empty.description': `Para asociar una lista donde se guardarán los datos de tus clientes primero debes crearla desde Menú → Listas → Crear Lista.`,
+  'tabs.audit.rules.smart_form.subscription_list_empty.title': `No tienes ninguna Lista creada`,
   'tabs.audit.rules.smart_form.subscription_list_undefined.description': `Para continuar, debes elegir una Lista donde se guardarán los datos de tus clientes.`,
   'tabs.audit.rules.smart_form.subscription_list_undefined.title': `Selecciona una Lista`,
   'tabs.audit.take_me_to_fix': `Llévame a arreglarlo`,
