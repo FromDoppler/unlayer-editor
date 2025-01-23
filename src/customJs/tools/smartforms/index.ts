@@ -253,6 +253,18 @@ export const getSmartFormToolDefinition: () =>
             'tabs.audit.rules.smart_form.subscription_list_undefined.description',
           ),
         });
+      } else if (values.list === '-1') {
+        defaultErrors.push({
+          id: 'SMART_FORM_TARGET_LIST_REQUIRED_ERROR',
+          icon: `${ASSETS_BASE_URL}/form1.svg`,
+          severity: 'ERROR',
+          title: $t(
+            'tabs.audit.rules.smart_form.subscription_list_empty.title',
+          ),
+          description: $t(
+            'tabs.audit.rules.smart_form.subscription_list_empty.description',
+          ),
+        });
       }
 
       if (

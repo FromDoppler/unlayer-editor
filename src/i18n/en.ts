@@ -642,6 +642,8 @@ export const messages_en: IntlMessages = {
   'tabs.audit.rules.smart_form.congrats_url_invalid.title': `Please enter a valid URL`,
   'tabs.audit.rules.smart_form.congrats_url_undefined.description': `To continue, you must enter a URL to which your customers will be redirected when completing the Form.`,
   'tabs.audit.rules.smart_form.congrats_url_undefined.title': `Enter a destination URL`,
+  'tabs.audit.rules.smart_form.subscription_list_empty.description': `To associate a List where your clients' data will be saved, you must first create it. From main Menu → Lists → Create List.`,
+  'tabs.audit.rules.smart_form.subscription_list_empty.title': `You do not have any List created`,
   'tabs.audit.rules.smart_form.subscription_list_undefined.description': `To continue, you must choose a List where your customer data will be saved.`,
   'tabs.audit.rules.smart_form.subscription_list_undefined.title': `Select a List`,
   'tabs.audit.take_me_to_fix': `Take me to fix`,
