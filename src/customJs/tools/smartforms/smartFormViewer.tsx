@@ -105,11 +105,25 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
     backgroundColor: values.buttonBackgroundColor,
   } as const;
 
+  const inputTelArr = values.fields.filter((field: UnlayerField) => {
+    return field.type === 'tel';
+  });
+
+  const renderInputTel = () => {
+    return `
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.2.1/build/css/intlTelInput.css"></link>
+      <style>
+        #dp_sf .iti { width: 100% }
+        #dp_sf .iti__dropdown-content { width: 300px !important }
+        #dp_sf .iti__country-name { color: black !important }
+      </style>
+    `;
+  };
+
   const renderSwitch = (field: UnlayerField) => {
     switch (field.type) {
       case 'text':
       case 'email':
-      case 'tel':
       case 'password':
       case 'number':
       case 'date':
@@ -117,6 +131,16 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
         return `<input type= "${field.type}"' ${field.required ? 'required' : ''}
           name="${field.meta_data.name}"
           id= "dp_sf_${field.meta_data.name}"
+          placeholder="${field.placeholder_text}"
+          class="v-field-font-size-font-size"
+          style="${inputStyle}"
+          />`;
+      case 'tel':
+        return `<input type= "${field.type}" ${field.required ? ' required' : ''}
+          pattern="\\+[\\d]{1,3} ([\\d]{1} )?[\\d]{3} [\\d]{3}-[\\d]{4}"
+          title="e.g +99 999 999-9999"
+          name="${field.meta_data.name}"
+          id="dp_sf_${field.meta_data.name}"
           placeholder="${field.placeholder_text}"
           class="v-field-font-size-font-size"
           style="${inputStyle}"
@@ -204,6 +228,9 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
           dangerouslySetInnerHTML={{ __html: values.descriptionHtml }}
         />
       </section>
+      {inputTelArr.length > 0 && (
+        <div dangerouslySetInnerHTML={{ __html: renderInputTel() }}></div>
+      )}
     </div>
   );
 };
