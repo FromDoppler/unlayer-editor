@@ -24,10 +24,6 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
     paddingBottom: values.fieldDistance,
   };
 
-  /* TODO:
-  Add option for boolean type or impove with toogle element
-  Improve adding radio button element
-*/
   const getOption = (options: string): string => {
     const list = options.split(/\n/);
     return list.reduce((options, option) => {
