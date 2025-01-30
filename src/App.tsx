@@ -87,6 +87,16 @@ const App: React.FC = () => {
                 "_links": []
             },
             {
+                "name": "mobil",
+                "predefined": false,
+                "private": true,
+                "readonly": false,
+                "type": "phone",
+                "sample": "",
+                "required": false,
+                "_links": []
+            },
+            {
                 "name": "interes",
                 "predefined": false,
                 "private": true,
