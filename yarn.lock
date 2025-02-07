@@ -1991,12 +1991,12 @@
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.3.5.tgz#45f9f87398c5dcea085b715c58ddcf1faf65f716"
   integrity sha512-P4t6saawp+b/dFrUr2cvkVsfvPguwsxtH6dNIYRllMsefqFzkZk5UIjzyDOv5g1dXIPdG4Sp1yCR4Z6RCUsG/Q==
 
-"@types/react-email-editor@1.5.6":
-  version "1.5.6"
-  resolved "https://registry.yarnpkg.com/@types/react-email-editor/-/react-email-editor-1.5.6.tgz#504eb72acf4e0439b21af53d76c43ca6179c9f3b"
-  integrity sha512-JkMg4q8Z2g6L5J+Dbvovnahc7BoMsUzIImHMEUJhbh/coApXn6CiQtA7HdFAzELv3/iUKo3iZ7WHQV2xMz8FVw==
+"@types/react-email-editor@1.7.0":
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@types/react-email-editor/-/react-email-editor-1.7.0.tgz#7887162cc47da6c29611ee486272204dbbed28e9"
+  integrity sha512-27b9gZr9h5yYWISkQVqKV8LQoW4njDjGceIYfYlUHkd7IeAG9bmdusRE4MN0IqlRQR6kyq5qIksEAXtPl1gMEw==
   dependencies:
-    "@types/react" "*"
+    react-email-editor "*"
 
 "@types/react@*", "@types/react@18.3.18":
   version "18.3.18"
@@ -7843,7 +7843,7 @@ react-dom@18.3.1:
     loose-envify "^1.1.0"
     scheduler "^0.23.2"
 
-react-email-editor@1.7.11:
+react-email-editor@*, react-email-editor@1.7.11:
   version "1.7.11"
   resolved "https://registry.yarnpkg.com/react-email-editor/-/react-email-editor-1.7.11.tgz#dc6c908130dd97985d23f5a640b02bc4cb687094"
   integrity sha512-AyoKKtMEPhKdqUxFX1hyJMvEO+E5fzk88uNVGHhK1ymhLpcghYLkz1+pXKLcByjR6LHkfEbrCmoYFG8zyripug==
