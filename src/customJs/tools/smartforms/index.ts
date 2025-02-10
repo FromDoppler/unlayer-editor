@@ -16,11 +16,11 @@ import {
 import {
   behaviorListProperty,
   congratsBehaviorListProperty,
-  SubscriptionListProperty,
   availableFields,
   isValidUrl,
 } from './helper';
 import { urlProperty } from '../../properties/url';
+import { subscriptionListProperty } from '../../properties/subscription_list';
 
 const DEFAULT_GREEN_COLOR = '#64BF91';
 
@@ -51,7 +51,9 @@ export const getSmartFormToolDefinition: () =>
       formAction: {
         title: $t('_dp.smart_forms.action.title'),
         options: {
-          list: SubscriptionListProperty(),
+          list: subscriptionListProperty({
+            defaultValue: '-1',
+          }),
         },
       },
       form_manager: {
