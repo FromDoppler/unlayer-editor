@@ -126,6 +126,7 @@ export const subscriptionListWidget: WidgetComponent<string, void> = ({
                   style={{
                     display: 'flex',
                     width: '100%',
+                    marginTop: '6px',
                     lineHeight: '1.25rem',
                     fontSize: '13px',
                     padding: '0.75rem 1rem',
@@ -188,7 +189,7 @@ export const subscriptionListWidget: WidgetComponent<string, void> = ({
         <div style={{ marginTop: '20px', textAlign: 'right' }}>
           <button
             type="button"
-            style={{ height: '40px', width: '80%' }}
+            style={{ height: '40px', width: '100%' }}
             className="btn btn-primary btn-sm"
             onClick={() => setModalOpen(true)}
           >
