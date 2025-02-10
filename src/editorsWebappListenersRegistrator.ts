@@ -142,7 +142,6 @@ export const registerListeners = () => {
       listId: (subscriptionListDummyValues.length + 1).toString(),
       name: listName,
     };
-    subscriptionListDummyValues.push(list);
     return list;
   });
 
