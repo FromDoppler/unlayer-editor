@@ -1,12 +1,7 @@
 import { $t } from '../../localization';
 import { dropdownProperty } from '../../properties/helpers';
 import { UnlayerProperty } from '../../types';
-import {
-  CustomField,
-  ListOption,
-  SmartFormAction,
-  SubscriptionList,
-} from './types';
+import { CustomField, SmartFormAction } from './types';
 
 export const behaviorListProperty: () => UnlayerProperty<string> = () =>
   dropdownProperty({
@@ -39,29 +34,9 @@ export const congratsBehaviorListProperty: () => UnlayerProperty<SmartFormAction
       ],
     } as const);
 
-const mapListOption = (list: SubscriptionList): ListOption => {
-  return { label: list.name, value: list.listId };
-};
-
 const userData = (window as any)['user-data'] || {
-  subscriptionList: [],
   fields: [],
 };
-
-const emptySubscriptionList = [
-  { label: '_dp.smart_forms.action.label', value: '-1' },
-];
-const subscriptionList = userData.subscriptionList?.map(mapListOption) || [];
-
-export const SubscriptionListProperty: () => UnlayerProperty<string> = () =>
-  dropdownProperty({
-    label: $t('_dp.smart_forms.action.label'),
-    defaultValue: '',
-    options:
-      subscriptionList.length > 0
-        ? subscriptionList
-        : (emptySubscriptionList as [ListOption, ...ListOption[]]),
-  } as const);
 
 const getFieldCompatibleType = (type: CustomField['type']): string => {
   switch (type) {

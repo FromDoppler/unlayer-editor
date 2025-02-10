@@ -16,11 +16,11 @@ import {
 import {
   behaviorListProperty,
   congratsBehaviorListProperty,
-  SubscriptionListProperty,
   availableFields,
   isValidUrl,
 } from './helper';
 import { urlProperty } from '../../properties/url';
+import { subscriptionListProperty } from '../../properties/subscription_list';
 
 const DEFAULT_GREEN_COLOR = '#64BF91';
 
@@ -51,7 +51,9 @@ export const getSmartFormToolDefinition: () =>
       formAction: {
         title: $t('_dp.smart_forms.action.title'),
         options: {
-          list: SubscriptionListProperty(),
+          list: subscriptionListProperty({
+            defaultValue: '-1',
+          }),
         },
       },
       form_manager: {
@@ -241,7 +243,7 @@ export const getSmartFormToolDefinition: () =>
       return values;
     },
     validator: ({ defaultErrors, values }) => {
-      if (values.list === '') {
+      if (values.list === '-1') {
         defaultErrors.push({
           id: 'SMART_FORM_TARGET_LIST_REQUIRED_ERROR',
           icon: `${ASSETS_BASE_URL}/form1.svg`,
@@ -253,20 +255,7 @@ export const getSmartFormToolDefinition: () =>
             'tabs.audit.rules.smart_form.subscription_list_undefined.description',
           ),
         });
-      } else if (values.list === '-1') {
-        defaultErrors.push({
-          id: 'SMART_FORM_TARGET_LIST_REQUIRED_ERROR',
-          icon: `${ASSETS_BASE_URL}/form1.svg`,
-          severity: 'ERROR',
-          title: $t(
-            'tabs.audit.rules.smart_form.subscription_list_empty.title',
-          ),
-          description: $t(
-            'tabs.audit.rules.smart_form.subscription_list_empty.description',
-          ),
-        });
       }
-
       if (
         values.congratBehavior === 'message' &&
         values.descriptionHtml === ''
