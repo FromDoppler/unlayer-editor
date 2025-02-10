@@ -243,7 +243,7 @@ export const getSmartFormToolDefinition: () =>
       return values;
     },
     validator: ({ defaultErrors, values }) => {
-      if (values.list === '') {
+      if (values.list === '-1') {
         defaultErrors.push({
           id: 'SMART_FORM_TARGET_LIST_REQUIRED_ERROR',
           icon: `${ASSETS_BASE_URL}/form1.svg`,
