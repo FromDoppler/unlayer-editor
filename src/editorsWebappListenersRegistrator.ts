@@ -5,6 +5,29 @@ const UNLAYER_ORIGIN = 'https://editor.unlayer.com';
 
 // DUMMY DATA
 
+const subscriptionListDummyValues = [
+  {
+    listId: '1',
+    name: 'Lista 1',
+  },
+  {
+    listId: '2',
+    name: 'Lista 2',
+  },
+  {
+    listId: '3',
+    name: 'Hot Leads',
+  },
+  {
+    listId: '4',
+    name: 'Comercial List ',
+  },
+  {
+    listId: '5',
+    name: 'Meli List',
+  },
+];
+
 const promoCodesDummyValues = {
   mercadoshops: [
     {
@@ -100,6 +123,27 @@ export const registerListeners = () => {
     console.log(qrImageFile);
     await timeout(500);
     return 'http://www.pngall.com/wp-content/uploads/2/QR-Code-PNG-HD-Image-180x180.png';
+  });
+
+  registerListener('getSubscriptionList', async () => {
+    console.log('getSubscriptionList');
+    await timeout(500);
+    return {
+      success: true,
+      subscriptionList: subscriptionListDummyValues,
+    };
+  });
+
+  registerListener('CreateSubscriptionList', async (listName: string) => {
+    console.log('CreateSubscriptionList ', listName);
+    await timeout(500);
+    const list = {
+      success: true,
+      listId: (subscriptionListDummyValues.length + 1).toString(),
+      name: listName,
+    };
+    subscriptionListDummyValues.push(list);
+    return list;
   });
 
   registerListener('searchProduct', async () => {
