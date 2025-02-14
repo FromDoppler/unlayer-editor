@@ -105,6 +105,10 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
     return field.type === 'tel';
   });
 
+  const field_ids = values.fields.map((field: UnlayerField) => {
+    return field.meta_data.name;
+  });
+
   const renderInputTel = () => {
     return `
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.2.1/build/css/intlTelInput.css"></link>
@@ -185,6 +189,7 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
           style={formStyle}
           data-field-instance={values.display}
           data-target-id-list={values.list}
+          data-fields-array-id={field_ids}
           data-action-on-finish={values.congratBehavior}
           data-action-on-finish-url={congratUrlEncode}
         >
