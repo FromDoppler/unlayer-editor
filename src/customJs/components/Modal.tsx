@@ -8,6 +8,11 @@ interface Props {
     primaryFn?: () => void;
     style: object;
   };
+  secondaryAction?: {
+    label: string;
+    secondaryFn?: () => void;
+    style: object;
+  };
   cancelAction?: {
     label: string;
     cancelFn?: () => void;
@@ -30,6 +35,7 @@ export const Modal = (props: Props) => {
     content,
     size = 'M',
     primaryAction,
+    secondaryAction,
     cancelAction,
   } = props;
   ReactModal.setAppElement('body');
@@ -131,6 +137,11 @@ export const Modal = (props: Props) => {
     ...cancelAction?.style,
   };
 
+  const secondaryButtonStyle = {
+    ...buttonStyle,
+    ...secondaryAction?.style,
+  };
+
   return (
     <ReactModal
       isOpen={open}
@@ -153,6 +164,14 @@ export const Modal = (props: Props) => {
           <button style={cancelButtonStyle} onClick={cancelAction?.cancelFn}>
             {' '}
             {cancelAction?.label}
+          </button>
+        )}
+        {secondaryAction && (
+          <button
+            style={secondaryButtonStyle}
+            onClick={secondaryAction?.secondaryFn}
+          >
+            {secondaryAction?.label}
           </button>
         )}
         {primaryAction && (

@@ -126,6 +126,7 @@ export type ViewerComponentProps<TToolValues> = {
   displayMode: DisplayMode;
   isViewer: boolean;
   toolInfo: ToolInfo;
+  restOfViewerProps: any;
 };
 
 export type ViewerComponent<TToolValues> = (

@@ -124,6 +124,7 @@ const viewer = <TToolValues,>({
       displayMode={displayMode}
       isViewer={isViewer}
       toolInfo={toolInfo}
+      restOfViewerProps={restOfViewerProps}
     />
   );
 };
@@ -164,6 +165,7 @@ const exporter = <TToolValues,>({
       displayMode={displayMode}
       isViewer={isViewer}
       toolInfo={toolInfo}
+      restOfViewerProps={restOfToolDefinitions}
     />,
   );
   return restOfToolDefinitions.is_dynamic
