@@ -71,6 +71,7 @@ registerPropertyEditor(productArrangementPropertyEditorDefinition);
 registerPropertyEditor(qrPropertyEditorDefinition);
 registerPropertyEditor(dynamicPromoCodePropertyEditorDefinition);
 registerPropertyEditor(subscriptionListPropertyEditorDefinition);
+registerPropertyEditor(wheelListPropertyEditorDefinition);
 
 // Register Tools
 
@@ -140,5 +141,6 @@ if (rssCampaign) {
 }
 
 if (previewMode) {
+  registerReactTool(getWheelFortuneToolDefinition());
   /* place to register tool on preview mode */
 }
