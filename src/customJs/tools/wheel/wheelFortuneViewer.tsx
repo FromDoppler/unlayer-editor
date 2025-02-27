@@ -184,7 +184,11 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
             <>
               <div style={wheelSelectorStyle}></div>
               <div style={wheelCenterStyle}></div>
-              <div id="dp-wheel" style={wheelStyle}>
+              <div
+                id="dp-wheel"
+                style={wheelStyle}
+                data-slides={JSON.stringify(values.wheelList)}
+              >
                 {slides.map((slide: WheelSlide, i: number) => (
                   <span key={i} style={spanStylesArray[i]}>
                     <span style={spanLabelStylesArray[i]}>{slide.label}</span>
