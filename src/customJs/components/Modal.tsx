@@ -8,6 +8,11 @@ interface Props {
     primaryFn?: () => void;
     style: object;
   };
+  secondaryAction?: {
+    label: string;
+    secondaryFn?: () => void;
+    style: object;
+  };
   cancelAction?: {
     label: string;
     cancelFn?: () => void;
@@ -30,6 +35,7 @@ export const Modal = (props: Props) => {
     content,
     size = 'M',
     primaryAction,
+    secondaryAction,
     cancelAction,
   } = props;
   ReactModal.setAppElement('body');
@@ -65,11 +71,6 @@ export const Modal = (props: Props) => {
       top: '25%',
     },
   };
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // subtitle.style.color = '#f00';
-  }
 
   const headerStyle = {
     display: 'flex',
@@ -121,7 +122,7 @@ export const Modal = (props: Props) => {
     overflow: 'hidden',
   };
 
-  const primatyButtonStyle = {
+  const primaryButtonStyle = {
     ...buttonStyle,
     ...primaryAction?.style,
   };
@@ -131,10 +132,14 @@ export const Modal = (props: Props) => {
     ...cancelAction?.style,
   };
 
+  const secondaryButtonStyle = {
+    ...buttonStyle,
+    ...secondaryAction?.style,
+  };
+
   return (
     <ReactModal
       isOpen={open}
-      onAfterOpen={afterOpenModal}
       onRequestClose={cancelAction?.cancelFn}
       style={customStyles}
       contentLabel={contentLabel || 'modal'}
@@ -155,8 +160,16 @@ export const Modal = (props: Props) => {
             {cancelAction?.label}
           </button>
         )}
+        {secondaryAction && (
+          <button
+            style={secondaryButtonStyle}
+            onClick={secondaryAction?.secondaryFn}
+          >
+            {secondaryAction?.label}
+          </button>
+        )}
         {primaryAction && (
-          <button style={primatyButtonStyle} onClick={primaryAction?.primaryFn}>
+          <button style={primaryButtonStyle} onClick={primaryAction?.primaryFn}>
             {primaryAction?.label}
           </button>
         )}
