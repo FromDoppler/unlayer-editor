@@ -4,7 +4,6 @@ import { WheelSlide } from './types';
 import { SmartFormViewer } from '../smartforms/smartFormViewer';
 
 export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
-  console.log('rest', rest);
   const values = rest.values;
 
   // let spin = Math.ceil(Math.random() * 3600);

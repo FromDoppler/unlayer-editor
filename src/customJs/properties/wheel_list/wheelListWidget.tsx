@@ -1,5 +1,6 @@
 import { React, useRef, useState } from '../../unlayer-react';
 import { Color, Percentage, WidgetComponent } from '../../types';
+import debounce from 'lodash.debounce';
 
 import { $t } from '../../localization';
 import { Modal } from '../../components/Modal';
@@ -18,12 +19,27 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
     percent: '0%',
     color: '#AAA',
   };
+  const [saving, setSaving] = useState<boolean>(false);
   const [slide, setSlide] = useState<WheelSlide>(emptyWheelSlide);
   const [slideIndex, setSlideIndex] = useState<number>(-1);
   const [modalTitle, setModalTitle] = useState<string>('Nuevo Slide');
   const formRef = useRef<HTMLFormElement>(null);
 
   // const colors = ['#db7093', '#70dbb2', '#3f02b1', '#e7810d', '#1ada4a', '#e917a3', '#e0cbb2', '#ec0808', '#8f7e85' ]
+
+  const debounceUpdate = (slides: WheelSlide[]) => {
+    if (saving) return;
+    setSaving(true);
+    const update = debounce(
+      () => {
+        updateValue(slides);
+        setSaving(false);
+      },
+      500,
+      { maxWait: 1000 },
+    );
+    update();
+  };
 
   const getSlideFormData = (): WheelSlide => {
     const data = formRef.current?.elements;
@@ -50,7 +66,7 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
     alert(`remover segmento ${slideIndex + 1}`);
     const slides = [...value];
     slides.splice(slideIndex, 1);
-    updateValue(slides);
+    debounceUpdate(slides);
     setModalOpen(false);
   };
 
@@ -67,17 +83,17 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
       ...slides[index],
       color: color,
     };
-    updateValue(slides);
+    debounceUpdate(slides);
   };
 
   const updateWheelList = () => {
     const data = getSlideFormData();
     const slides = [...value];
     if (slideIndex === -1) {
-      updateValue([...slides, data]);
+      debounceUpdate([...slides, data]);
     } else {
       slides[slideIndex] = data;
-      updateValue(slides);
+      debounceUpdate(slides);
     }
     setModalOpen(false);
   };
