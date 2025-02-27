@@ -72,11 +72,6 @@ export const Modal = (props: Props) => {
     },
   };
 
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // subtitle.style.color = '#f00';
-  }
-
   const headerStyle = {
     display: 'flex',
     justifyContent: 'space-between',
@@ -145,7 +140,6 @@ export const Modal = (props: Props) => {
   return (
     <ReactModal
       isOpen={open}
-      onAfterOpen={afterOpenModal}
       onRequestClose={cancelAction?.cancelFn}
       style={customStyles}
       contentLabel={contentLabel || 'modal'}
