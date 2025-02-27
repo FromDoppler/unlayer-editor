@@ -127,7 +127,7 @@ export const Modal = (props: Props) => {
     overflow: 'hidden',
   };
 
-  const primatyButtonStyle = {
+  const primaryButtonStyle = {
     ...buttonStyle,
     ...primaryAction?.style,
   };
@@ -175,7 +175,7 @@ export const Modal = (props: Props) => {
           </button>
         )}
         {primaryAction && (
-          <button style={primatyButtonStyle} onClick={primaryAction?.primaryFn}>
+          <button style={primaryButtonStyle} onClick={primaryAction?.primaryFn}>
             {primaryAction?.label}
           </button>
         )}
