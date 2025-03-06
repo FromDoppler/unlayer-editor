@@ -258,6 +258,7 @@ const App: React.FC = () => {
         rssCampaign: true,
         rssShowPreview: true,
         smartForm: true,
+        roulette: true,
         stores: [
         { name: "MercadoShops", promotionCodeEnabled: true },
         { name: "Magento", promotionCodeEnabled: false },
