@@ -22,6 +22,7 @@ import { qrPropertyEditorDefinition } from './properties/qr';
 import { dynamicPromoCodePropertyEditorDefinition } from './properties/dynamic_promo_code';
 import { getSmartFormToolDefinition } from './tools/smartforms';
 import { subscriptionListPropertyEditorDefinition } from './properties/subscription_list';
+import { getWheelFortuneToolDefinition } from './tools/wheel';
 import { wheelListPropertyEditorDefinition } from './properties/wheel_list';
 
 const {
@@ -43,6 +44,7 @@ const {
   product,
   qrCode,
   smartForm,
+  roulette,
 } = getConfiguration();
 
 const unlayerLocales = {
@@ -72,6 +74,12 @@ registerPropertyEditor(subscriptionListPropertyEditorDefinition);
 registerPropertyEditor(wheelListPropertyEditorDefinition);
 
 // Register Tools
+
+if (roulette) {
+  registerPropertyEditor(wheelListPropertyEditorDefinition);
+  registerReactTool(getWheelFortuneToolDefinition());
+}
+
 if (smartForm) {
   registerReactTool(getSmartFormToolDefinition());
 }
@@ -133,5 +141,6 @@ if (rssCampaign) {
 }
 
 if (previewMode) {
+  registerReactTool(getWheelFortuneToolDefinition());
   /* place to register tool on preview mode */
 }
