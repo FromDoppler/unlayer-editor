@@ -22,6 +22,7 @@ import { qrPropertyEditorDefinition } from './properties/qr';
 import { dynamicPromoCodePropertyEditorDefinition } from './properties/dynamic_promo_code';
 import { getSmartFormToolDefinition } from './tools/smartforms';
 import { subscriptionListPropertyEditorDefinition } from './properties/subscription_list';
+import { wheelListPropertyEditorDefinition } from './properties/wheel_list';
 
 const {
   locale,
@@ -68,6 +69,7 @@ registerPropertyEditor(productArrangementPropertyEditorDefinition);
 registerPropertyEditor(qrPropertyEditorDefinition);
 registerPropertyEditor(dynamicPromoCodePropertyEditorDefinition);
 registerPropertyEditor(subscriptionListPropertyEditorDefinition);
+registerPropertyEditor(wheelListPropertyEditorDefinition);
 
 // Register Tools
 if (smartForm) {
