@@ -174,6 +174,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
   return (
     <div>
       <div
+        className="dp-roulette"
         style={{
           display: !values.congratShow ? 'inline-flex' : 'none',
           backgroundColor: values.descriptionBackgroudColor,
@@ -200,7 +201,10 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
             <div>El minimo de segmento para mostrar la ruleta es 2</div>
           )}
         </section>
-        <section style={descriptionContainerStyle}>
+        <section
+          className="dp-roulette-description"
+          style={descriptionContainerStyle}
+        >
           <span
             style={{ display: 'block' }}
             dangerouslySetInnerHTML={{ __html: values.descriptionHtml }}
@@ -209,6 +213,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
         </section>
       </div>
       <div
+        className="dp-roulette-congrats"
         style={{
           display: values.congratShow ? 'block' : 'none',
           backgroundColor: values.congratsBackgroudColor,
