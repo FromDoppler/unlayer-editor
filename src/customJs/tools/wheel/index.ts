@@ -93,6 +93,7 @@ export const getWheelFortuneToolDefinition: () =>
             widget: 'color_picker',
           },
           wheelBorderWidth: {
+            enabled: !1,
             label: $t('_dp.wheel_fortune.border.width'),
             defaultValue: '8px',
             widget: 'px',
@@ -103,6 +104,7 @@ export const getWheelFortuneToolDefinition: () =>
             hidden: !0,
           }),
           wheelFontSize: fontSizeProperty({
+            enabled: !1,
             label: 'Font Size',
             defaultValue: '12px',
             hidden: !0,
