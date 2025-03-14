@@ -79,6 +79,10 @@ export const getWheelFortuneToolDefinition: () =>
             defaultValue: '400px',
             widget: 'px',
           },
+          wheelFontFamily: fontFamilyProperty({}),
+          wheelFontWeight: fontWeightProperty({
+            defaultValue: 900,
+          }),
           wheelFontColor: colorProperty({
             label: 'Font Color',
             defaultValue: '#fff',
@@ -100,17 +104,10 @@ export const getWheelFortuneToolDefinition: () =>
             hidden: !0,
           },
 
-          wheelFontFamily: fontFamilyProperty({
-            hidden: !0,
-          }),
           wheelFontSize: fontSizeProperty({
             enabled: !1,
             label: 'Font Size',
-            defaultValue: '12px',
-            hidden: !0,
-          }),
-          wheelFontWeight: fontWeightProperty({
-            defaultValue: 700,
+            defaultValue: '16px',
             hidden: !0,
           }),
           wheelMargin: {
@@ -337,7 +334,7 @@ export const getWheelFortuneToolDefinition: () =>
           }),
           congratsHtmlMargin: {
             label: 'Margin',
-            defaultValue: '30px',
+            defaultValue: '10px',
             widget: 'margin',
           },
           congratsGiftShown: toggleShowProperty(),
@@ -352,7 +349,7 @@ export const getWheelFortuneToolDefinition: () =>
           congratsGiftColor: colorProperty(),
           congratsGiftMargin: {
             label: 'Margin',
-            defaultValue: '50px',
+            defaultValue: '10px',
             widget: 'margin',
           },
           congratsGiftPadding: {
