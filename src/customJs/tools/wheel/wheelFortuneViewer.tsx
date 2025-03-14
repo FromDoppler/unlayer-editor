@@ -6,15 +6,6 @@ import { SmartFormViewer } from '../smartforms/smartFormViewer';
 export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
   const values = rest.values;
 
-  // let spin = Math.ceil(Math.random() * 3600);
-
-  // const spinWheel = function () {
-  //   const wheel = document.getElementById('dp-wheel');
-  //   console.log('wheel', wheel);
-  //   if (wheel) wheel.style.transform = 'rotate(' + spin + 'deg)';
-  //   spin += Math.ceil(Math.random() * 3600);
-  // };
-
   const wheelContainerStyle = {
     width: values.wheelSize,
     height: values.wheelSize,
@@ -24,7 +15,6 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
     padding: values.wheelPadding,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: values.wheelBackgroudColor,
   } as const;
 
   const descriptionContainerStyle = {
@@ -42,7 +32,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
     borderRadius: '50%',
     overflow: 'hidden',
     border: `${values.wheelBorderWidth} solid ${values.wheelBorderColor}`,
-    boxShadow: values.wheelBorderShadow,
+    boxShadow: `0 0 0 7pt black, 0 0 0 18px ${adjust(values.wheelBackgroudColor, 30)}`,
     transition: 'transform 5s ease-in-out',
   } as const;
 
@@ -54,7 +44,6 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
     borderRadius: '50%',
     display: 'flex',
     zIndex: '10',
-    //border: '2px solid rgba(0, 0, 0, 0.75)',
     userSelect: 'none',
   } as const;
 
@@ -67,20 +56,8 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
     clipPath: 'polygon(50% 70%, 0 0, 100% 0)',
     display: 'flex',
     zIndex: '10',
-    //border: '2px solid rgba(0, 0, 0, 0.75)',
     userSelect: 'none',
   } as const;
-
-  // const wheelLabel = {
-  //   position: 'relative',
-  //   transform: 'rotate(45deg)',
-  //   fontSize: '1.2em',
-  //   fontWeight: '700',
-  //   color: 'white',
-  //   textShadow: '3px 5px 2px rgba(0,0,0,.15)',
-  // } as const;
-
-  // const colors = ['#db7093', '#70dbb2', '#3f02b1', '#e7810d', '#1ada4a', '#e917a3', '#e0cbb2', '#ec0808', '#8f7e85' ]
 
   const giftCodeStyle = {
     display: 'flex',
@@ -92,7 +69,6 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
   };
 
   const slides = values.wheelList;
-
   const slidePercent = 100 / slides.length;
 
   function probabilidadARadianes(probabilidad) {

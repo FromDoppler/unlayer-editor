@@ -125,12 +125,6 @@ export const getWheelFortuneToolDefinition: () =>
             widget: 'padding',
             hidden: !0,
           },
-          wheelBorderShadow: {
-            label: 'Sombra de Borde',
-            defaultValue: 'none', //0 0 0 5px #333, 0 0 0 15px #fff, 0 0 0 18px #111', //0 0 0 15px #fff, 0 0 0 10px #fff, 0 0 0 18px #111
-            widget: 'text',
-            hidden: !0,
-          },
         },
       },
       description: {
@@ -144,10 +138,6 @@ export const getWheelFortuneToolDefinition: () =>
           descriptionHtml: richTextProperty({
             label: 'Descripcion',
             defaultValue: `<div></div><p><span style="font-size: 28px; font-family: impact, chicago;">Gira la ruleta y obtené tu descuento!</span></p><p></p><p><span></span><span></span><span style="font-size: 20px;">Ingresa tu nombre y correo electrónico, haz girar la ruleta y desbloquea un descuento exclusivo. </span></p>`,
-          }),
-          descriptionBackgroudColor: colorProperty({
-            label: 'Background Color',
-            defaultValue: '#fff',
           }),
           descriptionMargin: {
             label: 'Margin',
@@ -231,7 +221,6 @@ export const getWheelFortuneToolDefinition: () =>
         title: 'Layout',
         options: {
           formWidth: autoWidthProperty(),
-
           formAlign: alignmentProperty(),
           fieldDistance: {
             label: 'Space Between Fields',
@@ -248,7 +237,6 @@ export const getWheelFortuneToolDefinition: () =>
             label: 'Font Size',
             defaultValue: '14px',
           }),
-
           labelColor: {
             label: 'Color',
             defaultValue: '#444',
@@ -268,7 +256,6 @@ export const getWheelFortuneToolDefinition: () =>
           },
         },
       },
-
       button: {
         title: 'Button',
         options: {
@@ -342,10 +329,6 @@ export const getWheelFortuneToolDefinition: () =>
             label: 'Visualizar mensaje final',
             defaultValue: false,
           }),
-          congratsBackgroudColor: colorProperty({
-            label: 'Background Color',
-            defaultValue: '#fff',
-          }),
           congratsHtml: richTextProperty({
             label: $t('_dp.smart_forms.behavior.message'),
             defaultValue: `<p style="text-align: center;"><span></span><span></span><span style="font-size: 34px;"><strong>¡Gracias por participar!</strong></span></p>
@@ -381,26 +364,5 @@ export const getWheelFortuneToolDefinition: () =>
         },
       },
     },
-    // propertyStates: (values: SmartFormValues) => ({
-    //   congratUrl: {
-    //     enabled: values.congratBehavior === 'url',
-    //   },
-    //   descriptionHtml: {
-    //     enabled: values.congratBehavior === 'message',
-    //   },
-    // }),
-
-    // transformer: (values, source) => {
-    //   const { name, value } = source;
-    //   if (name === 'fields') {
-    //     const emailIndex = value.findIndex(({ name }) => name === 'EMAIL');
-    //     if (emailIndex > 0) {
-    //       const emailField = value[emailIndex];
-    //       value.splice(emailIndex, 1);
-    //       value.splice(0, 0, emailField);
-    //     }
-    //   }
-    //   return values;
-    // },
   };
 };
