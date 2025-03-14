@@ -33,7 +33,7 @@ export const getWheelFortuneToolDefinition: () =>
     Component: WheelFortuneViewer,
     options: {
       wheel: {
-        title: 'Ruleta',
+        title: $t('_dp.wheel_fortune.settings'),
         options: {
           wheelList: wheelListProperty({
             defaultValue: [
@@ -75,7 +75,7 @@ export const getWheelFortuneToolDefinition: () =>
             ],
           }),
           wheelSize: {
-            label: $t('labels.size'),
+            label: $t('_dp.wheel_fortune.size'),
             defaultValue: '400px',
             widget: 'px',
           },
@@ -337,6 +337,7 @@ export const getWheelFortuneToolDefinition: () =>
         title: 'Finalizacion',
         options: {
           congratShow: toggleShowProperty({
+            label: 'Visualizar mensaje final',
             defaultValue: false,
           }),
           congratsBackgroudColor: colorProperty({
