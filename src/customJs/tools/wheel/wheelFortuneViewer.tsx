@@ -2,6 +2,11 @@ import { React } from '../../unlayer-react';
 import { ViewerComponent } from '../../types';
 import { WheelSlide } from './types';
 import { SmartFormViewer } from '../smartforms/smartFormViewer';
+import {
+  adjust,
+  getPosicionParaProbabilidad,
+  getWheelLabelStyle,
+} from './viewHelper';
 
 export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
   const values = rest.values;
@@ -71,53 +76,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
   const slides = values.wheelList;
   const slidePercent = 100 / slides.length;
 
-  function probabilidadARadianes(probabilidad) {
-    return (probabilidad / 100) * 2 * Math.PI;
-  }
-
-  //const anguloSegmento = 360 / values.list.lenght;
-
-  function getPosicionParaProbabilidad(probabilidad) {
-    if (probabilidad >= 87.5) {
-      const x5 = Math.tan(probabilidadARadianes(probabilidad)) * 50 + 50;
-      return `polygon(50% 0%, 100% 0, 100% 100%, 0 100%, 0 0, ${x5}% 0, 50% 50%)`;
-    }
-    if (probabilidad >= 75) {
-      const y5 =
-        100 - (Math.tan(probabilidadARadianes(probabilidad - 75)) * 50 + 50);
-      return `polygon(50% 0%, 100% 0, 100% 100%, 0 100%, 0% ${y5}%, 50% 50%)`;
-    }
-    if (probabilidad >= 62.5) {
-      const y5 =
-        100 - (0.5 - 0.5 / Math.tan(probabilidadARadianes(probabilidad))) * 100;
-      return `polygon(50% 0%, 100% 0, 100% 100%, 0 100%, 0% ${y5}%, 50% 50%)`;
-    }
-    if (probabilidad >= 50) {
-      const x4 =
-        100 - (Math.tan(probabilidadARadianes(probabilidad)) * 50 + 50);
-      return `polygon(50% 0, 100% 0, 100% 100%, ${x4}% 100%, 50% 50%)`;
-    }
-    if (probabilidad >= 37.5) {
-      const x4 =
-        100 - (Math.tan(probabilidadARadianes(probabilidad)) * 50 + 50);
-      return `polygon(50% 0, 100% 0, 100% 100%, ${x4}% 100%, 50% 50%)`;
-    }
-    if (probabilidad >= 25) {
-      const y3 = Math.tan(probabilidadARadianes(probabilidad - 25)) * 50 + 50;
-      return `polygon(50% 0, 100% 0, 100% ${y3}%, 50% 50%)`;
-    }
-    if (probabilidad >= 12.5) {
-      const y3 =
-        (0.5 - 0.5 / Math.tan(probabilidadARadianes(probabilidad))) * 100;
-      return `polygon(50% 0, 100% 0, 100% ${y3}%, 50% 50%)`;
-    }
-    if (probabilidad >= 0) {
-      const x2 = Math.tan(probabilidadARadianes(probabilidad)) * 50 + 50;
-      return `polygon(50% 0, ${x2}% 0, 50% 50%)`;
-    }
-  }
-
-  const spanStylesArray = slides.map((slide: WheelSlide, i) => {
+  const spanStylesArray = slides.map((slide: WheelSlide, i: number) => {
     return {
       position: 'absolute',
       width: ' 100%',
@@ -132,20 +91,16 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
     } as const;
   });
 
-  const spanLabelStylesArray = slides.map(() => {
-    return {
-      position: 'relative',
-      transform: `rotate(-60deg)`, //-45
-      left: '45px',
-      top: '-90px',
-      fontFamily: values.wheelFontFamily?.value || 'inherit',
-      fontSize: values.wheelFontSize,
-      fontWeight: values.wheelFontWeight,
-      font: values.wheelFontFamily,
-      color: values.wheelFontColor,
-      textShadow: '3px 5px 2px rgba(0,0,0,.15)',
-    } as const;
-  });
+  const spanLabelDynamic = getWheelLabelStyle(slides.length);
+  const spanLabelStyle = {
+    ...spanLabelDynamic,
+    position: 'relative',
+    fontFamily: values.wheelFontFamily?.value || 'inherit',
+    fontSize: values.wheelFontSize,
+    fontWeight: values.wheelFontWeight,
+    font: values.wheelFontFamily,
+    color: values.wheelFontColor,
+  } as const;
 
   return (
     <div>
