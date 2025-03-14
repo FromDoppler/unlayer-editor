@@ -40,30 +40,35 @@ export const getWheelFortuneToolDefinition: () =>
               {
                 label: 'segmento 1',
                 gift: 'premio 1',
+                chance: 10,
                 percent: '20%',
                 color: '#db7093',
               },
               {
                 label: 'segmento 2',
                 gift: 'premio 2',
+                chance: 10,
                 percent: '20%',
                 color: '#70dbb2',
               },
               {
                 label: 'segmento 3',
                 gift: 'premio 3',
+                chance: 10,
                 percent: '20%',
                 color: '#3f02b1',
               },
               {
                 label: 'segmento 4',
                 gift: 'premio 4',
+                chance: 10,
                 percent: '20%',
                 color: '#e7810d',
               },
               {
                 label: 'segmento 5',
                 gift: 'premio 5',
+                chance: 10,
                 percent: '20%',
                 color: '#1ada4a', // '#e917a3', '#e0cbb2', '#ec0808', '#8f7e85' ]
               },
