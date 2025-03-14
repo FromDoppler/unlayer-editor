@@ -1,8 +1,4 @@
 import {
-  // Alignment,
-  // AutoWidth,
-  // Border,
-  // BorderRadius,
   FontWeight,
   Margin,
   Padding,
@@ -36,16 +32,13 @@ export type WheelFortuneBase = {
     wheelFontWeight: FontWeight;
     wheelMargin: Margin;
     wheelPadding: Padding;
-    wheelBorderShadow: string;
   };
   description: {
     descriptionWidth: PixelSize;
     descriptionHtml: string;
-    descriptionBackgroudColor: Color;
     descriptionMargin: Margin;
     descriptionPadding: Padding;
   };
-  //form: SmartFormBase['formAction']
 };
 
 export type WheelFortuneFormBase = WheelFortuneBase & SmartFormBase;
