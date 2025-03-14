@@ -72,6 +72,27 @@ export const getWheelFortuneToolDefinition: () =>
                 percent: '20%',
                 color: '#1ada4a', // '#e917a3', '#e0cbb2', '#ec0808', '#8f7e85' ]
               },
+              // {
+              //   label: 'segmento 6',
+              //   gift: 'premio 4',
+              //   chance: 10,
+              //   percent: '20%',
+              //   color: '#e917a3',
+              // },
+              // {
+              //   label: 'segmento 7',
+              //   gift: 'premio 4',
+              //   chance: 10,
+              //   percent: '20%',
+              //   color: '#e0cbb2 ',
+              // },
+              // {
+              //   label: 'segmento 8',
+              //   gift: 'premio 4',
+              //   percent: '20%',
+              //   chance: 10,
+              //   color: '#ec0808 ',
+              // },
             ],
           }),
           wheelSize: {
