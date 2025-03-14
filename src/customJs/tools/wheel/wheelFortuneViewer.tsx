@@ -25,7 +25,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
   const descriptionContainerStyle = {
     width: values.descriptionWidth,
     position: 'relative',
-    display: 'block',
+    display: !values.congratShow ? 'block' : 'none',
     margin: values.descriptionMargin,
     padding: values.descriptionPadding,
   } as const;
@@ -35,6 +35,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
     width: '90%',
     height: '90%',
     borderRadius: '50%',
+    backgroundColor: values.wheelBorderColor,
     overflow: 'hidden',
     border: `${values.wheelBorderWidth} solid ${values.wheelBorderColor}`,
     boxShadow: `0 0 0 7pt black, 0 0 0 18px ${adjust(values.wheelBackgroudColor, 30)}`,
@@ -107,8 +108,8 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
       <div
         className="dp-roulette"
         style={{
-          display: !values.congratShow ? 'inline-flex' : 'none',
-          backgroundColor: values.descriptionBackgroudColor,
+          display: 'inline-flex',
+          backgroundColor: values.wheelBackgroudColor,
         }}
       >
         <section style={wheelContainerStyle}>
@@ -123,7 +124,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
               >
                 {slides.map((slide: WheelSlide, i: number) => (
                   <span key={i} style={spanStylesArray[i]}>
-                    <span style={spanLabelStylesArray[i]}>{slide.label}</span>
+                    <span style={spanLabelStyle}>{slide.label}</span>
                   </span>
                 ))}
               </div>
@@ -142,45 +143,48 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
           />
           <SmartFormViewer {...rest} />
         </section>
-      </div>
-      <div
-        className="dp-roulette-congrats"
-        style={{
-          display: values.congratShow ? 'block' : 'none',
-          backgroundColor: values.congratsBackgroudColor,
-        }}
-      >
-        <span
-          style={{ display: 'block', margin: values.congratsHtmlMargin }}
-          dangerouslySetInnerHTML={{ __html: values.congratsHtml }}
-        />
-        <div
+        <section
+          className="dp-roulette-congrats"
           style={{
-            display: values.congratsGiftShown ? 'flex' : 'none',
-            justifyContent: 'center',
-            alignItems: 'center',
-            border: '1px solid #000',
-            backgroundColor: '#fff',
-            margin: values.congratsGiftMargin,
-            padding: values.congratsGiftPadding,
+            display: values.congratShow ? 'block' : 'none',
+            width: values.descriptionWidth,
           }}
         >
-          <span style={giftCodeStyle}>[[GIFT CODE]]</span>
-          <i style={{ display: 'flex', position: 'relative', right: '-100px' }}>
-            <svg
-              width="19"
-              height="20"
-              viewBox="0 0 19 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+          <span
+            style={{ display: 'block', margin: values.congratsHtmlMargin }}
+            dangerouslySetInnerHTML={{ __html: values.congratsHtml }}
+          />
+          <div
+            style={{
+              display: values.congratsGiftShown ? 'flex' : 'none',
+
+              justifyContent: 'center',
+              alignItems: 'center',
+              border: '1px solid #000',
+              backgroundColor: '#fff',
+              margin: values.congratsGiftMargin,
+              padding: values.congratsGiftPadding,
+            }}
+          >
+            <span style={giftCodeStyle}>[[GIFT CODE]]</span>
+            <i
+              style={{ display: 'flex', position: 'relative', right: '-100px' }}
             >
-              <path
-                d="M15.8126 0.979187H14.9164V11.8338C14.9164 14.7218 12.6259 17.0122 9.738 17.0122H0.974609C1.07419 18.7051 2.46837 19.9997 4.1613 19.9997H15.8126C17.5056 19.9997 18.9993 18.6056 18.9993 16.8131V4.06629C18.8997 2.37336 17.5056 0.979187 15.8126 0.979187Z"
-                fill="#999999"
-              />
-            </svg>
-          </i>
-        </div>
+              <svg
+                width="19"
+                height="20"
+                viewBox="0 0 19 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M15.8126 0.979187H14.9164V11.8338C14.9164 14.7218 12.6259 17.0122 9.738 17.0122H0.974609C1.07419 18.7051 2.46837 19.9997 4.1613 19.9997H15.8126C17.5056 19.9997 18.9993 18.6056 18.9993 16.8131V4.06629C18.8997 2.37336 17.5056 0.979187 15.8126 0.979187Z"
+                  fill="#999999"
+                />
+              </svg>
+            </i>
+          </div>
+        </section>
       </div>
     </div>
   );
