@@ -36,7 +36,7 @@ const expectedDefaultConfiguration = {
   product: true,
   qrCode: true,
   smartForm: false,
-  roulette: true,
+  roulette: false,
   productCompletedEnabled: false,
   recommendedProductsEnabled: false,
   dopplerExternalUrls: {

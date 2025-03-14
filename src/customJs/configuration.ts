@@ -75,7 +75,7 @@ export const parseConfigurationDTO = ({
   product = true,
   qrCode = true,
   smartForm = false,
-  roulette = true,
+  roulette = false,
 }: {
   locale?: 'es' | 'en';
   stores?: Store[];
