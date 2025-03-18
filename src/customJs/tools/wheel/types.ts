@@ -14,6 +14,7 @@ import { SmartFormBase } from '../smartforms/types';
 export type WheelSlide = {
   label: string;
   color: Color;
+  chance: number;
   percent: Percentage;
   gift: string;
 };
