@@ -273,10 +273,9 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
                     ))}
                   </tbody>
                 </table>
-
                 <div
                   style={{
-                    display: 'flex',
+                    display: value.length < MAX_SLIDES ? 'flex' : 'none',
                     justifyContent: 'end',
                     marginTop: '30px',
                     paddingTop: '10px',
@@ -338,7 +337,6 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
             style={{ height: '40px', width: '100%' }}
             className="btn btn-primary btn-sm"
             onClick={() => setModalOpen(true)}
-            disabled={value.length >= MAX_SLIDES}
           >
             {$t('_dp.wheel_fortune.segment.admin')}
           </button>
