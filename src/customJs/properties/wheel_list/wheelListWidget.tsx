@@ -1,5 +1,5 @@
 import { React, useRef, useState } from '../../unlayer-react';
-import { Color, Percentage, WidgetComponent } from '../../types';
+import { Color, WidgetComponent } from '../../types';
 import debounce from 'lodash.debounce';
 
 import { $t } from '../../localization';
@@ -16,13 +16,11 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
   const emptyWheelSlide: WheelSlide = {
     label: '',
     gift: '',
+    chance: 0,
     percent: '0%',
     color: '#AAA',
   };
   const [saving, setSaving] = useState<boolean>(false);
-  const [slide, setSlide] = useState<WheelSlide>(emptyWheelSlide);
-  const [slideIndex, setSlideIndex] = useState<number>(-1);
-  const [modalTitle, setModalTitle] = useState<string>('Nuevo Slide');
   const formRef = useRef<HTMLFormElement>(null);
 
   const debounceUpdate = (slides: WheelSlide[]) => {
@@ -39,40 +37,37 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
     update();
   };
 
-  const getSlideFormData = (): WheelSlide => {
-    const data = formRef.current?.elements;
-    const label = data?.namedItem('label') as HTMLInputElement;
-    const gift = data?.namedItem('gift') as HTMLInputElement;
-    const percent = data?.namedItem('percent') as HTMLInputElement;
-    const color = data?.namedItem('color') as HTMLInputElement;
-    return {
-      label: label.value,
-      gift: gift.value,
-      percent: percent.value as Percentage,
-      color: color.value,
-    };
+  const setSegmentChance = (chanceValue: string, index: number) => {
+    const slides = [...value];
+    slides[index].chance = parseInt(chanceValue);
+    const totalChances = slides.reduce(
+      (acu: number, slide: WheelSlide) => (acu += slide.chance),
+      0,
+    );
+    slides.forEach((slide: WheelSlide, i: number) => {
+      slides[i].percent =
+        `${Number.parseFloat(((slide.chance * 100) / totalChances).toFixed(2))}%`;
+    });
+    debounceUpdate(slides);
   };
 
   const createNewSegment = () => {
-    setSlideIndex(-1);
-    setSlide(emptyWheelSlide);
-    setModalTitle(`Crear nuevo Segmento`);
-    setModalOpen(true);
+    const slides = [...value, emptyWheelSlide];
+    debounceUpdate(slides);
   };
 
-  const eliminateSegment = () => {
-    alert(`remover segmento ${slideIndex + 1}`);
+  const eliminateSegment = (slideIndex: number) => {
     const slides = [...value];
     slides.splice(slideIndex, 1);
+    const totalChances = slides.reduce(
+      (acu: number, slide: WheelSlide) => (acu += slide.chance),
+      0,
+    );
+    slides.forEach((slide: WheelSlide, i: number) => {
+      slides[i].percent =
+        `${Number.parseFloat(((slide.chance * 100) / totalChances).toFixed(2))}%`;
+    });
     debounceUpdate(slides);
-    setModalOpen(false);
-  };
-
-  const updateSegment = (index: number) => {
-    setSlideIndex(index);
-    setSlide(value[index]);
-    setModalTitle(`Actualizar Segmento ${index + 1}`);
-    setModalOpen(true);
   };
 
   const updateColor = (color: Color, index: number) => {
@@ -85,64 +80,72 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
   };
 
   const updateWheelList = () => {
-    const data = getSlideFormData();
-    const slides = [...value];
-    if (slideIndex === -1) {
-      debounceUpdate([...slides, data]);
-    } else {
-      slides[slideIndex] = data;
-      debounceUpdate(slides);
-    }
+    const data = formRef.current?.elements;
+    const size = data?.length ? (data?.length - 1) / 4 : 0;
+    const labels = data?.namedItem('label') as HTMLInputElement;
+    const gifts = data?.namedItem('gift') as HTMLInputElement;
+    const chances = data?.namedItem('chance') as HTMLInputElement;
+    const colors = data?.namedItem('color') as HTMLInputElement;
+    const slides = Array(size)
+      .fill(emptyWheelSlide)
+      .map((slide, i) => {
+        return {
+          ...slide,
+          label: labels[i].value,
+          gift: gifts[i].value,
+          chance: parseInt(chances[i].value),
+          percent: value[i].percent,
+          color: colors[i].value,
+        };
+      });
+    debounceUpdate(slides);
     setModalOpen(false);
-  };
-
-  const getPrimaryButtonLabel = () => {
-    return slideIndex === -1 ? 'Crear' : 'actualizar';
   };
 
   const inputModalStyle = {
     display: 'flex',
-    width: '100%',
+    width: '90%',
     marginTop: '6px',
     lineHeight: '1.25rem',
     fontSize: '13px',
     padding: '0.75rem 1rem',
     color: 'rgb(125, 125, 125)',
-    backgroundColor: 'rgb(249, 249, 249)',
+    backgroundColor: 'white',
     border: '1px solid rgb(212, 212, 212)',
   };
 
   const segmentStyle = {
     display: 'flex',
     justifyContent: 'space-between',
+    alignItems: 'center',
     padding: '5px',
-    border: '1px solid #333',
-    backgroundColor: '#eee',
+    border: '1px solid #D4D4D4', //app-lightgrey
+    backgroundColor: '#F4F4F4',
     borderRadius: '2px',
-    margin: '5px 2px',
+    margin: '8px 2px',
     cursor: 'pointer',
   };
 
+  const headerStyle = {
+    textAlign: 'left',
+  } as const;
+
+  const cellStyle = {
+    textAlign: 'center',
+  } as const;
+
   return (
     <div role="container" className="blockbuilder-widget row">
+      {$t('_dp.wheel_fortune.segment.config')}
       <div className="col-12">
         <Modal
           open={modalOpen}
-          size="S"
-          titleContent={modalTitle}
+          size="M"
+          titleContent={$t('_dp.wheel_fortune.segment.admin')}
           primaryAction={{
-            label: getPrimaryButtonLabel(),
+            label: $t('buttons.save'),
             primaryFn: () => updateWheelList(),
             style: { color: 'white', backgroundColor: 'rgb(0, 0, 0)' },
-          }}
-          secondaryAction={{
-            label: 'Eliminar',
-            secondaryFn: () => eliminateSegment(),
-            style: {
-              color: 'white',
-              backgroundColor: 'rgb(199, 29, 29)',
-              display: slideIndex == -1 ? 'none' : 'block',
-            },
           }}
           cancelAction={{
             label: $t('buttons.cancel'),
@@ -151,6 +154,7 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
             },
             style: {
               backgroundColor: 'transparent',
+              dispay: 'block',
             },
           }}
           content={
@@ -163,55 +167,139 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
                 id="slideFom"
                 ref={formRef}
               >
-                <div style={{ margin: '20px 0' }}>
-                  <label>Texto</label>
-                  <input
-                    name="label"
-                    style={inputModalStyle}
-                    className="input"
-                    defaultValue={slide.label}
-                    placeholder="Ingrese la leyenda que se mostrara en la ruleta"
-                    type="text"
-                    aria-label="text-slide-name-input"
-                  />
-                </div>
-                <div style={{ margin: '20px 0' }}>
-                  <label>Código de descuento</label>
-                  <input
-                    name="gift"
-                    style={inputModalStyle}
-                    className="input"
-                    defaultValue={slide.gift}
-                    placeholder="Ingrese el código de promoción"
-                    type="text"
-                    aria-label="text-slide-name-input"
-                  />
-                </div>
-                <div style={{ margin: '20px 0' }}>
-                  <label>Porcentaje de probabilidad</label>
-                  <input
-                    name="percent"
-                    style={inputModalStyle}
-                    className="input"
-                    defaultValue={slide.percent}
-                    type="text"
-                    aria-label="text-slide-name-input"
-                  />
-                </div>
+                <table className="table ">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th style={headerStyle}>
+                        {$t('_dp.wheel_fortune.segment.modal.name')}
+                      </th>
+                      <th style={headerStyle}>
+                        {$t('_dp.wheel_fortune.segment.modal.gift')}
+                      </th>
+                      <th style={headerStyle}>
+                        {$t('_dp.wheel_fortune.segment.modal.chance')}
+                      </th>
+                      <th>{$t('_dp.wheel_fortune.segment.modal.stat')}</th>
+                      <th>{$t('_dp.wheel_fortune.segment.modal.color')}</th>
+                      <th>{$t('_dp.wheel_fortune.segment.modal.action')}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {value.map((x, i) => (
+                      <tr key={i} style={{ height: '30px' }}>
+                        <td
+                          scope="row"
+                          className="col-1"
+                          style={{ fontWeight: 'bold', textAlign: 'center' }}
+                        >
+                          {i + 1}
+                        </td>
+                        <td className="col-3">
+                          <input
+                            type="text"
+                            className="col-10"
+                            style={inputModalStyle}
+                            name="label"
+                            defaultValue={x.label}
+                          />
+                        </td>
+                        <td className="col-3">
+                          <input
+                            type="text"
+                            className="col-10"
+                            style={inputModalStyle}
+                            name="gift"
+                            defaultValue={x.gift}
+                          />
+                        </td>
+                        <td className="col-2">
+                          <input
+                            type="number"
+                            className="col-10"
+                            style={{ ...inputModalStyle, textAlign: 'center' }}
+                            name="chance"
+                            defaultValue={x.chance}
+                            step="10"
+                            min="0"
+                            max="100"
+                            onChange={(e) => {
+                              setSegmentChance(e.target.value, i);
+                            }}
+                          />
+                        </td>
+                        <td className="col-2" style={cellStyle}>
+                          {x.percent}
+                        </td>
+
+                        <td className="col-1" style={cellStyle}>
+                          <input
+                            type="color"
+                            style={{
+                              marginTop: '6px',
+                              height: '40px',
+                              width: '40px',
+                            }}
+                            name="color"
+                            defaultValue={x.color}
+                          />
+                        </td>
+
+                        <td className="col-1" style={cellStyle}>
+                          <span
+                            style={{ cursor: 'pointer' }}
+                            onClick={() => {
+                              eliminateSegment(i);
+                            }}
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              style={{ marginTop: '10px' }}
+                            >
+                              <path
+                                fillRule="evenodd"
+                                clipRule="evenodd"
+                                d="M16.5 1.5V0H9V1.5H3.8715C3.39 1.5 3 1.89 3 2.3715V4.5H9H16.5H22.5V2.3715C22.5 1.89 22.11 1.5 21.6285 1.5H16.5ZM4.5 6V22.962C4.5 23.535 4.965 24 5.538 24H19.962C20.535 24 21 23.535 21 22.962V6H4.5ZM18 21H16.5V9H18V21ZM12 21H13.5V9H12V21ZM9 21H7.5V9H9V21Z"
+                                fill="#999999"
+                              />
+                            </svg>
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+
                 <div
                   style={{
-                    margin: '20px 0',
                     display: 'flex',
-                    justifyContent: 'space-between',
+                    justifyContent: 'end',
+                    marginTop: '30px',
+                    paddingTop: '10px',
+                    borderTop: '1px solid rgb(238, 238, 238)',
                   }}
                 >
-                  <label>Color</label>
-                  <input
-                    name="color"
-                    defaultValue={slide.color}
-                    type="color"
-                    aria-label="color-slide-input"
-                  />
+                  <button
+                    style={{
+                      cursor: 'pointer',
+                      textDecoration: 'none',
+                      border: 'none',
+                      appearance: 'none',
+                      fontFamily: '"proxima-nova",Helvetica,Arial,sans-serif',
+                      color: '#33ad73',
+                      background: 'none',
+                    }}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      createNewSegment();
+                    }}
+                  >
+                    + {$t('_dp.wheel_fortune.segment.modal.add')}
+                  </button>
                 </div>
               </form>
             </>
@@ -220,7 +308,11 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
 
         <div>
           {value.map((x, i) => (
-            <div key={i} style={segmentStyle} onClick={() => updateSegment(i)}>
+            <div
+              key={i}
+              style={segmentStyle}
+              onClick={() => setModalOpen(true)}
+            >
               <span>
                 <input
                   style={{ width: '27px', marginRight: '5px' }}
@@ -233,26 +325,9 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
                   type="color"
                   value={x.color}
                 />
-                Segmento {i + 1} - {x.label}
-                <legend style={{ display: 'contents' }}>({x.percent})</legend>
+                {i + 1}. {x.label}
               </span>
-              <span>
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fal"
-                  data-icon="pencil"
-                  className="svg-inline--fa fa-pencil"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M395.8 39.6c9.4-9.4 24.6-9.4 33.9 0l42.6 42.6c9.4 9.4 9.4 24.6 0 33.9L417.6 171 341 94.4l54.8-54.8zM318.4 117L395 193.6l-219 219 0-12.6c0-8.8-7.2-16-16-16l-32 0 0-32c0-8.8-7.2-16-16-16l-12.6 0 219-219zM66.9 379.5c1.2-4 2.7-7.9 4.7-11.5L96 368l0 32c0 8.8 7.2 16 16 16l32 0 0 24.4c-3.7 1.9-7.5 3.5-11.6 4.7L39.6 472.4l27.3-92.8zM452.4 17c-21.9-21.9-57.3-21.9-79.2 0L60.4 329.7c-11.4 11.4-19.7 25.4-24.2 40.8L.7 491.5c-1.7 5.6-.1 11.7 4 15.8s10.2 5.7 15.8 4l121-35.6c15.4-4.5 29.4-12.9 40.8-24.2L495 138.8c21.9-21.9 21.9-57.3 0-79.2L452.4 17zM331.3 202.7c6.2-6.2 6.2-16.4 0-22.6s-16.4-6.2-22.6 0l-128 128c-6.2 6.2-6.2 16.4 0 22.6s16.4 6.2 22.6 0l128-128z"
-                  ></path>
-                </svg>
-              </span>
+              <legend style={{ display: 'contents' }}>({x.percent})</legend>
             </div>
           ))}
         </div>
@@ -262,10 +337,10 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
             type="button"
             style={{ height: '40px', width: '100%' }}
             className="btn btn-primary btn-sm"
-            onClick={() => createNewSegment()}
+            onClick={() => setModalOpen(true)}
             disabled={value.length >= MAX_SLIDES}
           >
-            Crear nuevo segemento
+            {$t('_dp.wheel_fortune.segment.admin')}
           </button>
         </div>
       </div>
