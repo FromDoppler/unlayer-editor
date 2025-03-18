@@ -68,7 +68,7 @@ export const Modal = (props: Props) => {
       WebkitOverflowScrolling: 'touch',
       outline: 'none',
       padding: '0px',
-      top: '25%',
+      top: '10%',
     },
   };
 
