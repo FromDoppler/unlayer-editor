@@ -155,7 +155,7 @@ export const toggleShowProperty: (param?: {
   defaultValue?: boolean;
   label?: string;
 } = {}) => ({
-  label: label,
+  label,
   defaultValue,
   widget: 'toggle',
 });
