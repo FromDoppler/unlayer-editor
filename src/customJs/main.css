@@ -72,14 +72,12 @@
   border-color: rgb(38, 38, 38);
 }
 
-.blockbuilder-widget .btn.btn-primary {
+.blockbuilder-widget .btn {
   --outline-color: #262626;
   -webkit-box-align: center;
   -webkit-box-pack: center;
   padding: 0.4rem 0.85rem;
   line-height: 1rem;
-  background-color: rgb(38, 38, 38);
-  color: rgb(255, 255, 255);
   font-family: inherit;
   font-size: 0.85rem;
   cursor: pointer;
@@ -90,4 +88,14 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+.btn.btn-primary {
+  background-color: rgb(38, 38, 38);
+  color: #ffffff;
+}
+
+.btn.btn-secondary {
+  background: rgba(0, 0, 0, 0);
+  color: #302100;
 }
