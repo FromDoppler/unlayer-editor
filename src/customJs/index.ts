@@ -24,6 +24,7 @@ import { getSmartFormToolDefinition } from './tools/smartforms';
 import { subscriptionListPropertyEditorDefinition } from './properties/subscription_list';
 import { getWheelFortuneToolDefinition } from './tools/wheel';
 import { wheelListPropertyEditorDefinition } from './properties/wheel_list';
+import { buttonGroupPropertyEditorDefinition } from './properties/button_group';
 
 const {
   locale,
@@ -77,6 +78,7 @@ registerPropertyEditor(wheelListPropertyEditorDefinition);
 
 if (roulette) {
   registerPropertyEditor(wheelListPropertyEditorDefinition);
+  registerPropertyEditor(buttonGroupPropertyEditorDefinition);
   registerReactTool(getWheelFortuneToolDefinition());
 }
 
