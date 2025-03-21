@@ -1,6 +1,5 @@
 import { $t } from '../../localization';
 import { WheelFortuneViewer } from './wheelFortuneViewer';
-import { ReactToolDefinitionFrom } from '../../types';
 import { ASSETS_BASE_URL } from '../../constants';
 import {
   colorProperty,
@@ -11,7 +10,7 @@ import {
 import { subscriptionListProperty } from '../../properties/subscription_list';
 import { wheelListProperty } from '../../properties/wheel_list';
 import { availableFields } from '../smartforms/helper';
-import { WheelSlide } from './types';
+import { WheelFortuneValues, WheelSlide } from './types';
 import { buttonGroupProperty } from '../../properties/button_group';
 
 /* Replace the mock values with empty values */
@@ -66,7 +65,7 @@ const mockcongratsDescription = `<p style="text-align: center;"><span></span><sp
                             <p style="text-align: center;"><span style="font-size: 16px;">Copia el siguiente código de descuento y úsalo en tu próxima compra</span></p>`;
 
 export const getWheelFortuneToolDefinition: () =>
-  | ReactToolDefinitionFrom<any>
+  | any //ReactToolDefinitionFrom<any>
   | undefined = () => {
   return {
     name: 'wheel_fortune',
@@ -195,6 +194,48 @@ export const getWheelFortuneToolDefinition: () =>
         },
       },
     },
+    propertyStates: (values: WheelFortuneValues) => ({
+      congratsButtonColor: {
+        enabled: values.viewPanel === 'end',
+      },
+      congratsButtonBackgroundColor: {
+        enabled: values.viewPanel === 'end',
+      },
+      congratsButtonText: {
+        enabled: values.viewPanel === 'end',
+      },
+      congratsGiftColor: {
+        enabled: values.viewPanel === 'end',
+      },
+      congratsGiftFontSize: {
+        enabled: values.viewPanel === 'end',
+      },
+      congratsGiftFont: {
+        enabled: values.viewPanel === 'end',
+      },
+      congratsHtml: {
+        enabled: values.viewPanel === 'end',
+      },
+
+      descriptionHtml: {
+        enabled: values.viewPanel === 'init',
+      },
+      list: {
+        enabled: values.viewPanel === 'init',
+      },
+      fields: {
+        enabled: values.viewPanel === 'init',
+      },
+      buttonText: {
+        enabled: values.viewPanel === 'init',
+      },
+      buttonBackgroundColor: {
+        enabled: values.viewPanel === 'init',
+      },
+      buttonColor: {
+        enabled: values.viewPanel === 'init',
+      },
+    }),
     transformer: (values, source) => {
       const { name, value } = source;
       if (name === 'fields') {
