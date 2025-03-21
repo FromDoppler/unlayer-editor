@@ -7,6 +7,62 @@ import { getPosicionParaProbabilidad, getWheelLabelStyle } from './viewHelper';
 export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
   const values = rest.values;
 
+  /* SMART FORM set default values */
+
+  const formRest = {
+    ...rest,
+    values: {
+      ...rest.values,
+
+      fieldBackgroundColor: '#FFF',
+      fieldBorder: {
+        borderBottomColor: '#CCCCCC',
+        borderBottomStyle: 'solid',
+        borderBottomWidth: '1px',
+        borderLeftColor: '#CCCCCC',
+        borderLeftStyle: 'solid',
+        borderLeftWidth: '1px',
+        borderRightColor: '#CCCCCC',
+        borderRightStyle: 'solid',
+        borderRightWidth: '1px',
+        borderTopColor: '#CCCCCC',
+        borderTopStyle: 'solid',
+        borderTopWidth: '1px',
+      },
+      ferRadius: '4px',
+      fieldColor: '#000',
+      fieldDistance: '10px',
+      fieldFontSize: '12px',
+      fieldPadding: '10px',
+      formWidth: { autoWidth: false, width: '100%' },
+      formAlign: 'center',
+      labelAlign: 'left',
+      labelColor: '#444',
+      labelFontSize: '14px',
+      labelPadding: '0px 0px 3px',
+      buttonBorder: {
+        borderBottomColor: '#CCCCCC',
+        borderBottomStyle: 'solid',
+        borderBottomWidth: '0px',
+        borderLeftColor: '#CCCCCC',
+        borderLeftStyle: 'solid',
+        borderLeftWidth: '0px',
+        borderRightColor: '#CCCCCC',
+        borderRightStyle: 'solid',
+        borderRightWidth: '0px',
+        borderTopColor: '#CCCCCC',
+        borderTopStyle: 'solid',
+        borderTopWidth: '0px',
+      },
+      buttonBorderRadius: '4px',
+      buttonFontSize: '14px',
+      buttonFontWeight: 700,
+      buttonMargin: '5px 0px 0px',
+      buttonPadding: '10px',
+      buttonWidth: { autoWidth: false, width: '100%' },
+    },
+  };
+
   const wheelContainerStyle = {
     aspectRatio: 1,
     position: 'relative',
@@ -135,7 +191,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
             style={{ display: 'block' }}
             dangerouslySetInnerHTML={{ __html: values.descriptionHtml }}
           />
-          <SmartFormViewer {...rest} />
+          <SmartFormViewer {...formRest} />
         </section>
       </div>
       <div

@@ -122,7 +122,6 @@ export const getWheelFortuneToolDefinition: () =>
               allowAddNewField: false,
               defaultFields: availableFields || [],
             },
-
             label: $t('_dp.smart_forms.field.label'),
             defaultValue: [
               {
@@ -140,75 +139,15 @@ export const getWheelFortuneToolDefinition: () =>
             ],
             widget: 'fields',
           },
-          fieldBorder: borderProperty({
-            defaultValue: '1px',
-            hidden: !0,
-          }),
-          fieldBorderRadius: borderRadiusProperty({
-            hidden: !0,
-          }),
-          fieldPadding: {
-            label: 'Padding',
-            defaultValue: '10px',
-            widget: 'padding',
-            hidden: !0,
-          },
-          fieldBackgroundColor: colorProperty({
-            label: 'Background Color',
-            defaultValue: '#FFF',
-            hidden: !0,
-          }),
-          fieldColor: colorProperty({
-            label: 'Text Color',
-            defaultValue: '#000',
-            hidden: !0,
-          }),
-          fieldFontSize: fontSizeProperty({
-            label: 'Font Size',
-            defaultValue: '12px',
-            hidden: !0,
-          }),
-        },
       },
       layout: {
         title: 'Layout',
         options: {
-          formWidth: autoWidthProperty(),
-
-          formAlign: alignmentProperty(),
-          fieldDistance: {
-            label: 'Space Between Fields',
-            defaultValue: '10px',
-            widget: 'px',
-            hidden: !0,
-          },
         },
       },
       labels: {
         title: 'Labels',
         options: {
-          labelFontSize: fontSizeProperty({
-            label: 'Font Size',
-            defaultValue: '14px',
-          }),
-
-          labelColor: {
-            label: 'Color',
-            defaultValue: '#444',
-            widget: 'color_picker',
-          },
-          labelAlign: {
-            label: 'Alignment',
-            defaultValue: 'left',
-            widget: 'alignment',
-            overrideAllowed: !0,
-          },
-          labelPadding: {
-            label: 'Padding',
-            defaultValue: '0px 0px 3px',
-            widget: 'padding',
-            hidden: !0,
-          },
         },
       },
 
