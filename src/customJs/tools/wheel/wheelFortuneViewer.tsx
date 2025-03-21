@@ -8,22 +8,17 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
   const values = rest.values;
 
   const wheelContainerStyle = {
-    width: values.wheelSize,
-    height: values.wheelSize,
+    aspectRatio: 1,
     position: 'relative',
     display: 'flex',
-    margin: values.wheelMargin,
-    padding: values.wheelPadding,
+    margin: '10px auto',
     justifyContent: 'center',
     alignItems: 'center',
   } as const;
 
   const descriptionContainerStyle = {
-    width: values.descriptionWidth,
     position: 'relative',
-    display: 'block',
-    margin: values.descriptionMargin,
-    padding: values.descriptionPadding,
+    margin: '10px auto',
   } as const;
 
   const wheelStyle = {
@@ -32,8 +27,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
     height: '90%',
     borderRadius: '50%',
     overflow: 'hidden',
-    border: `${values.wheelBorderWidth} solid ${values.wheelBorderColor}`,
-    boxShadow: values.wheelBorderShadow,
+    border: `8px solid ${values.wheelBorderColor}`,
     transition: 'transform 5s ease-in-out',
   } as const;
 
@@ -62,15 +56,14 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
 
   const giftCodeStyle = {
     display: 'flex',
-    textAlign: values.congratsGiftAlignment || 'inherit',
+    textAlign: 'center',
     fontSize: values.congratsGiftFontSize || '24px',
     fontFamily: values.congratsGiftFont?.value || 'inherit',
-    fontWeight: values.congratsGiftFontWeight,
+    fontWeight: '900',
     color: values.congratsGiftColor,
-  };
+  } as const;
 
   const slides = values.wheelList;
-
   const slidePercent = 100 / slides.length;
 
   const spanStylesArray = slides.map((slide: WheelSlide, i) => {

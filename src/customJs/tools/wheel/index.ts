@@ -3,14 +3,9 @@ import { WheelFortuneViewer } from './wheelFortuneViewer';
 import { ReactToolDefinitionFrom } from '../../types';
 import { ASSETS_BASE_URL } from '../../constants';
 import {
-  alignmentProperty,
-  autoWidthProperty,
-  borderProperty,
-  borderRadiusProperty,
   colorProperty,
   fontFamilyProperty,
   fontSizeProperty,
-  fontWeightProperty,
   richTextProperty,
   toggleShowProperty,
 } from '../../properties/helpers';
@@ -79,11 +74,6 @@ export const getWheelFortuneToolDefinition: () =>
           wheelList: wheelListProperty({
             defaultValue: mockWheelValues,
           }),
-          wheelSize: {
-            label: $t('labels.size'),
-            defaultValue: '400px',
-            widget: 'px',
-          },
           wheelFontColor: colorProperty({
             label: 'Font Color',
             defaultValue: '#fff',
@@ -97,68 +87,18 @@ export const getWheelFortuneToolDefinition: () =>
             defaultValue: '#444',
             widget: 'color_picker',
           },
-          wheelBorderWidth: {
-            label: $t('_dp.wheel_fortune.border.width'),
-            defaultValue: '8px',
-            widget: 'px',
-            hidden: !0,
-          },
           wheelFontFamily: fontFamilyProperty({
             hidden: !0,
           }),
-          wheelFontSize: fontSizeProperty({
-            label: 'Font Size',
-            defaultValue: '12px',
-            hidden: !0,
-          }),
-          wheelFontWeight: fontWeightProperty({
-            defaultValue: 700,
-            hidden: !0,
-          }),
-          wheelMargin: {
-            label: 'Margin',
-            defaultValue: '10px',
-            widget: 'margin',
-            hidden: !0,
-          },
-          wheelPadding: {
-            label: 'Padding',
-            defaultValue: '0px',
-            widget: 'padding',
-            hidden: !0,
-          },
-          wheelBorderShadow: {
-            label: 'Sombra de Borde',
-            defaultValue: 'none',
-            widget: 'text',
-            hidden: !0,
-          },
         },
       },
       description: {
         title: 'Descripcion Ruleta',
         options: {
-          descriptionWidth: {
-            label: 'Tamaño',
-            defaultValue: '400px',
-            widget: 'px',
-          },
           descriptionHtml: richTextProperty({
             label: 'Descripcion',
             defaultValue: mockWheelDescription,
           }),
-          descriptionMargin: {
-            label: 'Margin',
-            defaultValue: '10px',
-            widget: 'margin',
-            hidden: !0,
-          },
-          descriptionPadding: {
-            label: 'Padding',
-            defaultValue: '0px',
-            widget: 'padding',
-            hidden: !0,
-          },
         },
       },
       formAction: {
@@ -285,52 +225,6 @@ export const getWheelFortuneToolDefinition: () =>
             defaultValue: '#FFF',
             hidden: !0,
           }),
-          buttonAlign: alignmentProperty({
-            hidden: !0,
-          }),
-          buttonFontWeight: fontWeightProperty({
-            defaultValue: 700,
-            hidden: !0,
-          }),
-          buttonWidth: {
-            defaultValue: {
-              autoWidth: !1,
-              width: '100%',
-            },
-            label: 'Width',
-            widget: 'auto_width',
-            overrideAllowed: !0,
-          },
-          buttonFontSize: {
-            label: 'Font Size',
-            defaultValue: '14px',
-            widget: 'font_size',
-            overrideAllowed: !0,
-            hidden: !0,
-          },
-          buttonBorder: borderProperty({
-            defaultValue: '0px',
-            hidden: !0,
-          }),
-          buttonBorderRadius: {
-            label: 'Rounded Border',
-            defaultValue: '4px',
-            widget: 'border_radius',
-            overrideAllowed: !0,
-            hidden: !0,
-          },
-          buttonPadding: {
-            label: 'Padding',
-            defaultValue: '10px',
-            widget: 'padding',
-            hidden: !0,
-          },
-          buttonMargin: {
-            label: 'Margin',
-            defaultValue: '5px 0px 0px',
-            widget: 'margin',
-            hidden: !0,
-          },
         },
       },
       congrats: {
@@ -339,40 +233,17 @@ export const getWheelFortuneToolDefinition: () =>
           congratShow: toggleShowProperty({
             defaultValue: false,
           }),
-          congratsBackgroudColor: colorProperty({
-            label: 'Background Color',
-            defaultValue: '#fff',
-          }),
           congratsHtml: richTextProperty({
             label: $t('_dp.smart_forms.behavior.message'),
             defaultValue: `<p style="text-align: center;"><span></span><span></span><span style="font-size: 34px;"><strong>¡Gracias por participar!</strong></span></p>
                             <p></p>
                             <p style="text-align: center;"><span style="font-size: 16px;">Copia el siguiente código de descuento y úsalo en tu próxima compra</span></p>`,
           }),
-          congratsHtmlMargin: {
-            label: 'Margin',
-            defaultValue: '30px',
-            widget: 'margin',
-          },
-          congratsGiftShown: toggleShowProperty(),
-          congratsGiftAlignment: alignmentProperty(),
-          congratsGiftFont: fontFamilyProperty(),
-          congratsGiftFontWeight: fontWeightProperty({
-            defaultValue: 700,
           }),
           congratsGiftFontSize: fontSizeProperty({
             defaultValue: '18px',
           }),
           congratsGiftColor: colorProperty(),
-          congratsGiftMargin: {
-            label: 'Margin',
-            defaultValue: '50px',
-            widget: 'margin',
-          },
-          congratsGiftPadding: {
-            label: 'Padding',
-            defaultValue: '10px',
-            widget: 'padding',
             hidden: !0,
           },
         },
