@@ -74,6 +74,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
 
   const descriptionContainerStyle = {
     position: 'relative',
+    display: !values.congratShow ? 'block' : 'none',
     margin: '10px auto',
   } as const;
 
@@ -173,12 +174,12 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
   return (
     <div>
       <div
+        className="dp-roulette"
         style={{
-          display: !values.congratShow ? 'inline-flex' : 'none',
           backgroundColor: values.wheelBackgroudColor,
         }}
       >
-        <section style={wheelContainerStyle}>
+        <section style={wheelContainerStyle} className="dp-wheel-roulette">
           {slides.length >= 2 ? (
             <>
               <div style={wheelSelectorStyle}></div>
@@ -204,43 +205,41 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
             <div>El minimo de segmento para mostrar la ruleta es 2</div>
           )}
         </section>
-        <section style={descriptionContainerStyle}>
+        <section
+          className="dp-roulette-description"
+          style={descriptionContainerStyle}
+        >
           <span
-            style={{ display: 'block' }}
+            style={{ display: 'block', marginBottom: '5px' }}
             dangerouslySetInnerHTML={{ __html: values.descriptionHtml }}
           />
           <SmartFormViewer {...formRest} />
         </section>
-      </div>
-      <div
-        style={{
-          display: values.congratShow ? 'block' : 'none',
-          backgroundColor: values.congratsBackgroudColor,
-        }}
-      >
-        <span
-          style={{ display: 'block', margin: values.congratsHtmlMargin }}
-          dangerouslySetInnerHTML={{ __html: values.congratsHtml }}
-        />
-        <div
+        <section
+          className="dp-roulette-congrats"
           style={{
-            display: values.congratsGiftShown ? 'flex' : 'none',
-            justifyContent: 'center',
-            alignItems: 'center',
-            border: '1px solid #000',
-            backgroundColor: '#fff',
-            margin: values.congratsGiftMargin,
-            padding: values.congratsGiftPadding,
+            display: values.congratShow ? 'block' : 'none',
+            alignContent: 'center',
+            margin: '10px auto',
+            paddingBottom: '20px',
           }}
         >
-          <span style={giftCodeStyle}>[[GIFT CODE]]</span>
-          <i style={{ display: 'flex', position: 'relative', right: '-100px' }}>
-            <svg
-              width="19"
-              height="20"
-              viewBox="0 0 19 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+          <span
+            style={{ display: 'block', margin: values.congratsHtmlMargin }}
+            dangerouslySetInnerHTML={{ __html: values.congratsHtml }}
+          />
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              border: '1px solid #000',
+              backgroundColor: '#fff',
+              margin: '10px',
+              padding: '10px',
+            }}
+          >
+            <span style={giftCodeStyle}>[[GIFT CODE]]</span>
             <i
               className="dp-roulette-congrats-copy-icon"
               style={{ display: 'flex', position: 'relative' }}
@@ -268,6 +267,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
               {values.congratsButtonText}
             </button>
           </div>
+        </section>
       </div>
     </div>
   );
