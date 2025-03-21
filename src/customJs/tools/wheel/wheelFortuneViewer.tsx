@@ -172,8 +172,71 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
     backgroundColor: values.congratsButtonBackgroundColor,
     height: '35px',
   } as const;
+
+  const customCss = `
+  @media (max-width: 400px) {
+    .dp-roulette {
+       display: block;
+     }
+
+    .dp-wheel-roulette {
+      width: 324px;
+    }
+    .dp-roulette-congrats,
+      .dp-roulette-description {
+      width: 95%;
+    }
+    .dp-wheel-segment-label {
+      font-size: 12px;
+      max-width: 75px;
+    }
+    .dp-roulette-congrats-copy-icon {
+      right: -60px;
+    }
+  }
+  
+  @media  (min-width: 420px) {
+    .dp-roulette {
+      display: inline-flex;
+    }
+    .dp-roulette-congrats,
+    .dp-roulette-description,
+    .dp-wheel-roulette {
+      width: 350px;
+    }
+    .dp-wheel-roulette {
+      height: 350px;
+    }
+
+    .dp-wheel-segment-label {
+      font-size: 14px;
+      max-width: 120px;
+    }
+    .dp-roulette-congrats-copy-icon {
+      right: -80px;
+    }
+  }
+  
+  @media  (min-width: 768px) {
+
+    .dp-roulette-congrats,
+    .dp-roulette-description,
+    .dp-wheel-roulette {
+      width: 400px;
+    }
+    .dp-wheel-roulette {
+      height: 400px;
+    }
+      .dp-roulette-congrats-copy-icon {
+      right: -100px;
+    }
+
+ 
+  }`;
+
   return (
     <div>
+      <style>{customCss}</style>
       <div
         className="dp-roulette"
         style={{
