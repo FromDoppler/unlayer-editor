@@ -159,12 +159,16 @@ export const getWheelFortuneToolDefinition: () =>
                             <p></p>
                             <p style="text-align: center;"><span style="font-size: 16px;">Copia el siguiente código de descuento y úsalo en tu próxima compra</span></p>`,
           }),
+          congratsGiftFont: fontFamilyProperty({
+            hidden: !0,
           }),
           congratsGiftFontSize: fontSizeProperty({
             defaultValue: '18px',
-          }),
-          congratsGiftColor: colorProperty(),
             hidden: !0,
+          }),
+          congratsGiftColor: colorProperty({
+            hidden: !0,
+          }),
           congratsButtonText: {
             label: 'Text',
             defaultValue: $t('_dp.wheel_fortune.congrats.button.label'),
