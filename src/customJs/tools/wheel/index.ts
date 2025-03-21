@@ -163,7 +163,7 @@ export const getWheelFortuneToolDefinition: () =>
             hidden: !0,
           }),
           congratsHtml: richTextProperty({
-            label: $t('_dp.smart_forms.behavior.message'),
+            label: 'Descripción',
             defaultValue: mockcongratsDescription,
           }),
           congratsGiftFont: fontFamilyProperty({
@@ -174,6 +174,7 @@ export const getWheelFortuneToolDefinition: () =>
             hidden: !0,
           }),
           congratsGiftColor: colorProperty({
+            defaultValue: '#000000',
             hidden: !0,
           }),
           congratsButtonText: {
