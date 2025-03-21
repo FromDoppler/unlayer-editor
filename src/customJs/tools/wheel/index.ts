@@ -187,6 +187,18 @@ export const getWheelFortuneToolDefinition: () =>
         },
       },
     },
+    transformer: (values, source) => {
+      const { name, value } = source;
+      if (name === 'fields') {
+        const emailIndex = value.findIndex(({ name }) => name === 'EMAIL');
+        if (emailIndex > 0) {
+          const emailField = value[emailIndex];
+          value.splice(emailIndex, 1);
+          value.splice(0, 0, emailField);
+        }
+      }
+      return values;
+    },
     validator: ({ defaultErrors, values }) => {
       if (values.list === '-1') {
         defaultErrors.push({
