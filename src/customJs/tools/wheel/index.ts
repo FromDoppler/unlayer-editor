@@ -74,7 +74,7 @@ export const getWheelFortuneToolDefinition: () =>
     Component: WheelFortuneViewer,
     options: {
       wheel: {
-        title: $t('_dp.wheel_fortune.label'),
+        title: $t('_dp.wheel_fortune.settings'),
         options: {
           wheelList: wheelListProperty({
             defaultValue: mockWheelValues,
@@ -150,6 +150,7 @@ export const getWheelFortuneToolDefinition: () =>
         title: 'Finalizacion',
         options: {
           congratShow: toggleShowProperty({
+            label: 'Visualizar mensaje final',
             defaultValue: false,
           }),
           congratsHtml: richTextProperty({
