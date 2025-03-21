@@ -2,6 +2,7 @@ import { React } from '../../unlayer-react';
 import { ViewerComponent } from '../../types';
 import { WheelSlide } from './types';
 import { SmartFormViewer } from '../smartforms/smartFormViewer';
+import { getPosicionParaProbabilidad, getWheelLabelStyle } from './viewHelper';
 
 export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
   const values = rest.values;
@@ -59,19 +60,6 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
     userSelect: 'none',
   } as const;
 
-  const wheelLabel = {
-    position: 'relative',
-    transform: `rotate(-60deg)`,
-    left: '45px',
-    top: '-90px',
-    fontFamily: values.wheelFontFamily?.value || 'inherit',
-    fontSize: values.wheelFontSize,
-    fontWeight: values.wheelFontWeight,
-    font: values.wheelFontFamily,
-    color: values.wheelFontColor,
-    textShadow: '3px 5px 2px rgba(0,0,0,.15)',
-  } as const;
-
   const giftCodeStyle = {
     display: 'flex',
     textAlign: values.congratsGiftAlignment || 'inherit',
@@ -84,50 +72,6 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
   const slides = values.wheelList;
 
   const slidePercent = 100 / slides.length;
-
-  function probabilidadARadianes(probabilidad) {
-    return (probabilidad / 100) * 2 * Math.PI;
-  }
-
-  function getPosicionParaProbabilidad(probabilidad) {
-    if (probabilidad >= 87.5) {
-      const x5 = Math.tan(probabilidadARadianes(probabilidad)) * 50 + 50;
-      return `polygon(50% 0%, 100% 0, 100% 100%, 0 100%, 0 0, ${x5}% 0, 50% 50%)`;
-    }
-    if (probabilidad >= 75) {
-      const y5 =
-        100 - (Math.tan(probabilidadARadianes(probabilidad - 75)) * 50 + 50);
-      return `polygon(50% 0%, 100% 0, 100% 100%, 0 100%, 0% ${y5}%, 50% 50%)`;
-    }
-    if (probabilidad >= 62.5) {
-      const y5 =
-        100 - (0.5 - 0.5 / Math.tan(probabilidadARadianes(probabilidad))) * 100;
-      return `polygon(50% 0%, 100% 0, 100% 100%, 0 100%, 0% ${y5}%, 50% 50%)`;
-    }
-    if (probabilidad >= 50) {
-      const x4 =
-        100 - (Math.tan(probabilidadARadianes(probabilidad)) * 50 + 50);
-      return `polygon(50% 0, 100% 0, 100% 100%, ${x4}% 100%, 50% 50%)`;
-    }
-    if (probabilidad >= 37.5) {
-      const x4 =
-        100 - (Math.tan(probabilidadARadianes(probabilidad)) * 50 + 50);
-      return `polygon(50% 0, 100% 0, 100% 100%, ${x4}% 100%, 50% 50%)`;
-    }
-    if (probabilidad >= 25) {
-      const y3 = Math.tan(probabilidadARadianes(probabilidad - 25)) * 50 + 50;
-      return `polygon(50% 0, 100% 0, 100% ${y3}%, 50% 50%)`;
-    }
-    if (probabilidad >= 12.5) {
-      const y3 =
-        (0.5 - 0.5 / Math.tan(probabilidadARadianes(probabilidad))) * 100;
-      return `polygon(50% 0, 100% 0, 100% ${y3}%, 50% 50%)`;
-    }
-    if (probabilidad >= 0) {
-      const x2 = Math.tan(probabilidadARadianes(probabilidad)) * 50 + 50;
-      return `polygon(50% 0, ${x2}% 0, 50% 50%)`;
-    }
-  }
 
   const spanStylesArray = slides.map((slide: WheelSlide, i) => {
     return {
@@ -144,6 +88,21 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
     } as const;
   });
 
+  const spanLabelDynamic = getWheelLabelStyle(slides.length);
+  const spanLabelStyle = {
+    ...spanLabelDynamic,
+    position: 'relative',
+    fontFamily: values.wheelFontFamily?.value || 'inherit',
+    fontWeight: '700',
+    font: values.wheelFontFamily,
+    color: values.wheelFontColor,
+    display: '-webkit-box',
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
+    WebkitLineClamp: '2',
+    textAlign: 'center',
+    WebkitBoxOrient: 'vertical',
+  } as const;
   return (
     <div>
       <div
@@ -164,7 +123,12 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
               >
                 {slides.map((slide: WheelSlide, i: number) => (
                   <span key={i} style={spanStylesArray[i]}>
-                    <span style={wheelLabel}>{slide.label}</span>
+                    <span
+                      style={spanLabelStyle}
+                      className="dp-wheel-segment-label"
+                    >
+                      {slide.label}
+                    </span>
                   </span>
                 ))}
               </div>
