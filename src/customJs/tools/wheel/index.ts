@@ -61,6 +61,9 @@ const mockWheelValues: WheelSlide[] = [
 ];
 
 const mockWheelDescription = `<div></div><p><span style="font-size: 28px; font-family: impact, chicago;">Gira la ruleta y obtené tu descuento!</span></p><p></p><p><span></span><span></span><span style="font-size: 20px;">Ingresa tu nombre y correo electrónico, haz girar la ruleta y desbloquea un descuento exclusivo. </span></p>`;
+const mockcongratsDescription = `<p style="text-align: center;"><span></span><span></span><span style="font-size: 34px;"><strong>¡Gracias por participar!</strong></span></p>
+                            <p></p>
+                            <p style="text-align: center;"><span style="font-size: 16px;">Copia el siguiente código de descuento y úsalo en tu próxima compra</span></p>`;
 
 export const getWheelFortuneToolDefinition: () =>
   | ReactToolDefinitionFrom<any>
@@ -155,9 +158,7 @@ export const getWheelFortuneToolDefinition: () =>
           }),
           congratsHtml: richTextProperty({
             label: $t('_dp.smart_forms.behavior.message'),
-            defaultValue: `<p style="text-align: center;"><span></span><span></span><span style="font-size: 34px;"><strong>¡Gracias por participar!</strong></span></p>
-                            <p></p>
-                            <p style="text-align: center;"><span style="font-size: 16px;">Copia el siguiente código de descuento y úsalo en tu próxima compra</span></p>`,
+            defaultValue: mockcongratsDescription,
           }),
           congratsGiftFont: fontFamilyProperty({
             hidden: !0,
