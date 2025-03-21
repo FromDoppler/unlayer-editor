@@ -14,8 +14,6 @@ import { wheelListProperty } from '../../properties/wheel_list';
 import { availableFields } from '../smartforms/helper';
 import { WheelSlide } from './types';
 
-const DEFAULT_GREEN_COLOR = '#64BF91';
-
 /* Replace the mock values with empty values */
 const mockWheelValues: WheelSlide[] = [
   {
@@ -23,35 +21,42 @@ const mockWheelValues: WheelSlide[] = [
     gift: 'premio 1',
     chance: 10,
     percent: '20%',
-    color: '#db7093',
+    color: '#bad2f8',
   },
   {
     label: 'segmento 2',
     gift: 'premio 2',
     chance: 10,
     percent: '20%',
-    color: '#70dbb2',
+    color: '#83cfd0',
   },
   {
     label: 'segmento 3',
     gift: 'premio 3',
     chance: 10,
     percent: '20%',
-    color: '#3f02b1',
+    color: '#bad2f8',
   },
   {
     label: 'segmento 4',
     gift: 'premio 4',
     chance: 10,
     percent: '20%',
-    color: '#e7810d',
+    color: '#83cfd0',
   },
   {
     label: 'segmento 5',
     gift: 'premio 5',
     chance: 10,
     percent: '20%',
-    color: '#1ada4a',
+    color: '#bad2f8',
+  },
+  {
+    label: 'segmento 6',
+    gift: 'premio 4',
+    chance: 0,
+    percent: '20%',
+    color: '#83cfd0',
   },
 ];
 
@@ -76,15 +81,15 @@ export const getWheelFortuneToolDefinition: () =>
           }),
           wheelFontColor: colorProperty({
             label: 'Font Color',
-            defaultValue: '#fff',
+            defaultValue: '#116869',
           }),
           wheelBackgroudColor: colorProperty({
             label: 'Background Color',
-            defaultValue: '#fff',
+            defaultValue: '#8893e3',
           }),
           wheelBorderColor: {
             label: $t('_dp.wheel_fortune.border.color'),
-            defaultValue: '#444',
+            defaultValue: '#fff',
             widget: 'color_picker',
           },
           wheelFontFamily: fontFamilyProperty({
@@ -217,7 +222,7 @@ export const getWheelFortuneToolDefinition: () =>
           },
           buttonBackgroundColor: colorProperty({
             label: 'Background Color',
-            defaultValue: DEFAULT_GREEN_COLOR,
+            defaultValue: '#2a75db',
             hidden: !0,
           }),
           buttonColor: colorProperty({
