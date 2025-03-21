@@ -74,7 +74,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
 
   const descriptionContainerStyle = {
     position: 'relative',
-    display: !values.congratShow ? 'block' : 'none',
+    display: values.viewPanel === 'init' ? 'block' : 'none',
     margin: '10px auto',
   } as const;
 
@@ -278,7 +278,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
         <section
           className="dp-roulette-congrats"
           style={{
-            display: values.congratShow ? 'block' : 'none',
+            display: values.viewPanel === 'end' ? 'block' : 'none',
             alignContent: 'center',
             margin: '10px auto',
             paddingBottom: '20px',

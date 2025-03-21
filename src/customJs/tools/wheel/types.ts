@@ -26,6 +26,7 @@ export type WheelFortuneBase = {
     wheelFontFamily: FontFamily;
   };
   description: {
+    viewPanel: 'init' | 'end';
     descriptionWidth: PixelSize;
     descriptionHtml: string;
   };
