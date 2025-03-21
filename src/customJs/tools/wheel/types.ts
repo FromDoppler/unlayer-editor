@@ -1,7 +1,4 @@
 import {
-  FontWeight,
-  Margin,
-  Padding,
   Color,
   FontFamily,
   Percentage,
@@ -21,24 +18,16 @@ export type WheelSlide = {
 
 export type WheelFortuneBase = {
   wheel: {
-    wheelSize: PixelSize;
     wheelBackgroudColor: Color;
     wheelBorderColor: Color;
     wheelBorderWidth: PixelSize;
     wheelList: WheelSlide[];
     wheelFontColor: Color;
-    wheelFontSize: PixelSize;
     wheelFontFamily: FontFamily;
-    wheelFontWeight: FontWeight;
-    wheelMargin: Margin;
-    wheelPadding: Padding;
-    wheelBorderShadow: string;
   };
   description: {
     descriptionWidth: PixelSize;
     descriptionHtml: string;
-    descriptionMargin: Margin;
-    descriptionPadding: Padding;
   };
 };
 

@@ -155,7 +155,7 @@ export const toggleShowProperty: (param?: {
   defaultValue?: boolean;
   label?: string;
 } = {}) => ({
-  label: label,
+  label,
   defaultValue,
   widget: 'toggle',
 });
@@ -225,19 +225,23 @@ export const fontSizeProperty: (param?: {
   label?: string;
   defaultValue?: PixelSize;
   hidden?: boolean;
+  enabled?: boolean;
 }) => UnlayerProperty<PixelSize> = ({
   label,
   defaultValue,
   hidden,
+  enabled,
 }: {
   label?: string;
   defaultValue?: PixelSize;
   hidden?: boolean;
+  enabled?: boolean;
 } = {}) => ({
   label: label ?? $t('editor.font_size.label'),
   widget: 'font_size',
   defaultValue: defaultValue || '12px',
   hidden: hidden ?? false,
+  enabled: enabled ?? true,
 });
 
 export const colorProperty: (param?: {
