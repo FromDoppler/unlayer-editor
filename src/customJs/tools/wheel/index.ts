@@ -7,12 +7,12 @@ import {
   fontFamilyProperty,
   fontSizeProperty,
   richTextProperty,
-  toggleShowProperty,
 } from '../../properties/helpers';
 import { subscriptionListProperty } from '../../properties/subscription_list';
 import { wheelListProperty } from '../../properties/wheel_list';
 import { availableFields } from '../smartforms/helper';
 import { WheelSlide } from './types';
+import { buttonGroupProperty } from '../../properties/button_group';
 
 /* Replace the mock values with empty values */
 const mockWheelValues: WheelSlide[] = [
@@ -103,6 +103,21 @@ export const getWheelFortuneToolDefinition: () =>
       description: {
         title: 'Descripcion Ruleta',
         options: {
+          viewPanel: buttonGroupProperty({
+            defaultValue: 'init',
+            data: [
+              {
+                label: 'Incial',
+                value: 'init',
+                active: true,
+              },
+              {
+                label: 'Final',
+                value: 'end',
+                active: false,
+              },
+            ],
+          }),
           descriptionHtml: richTextProperty({
             label: 'Descripcion',
             defaultValue: mockWheelDescription,
@@ -146,15 +161,6 @@ export const getWheelFortuneToolDefinition: () =>
             label: 'Text Color',
             defaultValue: '#FFF',
             hidden: !0,
-          }),
-        },
-      },
-      congrats: {
-        title: 'Finalizacion',
-        options: {
-          congratShow: toggleShowProperty({
-            label: 'Visualizar mensaje final',
-            defaultValue: false,
           }),
           congratsHtml: richTextProperty({
             label: $t('_dp.smart_forms.behavior.message'),
