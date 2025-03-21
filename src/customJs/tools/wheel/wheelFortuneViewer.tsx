@@ -83,6 +83,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
     width: '90%',
     height: '90%',
     borderRadius: '50%',
+    backgroundColor: values.wheelBorderColor,
     overflow: 'hidden',
     border: `8px solid ${values.wheelBorderColor}`,
     transition: 'transform 5s ease-in-out',
@@ -90,8 +91,8 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
 
   const wheelCenterStyle = {
     position: 'relative',
-    height: '12%',
-    width: '12%',
+    height: '15%',
+    width: '15%',
     backgroundColor: values.wheelBorderColor,
     borderRadius: '50%',
     display: 'flex',
@@ -123,7 +124,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
   const slides = values.wheelList;
   const slidePercent = 100 / slides.length;
 
-  const spanStylesArray = slides.map((slide: WheelSlide, i) => {
+  const spanStylesArray = slides.map((slide: WheelSlide, i: number) => {
     return {
       position: 'absolute',
       width: ' 100%',
