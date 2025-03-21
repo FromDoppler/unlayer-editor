@@ -1,18 +1,17 @@
 import { $t } from '../../localization';
 import { WheelFortuneViewer } from './wheelFortuneViewer';
-import { ReactToolDefinitionFrom } from '../../types';
 import { ASSETS_BASE_URL } from '../../constants';
 import {
   colorProperty,
   fontFamilyProperty,
   fontSizeProperty,
   richTextProperty,
-  toggleShowProperty,
 } from '../../properties/helpers';
 import { subscriptionListProperty } from '../../properties/subscription_list';
 import { wheelListProperty } from '../../properties/wheel_list';
 import { availableFields } from '../smartforms/helper';
-import { WheelSlide } from './types';
+import { WheelFortuneValues, WheelSlide } from './types';
+import { buttonGroupProperty } from '../../properties/button_group';
 
 /* Replace the mock values with empty values */
 const mockWheelValues: WheelSlide[] = [
@@ -61,9 +60,12 @@ const mockWheelValues: WheelSlide[] = [
 ];
 
 const mockWheelDescription = `<div></div><p><span style="font-size: 28px; font-family: impact, chicago;">Gira la ruleta y obtené tu descuento!</span></p><p></p><p><span></span><span></span><span style="font-size: 20px;">Ingresa tu nombre y correo electrónico, haz girar la ruleta y desbloquea un descuento exclusivo. </span></p>`;
+const mockcongratsDescription = `<p style="text-align: center;"><span></span><span></span><span style="font-size: 34px;"><strong>¡Gracias por participar!</strong></span></p>
+                            <p></p>
+                            <p style="text-align: center;"><span style="font-size: 16px;">Copia el siguiente código de descuento y úsalo en tu próxima compra</span></p>`;
 
 export const getWheelFortuneToolDefinition: () =>
-  | ReactToolDefinitionFrom<any>
+  | any //ReactToolDefinitionFrom<any>
   | undefined = () => {
   return {
     name: 'wheel_fortune',
@@ -100,6 +102,21 @@ export const getWheelFortuneToolDefinition: () =>
       description: {
         title: 'Descripcion Ruleta',
         options: {
+          viewPanel: buttonGroupProperty({
+            defaultValue: 'init',
+            data: [
+              {
+                label: 'Incial',
+                value: 'init',
+                active: true,
+              },
+              {
+                label: 'Final',
+                value: 'end',
+                active: false,
+              },
+            ],
+          }),
           descriptionHtml: richTextProperty({
             label: 'Descripcion',
             defaultValue: mockWheelDescription,
@@ -144,20 +161,9 @@ export const getWheelFortuneToolDefinition: () =>
             defaultValue: '#FFF',
             hidden: !0,
           }),
-        },
-      },
-      congrats: {
-        title: 'Finalizacion',
-        options: {
-          congratShow: toggleShowProperty({
-            label: 'Visualizar mensaje final',
-            defaultValue: false,
-          }),
           congratsHtml: richTextProperty({
-            label: $t('_dp.smart_forms.behavior.message'),
-            defaultValue: `<p style="text-align: center;"><span></span><span></span><span style="font-size: 34px;"><strong>¡Gracias por participar!</strong></span></p>
-                            <p></p>
-                            <p style="text-align: center;"><span style="font-size: 16px;">Copia el siguiente código de descuento y úsalo en tu próxima compra</span></p>`,
+            label: 'Descripción',
+            defaultValue: mockcongratsDescription,
           }),
           congratsGiftFont: fontFamilyProperty({
             hidden: !0,
@@ -167,6 +173,7 @@ export const getWheelFortuneToolDefinition: () =>
             hidden: !0,
           }),
           congratsGiftColor: colorProperty({
+            defaultValue: '#000000',
             hidden: !0,
           }),
           congratsButtonText: {
@@ -186,6 +193,76 @@ export const getWheelFortuneToolDefinition: () =>
           }),
         },
       },
+    },
+    propertyStates: (values: WheelFortuneValues) => ({
+      congratsButtonColor: {
+        enabled: values.viewPanel === 'end',
+      },
+      congratsButtonBackgroundColor: {
+        enabled: values.viewPanel === 'end',
+      },
+      congratsButtonText: {
+        enabled: values.viewPanel === 'end',
+      },
+      congratsGiftColor: {
+        enabled: values.viewPanel === 'end',
+      },
+      congratsGiftFontSize: {
+        enabled: values.viewPanel === 'end',
+      },
+      congratsGiftFont: {
+        enabled: values.viewPanel === 'end',
+      },
+      congratsHtml: {
+        enabled: values.viewPanel === 'end',
+      },
+
+      descriptionHtml: {
+        enabled: values.viewPanel === 'init',
+      },
+      list: {
+        enabled: values.viewPanel === 'init',
+      },
+      fields: {
+        enabled: values.viewPanel === 'init',
+      },
+      buttonText: {
+        enabled: values.viewPanel === 'init',
+      },
+      buttonBackgroundColor: {
+        enabled: values.viewPanel === 'init',
+      },
+      buttonColor: {
+        enabled: values.viewPanel === 'init',
+      },
+    }),
+    transformer: (values, source) => {
+      const { name, value } = source;
+      if (name === 'fields') {
+        const emailIndex = value.findIndex(({ name }) => name === 'EMAIL');
+        if (emailIndex > 0) {
+          const emailField = value[emailIndex];
+          value.splice(emailIndex, 1);
+          value.splice(0, 0, emailField);
+        }
+      }
+      return values;
+    },
+    validator: ({ defaultErrors, values }) => {
+      if (values.list === '-1') {
+        defaultErrors.push({
+          id: 'SMART_FORM_TARGET_LIST_REQUIRED_ERROR',
+          icon: `${ASSETS_BASE_URL}/form1.svg`,
+          severity: 'ERROR',
+          title: $t(
+            'tabs.audit.rules.smart_form.subscription_list_undefined.title',
+          ),
+          description: $t(
+            'tabs.audit.rules.smart_form.subscription_list_undefined.description',
+          ),
+        });
+      }
+      return defaultErrors;
     },
   };
 };
