@@ -178,7 +178,6 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
     .dp-roulette {
        display: block;
      }
-
     .dp-wheel-roulette {
       width: 324px;
     }
@@ -194,7 +193,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
       right: -60px;
     }
   }
-  
+
   @media  (min-width: 420px) {
     .dp-roulette {
       display: inline-flex;
@@ -216,9 +215,8 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
       right: -80px;
     }
   }
-  
-  @media  (min-width: 768px) {
 
+  @media  (min-width: 768px) {
     .dp-roulette-congrats,
     .dp-roulette-description,
     .dp-wheel-roulette {
@@ -230,8 +228,6 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
       .dp-roulette-congrats-copy-icon {
       right: -100px;
     }
-
- 
   }`;
 
   return (
