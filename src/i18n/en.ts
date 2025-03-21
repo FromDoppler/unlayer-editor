@@ -150,6 +150,7 @@ export const messages_en: IntlMessages = {
   '_dp.wheel_fortune.border.color': `Border color`,
   '_dp.wheel_fortune.border.width': `Border width`,
   '_dp.wheel_fortune.button.label': `Spin now`,
+  '_dp.wheel_fortune.congrats.button.label': `Copy Code`,
   '_dp.wheel_fortune.label': `Roulette`,
   '_dp.wheel_fortune.segment.admin': `Segment admin`,
   '_dp.wheel_fortune.segment.config': `Set segments`,

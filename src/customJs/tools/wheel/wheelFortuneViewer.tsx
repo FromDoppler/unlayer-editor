@@ -152,6 +152,24 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
     textAlign: 'center',
     WebkitBoxOrient: 'vertical',
   } as const;
+
+  const congratysBtnStyle = {
+    border: 'none',
+    borderRadius: formRest.values.buttonBorderRadius,
+    display: 'inline-block',
+    textAlign: formRest.values.buttonAlign,
+    overflow: 'hidden',
+    cursor: 'pointer',
+    textDecoration: 'none',
+    fontWeight: formRest.values.buttonFontWeight,
+    padding: formRest.values.buttonPadding,
+    margin: '5px 10px',
+    fontSize: formRest.values.buttonFontSize,
+    width: '100%',
+    color: values.congratsButtonColor,
+    backgroundColor: values.congratsButtonBackgroundColor,
+    height: '35px',
+  } as const;
   return (
     <div>
       <div
@@ -244,6 +262,11 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
                 />
               </svg>
             </i>
+          </div>
+          <div style={{ display: 'flex' }}>
+            <button type="button" style={congratysBtnStyle}>
+              {values.congratsButtonText}
+            </button>
           </div>
       </div>
     </div>

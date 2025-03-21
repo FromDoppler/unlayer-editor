@@ -189,7 +189,21 @@ export const getWheelFortuneToolDefinition: () =>
           }),
           congratsGiftColor: colorProperty(),
             hidden: !0,
+          congratsButtonText: {
+            label: 'Text',
+            defaultValue: $t('_dp.wheel_fortune.congrats.button.label'),
+            widget: 'text',
           },
+          congratsButtonBackgroundColor: colorProperty({
+            label: 'Background Color',
+            defaultValue: '#2a75db',
+            hidden: !0,
+          }),
+          congratsButtonColor: colorProperty({
+            label: 'Text Color',
+            defaultValue: '#FFF',
+            hidden: !0,
+          }),
         },
       },
     },
