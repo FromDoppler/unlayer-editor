@@ -104,19 +104,9 @@ export const getWheelFortuneToolDefinition: () =>
             label: 'Descripcion',
             defaultValue: mockWheelDescription,
           }),
-        },
-      },
-      formAction: {
-        title: $t('_dp.smart_forms.action.title'),
-        options: {
           list: subscriptionListProperty({
             defaultValue: '-1',
           }),
-        },
-      },
-      form_manager: {
-        title: $t('_dp.smart_forms.field.title'),
-        options: {
           fields: {
             data: {
               allowAddNewField: false,
@@ -139,21 +129,6 @@ export const getWheelFortuneToolDefinition: () =>
             ],
             widget: 'fields',
           },
-      },
-      layout: {
-        title: 'Layout',
-        options: {
-        },
-      },
-      labels: {
-        title: 'Labels',
-        options: {
-        },
-      },
-
-      button: {
-        title: 'Button',
-        options: {
           buttonText: {
             label: 'Text',
             defaultValue: $t('_dp.wheel_fortune.button.label'),
