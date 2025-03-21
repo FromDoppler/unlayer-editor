@@ -81,6 +81,10 @@ export const getWheelFortuneToolDefinition: () =>
           wheelList: wheelListProperty({
             defaultValue: mockWheelValues,
           }),
+          wheelImage: {
+            label: 'Imagen',
+            widget: 'image',
+          },
           wheelFontColor: colorProperty({
             label: 'Font Color',
             defaultValue: '#116869',

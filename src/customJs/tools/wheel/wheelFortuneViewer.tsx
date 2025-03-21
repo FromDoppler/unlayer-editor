@@ -91,13 +91,15 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
 
   const wheelCenterStyle = {
     position: 'relative',
-    height: '15%',
-    width: '15%',
+    height: values.wheelImage?.url? '25%': '15%',
+    width:  values.wheelImage?.url? '25%': '15%',
     backgroundColor: values.wheelBorderColor,
     borderRadius: '50%',
     display: 'flex',
     zIndex: '10',
     userSelect: 'none',
+    justifyContent: 'center',
+    alignItems: 'center',
   } as const;
 
   const wheelSelectorStyle = {
@@ -243,7 +245,9 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
           {slides.length >= 2 ? (
             <>
               <div style={wheelSelectorStyle}></div>
-              <div style={wheelCenterStyle}></div>
+              <div style={wheelCenterStyle}>
+                <img style={{ objectFit: 'cover', width: '65px'}} src= {values.wheelImage?.url || ''}/>
+              </div>
               <div
                 id="dp-wheel"
                 style={wheelStyle}
