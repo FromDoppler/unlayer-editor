@@ -660,6 +660,8 @@ export const messages_en: IntlMessages = {
   'tabs.audit.rules.payu_button.empty_links.title': `PayU button links are empty`,
   'tabs.audit.rules.promo_code.id_undefined.description': `Automations require the dynamic code to be correctly configured.`,
   'tabs.audit.rules.promo_code.id_undefined.title': `The dynamic promotion code required to be set`,
+  'tabs.audit.rules.roulette.wheel_list_incomplete.description': `To continue, you must complete the roulette's slides`,
+  'tabs.audit.rules.roulette.wheel_list_incomplete.title': `Complete the Rouletter`,
   'tabs.audit.rules.smart_form.congrats_message_undefined.description': `To continue, you must write a Thank You Message, which your customers will see when they complete the Form.`,
   'tabs.audit.rules.smart_form.congrats_message_undefined.title': `Write a Thank You Message`,
   'tabs.audit.rules.smart_form.congrats_url_invalid.description': `To continue, please enter a valid URL where your customers will be redirected after completing the Form.`,

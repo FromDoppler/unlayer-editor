@@ -252,7 +252,7 @@ export const getWheelFortuneToolDefinition: () =>
       if (values.list === '-1') {
         defaultErrors.push({
           id: 'SMART_FORM_TARGET_LIST_REQUIRED_ERROR',
-          icon: `${ASSETS_BASE_URL}/form1.svg`,
+          icon: `${ASSETS_BASE_URL}/roulette2.svg`,
           severity: 'ERROR',
           title: $t(
             'tabs.audit.rules.smart_form.subscription_list_undefined.title',
@@ -262,6 +262,25 @@ export const getWheelFortuneToolDefinition: () =>
           ),
         });
       }
+      const wheelListIncomplete = values.wheelList.some(
+        (wheelSlide: WheelSlide) => {
+          return (
+            wheelSlide.label.trim() === '' || wheelSlide.gift.trim() === ''
+          );
+        },
+      );
+      if (wheelListIncomplete) {
+        defaultErrors.push({
+          id: 'ROULETTE_WHEEL_LIST_INCOMPLETED_ERROR',
+          icon: `${ASSETS_BASE_URL}/roulette2.svg`,
+          severity: 'ERROR',
+          title: $t('tabs.audit.rules.roulette.wheel_list_incomplete.title'),
+          description: $t(
+            'tabs.audit.rules.roulette.wheel_list_incomplete.description',
+          ),
+        });
+      }
+
       return defaultErrors;
     },
   };
