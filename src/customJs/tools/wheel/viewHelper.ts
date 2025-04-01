@@ -4,12 +4,12 @@ const labelStyleBySlideLenght = [
   {
     ang: '0',
     top: '0',
-    left: '70',
+    left: '90',
   },
   {
-    ang: '-33',
-    top: '-30',
-    left: '80',
+    ang: '-31',
+    top: '-47',
+    left: '85',
   },
   {
     ang: '-50',
@@ -24,24 +24,24 @@ const labelStyleBySlideLenght = [
   },
   {
     ang: '-60',
-    top: '-90',
-    left: '55',
+    top: '-85',
+    left: '50',
   },
   {
     //7
-    ang: '-60',
+    ang: '-65',
     top: '-90',
-    left: '55',
+    left: '40',
   },
   {
-    ang: '-70',
-    top: '-100',
-    left: '45',
+    ang: '-65',
+    top: '-95',
+    left: '40',
   }, //9
   {
-    ang: '-72',
-    top: '-85',
-    left: '30',
+    ang: '-65',
+    top: '-100',
+    left: '43',
   },
 ];
 
@@ -64,13 +64,13 @@ export const getPosicionParaProbabilidad = (probabilidad: number) => {
     return `polygon(51% 0, 100% 0, 100% 100%, ${x4 + 1}% 100%, 51% 50%)`;
   }
   if (probabilidad >= 25) {
-    const y3 = Math.tan(probabilidadARadianes(probabilidad - 25)) * 50 + 50;
-    return `polygon(51% 0, 100% 0, 100% ${y3}%, 51% 50%)`;
+    const y3 = Math.tan(probabilidadARadianes(probabilidad - 25)) * 50 + 49;
+    return `polygon(51% 0, 100% 0, 100% ${y3}%, 51% 49%)`;
   }
   if (probabilidad >= 12.5) {
     const y3 =
       (0.5 - 0.5 / Math.tan(probabilidadARadianes(probabilidad))) * 100;
-    return `polygon(51% 0, 100% 0, 100% ${y3 - 1}%, 52% 50%)`;
+    return `polygon(51.5% 0, 100% 0, 99% ${y3}%, 51% 49%)`;
   }
   if (probabilidad >= 0) {
     const x2 = Math.tan(probabilidadARadianes(probabilidad)) * 50 + 50;
