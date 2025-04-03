@@ -3,6 +3,7 @@ import { ViewerComponent } from '../../types';
 import { WheelSlide } from './types';
 import { SmartFormViewer } from '../smartforms/smartFormViewer';
 import { getPosicionParaProbabilidad, getWheelLabelStyle } from './viewHelper';
+import { $t } from '../../localization';
 
 export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
   const values = rest.values;
@@ -240,30 +241,21 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
         }}
       >
         <section style={wheelContainerStyle} className="dp-wheel-roulette">
-          {slides.length >= 2 ? (
-            <>
-              <div style={wheelSelectorStyle}></div>
-              <div style={wheelCenterStyle}></div>
-              <div
-                id="dp-wheel"
-                style={wheelStyle}
-                data-slides={JSON.stringify(values.wheelList)}
-              >
-                {slides.map((slide: WheelSlide, i: number) => (
-                  <span key={i} style={spanStylesArray[i]}>
-                    <span
-                      style={spanLabelStyle}
-                      className="dp-wheel-segment-label"
-                    >
-                      {slide.label}
-                    </span>
-                  </span>
-                ))}
-              </div>
-            </>
-          ) : (
-            <div>El minimo de segmento para mostrar la ruleta es 2</div>
-          )}
+          <div style={wheelSelectorStyle}></div>
+          <div style={wheelCenterStyle}></div>
+          <div
+            id="dp-wheel"
+            style={wheelStyle}
+            data-slides={JSON.stringify(values.wheelList)}
+          >
+            {slides.map((slide: WheelSlide, i: number) => (
+              <span key={i} style={spanStylesArray[i]}>
+                <span style={spanLabelStyle} className="dp-wheel-segment-label">
+                  {slide.label}
+                </span>
+              </span>
+            ))}
+          </div>
         </section>
         <section
           className="dp-roulette-description"
@@ -302,7 +294,11 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
             <span style={giftCodeStyle}>[[GIFT CODE]]</span>
             <i
               className="dp-roulette-congrats-copy-icon"
-              style={{ display: 'flex', position: 'relative' }}
+              style={{
+                display: 'flex',
+                position: 'relative',
+                cursor: 'pointer',
+              }}
             >
               <svg
                 width="20"
@@ -326,6 +322,33 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
             <button type="button" style={congratysBtnStyle}>
               {values.congratsButtonText}
             </button>
+          </div>
+          <div
+            id="dp_copy_code_message"
+            style={{
+              display: 'none',
+              backgroundColor: '#eaf5f9',
+              borderTop: '1px solid #abc9f9',
+              borderBottom: '1px solid #abc9f9',
+              borderRight: '1px solid #abc9f9',
+              borderLeft: '4px solid #669df3',
+              margin: '10px',
+              padding: '18px',
+              fontFamily: '"proxima-nova", Helvetica, Arial, sans-serif',
+              fontSize: '15px',
+              alignItems: 'center',
+            }}
+          >
+            <span
+              style={{
+                height: '20px',
+                width: '30px',
+                backgroundImage:
+                  'url("https://cdn.fromdoppler.com/doppler-style-guide//static/media/de522f11257cc031e637.svg")',
+                backgroundRepeat: 'no-repeat',
+              }}
+            ></span>
+            <p>{$t('_dp.wheel_fortune.congrats.copy.message')}</p>
           </div>
         </section>
       </div>
