@@ -241,30 +241,21 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
         }}
       >
         <section style={wheelContainerStyle} className="dp-wheel-roulette">
-          {slides.length >= 2 ? (
-            <>
-              <div style={wheelSelectorStyle}></div>
-              <div style={wheelCenterStyle}></div>
-              <div
-                id="dp-wheel"
-                style={wheelStyle}
-                data-slides={JSON.stringify(values.wheelList)}
-              >
-                {slides.map((slide: WheelSlide, i: number) => (
-                  <span key={i} style={spanStylesArray[i]}>
-                    <span
-                      style={spanLabelStyle}
-                      className="dp-wheel-segment-label"
-                    >
-                      {slide.label}
-                    </span>
-                  </span>
-                ))}
-              </div>
-            </>
-          ) : (
-            <div>El minimo de segmento para mostrar la ruleta es 2</div>
-          )}
+          <div style={wheelSelectorStyle}></div>
+          <div style={wheelCenterStyle}></div>
+          <div
+            id="dp-wheel"
+            style={wheelStyle}
+            data-slides={JSON.stringify(values.wheelList)}
+          >
+            {slides.map((slide: WheelSlide, i: number) => (
+              <span key={i} style={spanStylesArray[i]}>
+                <span style={spanLabelStyle} className="dp-wheel-segment-label">
+                  {slide.label}
+                </span>
+              </span>
+            ))}
+          </div>
         </section>
         <section
           className="dp-roulette-description"
