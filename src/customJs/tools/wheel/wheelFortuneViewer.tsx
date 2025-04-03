@@ -303,7 +303,11 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
             <span style={giftCodeStyle}>[[GIFT CODE]]</span>
             <i
               className="dp-roulette-congrats-copy-icon"
-              style={{ display: 'flex', position: 'relative' }}
+              style={{
+                display: 'flex',
+                position: 'relative',
+                cursor: 'pointer',
+              }}
             >
               <svg
                 width="20"
