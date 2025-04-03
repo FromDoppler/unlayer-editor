@@ -247,8 +247,11 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
 
                         <td className="col-1" style={cellStyle}>
                           <span
-                            style={{ cursor: 'pointer' }}
+                            style={{
+                              cursor: value.length > 2 ? 'pointer' : 'default',
+                            }}
                             onClick={() => {
+                              if (value.length < 3) return;
                               eliminateSegment(i);
                             }}
                           >
@@ -264,7 +267,7 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
                                 fillRule="evenodd"
                                 clipRule="evenodd"
                                 d="M16.5 1.5V0H9V1.5H3.8715C3.39 1.5 3 1.89 3 2.3715V4.5H9H16.5H22.5V2.3715C22.5 1.89 22.11 1.5 21.6285 1.5H16.5ZM4.5 6V22.962C4.5 23.535 4.965 24 5.538 24H19.962C20.535 24 21 23.535 21 22.962V6H4.5ZM18 21H16.5V9H18V21ZM12 21H13.5V9H12V21ZM9 21H7.5V9H9V21Z"
-                                fill="#999999"
+                                fill={value.length > 2 ? '#999' : '#eee'}
                               />
                             </svg>
                           </span>
