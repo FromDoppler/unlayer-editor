@@ -3,6 +3,7 @@ import { ViewerComponent } from '../../types';
 import { WheelSlide } from './types';
 import { SmartFormViewer } from '../smartforms/smartFormViewer';
 import { getPosicionParaProbabilidad, getWheelLabelStyle } from './viewHelper';
+import { $t } from '../../localization';
 
 export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
   const values = rest.values;
@@ -326,6 +327,33 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
             <button type="button" style={congratysBtnStyle}>
               {values.congratsButtonText}
             </button>
+          </div>
+          <div
+            id="dp_copy_code_message"
+            style={{
+              display: 'none',
+              backgroundColor: '#eaf5f9',
+              borderTop: '1px solid #abc9f9',
+              borderBottom: '1px solid #abc9f9',
+              borderRight: '1px solid #abc9f9',
+              borderLeft: '4px solid #669df3',
+              margin: '10px',
+              padding: '18px',
+              fontFamily: '"proxima-nova", Helvetica, Arial, sans-serif',
+              fontSize: '15px',
+              alignItems: 'center',
+            }}
+          >
+            <span
+              style={{
+                height: '20px',
+                width: '30px',
+                backgroundImage:
+                  'url("https://cdn.fromdoppler.com/doppler-style-guide//static/media/de522f11257cc031e637.svg")',
+                backgroundRepeat: 'no-repeat',
+              }}
+            ></span>
+            <p>{$t('_dp.wheel_fortune.congrats.copy.message')}</p>
           </div>
         </section>
       </div>

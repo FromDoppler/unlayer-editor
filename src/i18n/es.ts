@@ -151,6 +151,7 @@ export const messages_es = {
   '_dp.wheel_fortune.border.width': `Espesor del borde`,
   '_dp.wheel_fortune.button.label': `Girar ahora`,
   '_dp.wheel_fortune.congrats.button.label': `Copiar Código`,
+  '_dp.wheel_fortune.congrats.copy.message': `Su código ha sido copiado correctamente`,
   '_dp.wheel_fortune.label': `Ruleta`,
   '_dp.wheel_fortune.segment.admin': `Administrar segmentos`,
   '_dp.wheel_fortune.segment.config': `Configuración de casillas`,
