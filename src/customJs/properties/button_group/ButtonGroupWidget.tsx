@@ -3,6 +3,7 @@ import { WidgetComponent } from '../../types';
 import { BtnGroup } from '.';
 
 export const buttonGroupWidget: WidgetComponent<string, void, BtnGroup[]> = ({
+  value,
   data,
   updateValue,
 }) => {
@@ -30,7 +31,7 @@ export const buttonGroupWidget: WidgetComponent<string, void, BtnGroup[]> = ({
                 key={btn.value}
                 type="button"
                 style={{ height: '40px', width: `${100 / group.length}%` }}
-                className={`btn btn-sm btn-${btn.active ? 'primary' : 'secondary'}`}
+                className={`btn btn-sm btn-${btn.value === value ? 'primary' : 'secondary'}`}
                 onClick={() => setBtnActive(btn.value)}
               >
                 {btn.label}
