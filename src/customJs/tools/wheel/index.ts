@@ -82,7 +82,7 @@ export const getWheelFortuneToolDefinition: () =>
             defaultValue: mockWheelValues,
           }),
           wheelFontColor: colorProperty({
-            label: 'Font Color',
+            label: 'Text Color',
             defaultValue: '#116869',
           }),
           wheelBackgroudColor: colorProperty({
@@ -100,25 +100,25 @@ export const getWheelFortuneToolDefinition: () =>
         },
       },
       description: {
-        title: 'Descripcion Ruleta',
+        title: $t('_dp.wheel_fortune.messages'),
         options: {
           viewPanel: buttonGroupProperty({
             defaultValue: 'init',
             data: [
               {
-                label: 'Incial',
+                label: $t('_dp.wheel_fortune.messages.init'),
                 value: 'init',
                 active: true,
               },
               {
-                label: 'Final',
+                label: $t('_dp.wheel_fortune.messages.end'),
                 value: 'end',
                 active: false,
               },
             ],
           }),
           descriptionHtml: richTextProperty({
-            label: 'Descripcion',
+            label: $t('_dp.wheel_fortune.messages.description'),
             defaultValue: mockWheelDescription,
           }),
           list: subscriptionListProperty({
@@ -162,7 +162,7 @@ export const getWheelFortuneToolDefinition: () =>
             hidden: !0,
           }),
           congratsHtml: richTextProperty({
-            label: 'Descripción',
+            label: $t('_dp.wheel_fortune.messages.description'),
             defaultValue: mockcongratsDescription,
           }),
           congratsButtonText: {

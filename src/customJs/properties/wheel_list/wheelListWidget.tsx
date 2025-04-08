@@ -138,7 +138,7 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
         <Modal
           open={modalOpen}
           size="M"
-          titleContent={$t('_dp.wheel_fortune.segment.admin')}
+          titleContent={$t('_dp.wheel_fortune.segment.config')}
           primaryAction={{
             label: $t('buttons.save'),
             primaryFn: () => updateWheelList(),
