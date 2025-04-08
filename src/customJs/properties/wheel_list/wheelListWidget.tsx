@@ -40,13 +40,17 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
   const setSegmentChance = (chanceValue: string, index: number) => {
     const slides = [...value];
     slides[index].chance = parseInt(chanceValue);
+    updateChances(slides);
+  };
+
+  const updateChances = (slides: WheelSlide[]) => {
     const totalChances = slides.reduce(
-      (acu: number, slide: WheelSlide) => (acu += slide.chance),
+      (acu: number, slide: WheelSlide) => acu + slide.chance,
       0,
     );
     slides.forEach((slide: WheelSlide, i: number) => {
       slides[i].percent =
-        `${Number.parseFloat(((slide.chance * 100) / totalChances).toFixed(2))}%`;
+        `${totalChances > 0 ? Number.parseFloat(((slide.chance * 100) / totalChances).toFixed(2)) : 0}%`;
     });
     debounceUpdate(slides);
   };
@@ -59,15 +63,8 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
   const eliminateSegment = (slideIndex: number) => {
     const slides = [...value];
     slides.splice(slideIndex, 1);
-    const totalChances = slides.reduce(
-      (acu: number, slide: WheelSlide) => (acu += slide.chance),
-      0,
-    );
-    slides.forEach((slide: WheelSlide, i: number) => {
-      slides[i].percent =
-        `${Number.parseFloat(((slide.chance * 100) / totalChances).toFixed(2))}%`;
-    });
-    debounceUpdate(slides);
+    updateChances(slides);
+    setModalOpen(false);
   };
 
   const updateColor = (color: Color, index: number) => {
