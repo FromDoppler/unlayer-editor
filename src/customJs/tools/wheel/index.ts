@@ -165,17 +165,6 @@ export const getWheelFortuneToolDefinition: () =>
             label: 'Descripción',
             defaultValue: mockcongratsDescription,
           }),
-          congratsGiftFont: fontFamilyProperty({
-            hidden: !0,
-          }),
-          congratsGiftFontSize: fontSizeProperty({
-            defaultValue: '18px',
-            hidden: !0,
-          }),
-          congratsGiftColor: colorProperty({
-            defaultValue: '#000000',
-            hidden: !0,
-          }),
           congratsButtonText: {
             label: 'Text',
             defaultValue: $t('_dp.wheel_fortune.congrats.button.label'),
@@ -202,15 +191,6 @@ export const getWheelFortuneToolDefinition: () =>
         enabled: values.viewPanel === 'end',
       },
       congratsButtonText: {
-        enabled: values.viewPanel === 'end',
-      },
-      congratsGiftColor: {
-        enabled: values.viewPanel === 'end',
-      },
-      congratsGiftFontSize: {
-        enabled: values.viewPanel === 'end',
-      },
-      congratsGiftFont: {
         enabled: values.viewPanel === 'end',
       },
       congratsHtml: {
