@@ -52,9 +52,9 @@ const mockWheelValues: WheelSlide[] = [
   },
   {
     label: 'segmento 6',
-    gift: 'premio 4',
+    gift: 'premio 6',
     chance: 0,
-    percent: '20%',
+    percent: '0%',
     color: '#83cfd0',
   },
 ];
