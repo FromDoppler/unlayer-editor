@@ -116,10 +116,10 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
   const giftCodeStyle = {
     display: 'flex',
     textAlign: 'center',
-    fontSize: values.congratsGiftFontSize || '24px',
-    fontFamily: values.congratsGiftFont?.value || 'inherit',
+    fontSize: '18px',
+    fontFamily: 'inherit',
     fontWeight: '900',
-    color: values.congratsGiftColor,
+    color: '#000',
   } as const;
 
   const slides = values.wheelList;

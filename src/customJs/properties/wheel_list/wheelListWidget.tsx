@@ -40,13 +40,17 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
   const setSegmentChance = (chanceValue: string, index: number) => {
     const slides = [...value];
     slides[index].chance = parseInt(chanceValue);
+    updateChances(slides);
+  };
+
+  const updateChances = (slides: WheelSlide[]) => {
     const totalChances = slides.reduce(
-      (acu: number, slide: WheelSlide) => (acu += slide.chance),
+      (acu: number, slide: WheelSlide) => acu + slide.chance,
       0,
     );
     slides.forEach((slide: WheelSlide, i: number) => {
       slides[i].percent =
-        `${Number.parseFloat(((slide.chance * 100) / totalChances).toFixed(2))}%`;
+        `${totalChances > 0 ? Number.parseFloat(((slide.chance * 100) / totalChances).toFixed(2)) : 0}%`;
     });
     debounceUpdate(slides);
   };
@@ -59,15 +63,8 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
   const eliminateSegment = (slideIndex: number) => {
     const slides = [...value];
     slides.splice(slideIndex, 1);
-    const totalChances = slides.reduce(
-      (acu: number, slide: WheelSlide) => (acu += slide.chance),
-      0,
-    );
-    slides.forEach((slide: WheelSlide, i: number) => {
-      slides[i].percent =
-        `${Number.parseFloat(((slide.chance * 100) / totalChances).toFixed(2))}%`;
-    });
-    debounceUpdate(slides);
+    updateChances(slides);
+    setModalOpen(false);
   };
 
   const updateColor = (color: Color, index: number) => {
@@ -119,7 +116,7 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '5px',
-    border: '1px solid #D4D4D4', //app-lightgrey
+    border: '1px solid #D4D4D4',
     backgroundColor: '#F4F4F4',
     borderRadius: '2px',
     margin: '8px 2px',
@@ -141,7 +138,7 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
         <Modal
           open={modalOpen}
           size="M"
-          titleContent={$t('_dp.wheel_fortune.segment.admin')}
+          titleContent={$t('_dp.wheel_fortune.segment.config')}
           primaryAction={{
             label: $t('buttons.save'),
             primaryFn: () => updateWheelList(),
@@ -158,15 +155,8 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
             },
           }}
           content={
-            <>
-              <form
-                style={{
-                  width: '100%',
-                  margin: '0 20px',
-                }}
-                id="slideFom"
-                ref={formRef}
-              >
+            <div style={{ maxHeight: '400px', overflow: 'hidden auto' }}>
+              <form id="slideFom" ref={formRef}>
                 <table className="table ">
                   <thead>
                     <tr>
@@ -304,7 +294,7 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
                   </button>
                 </div>
               </form>
-            </>
+            </div>
           }
         />
 

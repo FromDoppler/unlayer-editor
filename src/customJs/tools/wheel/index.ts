@@ -4,7 +4,6 @@ import { ASSETS_BASE_URL } from '../../constants';
 import {
   colorProperty,
   fontFamilyProperty,
-  fontSizeProperty,
   richTextProperty,
 } from '../../properties/helpers';
 import { subscriptionListProperty } from '../../properties/subscription_list';
@@ -52,9 +51,9 @@ const mockWheelValues: WheelSlide[] = [
   },
   {
     label: 'segmento 6',
-    gift: 'premio 4',
+    gift: 'premio 6',
     chance: 0,
-    percent: '20%',
+    percent: '0%',
     color: '#83cfd0',
   },
 ];
@@ -82,7 +81,7 @@ export const getWheelFortuneToolDefinition: () =>
             defaultValue: mockWheelValues,
           }),
           wheelFontColor: colorProperty({
-            label: 'Font Color',
+            label: 'Text Color',
             defaultValue: '#116869',
           }),
           wheelBackgroudColor: colorProperty({
@@ -100,25 +99,25 @@ export const getWheelFortuneToolDefinition: () =>
         },
       },
       description: {
-        title: 'Descripcion Ruleta',
+        title: $t('_dp.wheel_fortune.messages'),
         options: {
           viewPanel: buttonGroupProperty({
             defaultValue: 'init',
             data: [
               {
-                label: 'Incial',
+                label: $t('_dp.wheel_fortune.messages.init'),
                 value: 'init',
                 active: true,
               },
               {
-                label: 'Final',
+                label: $t('_dp.wheel_fortune.messages.end'),
                 value: 'end',
                 active: false,
               },
             ],
           }),
           descriptionHtml: richTextProperty({
-            label: 'Descripcion',
+            label: $t('_dp.wheel_fortune.messages.description'),
             defaultValue: mockWheelDescription,
           }),
           list: subscriptionListProperty({
@@ -162,19 +161,8 @@ export const getWheelFortuneToolDefinition: () =>
             hidden: !0,
           }),
           congratsHtml: richTextProperty({
-            label: 'Descripción',
+            label: $t('_dp.wheel_fortune.messages.description'),
             defaultValue: mockcongratsDescription,
-          }),
-          congratsGiftFont: fontFamilyProperty({
-            hidden: !0,
-          }),
-          congratsGiftFontSize: fontSizeProperty({
-            defaultValue: '18px',
-            hidden: !0,
-          }),
-          congratsGiftColor: colorProperty({
-            defaultValue: '#000000',
-            hidden: !0,
           }),
           congratsButtonText: {
             label: 'Text',
@@ -204,19 +192,9 @@ export const getWheelFortuneToolDefinition: () =>
       congratsButtonText: {
         enabled: values.viewPanel === 'end',
       },
-      congratsGiftColor: {
-        enabled: values.viewPanel === 'end',
-      },
-      congratsGiftFontSize: {
-        enabled: values.viewPanel === 'end',
-      },
-      congratsGiftFont: {
-        enabled: values.viewPanel === 'end',
-      },
       congratsHtml: {
         enabled: values.viewPanel === 'end',
       },
-
       descriptionHtml: {
         enabled: values.viewPanel === 'init',
       },
@@ -269,7 +247,12 @@ export const getWheelFortuneToolDefinition: () =>
           );
         },
       );
-      if (wheelListIncomplete) {
+
+      const wheelChancesSum = values.wheelList.reduce(
+        (sum: number, wheelSlide: WheelSlide) => sum + wheelSlide.chance,
+        0,
+      );
+      if (wheelListIncomplete || wheelChancesSum === 0) {
         defaultErrors.push({
           id: 'ROULETTE_WHEEL_LIST_INCOMPLETED_ERROR',
           icon: `${ASSETS_BASE_URL}/roulette2.svg`,
