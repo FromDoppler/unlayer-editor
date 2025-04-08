@@ -269,7 +269,12 @@ export const getWheelFortuneToolDefinition: () =>
           );
         },
       );
-      if (wheelListIncomplete) {
+
+      const wheelChancesSum = values.wheelList.reduce(
+        (sum: number, wheelSlide: WheelSlide) => sum + wheelSlide.chance,
+        0,
+      );
+      if (wheelListIncomplete || wheelChancesSum === 0) {
         defaultErrors.push({
           id: 'ROULETTE_WHEEL_LIST_INCOMPLETED_ERROR',
           icon: `${ASSETS_BASE_URL}/roulette2.svg`,
