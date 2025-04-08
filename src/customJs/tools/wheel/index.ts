@@ -196,7 +196,6 @@ export const getWheelFortuneToolDefinition: () =>
       congratsHtml: {
         enabled: values.viewPanel === 'end',
       },
-
       descriptionHtml: {
         enabled: values.viewPanel === 'init',
       },

@@ -116,7 +116,7 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '5px',
-    border: '1px solid #D4D4D4', //app-lightgrey
+    border: '1px solid #D4D4D4',
     backgroundColor: '#F4F4F4',
     borderRadius: '2px',
     margin: '8px 2px',
