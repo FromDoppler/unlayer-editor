@@ -4,7 +4,6 @@ import { ASSETS_BASE_URL } from '../../constants';
 import {
   colorProperty,
   fontFamilyProperty,
-  fontSizeProperty,
   richTextProperty,
 } from '../../properties/helpers';
 import { subscriptionListProperty } from '../../properties/subscription_list';
