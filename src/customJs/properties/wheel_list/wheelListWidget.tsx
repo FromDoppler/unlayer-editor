@@ -158,15 +158,8 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
             },
           }}
           content={
-            <>
-              <form
-                style={{
-                  width: '100%',
-                  margin: '0 20px',
-                }}
-                id="slideFom"
-                ref={formRef}
-              >
+            <div style={{ maxHeight: '400px', overflow: 'hidden auto' }}>
+              <form id="slideFom" ref={formRef}>
                 <table className="table ">
                   <thead>
                     <tr>
@@ -304,7 +297,7 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
                   </button>
                 </div>
               </form>
-            </>
+            </div>
           }
         />
 
