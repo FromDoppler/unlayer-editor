@@ -265,7 +265,7 @@ export const getProductToolDefinition: (
 
   return {
     name: 'product',
-    label: $t('_dp.product'),
+    label: $t(`_dp.product_${productType}`),
     icon: `${ASSETS_BASE_URL}/product_v2.svg`,
     Component: ProductViewer,
     options,

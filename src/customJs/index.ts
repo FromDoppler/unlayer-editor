@@ -15,7 +15,7 @@ import { getProductToolDefinition } from './tools/product';
 import { productGalleryPropertyEditorDefinition } from './properties/product_gallery';
 import { productArrangementPropertyEditorDefinition } from './properties/product_arrangement';
 import { getDynamicToolDefinition } from './tools/dynamic_tool';
-import { DYNAMIC_TOOL_TYPE } from './constants';
+import { DYNAMIC_TOOL_TYPE, PRODUCT_TOOL_TYPE } from './constants';
 import { getRssHeaderToolDefinition } from './tools/rss';
 import { getQrToolDefinition } from './tools/qr';
 import { qrPropertyEditorDefinition } from './properties/qr';
@@ -46,6 +46,7 @@ const {
   qrCode,
   smartForm,
   roulette,
+  productDynamic,
 } = getConfiguration();
 
 const unlayerLocales = {
@@ -89,7 +90,9 @@ if (qrCode) {
   registerReactTool(getQrToolDefinition());
 }
 
-if (product) {
+if (productDynamic) {
+  registerReactTool(getProductToolDefinition(<PRODUCT_TOOL_TYPE>'dynamic'));
+} else if (product) {
   registerReactTool(getProductToolDefinition());
 }
 
