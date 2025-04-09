@@ -13,3 +13,5 @@ export type DYNAMIC_TOOL_TYPE =
   | 'recommended'
   | 'products_completed'
   | 'recommended_product';
+
+export type PRODUCT_TOOL_TYPE = 'static' | 'dynamic';

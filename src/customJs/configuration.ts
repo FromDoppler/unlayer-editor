@@ -27,6 +27,7 @@ type Configuration = {
   qrCode: boolean;
   smartForm: boolean;
   roulette: boolean;
+  dynamicProduct: boolean;
   dopplerExternalUrls: DopplerExternalUrls;
 };
 
@@ -76,6 +77,7 @@ export const parseConfigurationDTO = ({
   qrCode = true,
   smartForm = false,
   roulette = false,
+  dynamicProduct = false,
 }: {
   locale?: 'es' | 'en';
   stores?: Store[];
@@ -99,6 +101,7 @@ export const parseConfigurationDTO = ({
   qrCode?: boolean;
   smartForm?: boolean;
   roulette?: boolean;
+  dynamicProduct?: boolean;
 } = {}) => {
   stores = stores.map(parseStoreDTO);
   const promotionCodeEnabled = stores.some((x) => x.promotionCodeEnabled);
@@ -125,6 +128,7 @@ export const parseConfigurationDTO = ({
     qrCode,
     smartForm,
     roulette,
+    dynamicProduct,
     dopplerExternalUrls: parseDopplerExternalUrlsDTO(dopplerExternalUrls),
   };
 };

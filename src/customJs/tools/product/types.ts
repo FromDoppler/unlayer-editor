@@ -90,8 +90,21 @@ export type ProductBase = Readonly<{
   };
 }>;
 
+export type ProductDynamicInfo = Readonly<{
+  info: {
+    infoShown: boolean;
+    infoFont?: { value: string };
+    infoFontSize?: string;
+    infoHtml: string;
+  };
+}>;
+
 export type ProductPropertyGroups = PropertyGroupsFrom<ProductBase>;
 
 export type ProductValues = ToolValuesFrom<ProductBase>;
 
 export type ProductToolDefinition = ReactToolDefinitionFrom<ProductBase>;
+
+export type ProductDynamicValues = ToolValuesFrom<
+  ProductBase & ProductDynamicInfo
+>;
