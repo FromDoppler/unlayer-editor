@@ -1,7 +1,7 @@
 import { $t } from '../../localization';
 import { ProductViewer } from './ProductViewer';
 import { ProductToolDefinition, ProductLayout, ProductValues } from './types';
-import { ASSETS_BASE_URL } from '../../constants';
+import { ASSETS_BASE_URL, PRODUCT_TOOL_TYPE } from '../../constants';
 import { urlProperty } from '../../properties/url';
 import {
   autoWidthProperty,
@@ -65,6 +65,7 @@ const transformValuesBasedOnProductGallery: (
     discountPriceText,
     discountText,
     descriptionHtml,
+    info,
   }: ProductGalleryValue,
 ) => ({
   ...productValues,
@@ -91,167 +92,184 @@ const transformValuesBasedOnProductGallery: (
   discountShown: !!discountText,
   descriptionHtml: stripHtml(descriptionHtml),
   descriptionShown: !!descriptionHtml,
+  infoHtml: stripHtml(info),
+  infoShown: !!info,
 });
 
-export const getProductToolDefinition: () =>
-  | ProductToolDefinition
-  | undefined = () => {
+export const getProductToolDefinition: (
+  dynamicProduct?: PRODUCT_TOOL_TYPE,
+) => ProductToolDefinition | undefined = (dynamicProduct = 'static') => {
+  const options: any = {
+    product: {
+      title: $t('_dp.product'),
+      options: {
+        productGallery: productGalleryProperty(),
+        productUrl: urlProperty({
+          label: $t('_dp.product_link'),
+        }),
+      },
+    },
+    layout: {
+      title: $t('_dp.layout'),
+      options: {
+        layout: productLayoutProperty(),
+        arrangement: productArrangementProperty(),
+        backgroundColor: colorProperty({
+          label: $t('editor.background_color.label'),
+        }),
+      },
+    },
+    image: {
+      title: $t('editor.image.label'),
+      options: {
+        imageShown: toggleShowProperty(),
+        image: imageProperty({
+          label: $t('_dp.product_image'),
+        }),
+      },
+    },
+    title: {
+      title: $t('_dp.title'),
+      options: {
+        titleShown: toggleShowProperty(),
+        titleText: textProperty({
+          defaultValue: $t('_dp.product_title_default_value'),
+          label: $t('_dp.product_title'),
+        }),
+        titleFont: fontFamilyProperty(),
+        titleFontWeight: fontWeightProperty({
+          defaultValue: 700,
+        }),
+        titleFontSize: fontSizeProperty({
+          defaultValue: DEFAULT_FONT_SIZE,
+        }),
+        titleColor: colorProperty(),
+      },
+    },
+    prices: {
+      title: $t('_dp.prices'),
+      options: {
+        pricesShown: toggleShowProperty(),
+        pricesFont: fontFamilyProperty(),
+        pricesFontWeight: fontWeightProperty(),
+
+        pricesDefaultPriceShown: toggleProperty({
+          label: $t('_dp.price_default_shown'),
+          defaultValue: true,
+        }),
+        pricesDefaultPriceText: textProperty({
+          label: $t('_dp.price_default'),
+          defaultValue: $t('_dp.product_prices_default_default_value'),
+        }),
+        pricesDefaultPriceFontSize: fontSizeProperty({
+          label: $t('_dp.price_default_size'),
+          defaultValue: DEFAULT_FONT_SIZE,
+        }),
+        pricesDefaultPriceColor: colorProperty({
+          label: $t('_dp.price_default_color'),
+          defaultValue: DEFAULT_GREEN_COLOR,
+        }),
+
+        pricesDiscountPriceShown: toggleProperty({
+          label: $t('_dp.price_discount_shown'),
+          defaultValue: false,
+        }),
+        pricesDiscountPriceText: textProperty({
+          label: $t('_dp.price_discount'),
+          defaultValue: $t('_dp.product_prices_discount_default_value'),
+        }),
+        pricesDiscountPriceFontSize: fontSizeProperty({
+          label: $t('_dp.price_discount_size'),
+          defaultValue: DEFAULT_FONT_SIZE,
+        }),
+        pricesDiscountPriceColor: colorProperty({
+          label: $t('_dp.price_discount_color'),
+          defaultValue: DEFAULT_GREEN_COLOR,
+        }),
+      },
+    },
+    discount: {
+      title: $t('_dp.discount'),
+      options: {
+        discountShown: toggleShowProperty({
+          defaultValue: false,
+        }),
+        discountText: textProperty({
+          label: $t('_dp.discount_text'),
+          defaultValue: $t('_dp.product_discount_default_value'),
+        }),
+        discountFont: fontFamilyProperty(),
+        discountFontWeight: fontWeightProperty(),
+        discountFontSize: fontSizeProperty({
+          defaultValue: '16px',
+        }),
+        discountColor: colorProperty(),
+      },
+    },
+    description: {
+      title: $t('_dp.description'),
+      options: {
+        descriptionShown: toggleShowProperty({
+          defaultValue: false,
+        }),
+        descriptionHtml: richTextProperty(),
+        descriptionFont: fontFamilyProperty(),
+        descriptionFontSize: fontSizeProperty(),
+      },
+    },
+    button: {
+      title: $t('_dp.product_button'),
+      options: {
+        buttonShown: toggleShowProperty(),
+        buttonText: textProperty({
+          label: $t('_dp.product_button_text'),
+          defaultValue: $t('_dp.product_button_default_value'),
+        }),
+        buttonFont: fontFamilyProperty(),
+        buttonFontWeight: fontWeightProperty({
+          defaultValue: 700,
+        }),
+        buttonFontSize: fontSizeProperty({
+          defaultValue: '15px',
+        }),
+        buttonColors: buttonColorsProperty(),
+        buttonAutoWith: autoWidthProperty(),
+        buttonBorder: borderProperty(),
+        buttonBorderRadius: borderRadiusProperty(),
+        buttonPadding: {
+          label: 'Padding',
+          defaultValue: '13px 0px 13px',
+          widget: 'padding',
+        },
+        buttonMargin: {
+          label: 'Margin',
+          defaultValue: '15px 0px 0px',
+          widget: 'margin',
+        },
+      },
+    },
+  };
+
+  if (dynamicProduct === 'dynamic') {
+    options.info = {
+      title: $t('_dp.product_info'),
+      options: {
+        infoShown: toggleShowProperty({
+          defaultValue: false,
+        }),
+        infoFont: fontFamilyProperty(),
+        infoFontSize: fontSizeProperty(),
+      },
+    };
+  }
+
   return {
     name: 'product',
     label: $t('_dp.product'),
     icon: `${ASSETS_BASE_URL}/product_v2.svg`,
     Component: ProductViewer,
-    options: {
-      product: {
-        title: $t('_dp.product'),
-        options: {
-          productGallery: productGalleryProperty(),
-          productUrl: urlProperty({
-            label: $t('_dp.product_link'),
-          }),
-        },
-      },
-      layout: {
-        title: $t('_dp.layout'),
-        options: {
-          layout: productLayoutProperty(),
-          arrangement: productArrangementProperty(),
-          backgroundColor: colorProperty({
-            label: $t('editor.background_color.label'),
-          }),
-        },
-      },
-      image: {
-        title: $t('editor.image.label'),
-        options: {
-          imageShown: toggleShowProperty(),
-          image: imageProperty({
-            label: $t('_dp.product_image'),
-          }),
-        },
-      },
-      title: {
-        title: $t('_dp.title'),
-        options: {
-          titleShown: toggleShowProperty(),
-          titleText: textProperty({
-            defaultValue: $t('_dp.product_title_default_value'),
-            label: $t('_dp.product_title'),
-          }),
-          titleFont: fontFamilyProperty(),
-          titleFontWeight: fontWeightProperty({
-            defaultValue: 700,
-          }),
-          titleFontSize: fontSizeProperty({
-            defaultValue: DEFAULT_FONT_SIZE,
-          }),
-          titleColor: colorProperty(),
-        },
-      },
-      prices: {
-        title: $t('_dp.prices'),
-        options: {
-          pricesShown: toggleShowProperty(),
-          pricesFont: fontFamilyProperty(),
-          pricesFontWeight: fontWeightProperty(),
-
-          pricesDefaultPriceShown: toggleProperty({
-            label: $t('_dp.price_default_shown'),
-            defaultValue: true,
-          }),
-          pricesDefaultPriceText: textProperty({
-            label: $t('_dp.price_default'),
-            defaultValue: $t('_dp.product_prices_default_default_value'),
-          }),
-          pricesDefaultPriceFontSize: fontSizeProperty({
-            label: $t('_dp.price_default_size'),
-            defaultValue: DEFAULT_FONT_SIZE,
-          }),
-          pricesDefaultPriceColor: colorProperty({
-            label: $t('_dp.price_default_color'),
-            defaultValue: DEFAULT_GREEN_COLOR,
-          }),
-
-          pricesDiscountPriceShown: toggleProperty({
-            label: $t('_dp.price_discount_shown'),
-            defaultValue: false,
-          }),
-          pricesDiscountPriceText: textProperty({
-            label: $t('_dp.price_discount'),
-            defaultValue: $t('_dp.product_prices_discount_default_value'),
-          }),
-          pricesDiscountPriceFontSize: fontSizeProperty({
-            label: $t('_dp.price_discount_size'),
-            defaultValue: DEFAULT_FONT_SIZE,
-          }),
-          pricesDiscountPriceColor: colorProperty({
-            label: $t('_dp.price_discount_color'),
-            defaultValue: DEFAULT_GREEN_COLOR,
-          }),
-        },
-      },
-      discount: {
-        title: $t('_dp.discount'),
-        options: {
-          discountShown: toggleShowProperty({
-            defaultValue: false,
-          }),
-          discountText: textProperty({
-            label: $t('_dp.discount_text'),
-            defaultValue: $t('_dp.product_discount_default_value'),
-          }),
-          discountFont: fontFamilyProperty(),
-          discountFontWeight: fontWeightProperty(),
-          discountFontSize: fontSizeProperty({
-            defaultValue: '16px',
-          }),
-          discountColor: colorProperty(),
-        },
-      },
-      description: {
-        title: $t('_dp.description'),
-        options: {
-          descriptionShown: toggleShowProperty({
-            defaultValue: false,
-          }),
-          descriptionHtml: richTextProperty(),
-          descriptionFont: fontFamilyProperty(),
-          descriptionFontSize: fontSizeProperty(),
-        },
-      },
-      button: {
-        title: $t('_dp.product_button'),
-        options: {
-          buttonShown: toggleShowProperty(),
-          buttonText: textProperty({
-            label: $t('_dp.product_button_text'),
-            defaultValue: $t('_dp.product_button_default_value'),
-          }),
-          buttonFont: fontFamilyProperty(),
-          buttonFontWeight: fontWeightProperty({
-            defaultValue: 700,
-          }),
-          buttonFontSize: fontSizeProperty({
-            defaultValue: '15px',
-          }),
-          buttonColors: buttonColorsProperty(),
-          buttonAutoWith: autoWidthProperty(),
-          buttonBorder: borderProperty(),
-          buttonBorderRadius: borderRadiusProperty(),
-          buttonPadding: {
-            label: 'Padding',
-            defaultValue: '13px 0px 13px',
-            widget: 'padding',
-          },
-          buttonMargin: {
-            label: 'Margin',
-            defaultValue: '15px 0px 0px',
-            widget: 'margin',
-          },
-        },
-      },
-    },
-    transformer(values, source) {
+    options,
+    transformer(values: ProductValues, source) {
       if (source.name === 'productGallery') {
         values = transformValuesBasedOnProductGallery(values, source.value);
       }

@@ -1,6 +1,6 @@
 import { React } from '../../unlayer-react';
 import { ViewerComponent } from '../../types';
-import { ProductValues } from './types';
+import { ProductDynamicValues, ProductValues } from './types';
 import { ASSETS_BASE_URL } from '../../constants';
 import { ProductLayoutViewer01 } from './layout/layoutPosition01';
 import { ProductLayoutViewer02 } from './layout/layoutPosition02';
@@ -8,7 +8,9 @@ import { ProductLayoutViewer03 } from './layout/layoutPosition03';
 import { ProductLayoutViewer04 } from './layout/layoutPosition04';
 import { ProductLayoutViewer05 } from './layout/layoutPosition05';
 
-export const ProductViewer: ViewerComponent<ProductValues> = ({ values }) => {
+export const ProductViewer: ViewerComponent<
+  ProductValues | ProductDynamicValues
+> = ({ values }) => {
   /* TODO: refact style in case to add more layout */
   const containerStyle = {
     display: 'block',
@@ -110,6 +112,12 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({ values }) => {
     textAlign: 'center',
   } as const;
 
+  const infoStyle = {
+    display: 'infoShown' in values && values.infoShown ? 'block' : 'none',
+    fontFamily: ('infoFont' in values && values.infoFont?.value) || 'inherit',
+    fontSize: 'infoFontSize' in values ? values.infoFontSize : undefined,
+  };
+
   const image =
     values.image?.url || `${ASSETS_BASE_URL}/product_transparent.svg`;
 
@@ -153,6 +161,10 @@ export const ProductViewer: ViewerComponent<ProductValues> = ({ values }) => {
       value: values.buttonText,
       href: values.productUrl ? values.productUrl : '#',
       style: buttonStyle,
+    },
+    info: {
+      value: 'infoHtml' in values ? values.infoHtml : '',
+      style: infoStyle,
     },
   };
 
