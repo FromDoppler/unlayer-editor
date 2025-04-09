@@ -25,6 +25,10 @@ export const ProductLayoutViewer02 = ({ values }: { values: any }) => {
           </span>
         </span>
         <span style={values.discount.style}>{values.discount.value}</span>
+        <span
+          style={values.info.style}
+          dangerouslySetInnerHTML={{ __html: values.info.value }}
+        />
       </section>
       <section style={values.section.image.style} data-testid="image-container">
         <img
