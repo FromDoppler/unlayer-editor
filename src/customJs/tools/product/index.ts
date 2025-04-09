@@ -97,8 +97,8 @@ const transformValuesBasedOnProductGallery: (
 });
 
 export const getProductToolDefinition: (
-  dynamicProduct?: PRODUCT_TOOL_TYPE,
-) => ProductToolDefinition | undefined = (dynamicProduct = 'static') => {
+  productType?: PRODUCT_TOOL_TYPE,
+) => ProductToolDefinition | undefined = (productType = 'static') => {
   const options: any = {
     product: {
       title: $t('_dp.product'),
@@ -250,7 +250,7 @@ export const getProductToolDefinition: (
     },
   };
 
-  if (dynamicProduct === 'dynamic') {
+  if (productType === 'dynamic') {
     options.info = {
       title: $t('_dp.product_info'),
       options: {
