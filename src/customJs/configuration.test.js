@@ -39,6 +39,7 @@ const expectedDefaultConfiguration = {
   roulette: false,
   productCompletedEnabled: false,
   recommendedProductsEnabled: false,
+  dynamicProduct: false,
   dopplerExternalUrls: {
     automation: '#',
     campaigns: '#',
@@ -94,6 +95,7 @@ describe(parseConfigurationDTO.name, () => {
     const smartForm = false;
     const roulette = false;
     const productCompletedEnabled = false;
+    const dynamicProduct = false;
     const recommendedProductsEnabled = false;
     const input = {
       locale,
@@ -114,6 +116,7 @@ describe(parseConfigurationDTO.name, () => {
       qrCode,
       smartForm,
       roulette,
+      dynamicProduct,
       productCompletedEnabled,
       recommendedProductsEnabled,
     };
@@ -145,6 +148,7 @@ describe(parseConfigurationDTO.name, () => {
       roulette: false,
       productCompletedEnabled: false,
       recommendedProductsEnabled: false,
+      dynamicProduct: false,
       dopplerExternalUrls: {
         automation: '#',
         campaigns: '#',
