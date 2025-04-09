@@ -29,6 +29,11 @@ export const ProductLayoutViewer01 = ({ values }: { values: any }) => {
         </span>
         <span style={values.discount.style}>{values.discount.value}</span>
 
+        <span
+          style={values.info.style}
+          dangerouslySetInnerHTML={{ __html: values.info.value }}
+        />
+
         <a
           style={values.button.style}
           role="link"
