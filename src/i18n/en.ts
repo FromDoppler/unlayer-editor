@@ -57,6 +57,7 @@ export const messages_en: IntlMessages = {
   '_dp.product_title': `Producto title`,
   '_dp.product_title_default_value': `Write a title`,
   '_dp.products_completed': `Completed Product`,
+  '_dp.product_info': `Information`,
   '_dp.promo_code': `Promotion Code`,
   '_dp.promo_code_coupon_type': `Create dynamic Promotion Code`,
   '_dp.promo_code_dynamic_advance': `Advance options`,

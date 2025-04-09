@@ -57,6 +57,7 @@ export const messages_es = {
   '_dp.product_title': `Título del producto`,
   '_dp.product_title_default_value': `Escribe un titulo`,
   '_dp.products_completed': `Producto Completo`,
+  '_dp.product_info': `Información`,
   '_dp.promo_code': `Código Promocional`,
   '_dp.promo_code_coupon_type': `Crear código promocional dinámico`,
   '_dp.promo_code_dynamic_advance': `Opciones avanzadas`,
