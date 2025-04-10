@@ -46,7 +46,7 @@ const App: React.FC = () => {
   } as User;
   const UnlayerOptionsExtended = {
     projectId,
-    displayMode: 'popup',
+    displayMode: 'email',
     tools: {
       button: {
         icon: `${ASSETS_BASE_URL}/button.svg`,
@@ -259,6 +259,7 @@ const App: React.FC = () => {
         rssShowPreview: true,
         smartForm: true,
         roulette: true,
+        productDynamic: true,
         stores: [
         { name: "MercadoShops", promotionCodeEnabled: true },
         { name: "Magento", promotionCodeEnabled: false },

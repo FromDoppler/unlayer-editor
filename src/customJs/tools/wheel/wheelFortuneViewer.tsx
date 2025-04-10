@@ -177,8 +177,8 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
   const customCss = `
   @media (max-width: 400px) {
     .dp-roulette {
-       display: block;
-     }
+      display: block;
+    }
     .dp-wheel-roulette {
       width: 324px;
     }
