@@ -258,7 +258,9 @@ export const getProductToolDefinition: (
           defaultValue: false,
         }),
         infoFont: fontFamilyProperty(),
+        infoFontWeight: fontWeightProperty(),
         infoFontSize: fontSizeProperty(),
+        infoColor: colorProperty(),
       },
     };
   }
