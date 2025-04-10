@@ -333,7 +333,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
               borderRight: '1px solid #abc9f9',
               borderLeft: '4px solid #669df3',
               margin: '10px',
-              padding: '18px',
+              padding: '10px',
               fontFamily: '"proxima-nova", Helvetica, Arial, sans-serif',
               fontSize: '15px',
               alignItems: 'center',
