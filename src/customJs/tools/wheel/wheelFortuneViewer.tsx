@@ -81,13 +81,14 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
 
   const wheelStyle = {
     position: 'absolute',
-    width: '90%',
-    height: '90%',
+    width: '85%',
+    height: '85%',
     borderRadius: '50%',
     backgroundColor: values.wheelBorderColor,
     overflow: 'hidden',
-    border: `8px solid ${values.wheelBorderColor}`,
+    border: `4px solid ${values.wheelBorderColor}`,
     transition: 'transform 5s ease-in-out',
+    boxShadow: `0 0 0 13px ${values.wheelBackgroudColor}, 0 0 0 22px ${values.wheelBorderColor}`,
   } as const;
 
   const wheelCenterStyle = {
@@ -103,9 +104,9 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
 
   const wheelSelectorStyle = {
     position: 'absolute',
-    top: '-5px',
-    height: '15%',
-    width: '12%',
+    top: '6px',
+    height: '16%',
+    width: '16%',
     backgroundColor: values.wheelBorderColor,
     clipPath: 'polygon(50% 70%, 0 0, 100% 0)',
     display: 'flex',
@@ -188,7 +189,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
     }
     .dp-wheel-segment-label {
       font-size: 12px;
-      max-width: 75px;
+      max-width: 72px;
     }
     .dp-roulette-congrats-copy-icon {
       right: -60px;
@@ -210,7 +211,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
 
     .dp-wheel-segment-label {
       font-size: 14px;
-      max-width: 120px;
+      max-width: 115px;
     }
     .dp-roulette-congrats-copy-icon {
       right: -80px;
@@ -228,6 +229,10 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
     }
       .dp-roulette-congrats-copy-icon {
       right: -100px;
+    }
+      .dp-wheel-segment-label {
+      font-size: 14px;
+      max-width: 115px;
     }
   }`;
 
