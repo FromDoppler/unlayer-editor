@@ -82,12 +82,11 @@ export const ProductLayoutViewer05 = ({ values }: { values: any }) => {
           style={values.description.style}
           dangerouslySetInnerHTML={{ __html: values.description.value }}
         />
-
-        <span style={values.discount.style}>{values.discount.value}</span>
         <span
           style={values.info.style}
           dangerouslySetInnerHTML={{ __html: values.info.value }}
         />
+        <span style={values.discount.style}>{values.discount.value}</span>
       </section>
       <section style={footerStyle} data-testid="footer-container">
         <div style={footerChildPricesStyle}>
