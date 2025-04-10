@@ -77,6 +77,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
     position: 'relative',
     display: values.viewPanel === 'init' ? 'block' : 'none',
     margin: '10px auto',
+    padding: '0 10px',
   } as const;
 
   const wheelStyle = {
@@ -279,7 +280,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
             display: values.viewPanel === 'end' ? 'block' : 'none',
             alignContent: 'center',
             margin: '10px auto',
-            paddingBottom: '20px',
+            padding: '0 10px 20px',
           }}
         >
           <span
@@ -341,6 +342,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
               margin: '10px',
               padding: '10px',
               fontFamily: '"proxima-nova", Helvetica, Arial, sans-serif',
+              fontWeight: '100',
               fontSize: '15px',
               alignItems: 'center',
             }}
