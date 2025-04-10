@@ -1,4 +1,4 @@
-import { WheelSlide } from '../../tools/wheel/types';
+import { WheelSlice } from '../../tools/wheel/types';
 import { ReactPropertyDefinition } from '../../types';
 import { wheelListWidget } from './wheelListWidget';
 
@@ -7,7 +7,7 @@ type wheelListPropertyEditor = typeof wheelListPropertyEditor;
 
 export const wheelListPropertyEditorDefinition: ReactPropertyDefinition<
   wheelListPropertyEditor,
-  WheelSlide[],
+  WheelSlice[],
   void
 > = {
   name: wheelListPropertyEditor,
@@ -17,7 +17,7 @@ export const wheelListPropertyEditorDefinition: ReactPropertyDefinition<
 export const wheelListProperty = ({
   defaultValue,
 }: {
-  defaultValue?: WheelSlide[];
+  defaultValue?: WheelSlice[];
   label?: string;
 } = {}) =>
   ({

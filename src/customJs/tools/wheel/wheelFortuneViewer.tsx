@@ -1,6 +1,6 @@
 import { React } from '../../unlayer-react';
 import { ViewerComponent } from '../../types';
-import { WheelSlide } from './types';
+import { WheelSlice } from './types';
 import { SmartFormViewer } from '../smartforms/smartFormViewer';
 import { getPosicionParaProbabilidad, getWheelLabelStyle } from './viewHelper';
 import { $t } from '../../localization';
@@ -125,7 +125,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
   const slides = values.wheelList;
   const slidePercent = 100 / slides.length;
 
-  const spanStylesArray = slides.map((slide: WheelSlide, i: number) => {
+  const spanStylesArray = slides.map((slide: WheelSlice, i: number) => {
     return {
       position: 'absolute',
       width: ' 100%',
@@ -248,7 +248,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
             style={wheelStyle}
             data-slides={JSON.stringify(values.wheelList)}
           >
-            {slides.map((slide: WheelSlide, i: number) => (
+            {slides.map((slide: WheelSlice, i: number) => (
               <span key={i} style={spanStylesArray[i]}>
                 <span style={spanLabelStyle} className="dp-wheel-segment-label">
                   {slide.label}
