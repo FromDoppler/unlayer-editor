@@ -1,6 +1,6 @@
 import { React } from '../../unlayer-react';
 import { ViewerComponent } from '../../types';
-import { WheelSlide } from './types';
+import { WheelSlice } from './types';
 import { SmartFormViewer } from '../smartforms/smartFormViewer';
 import { getPosicionParaProbabilidad, getWheelLabelStyle } from './viewHelper';
 import { $t } from '../../localization';
@@ -81,13 +81,14 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
 
   const wheelStyle = {
     position: 'absolute',
-    width: '90%',
-    height: '90%',
+    width: '85%',
+    height: '85%',
     borderRadius: '50%',
     backgroundColor: values.wheelBorderColor,
     overflow: 'hidden',
-    border: `8px solid ${values.wheelBorderColor}`,
+    border: `4px solid ${values.wheelBorderColor}`,
     transition: 'transform 5s ease-in-out',
+    boxShadow: `0 0 0 13px ${values.wheelBackgroudColor}, 0 0 0 22px ${values.wheelBorderColor}`,
   } as const;
 
   const wheelCenterStyle = {
@@ -103,9 +104,9 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
 
   const wheelSelectorStyle = {
     position: 'absolute',
-    top: '-5px',
-    height: '15%',
-    width: '12%',
+    top: '6px',
+    height: '16%',
+    width: '16%',
     backgroundColor: values.wheelBorderColor,
     clipPath: 'polygon(50% 70%, 0 0, 100% 0)',
     display: 'flex',
@@ -125,7 +126,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
   const slides = values.wheelList;
   const slidePercent = 100 / slides.length;
 
-  const spanStylesArray = slides.map((slide: WheelSlide, i: number) => {
+  const spanStylesArray = slides.map((slide: WheelSlice, i: number) => {
     return {
       position: 'absolute',
       width: ' 100%',
@@ -188,7 +189,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
     }
     .dp-wheel-segment-label {
       font-size: 12px;
-      max-width: 75px;
+      max-width: 72px;
     }
     .dp-roulette-congrats-copy-icon {
       right: -60px;
@@ -210,7 +211,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
 
     .dp-wheel-segment-label {
       font-size: 14px;
-      max-width: 120px;
+      max-width: 115px;
     }
     .dp-roulette-congrats-copy-icon {
       right: -80px;
@@ -229,6 +230,10 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
       .dp-roulette-congrats-copy-icon {
       right: -100px;
     }
+      .dp-wheel-segment-label {
+      font-size: 14px;
+      max-width: 115px;
+    }
   }`;
 
   return (
@@ -238,6 +243,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
         className="dp-roulette"
         style={{
           backgroundColor: values.wheelBackgroudColor,
+          borderRadius: '10px',
         }}
       >
         <section style={wheelContainerStyle} className="dp-wheel-roulette">
@@ -248,7 +254,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
             style={wheelStyle}
             data-slides={JSON.stringify(values.wheelList)}
           >
-            {slides.map((slide: WheelSlide, i: number) => (
+            {slides.map((slide: WheelSlice, i: number) => (
               <span key={i} style={spanStylesArray[i]}>
                 <span style={spanLabelStyle} className="dp-wheel-segment-label">
                   {slide.label}
@@ -333,7 +339,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
               borderRight: '1px solid #abc9f9',
               borderLeft: '4px solid #669df3',
               margin: '10px',
-              padding: '18px',
+              padding: '10px',
               fontFamily: '"proxima-nova", Helvetica, Arial, sans-serif',
               fontSize: '15px',
               alignItems: 'center',

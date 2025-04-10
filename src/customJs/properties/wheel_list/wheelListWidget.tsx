@@ -4,16 +4,17 @@ import debounce from 'lodash.debounce';
 
 import { $t } from '../../localization';
 import { Modal } from '../../components/Modal';
-import { WheelSlide } from '../../tools/wheel/types';
+import { WheelSlice } from '../../tools/wheel/types';
 
-export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
+export const wheelListWidget: WidgetComponent<WheelSlice[], void> = ({
   value,
   updateValue,
 }) => {
-  const MAX_SLIDES = 9;
+  const MAX_SLICES = 9;
 
+  const [slices, setSlices] = useState([...value]);
   const [modalOpen, setModalOpen] = useState(false);
-  const emptyWheelSlide: WheelSlide = {
+  const emptyWheelSlice: WheelSlice = {
     label: '',
     gift: '',
     chance: 0,
@@ -23,12 +24,13 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
   const [saving, setSaving] = useState<boolean>(false);
   const formRef = useRef<HTMLFormElement>(null);
 
-  const debounceUpdate = (slides: WheelSlide[]) => {
+  const debounceUpdate = (slices: WheelSlice[]) => {
     if (saving) return;
     setSaving(true);
     const update = debounce(
       () => {
-        updateValue(slides);
+        updateValue(slices);
+        setSlices(slices);
         setSaving(false);
       },
       500,
@@ -38,42 +40,53 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
   };
 
   const setSegmentChance = (chanceValue: string, index: number) => {
-    const slides = [...value];
-    slides[index].chance = parseInt(chanceValue);
-    updateChances(slides);
-  };
-
-  const updateChances = (slides: WheelSlide[]) => {
-    const totalChances = slides.reduce(
-      (acu: number, slide: WheelSlide) => acu + slide.chance,
+    const chance = parseInt(chanceValue);
+    const totalChances = slices.reduce(
+      (acu: number, slice: WheelSlice, i: number) =>
+        acu + (i === index ? chance : slice.chance),
       0,
     );
-    slides.forEach((slide: WheelSlide, i: number) => {
-      slides[i].percent =
+    const aux = slices.map((slice: WheelSlice, i: number) => {
+      return {
+        ...slice,
+        chance: i === index ? chance : slice.chance,
+        percent: `${totalChances > 0 ? Number.parseFloat((((i === index ? chance : slice.chance) * 100) / totalChances).toFixed(2)) : 0}%`,
+      };
+    });
+    setSlices(aux as WheelSlice[]);
+  };
+
+  const updateChances = (_slices: WheelSlice[]) => {
+    const totalChances = _slices.reduce(
+      (acu: number, slide: WheelSlice) => acu + slide.chance,
+      0,
+    );
+    _slices.forEach((slide: WheelSlice, i: number) => {
+      _slices[i].percent =
         `${totalChances > 0 ? Number.parseFloat(((slide.chance * 100) / totalChances).toFixed(2)) : 0}%`;
     });
-    debounceUpdate(slides);
+    return _slices;
   };
 
   const createNewSegment = () => {
-    const slides = [...value, emptyWheelSlide];
-    debounceUpdate(slides);
+    const _slices = [...slices, emptyWheelSlice];
+    setSlices(_slices);
   };
 
   const eliminateSegment = (slideIndex: number) => {
-    const slides = [...value];
-    slides.splice(slideIndex, 1);
-    updateChances(slides);
+    const _slices = [...slices];
+    _slices.splice(slideIndex, 1);
+    debounceUpdate(updateChances(_slices));
     setModalOpen(false);
   };
 
   const updateColor = (color: Color, index: number) => {
-    const slides = [...value];
-    slides[index] = {
-      ...slides[index],
+    const slices = [...value];
+    slices[index] = {
+      ...slices[index],
       color: color,
     };
-    debounceUpdate(slides);
+    debounceUpdate(slices);
   };
 
   const updateWheelList = () => {
@@ -83,19 +96,18 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
     const gifts = data?.namedItem('gift') as HTMLInputElement;
     const chances = data?.namedItem('chance') as HTMLInputElement;
     const colors = data?.namedItem('color') as HTMLInputElement;
-    const slides = Array(size)
-      .fill(emptyWheelSlide)
+    const slices = Array(size)
+      .fill(emptyWheelSlice)
       .map((slide, i) => {
         return {
           ...slide,
           label: labels[i].value,
           gift: gifts[i].value,
           chance: parseInt(chances[i].value),
-          percent: value[i].percent,
           color: colors[i].value,
         };
       });
-    debounceUpdate(slides);
+    debounceUpdate(updateChances(slices));
     setModalOpen(false);
   };
 
@@ -147,6 +159,7 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
           cancelAction={{
             label: $t('buttons.cancel'),
             cancelFn: () => {
+              setSlices(value);
               setModalOpen(false);
             },
             style: {
@@ -176,7 +189,7 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
                     </tr>
                   </thead>
                   <tbody>
-                    {value.map((x, i) => (
+                    {slices.map((x, i) => (
                       <tr key={i} style={{ height: '30px' }}>
                         <td
                           scope="row"
@@ -268,7 +281,7 @@ export const wheelListWidget: WidgetComponent<WheelSlide[], void> = ({
                 </table>
                 <div
                   style={{
-                    display: value.length < MAX_SLIDES ? 'flex' : 'none',
+                    display: value.length < MAX_SLICES ? 'flex' : 'none',
                     justifyContent: 'end',
                     marginTop: '30px',
                     paddingTop: '10px',

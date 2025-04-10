@@ -9,11 +9,11 @@ import {
 import { subscriptionListProperty } from '../../properties/subscription_list';
 import { wheelListProperty } from '../../properties/wheel_list';
 import { availableFields } from '../smartforms/helper';
-import { WheelFortuneValues, WheelSlide } from './types';
+import { WheelFortuneValues, WheelSlice } from './types';
 import { buttonGroupProperty } from '../../properties/button_group';
 
 /* Replace the mock values with empty values */
-const mockWheelValues: WheelSlide[] = [
+const mockWheelValues: WheelSlice[] = [
   {
     label: 'segmento 1',
     gift: 'premio 1',
@@ -241,15 +241,15 @@ export const getWheelFortuneToolDefinition: () =>
         });
       }
       const wheelListIncomplete = values.wheelList.some(
-        (wheelSlide: WheelSlide) => {
+        (WheelSlice: WheelSlice) => {
           return (
-            wheelSlide.label.trim() === '' || wheelSlide.gift.trim() === ''
+            WheelSlice.label.trim() === '' || WheelSlice.gift.trim() === ''
           );
         },
       );
 
       const wheelChancesSum = values.wheelList.reduce(
-        (sum: number, wheelSlide: WheelSlide) => sum + wheelSlide.chance,
+        (sum: number, WheelSlice: WheelSlice) => sum + WheelSlice.chance,
         0,
       );
       if (wheelListIncomplete || wheelChancesSum === 0) {

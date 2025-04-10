@@ -8,7 +8,7 @@ import {
 } from '../../types';
 import { SmartFormBase } from '../smartforms/types';
 
-export type WheelSlide = {
+export type WheelSlice = {
   label: string;
   color: Color;
   chance: number;
@@ -21,7 +21,7 @@ export type WheelFortuneBase = {
     wheelBackgroudColor: Color;
     wheelBorderColor: Color;
     wheelBorderWidth: PixelSize;
-    wheelList: WheelSlide[];
+    wheelList: WheelSlice[];
     wheelFontColor: Color;
     wheelFontFamily: FontFamily;
   };
