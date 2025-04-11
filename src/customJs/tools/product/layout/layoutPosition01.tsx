@@ -7,7 +7,7 @@ export const ProductLayoutViewer01 = ({ values }: { values: any }) => {
         <img
           style={values.image.style}
           src={values.image.value}
-          alt="Product image"
+          alt="product image"
           {...(values.image.isDynamic && { 'data-dc-type': 'DC:IMAGE' })}
         />
       </section>
