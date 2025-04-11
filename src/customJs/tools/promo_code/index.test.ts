@@ -421,7 +421,7 @@ describe(sut.name, () => {
       widget: 'toggle',
       enabled: true,
     });
-    
+
     expect(
       result?.options.promo_code_advance.options.first_consumer_purchase,
     ).toEqual({
