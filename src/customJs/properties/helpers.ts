@@ -148,43 +148,61 @@ export const toggleProperty: ({
 export const toggleShowProperty: (param?: {
   defaultValue?: boolean;
   label?: string;
+  enabled?: boolean;
 }) => UnlayerProperty<boolean> = ({
   defaultValue = true,
   label = $t('_dp.show'),
+  enabled = true,
 }: {
   defaultValue?: boolean;
   label?: string;
+  enabled?: boolean;
 } = {}) => ({
   label,
   defaultValue,
+  enabled,
   widget: 'toggle',
 });
 
 export const imageProperty: ({
   label,
+  enabled,
 }: {
   label: string;
-}) => UnlayerProperty<Image> = ({ label }: { label: string }) => ({
+  enabled?: boolean;
+}) => UnlayerProperty<Image> = ({
   label,
+  enabled,
+}: {
+  label: string;
+  enabled?: boolean;
+}) => ({
+  label,
+  enabled,
   widget: 'image',
 });
 
 export const textProperty: ({
   label,
   defaultValue,
+  enabled,
 }: {
   label: string;
   defaultValue?: string;
+  enabled?: boolean;
 }) => UnlayerProperty<string> = ({
   label,
   defaultValue,
+  enabled = true,
 }: {
   label: string;
   defaultValue?: string;
+  enabled?: boolean;
 }) => ({
   label,
   defaultValue,
   widget: 'text',
+  enabled,
 });
 
 export const fontFamilyProperty: (param?: {
@@ -336,15 +354,19 @@ export const borderRadiusProperty: (param?: {
 export const richTextProperty: (param?: {
   label?: string;
   defaultValue?: string;
+  enabled?: boolean;
 }) => UnlayerProperty<string> = ({
   label,
   defaultValue = '',
+  enabled = true,
 }: {
   label?: string;
   defaultValue?: string;
+  enabled?: boolean;
 } = {}) => ({
   label,
   defaultValue,
+  enabled,
   widget: 'rich_text',
 });
 
