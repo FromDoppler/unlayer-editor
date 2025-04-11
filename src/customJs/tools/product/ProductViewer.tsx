@@ -114,8 +114,10 @@ export const ProductViewer: ViewerComponent<
 
   const infoStyle = {
     display: 'infoShown' in values && values.infoShown ? 'block' : 'none',
-    fontFamily: ('infoFont' in values && values.infoFont?.value) || 'inherit',
     fontSize: 'infoFontSize' in values ? values.infoFontSize : undefined,
+    fontFamily: ('infoFont' in values && values.infoFont?.value) || 'inherit',
+    fontWeight: 'infoFontWeight' in values ? values.infoFontWeight : undefined,
+    color: 'infoColor' in values ? values.infoColor : undefined,
   };
 
   const image =
