@@ -98,7 +98,7 @@ const transformValuesBasedOnProductGallery: (
   discountShown: !!discountText,
   descriptionHtml: stripHtml(descriptionHtml),
   descriptionShown: !!descriptionHtml,
-  infoHtml: stripHtml(infoHtml),
+  infoHtml: infoHtml,
   infoShown: !!infoHtml,
   reference: reference,
 });
@@ -139,7 +139,7 @@ export const getProductToolDefinition: (
         }),
         image: imageProperty({
           label: $t('_dp.product_image'),
-          enabled: productType !== 'dynamic',
+          enabled: !isProductTypeDynamic,
         }),
       },
     },
@@ -157,7 +157,7 @@ export const getProductToolDefinition: (
         titleText: textProperty({
           defaultValue: $t('_dp.product_title_default_value'),
           label: $t('_dp.product_title'),
-          enabled: productType !== 'dynamic',
+          enabled: !isProductTypeDynamic,
         }),
         titleFont: fontFamilyProperty(),
         titleFontWeight: fontWeightProperty({
@@ -182,13 +182,13 @@ export const getProductToolDefinition: (
         }),
         pricesDefaultPriceIsDynamic: toggleShowProperty({
           defaultValue: true,
-          label: $t('_dp.price_default_list'),
+          label: $t('_dp.price_default_shown_dynamic'),
           enabled: isProductTypeDynamic,
         }),
         pricesDefaultPriceText: textProperty({
           label: $t('_dp.price_default'),
           defaultValue: $t('_dp.product_prices_default_default_value'),
-          enabled: productType !== 'dynamic',
+          enabled: !isProductTypeDynamic,
         }),
         pricesDefaultPriceFontSize: fontSizeProperty({
           label: $t('_dp.price_default_size'),
@@ -205,13 +205,13 @@ export const getProductToolDefinition: (
         }),
         pricesDiscountPriceIsDynamic: toggleShowProperty({
           defaultValue: true,
-          label: $t('_dp.price_discount_list'),
+          label: $t('_dp.price_discount_shown_dynamic'),
           enabled: isProductTypeDynamic,
         }),
         pricesDiscountPriceText: textProperty({
           label: $t('_dp.price_discount'),
           defaultValue: $t('_dp.product_prices_discount_default_value'),
-          enabled: productType !== 'dynamic',
+          enabled: !isProductTypeDynamic,
         }),
         pricesDiscountPriceFontSize: fontSizeProperty({
           label: $t('_dp.price_discount_size'),
@@ -237,7 +237,7 @@ export const getProductToolDefinition: (
         discountText: textProperty({
           label: $t('_dp.discount_text'),
           defaultValue: $t('_dp.product_discount_default_value'),
-          enabled: productType !== 'dynamic',
+          enabled: !isProductTypeDynamic,
         }),
         discountFont: fontFamilyProperty(),
         discountFontWeight: fontWeightProperty(),
@@ -259,7 +259,7 @@ export const getProductToolDefinition: (
           enabled: isProductTypeDynamic,
         }),
         descriptionHtml: richTextProperty({
-          enabled: productType !== 'dynamic',
+          enabled: !isProductTypeDynamic,
         }),
         descriptionFont: fontFamilyProperty(),
         descriptionFontSize: fontSizeProperty(),
@@ -313,7 +313,7 @@ export const getProductToolDefinition: (
         infoHtml: textProperty({
           defaultValue: 'Prueba',
           label: 'Información del producto',
-          enabled: productType !== 'dynamic',
+          enabled: !isProductTypeDynamic,
         }),
         infoFont: fontFamilyProperty(),
         infoFontWeight: fontWeightProperty(),
