@@ -36,10 +36,12 @@ export type ProductBase = Readonly<{
   };
   image: {
     imageShown: boolean;
+    imageIsDynamic: boolean;
     image: Image | undefined;
   };
   title: {
     titleShown: boolean;
+    titleIsDynamic: boolean;
     titleText: string;
     titleFont: FontFamily;
     titleFontWeight: FontWeight;
@@ -52,17 +54,20 @@ export type ProductBase = Readonly<{
     pricesFontWeight: FontWeight;
 
     pricesDefaultPriceShown: boolean;
+    pricesDefaultPriceIsDynamic: boolean;
     pricesDefaultPriceText: string;
     pricesDefaultPriceFontSize: PixelSize;
     pricesDefaultPriceColor: Color;
 
     pricesDiscountPriceShown: boolean;
+    pricesDiscountPriceIsDynamic: boolean;
     pricesDiscountPriceText: string;
     pricesDiscountPriceFontSize: PixelSize;
     pricesDiscountPriceColor: Color;
   };
   discount: {
     discountShown: boolean;
+    discountIsDynamic: boolean;
     discountText: string;
     discountFont: FontFamily;
     discountFontWeight: FontWeight;
@@ -71,6 +76,7 @@ export type ProductBase = Readonly<{
   };
   description: {
     descriptionShown: boolean;
+    descriptionIsDynamic: boolean;
     descriptionHtml: string;
     descriptionFont: FontFamily;
     descriptionFontSize: PixelSize;
@@ -93,9 +99,11 @@ export type ProductBase = Readonly<{
 export type ProductDynamicInfo = Readonly<{
   info: {
     infoShown: boolean;
+    infoIsDynamic: boolean;
     infoFont?: { value: string };
     infoFontSize?: string;
     infoHtml: string;
+    reference: string;
   };
 }>;
 

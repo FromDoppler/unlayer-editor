@@ -132,29 +132,35 @@ export const ProductViewer: ViewerComponent<
     },
     title: {
       value: values.titleText,
+      isDynamic: values.titleIsDynamic,
       style: titleStyle,
     },
     image: {
       value: image,
+      isDynamic: values.imageIsDynamic,
       style: imageStyle,
     },
     prices: {
       default: {
         value: values.pricesDefaultPriceText,
+        isDynamic: values.pricesDefaultPriceIsDynamic,
         style: priceDefaultStyle,
       },
       discount: {
         value: values.pricesDiscountPriceText,
+        isDynamic: values.pricesDiscountPriceIsDynamic,
         style: priceDiscountStyle,
       },
       style: pricesStyle,
     },
     discount: {
       value: values.discountText,
+      isDynamic: values.discountIsDynamic,
       style: discountStyle,
     },
     description: {
       value: values.descriptionHtml,
+      isDynamic: values.descriptionIsDynamic,
       style: descriptionStyle,
     },
     button: {
@@ -164,6 +170,7 @@ export const ProductViewer: ViewerComponent<
     },
     info: {
       value: 'infoHtml' in values ? values.infoHtml : '',
+      isDynamic: 'infoIsDynamic' in values ? values.infoIsDynamic : '',
       style: infoStyle,
     },
   };
