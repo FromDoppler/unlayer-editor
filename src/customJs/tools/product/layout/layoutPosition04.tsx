@@ -22,7 +22,6 @@ export const ProductLayoutViewer04 = ({ values }: { values: any }) => {
           </span>
         </span>
       </section>
-
       <section style={values.section.image.style} data-testid="image-container">
         <img
           style={values.image.style}
@@ -38,9 +37,11 @@ export const ProductLayoutViewer04 = ({ values }: { values: any }) => {
           style={values.description.style}
           dangerouslySetInnerHTML={{ __html: values.description.value }}
         />
-
+        <span
+          style={values.info.style}
+          dangerouslySetInnerHTML={{ __html: values.info.value }}
+        />
         <span style={values.discount.style}>{values.discount.value}</span>
-
         <a
           style={values.button.style}
           role="link"

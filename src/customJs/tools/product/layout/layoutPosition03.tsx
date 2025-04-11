@@ -27,6 +27,10 @@ export const ProductLayoutViewer03 = ({ values }: { values: any }) => {
           style={values.description.style}
           dangerouslySetInnerHTML={{ __html: values.description.value }}
         />
+        <span
+          style={values.info.style}
+          dangerouslySetInnerHTML={{ __html: values.info.value }}
+        />
         <span style={values.discount.style}>{values.discount.value}</span>
         <span style={values.prices.style} data-testid="prices-container">
           <span style={values.prices.default.style}>
@@ -36,7 +40,6 @@ export const ProductLayoutViewer03 = ({ values }: { values: any }) => {
             {values.prices.discount.value}
           </span>
         </span>
-
         <a
           style={values.button.style}
           role="link"
