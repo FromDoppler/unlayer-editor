@@ -64,11 +64,11 @@ export const ProductLayoutViewer05 = ({ values }: { values: any }) => {
   return (
     <div>
       <section style={titleSectionStyle} data-testid="title-container">
-      <span
-        style={values.title.style}
-        dangerouslySetInnerHTML={{ __html: values.title.value }}
-        {...(values.title.isDynamic && { 'data-dc-type': 'DC:TITLE' })}
-      />
+        <span
+          style={values.title.style}
+          dangerouslySetInnerHTML={{ __html: values.title.value }}
+          {...(values.title.isDynamic && { 'data-dc-type': 'DC:TITLE' })}
+        />
       </section>
 
       <section style={values.section.image.style} data-testid="image-container">
@@ -105,20 +105,20 @@ export const ProductLayoutViewer05 = ({ values }: { values: any }) => {
       <section style={footerStyle} data-testid="footer-container">
         <div style={footerChildPricesStyle}>
           <span style={priceStyleOverwrite} data-testid="prices-container">
-          <span
-            style={pricesDefaultStyleOverwrite}
-            dangerouslySetInnerHTML={{ __html: values.prices.default.value }}
-            {...(values.prices.default.isDynamic && {
-              'data-dc-type': 'DC:PRICES_DEFAULT',
-            })}
-          />
-          <span
-            style={pricesDiscountStyleOverwrite}
-            dangerouslySetInnerHTML={{ __html: values.prices.discount.value }}
-            {...(values.prices.discount.isDynamic && {
-              'data-dc-type': 'DC:PRICES_DISCOUNT',
-            })}
-          />
+            <span
+              style={pricesDefaultStyleOverwrite}
+              dangerouslySetInnerHTML={{ __html: values.prices.default.value }}
+              {...(values.prices.default.isDynamic && {
+                'data-dc-type': 'DC:PRICES_DEFAULT',
+              })}
+            />
+            <span
+              style={pricesDiscountStyleOverwrite}
+              dangerouslySetInnerHTML={{ __html: values.prices.discount.value }}
+              {...(values.prices.discount.isDynamic && {
+                'data-dc-type': 'DC:PRICES_DISCOUNT',
+              })}
+            />
           </span>
         </div>
         <div style={footerChildButtonStyle}>

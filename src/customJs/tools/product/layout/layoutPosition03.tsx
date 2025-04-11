@@ -9,7 +9,7 @@ export const ProductLayoutViewer03 = ({ values }: { values: any }) => {
   return (
     <div>
       <section style={headerSectionStyle} data-testid="title-container">
-      <span
+        <span
           style={values.title.style}
           dangerouslySetInnerHTML={{ __html: values.title.value }}
           {...(values.title.isDynamic && { 'data-dc-type': 'DC:TITLE' })}
@@ -46,7 +46,7 @@ export const ProductLayoutViewer03 = ({ values }: { values: any }) => {
           {values.discount.value}
         </span>
         <span style={values.prices.style} data-testid="prices-container">
-        <span
+          <span
             style={values.prices.default.style}
             dangerouslySetInnerHTML={{ __html: values.prices.default.value }}
             {...(values.prices.default.isDynamic && {
