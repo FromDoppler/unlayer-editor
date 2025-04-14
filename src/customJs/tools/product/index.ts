@@ -1,6 +1,11 @@
 import { $t } from '../../localization';
 import { ProductViewer } from './ProductViewer';
-import { ProductToolDefinition, ProductLayout, ProductValues } from './types';
+import {
+  ProductToolDefinition,
+  ProductLayout,
+  ProductValues,
+  ProductDynamicValues,
+} from './types';
 import { ASSETS_BASE_URL, PRODUCT_TOOL_TYPE } from '../../constants';
 import { urlProperty } from '../../properties/url';
 import {
@@ -65,7 +70,8 @@ const transformValuesBasedOnProductGallery: (
     discountPriceText,
     discountText,
     descriptionHtml,
-    info,
+    infoHtml,
+    reference,
   }: ProductGalleryValue,
 ) => ({
   ...productValues,
@@ -92,13 +98,16 @@ const transformValuesBasedOnProductGallery: (
   discountShown: !!discountText,
   descriptionHtml: stripHtml(descriptionHtml),
   descriptionShown: !!descriptionHtml,
-  infoHtml: stripHtml(info),
-  infoShown: !!info,
+  infoHtml: infoHtml,
+  infoShown: !!infoHtml,
+  reference: reference,
 });
 
 export const getProductToolDefinition: (
   productType?: PRODUCT_TOOL_TYPE,
 ) => ProductToolDefinition | undefined = (productType = 'static') => {
+  const isProductTypeDynamic = productType === 'dynamic';
+
   const options: any = {
     product: {
       title: $t('_dp.product'),
@@ -123,18 +132,32 @@ export const getProductToolDefinition: (
       title: $t('editor.image.label'),
       options: {
         imageShown: toggleShowProperty(),
+        imageIsDynamic: toggleShowProperty({
+          defaultValue: true,
+          label: $t('_dp.product_dynamic_shown'),
+          enabled: isProductTypeDynamic,
+        }),
         image: imageProperty({
           label: $t('_dp.product_image'),
+          enabled: !isProductTypeDynamic,
         }),
       },
     },
     title: {
       title: $t('_dp.title'),
       options: {
-        titleShown: toggleShowProperty(),
+        titleShown: toggleShowProperty({
+          defaultValue: false,
+        }),
+        titleIsDynamic: toggleShowProperty({
+          defaultValue: true,
+          label: $t('_dp.product_dynamic_shown'),
+          enabled: isProductTypeDynamic,
+        }),
         titleText: textProperty({
           defaultValue: $t('_dp.product_title_default_value'),
           label: $t('_dp.product_title'),
+          enabled: !isProductTypeDynamic,
         }),
         titleFont: fontFamilyProperty(),
         titleFontWeight: fontWeightProperty({
@@ -155,11 +178,17 @@ export const getProductToolDefinition: (
 
         pricesDefaultPriceShown: toggleProperty({
           label: $t('_dp.price_default_shown'),
+          defaultValue: false,
+        }),
+        pricesDefaultPriceIsDynamic: toggleShowProperty({
           defaultValue: true,
+          label: $t('_dp.price_default_shown_dynamic'),
+          enabled: isProductTypeDynamic,
         }),
         pricesDefaultPriceText: textProperty({
           label: $t('_dp.price_default'),
           defaultValue: $t('_dp.product_prices_default_default_value'),
+          enabled: !isProductTypeDynamic,
         }),
         pricesDefaultPriceFontSize: fontSizeProperty({
           label: $t('_dp.price_default_size'),
@@ -174,9 +203,15 @@ export const getProductToolDefinition: (
           label: $t('_dp.price_discount_shown'),
           defaultValue: false,
         }),
+        pricesDiscountPriceIsDynamic: toggleShowProperty({
+          defaultValue: true,
+          label: $t('_dp.price_discount_shown_dynamic'),
+          enabled: isProductTypeDynamic,
+        }),
         pricesDiscountPriceText: textProperty({
           label: $t('_dp.price_discount'),
           defaultValue: $t('_dp.product_prices_discount_default_value'),
+          enabled: !isProductTypeDynamic,
         }),
         pricesDiscountPriceFontSize: fontSizeProperty({
           label: $t('_dp.price_discount_size'),
@@ -194,9 +229,15 @@ export const getProductToolDefinition: (
         discountShown: toggleShowProperty({
           defaultValue: false,
         }),
+        discountIsDynamic: toggleShowProperty({
+          defaultValue: true,
+          label: $t('_dp.product_dynamic_shown'),
+          enabled: isProductTypeDynamic,
+        }),
         discountText: textProperty({
           label: $t('_dp.discount_text'),
           defaultValue: $t('_dp.product_discount_default_value'),
+          enabled: !isProductTypeDynamic,
         }),
         discountFont: fontFamilyProperty(),
         discountFontWeight: fontWeightProperty(),
@@ -212,7 +253,14 @@ export const getProductToolDefinition: (
         descriptionShown: toggleShowProperty({
           defaultValue: false,
         }),
-        descriptionHtml: richTextProperty(),
+        descriptionIsDynamic: toggleShowProperty({
+          defaultValue: true,
+          label: $t('_dp.product_dynamic_shown'),
+          enabled: isProductTypeDynamic,
+        }),
+        descriptionHtml: richTextProperty({
+          enabled: !isProductTypeDynamic,
+        }),
         descriptionFont: fontFamilyProperty(),
         descriptionFontSize: fontSizeProperty(),
       },
@@ -250,17 +298,32 @@ export const getProductToolDefinition: (
     },
   };
 
-  if (productType === 'dynamic') {
+  if (isProductTypeDynamic) {
     options.info = {
       title: $t('_dp.product_info'),
       options: {
         infoShown: toggleShowProperty({
           defaultValue: false,
         }),
+        infoIsDynamic: toggleShowProperty({
+          defaultValue: true,
+          label: $t('_dp.product_dynamic_shown'),
+          enabled: isProductTypeDynamic,
+        }),
+        infoHtml: textProperty({
+          defaultValue: 'Prueba',
+          label: 'Información del producto',
+          enabled: !isProductTypeDynamic,
+        }),
         infoFont: fontFamilyProperty(),
         infoFontWeight: fontWeightProperty(),
         infoFontSize: fontSizeProperty(),
         infoColor: colorProperty(),
+        reference: textProperty({
+          defaultValue: 'Reference',
+          label: 'Referencia del producto',
+          enabled: false,
+        }),
       },
     };
   }
@@ -269,6 +332,7 @@ export const getProductToolDefinition: (
     name: 'product',
     label: $t(`_dp.product_${productType}`),
     icon: `${ASSETS_BASE_URL}/product_v2.svg`,
+    is_dynamic: isProductTypeDynamic,
     Component: ProductViewer,
     options,
     transformer(values: ProductValues, source) {
@@ -277,5 +341,38 @@ export const getProductToolDefinition: (
       }
       return values;
     },
+    createDynamicContet(htmlComponent: string, values: any) {
+      const htmlDynamicComponent = htmlComponent
+        .replace(
+          /^.[div]*/,
+          // <dynamiccontent action="refresh_product" items="1" reference="VT-118558"
+          `<DynamicContent action="refresh_product" items="1" reference="${values.reference}"`,
+        )
+        .replace(/<\/div>$/, '</DynamicContent>');
+      return htmlDynamicComponent;
+    },
+    propertyStates: (values: ProductValues | ProductDynamicValues) => ({
+      image: {
+        enabled: !values.imageIsDynamic,
+      },
+      titleText: {
+        enabled: !values.titleIsDynamic,
+      },
+      discountText: {
+        enabled: !values.discountIsDynamic,
+      },
+      descriptionHtml: {
+        enabled: !values.descriptionIsDynamic,
+      },
+      pricesDefaultPriceText: {
+        enabled: !values.pricesDefaultPriceIsDynamic,
+      },
+      pricesDiscountPriceText: {
+        enabled: !values.pricesDiscountPriceIsDynamic,
+      },
+      infoHtml: {
+        enabled: 'infoIsDynamic' in values ? !values.infoIsDynamic : false,
+      },
+    }),
   };
 };

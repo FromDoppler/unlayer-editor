@@ -345,6 +345,7 @@ describe(sut.name, () => {
       label: messages_es['_dp.promo_code_coupon_type'],
       defaultValue: false,
       widget: 'toggle',
+      enabled: true,
     });
 
     expect(result?.options.promo_code.options.code).toEqual({
@@ -376,18 +377,21 @@ describe(sut.name, () => {
       label: messages_es['_dp.promo_code_dynamic_value'],
       defaultValue: '5',
       widget: 'text',
+      enabled: true,
     });
 
     expect(result?.options.dynamic_code.options.expire_days).toEqual({
       label: messages_es['_dp.promo_code_dynamic_validate_days'],
       defaultValue: '45',
       widget: 'text',
+      enabled: true,
     });
 
     expect(result?.options.dynamic_code.options.min_price).toEqual({
       label: messages_es['_dp.promo_code_dynamic_min_price'],
       defaultValue: '0',
       widget: 'text',
+      enabled: true,
     });
 
     expect(result?.options.dynamic_code.options.dynamic_id).toEqual({
@@ -399,12 +403,14 @@ describe(sut.name, () => {
       label: messages_es['_dp.promo_code_dynamic_advance_setting'],
       defaultValue: false,
       widget: 'toggle',
+      enabled: true,
     });
 
     expect(result?.options.promo_code_advance.options.prefixe_code).toEqual({
       label: messages_es['_dp.promo_code_dynamic_prefixe'],
       defaultValue: undefined,
       widget: 'text',
+      enabled: true,
     });
 
     expect(
@@ -413,6 +419,7 @@ describe(sut.name, () => {
       label: messages_es['_dp.promo_code_dynamic_includes_shipping'],
       defaultValue: false,
       widget: 'toggle',
+      enabled: true,
     });
 
     expect(
@@ -421,6 +428,7 @@ describe(sut.name, () => {
       label: messages_es['_dp.promo_code_dynamic_first_consumer_purchase'],
       defaultValue: false,
       widget: 'toggle',
+      enabled: true,
     });
 
     expect(
@@ -430,6 +438,7 @@ describe(sut.name, () => {
         messages_es['_dp.promo_code_dynamic_combines_with_other_discounts'],
       defaultValue: false,
       widget: 'toggle',
+      enabled: true,
     });
   });
 

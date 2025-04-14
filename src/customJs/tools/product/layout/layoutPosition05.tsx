@@ -64,14 +64,19 @@ export const ProductLayoutViewer05 = ({ values }: { values: any }) => {
   return (
     <div>
       <section style={titleSectionStyle} data-testid="title-container">
-        <span style={values.title.style}>{values.title.value}</span>
+        <span
+          style={values.title.style}
+          dangerouslySetInnerHTML={{ __html: values.title.value }}
+          {...(values.title.isDynamic && { 'data-dc-type': 'DC:TITLE' })}
+        />
       </section>
 
       <section style={values.section.image.style} data-testid="image-container">
         <img
           style={values.image.style}
           src={values.image.value}
-          alt="product image"
+          alt="Product image"
+          {...(values.image.isDynamic && { 'data-dc-type': 'DC:IMAGE' })}
         />
       </section>
       <section
@@ -81,22 +86,39 @@ export const ProductLayoutViewer05 = ({ values }: { values: any }) => {
         <span
           style={values.description.style}
           dangerouslySetInnerHTML={{ __html: values.description.value }}
+          {...(values.description.isDynamic && {
+            'data-dc-type': 'DC:DESCRIPTION',
+          })}
         />
         <span
           style={values.info.style}
           dangerouslySetInnerHTML={{ __html: values.info.value }}
+          {...(values.info.isDynamic && { 'data-dc-type': 'DC:INFO' })}
         />
-        <span style={values.discount.style}>{values.discount.value}</span>
+        <span
+          style={values.discount.style}
+          {...(values.discount.isDynamic && { 'data-dc-type': 'DC:DISCOUNT' })}
+        >
+          {values.discount.value}
+        </span>
       </section>
       <section style={footerStyle} data-testid="footer-container">
         <div style={footerChildPricesStyle}>
           <span style={priceStyleOverwrite} data-testid="prices-container">
-            <span style={pricesDefaultStyleOverwrite}>
-              {values.prices.default.value}
-            </span>
-            <span style={pricesDiscountStyleOverwrite}>
-              {values.prices.discount.value}
-            </span>
+            <span
+              style={pricesDefaultStyleOverwrite}
+              dangerouslySetInnerHTML={{ __html: values.prices.default.value }}
+              {...(values.prices.default.isDynamic && {
+                'data-dc-type': 'DC:PRICES_DEFAULT',
+              })}
+            />
+            <span
+              style={pricesDiscountStyleOverwrite}
+              dangerouslySetInnerHTML={{ __html: values.prices.discount.value }}
+              {...(values.prices.discount.isDynamic && {
+                'data-dc-type': 'DC:PRICES_DISCOUNT',
+              })}
+            />
           </span>
         </div>
         <div style={footerChildButtonStyle}>
