@@ -1,6 +1,12 @@
 import { React } from '../../unlayer-react';
 import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import { ProductViewer } from './ProductViewer';
+import { ProductLayoutViewer01 } from './layout/layoutPosition01';
+import { ProductLayoutViewer02 } from './layout/layoutPosition02';
+import { ProductLayoutViewer03 } from './layout/layoutPosition03';
+import { ProductLayoutViewer04 } from './layout/layoutPosition04';
+import { ProductLayoutViewer05 } from './layout/layoutPosition05';
 
 describe(ProductViewer.name, () => {
   it('should render the main container with horizontal layout', async () => {
@@ -498,6 +504,195 @@ describe(ProductViewer.name, () => {
       render(<ProductViewer values={values} />);
       const img = screen.getByRole('img');
       expect(img.style.width).toEqual('100%');
+    });
+  });
+});
+
+const createDynamicValuesToTest = (isDynamic) => ({
+  section: {
+    image: {
+      style: {
+        width: '100%',
+        display: 'block',
+        marginRight: '0%',
+        verticalAlign: 'top',
+      },
+    },
+    description: {
+      style: {
+        display: 'block',
+        width: '100%',
+        verticalAlign: 'top',
+      },
+    },
+  },
+  title: {
+    value: 'Product!',
+    isDynamic,
+    style: {
+      display: 'block',
+      fontSize: '20px',
+      fontFamily: 'inherit',
+      fontWeight: 700,
+    },
+  },
+  image: {
+    value:
+      'https://s3.amazonaws.com/unroll-images-production/projects%2F6553%2F1604576441796-339575',
+    isDynamic,
+    style: {
+      width: '100%',
+      objectFit: 'contain',
+      height: 'auto',
+      padding: '5px',
+    },
+  },
+  prices: {
+    default: {
+      value: '$ 50.00',
+      isDynamic,
+      style: {
+        display: 'block',
+        textDecoration: 'line-through',
+        marginRight: '20px',
+        fontSize: '20px',
+        color: '#999',
+      },
+    },
+    discount: {
+      value: '$ 1.00',
+      isDynamic,
+      style: {
+        display: 'block',
+        fontSize: '20px',
+        color: '#64BF91',
+      },
+    },
+    style: {
+      display: 'block',
+      fontFamily: 'inherit',
+      marginTop: '15px',
+      flexDirection: 'column',
+    },
+  },
+  discount: {
+    value: '20%',
+    isDynamic,
+    style: {
+      display: 'block',
+      fontFamily: 'inherit',
+      fontSize: '16px',
+    },
+  },
+  description: {
+    value:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    isDynamic,
+    style: {
+      display: 'block',
+      fontFamily: 'inherit',
+      fontSize: '12px',
+    },
+  },
+  button: {
+    value: 'Comprar',
+    href: 'https://www.google.com',
+    style: {
+      display: 'block',
+      fontSize: '15px',
+      fontFamily: 'inherit',
+      fontWeight: 700,
+      color: '#FFFFFF',
+      backgroundColor: 'rgb(109, 196, 151)',
+      textDecoration: 'none',
+      borderStyle: 'solid solid solid solid',
+      borderColor: '#CCCCCC #CCCCCC #CCCCCC #CCCCCC',
+      borderWidth: '0px 0px 0px 0px',
+      borderRadius: '4px',
+      width: '100%',
+      padding: '13px 0px 13px',
+      margin: '15px 0px 0px',
+      minHeight: '20px',
+      lineHeight: '20px',
+      textAlign: 'center',
+    },
+  },
+  info: {
+    value: 'Rating: 4.6 | Para 1 o 2 personas',
+    isDynamic,
+    style: {
+      display: 'block',
+      fontSize: '12px',
+      fontFamily: 'inherit',
+    },
+  },
+});
+
+describe('Dynamic values', () => {
+  const viewers = [
+    ProductLayoutViewer01,
+    ProductLayoutViewer02,
+    ProductLayoutViewer03,
+    ProductLayoutViewer04,
+    ProductLayoutViewer05,
+  ];
+
+  viewers.forEach((ViewerComponent) => {
+    it('should render dynamic fields with correct data-dc-type attributes', () => {
+      const values = createDynamicValuesToTest(true);
+      render(<ViewerComponent values={values} />);
+
+      expect(
+        screen.getByText(values.title.value).closest('span'),
+      ).toHaveAttribute('data-dc-type', 'DC:TITLE');
+      expect(screen.getByRole('img')).toHaveAttribute(
+        'data-dc-type',
+        'DC:IMAGE',
+      );
+      expect(
+        screen.getByText(values.prices.default.value).closest('span'),
+      ).toHaveAttribute('data-dc-type', 'DC:PRICES_DEFAULT');
+      expect(
+        screen.getByText(values.prices.discount.value).closest('span'),
+      ).toHaveAttribute('data-dc-type', 'DC:PRICES_DISCOUNT');
+      expect(
+        screen.getByText(values.discount.value).closest('span'),
+      ).toHaveAttribute('data-dc-type', 'DC:DISCOUNT');
+      expect(
+        screen
+          .getByText(values.description.value, { exact: false })
+          .closest('span'),
+      ).toHaveAttribute('data-dc-type', 'DC:DESCRIPTION');
+      expect(
+        screen.getByText(values.info.value, { exact: false }).closest('span'),
+      ).toHaveAttribute('data-dc-type', 'DC:INFO');
+    });
+
+    it('should NOT render data-dc-type attributes when fields are not dynamic', () => {
+      const values = createDynamicValuesToTest(false);
+      render(<ViewerComponent values={values} />);
+
+      expect(
+        screen.getByText(values.title.value).closest('span'),
+      ).not.toHaveAttribute('data-dc-type');
+      expect(screen.getByRole('img')).not.toHaveAttribute('data-dc-type');
+      expect(
+        screen.getByText(values.prices.default.value).closest('span'),
+      ).not.toHaveAttribute('data-dc-type');
+      expect(
+        screen.getByText(values.prices.discount.value).closest('span'),
+      ).not.toHaveAttribute('data-dc-type');
+      expect(
+        screen.getByText(values.discount.value).closest('span'),
+      ).not.toHaveAttribute('data-dc-type');
+      expect(
+        screen
+          .getByText(values.description.value, { exact: false })
+          .closest('span'),
+      ).not.toHaveAttribute('data-dc-type');
+      expect(
+        screen.getByText(values.info.value, { exact: false }).closest('span'),
+      ).not.toHaveAttribute('data-dc-type');
     });
   });
 });
