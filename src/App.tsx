@@ -2,7 +2,9 @@ import React, { useRef } from 'react';
 import mergeTags from './external/merge.tags';
 import styled from 'styled-components';
 import { ASSETS_BASE_URL } from './customJs/constants';
-import { JSONTemplate, User, AppearanceConfig } from 'state/types/index';
+// Changed module declaration, previously "state/types/index"
+import { JSONTemplate, User, AppearanceConfig } from 'state/types/types';
+
 import { ExportHtmlResult } from 'embed/Config';
 import EmailEditor, { UnlayerOptions, EditorRef } from 'react-email-editor';
 
