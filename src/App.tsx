@@ -48,33 +48,33 @@ const App: React.FC = () => {
     projectId,
     displayMode: 'email',
     tools: {
-    button: {
+      button: {
         icon: `${ASSETS_BASE_URL}/button.svg`,
-    },
+      },
     },
     version: 'latest',
     features: {
-    audit: true,
-    preheaderText: false,
-    textEditor: {
+      audit: true,
+      preheaderText: false,
+      textEditor: {
         inlineFontControls: true, // enabled for see rich_text compoenent full style
-    },
+      },
     },
     appearance: {
-    panels: {
+      panels: {
         tools: {
-        dock: 'left',
+          dock: 'left',
         },
-    },
+      },
     } as AppearanceConfig,
     mergeTagsConfig: {
-    sort: false,
+      sort: false,
     },
     mergeTags,
     user: userExtend,
     customCSS: [`${process.env.PUBLIC_URL}/customJs/main.css`],
     customJS: [
-    `window["user-data"] = {
+      `window["user-data"] = {
         fields : [
             {
                 "name": "telefonito",
@@ -243,7 +243,7 @@ const App: React.FC = () => {
             }
             ],
         }`,
-    `window["unlayer-extensions-configuration"] = {
+      `window["unlayer-extensions-configuration"] = {
         locale: "es",
         previewMode: true,
         abandonedCartCampaign: true,
@@ -275,35 +275,35 @@ const App: React.FC = () => {
         integrations: "https://webappqa.fromdoppler.net/integrations"
         },
     };`,
-    `${process.env.PUBLIC_URL}/customJs/index.js`,
+      `${process.env.PUBLIC_URL}/customJs/index.js`,
     ],
   } as UnlayerOptions;
 
   const saveDesign = () => {
     emailEditorRef.current?.editor?.saveDesign((design: JSONTemplate) => {
-    console.log('Template data', '\n', design);
+      console.log('Template data', '\n', design);
     });
   };
 
   const exportHtml = () => {
     emailEditorRef.current?.editor?.exportHtml((data: ExportHtmlResult) => {
-    const { html } = data;
-    console.log('HTML Email data', '\n', html);
+      const { html } = data;
+      console.log('HTML Email data', '\n', html);
     });
   };
 
   return (
     <div className="App" data-testid="email-editor-test">
-    <Bar>
+      <Bar>
         <h1>Doppler Unlayer Editor POC</h1>
         <button onClick={saveDesign}>Save Design</button>
         <button onClick={exportHtml}>Export HTML</button>
-    </Bar>
-    <EmailEditor
+      </Bar>
+      <EmailEditor
         key="email-editor-test"
         ref={emailEditorRef}
         options={UnlayerOptionsExtended}
-    />
+      />
     </div>
   );
 };

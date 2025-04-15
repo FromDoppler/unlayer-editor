@@ -184,7 +184,6 @@ describe(getProductToolDefinition.name, () => {
 
   it('should NOT include info options when productType is undefined (defaults to static)', () => {
     const definition = getProductToolDefinition();
-
     expect(definition?.options.info).toBeUndefined();
   });
 
