@@ -41,7 +41,7 @@ const dynamicValueMock = {
     borderBottomColor: '#CCCCCC',
   },
   buttonBorderRadius: '4px',
-  reference: 'VT-118558'
+  reference: 'VT-118558',
 };
 
 const productGalleryValueMock = {
@@ -167,11 +167,11 @@ describe(getProductToolDefinition.name, () => {
 
   it('should include all info options when productType is dynamic', () => {
     const definition = getProductToolDefinition('dynamic');
-  
+
     expect(definition?.options.info).toBeDefined();
-  
+
     const infoOptions = definition?.options.info.options;
-  
+
     expect(infoOptions.infoShown).toBeDefined();
     expect(infoOptions.infoIsDynamic).toBeDefined();
     expect(infoOptions.infoHtml).toBeDefined();
@@ -181,10 +181,10 @@ describe(getProductToolDefinition.name, () => {
     expect(infoOptions.infoColor).toBeDefined();
     expect(infoOptions.reference).toBeDefined();
   });
-  
+
   it('should NOT include info options when productType is undefined (defaults to static)', () => {
     const definition = getProductToolDefinition();
-  
+
     expect(definition?.options.info).toBeUndefined();
   });
 
@@ -194,11 +194,13 @@ describe(getProductToolDefinition.name, () => {
     prepareUnlayerGlobalObject();
     const result = getProductToolDefinition('dynamic');
     const dynamicValueMock2 = {
-      ...dynamicValueMock
+      ...dynamicValueMock,
     };
 
-    const htmlRecommended = '<div style="display:block;padding:5px;margin:10px" role="container"><div><section style="width:100%;display:block;margin-right:0%;vertical-align:top" data-testid="image-container"><img style="width:100%;object-fit:contain;height:auto;padding:5px" src="https://s3.amazonaws.com/unroll-images-production/projects%2F6553%2F1604576441796-339575" alt="product image" data-dc-type="DC:IMAGE"/></section><section style="display:block;width:100%;vertical-align:top" data-testid="description-container"><span style="display:block;font-size:20px;font-family:inherit;font-weight:700" data-dc-type="DC:TITLE">Product!</span><span style="display:block;font-family:inherit;font-size:12px" data-dc-type="DC:DESCRIPTION"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span><span style="display:block;font-size:12px;font-family:inherit" data-dc-type="DC:INFO">Rating: 4.6 | Para 1 o 2 personas</span><span style="display:block;font-family:inherit;margin-top:15px;flex-direction:column" data-testid="prices-container"><span style="display:block;text-decoration:line-through;margin-right:20px;font-size:20px;color:#999" data-dc-type="DC:PRICES_DEFAULT">$ 50.00</span><span style="display:block;font-size:20px;color:#64BF91" data-dc-type="DC:PRICES_DISCOUNT">$ 1.00</span></span><span style="display:block;font-family:inherit;font-size:16px" data-dc-type="DC:DISCOUNT">20%</span><a style="display:block;font-size:15px;font-family:inherit;font-weight:700;color:#FFFFFF;background-color:rgb(109, 196, 151);text-decoration:none;border-style:solid solid solid solid;border-color:#CCCCCC #CCCCCC #CCCCCC #CCCCCC;border-width:0px 0px 0px 0px;border-radius:4px;width:100%;padding:13px 0px 13px;margin:15px 0px 0px;min-height:20px;line-height:20px;text-align:center" role="link" href="https://www.google.com" target="_blank" rel="noreferrer">Comprar</a></section></div></div>';
-    const htmlRecommendedTransformed = '<DynamicContent action="refresh_product" items="1" reference="VT-118558" style="display:block;padding:5px;margin:10px" role="container"><div><section style="width:100%;display:block;margin-right:0%;vertical-align:top" data-testid="image-container"><img style="width:100%;object-fit:contain;height:auto;padding:5px" src="https://s3.amazonaws.com/unroll-images-production/projects%2F6553%2F1604576441796-339575" alt="product image" data-dc-type="DC:IMAGE"/></section><section style="display:block;width:100%;vertical-align:top" data-testid="description-container"><span style="display:block;font-size:20px;font-family:inherit;font-weight:700" data-dc-type="DC:TITLE">Product!</span><span style="display:block;font-family:inherit;font-size:12px" data-dc-type="DC:DESCRIPTION"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span><span style="display:block;font-size:12px;font-family:inherit" data-dc-type="DC:INFO">Rating: 4.6 | Para 1 o 2 personas</span><span style="display:block;font-family:inherit;margin-top:15px;flex-direction:column" data-testid="prices-container"><span style="display:block;text-decoration:line-through;margin-right:20px;font-size:20px;color:#999" data-dc-type="DC:PRICES_DEFAULT">$ 50.00</span><span style="display:block;font-size:20px;color:#64BF91" data-dc-type="DC:PRICES_DISCOUNT">$ 1.00</span></span><span style="display:block;font-family:inherit;font-size:16px" data-dc-type="DC:DISCOUNT">20%</span><a style="display:block;font-size:15px;font-family:inherit;font-weight:700;color:#FFFFFF;background-color:rgb(109, 196, 151);text-decoration:none;border-style:solid solid solid solid;border-color:#CCCCCC #CCCCCC #CCCCCC #CCCCCC;border-width:0px 0px 0px 0px;border-radius:4px;width:100%;padding:13px 0px 13px;margin:15px 0px 0px;min-height:20px;line-height:20px;text-align:center" role="link" href="https://www.google.com" target="_blank" rel="noreferrer">Comprar</a></section></div></DynamicContent>';
+    const htmlRecommended =
+      '<div style="display:block;padding:5px;margin:10px" role="container"><div><section style="width:100%;display:block;margin-right:0%;vertical-align:top" data-testid="image-container"><img style="width:100%;object-fit:contain;height:auto;padding:5px" src="https://s3.amazonaws.com/unroll-images-production/projects%2F6553%2F1604576441796-339575" alt="product image" data-dc-type="DC:IMAGE"/></section><section style="display:block;width:100%;vertical-align:top" data-testid="description-container"><span style="display:block;font-size:20px;font-family:inherit;font-weight:700" data-dc-type="DC:TITLE">Product!</span><span style="display:block;font-family:inherit;font-size:12px" data-dc-type="DC:DESCRIPTION"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span><span style="display:block;font-size:12px;font-family:inherit" data-dc-type="DC:INFO">Rating: 4.6 | Para 1 o 2 personas</span><span style="display:block;font-family:inherit;margin-top:15px;flex-direction:column" data-testid="prices-container"><span style="display:block;text-decoration:line-through;margin-right:20px;font-size:20px;color:#999" data-dc-type="DC:PRICES_DEFAULT">$ 50.00</span><span style="display:block;font-size:20px;color:#64BF91" data-dc-type="DC:PRICES_DISCOUNT">$ 1.00</span></span><span style="display:block;font-family:inherit;font-size:16px" data-dc-type="DC:DISCOUNT">20%</span><a style="display:block;font-size:15px;font-family:inherit;font-weight:700;color:#FFFFFF;background-color:rgb(109, 196, 151);text-decoration:none;border-style:solid solid solid solid;border-color:#CCCCCC #CCCCCC #CCCCCC #CCCCCC;border-width:0px 0px 0px 0px;border-radius:4px;width:100%;padding:13px 0px 13px;margin:15px 0px 0px;min-height:20px;line-height:20px;text-align:center" role="link" href="https://www.google.com" target="_blank" rel="noreferrer">Comprar</a></section></div></div>';
+    const htmlRecommendedTransformed =
+      '<DynamicContent action="refresh_product" items="1" reference="VT-118558" style="display:block;padding:5px;margin:10px" role="container"><div><section style="width:100%;display:block;margin-right:0%;vertical-align:top" data-testid="image-container"><img style="width:100%;object-fit:contain;height:auto;padding:5px" src="https://s3.amazonaws.com/unroll-images-production/projects%2F6553%2F1604576441796-339575" alt="product image" data-dc-type="DC:IMAGE"/></section><section style="display:block;width:100%;vertical-align:top" data-testid="description-container"><span style="display:block;font-size:20px;font-family:inherit;font-weight:700" data-dc-type="DC:TITLE">Product!</span><span style="display:block;font-family:inherit;font-size:12px" data-dc-type="DC:DESCRIPTION"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span><span style="display:block;font-size:12px;font-family:inherit" data-dc-type="DC:INFO">Rating: 4.6 | Para 1 o 2 personas</span><span style="display:block;font-family:inherit;margin-top:15px;flex-direction:column" data-testid="prices-container"><span style="display:block;text-decoration:line-through;margin-right:20px;font-size:20px;color:#999" data-dc-type="DC:PRICES_DEFAULT">$ 50.00</span><span style="display:block;font-size:20px;color:#64BF91" data-dc-type="DC:PRICES_DISCOUNT">$ 1.00</span></span><span style="display:block;font-family:inherit;font-size:16px" data-dc-type="DC:DISCOUNT">20%</span><a style="display:block;font-size:15px;font-family:inherit;font-weight:700;color:#FFFFFF;background-color:rgb(109, 196, 151);text-decoration:none;border-style:solid solid solid solid;border-color:#CCCCCC #CCCCCC #CCCCCC #CCCCCC;border-width:0px 0px 0px 0px;border-radius:4px;width:100%;padding:13px 0px 13px;margin:15px 0px 0px;min-height:20px;line-height:20px;text-align:center" role="link" href="https://www.google.com" target="_blank" rel="noreferrer">Comprar</a></section></div></DynamicContent>';
 
     const transform = result.createDynamicContet(
       htmlRecommended,
