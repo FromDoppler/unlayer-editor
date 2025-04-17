@@ -16,6 +16,9 @@ module.exports = function (env) {
         devServer: {
             historyApiFallback: true,
             port: 3000,
+            setupMiddlewares: (middlewares) => {
+                return middlewares.filter(middleware => middleware.name !== "cross-origin-header-check");
+            }
         },
         watchOptions: {
             ignored: [path.resolve(__dirname, 'src', 'customJs'), './node_modules']
