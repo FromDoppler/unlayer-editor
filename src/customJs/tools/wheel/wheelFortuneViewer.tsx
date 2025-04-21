@@ -301,9 +301,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
               gap: '10px',
             }}
           >
-            <span style={giftCodeStyle}>
-              [[GIFT CODE]]
-            </span>
+            <span style={giftCodeStyle}>[[GIFT CODE]]</span>
             <i
               className="dp-roulette-congrats-copy-icon"
               style={{
