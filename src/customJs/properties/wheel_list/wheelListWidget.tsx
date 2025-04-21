@@ -183,7 +183,7 @@ export const wheelListWidget: WidgetComponent<WheelSlice[], void> = ({
                       <th>{$t('_dp.wheel_fortune.segment.modal.chance')}</th>
                       <th>{$t('_dp.wheel_fortune.segment.modal.stat')}</th>
                       <th>{$t('_dp.wheel_fortune.segment.modal.color')}</th>
-                      <th>{$t('_dp.wheel_fortune.segment.modal.action')}</th>
+                      <th></th>
                     </tr>
                   </thead>
                   <tbody>
