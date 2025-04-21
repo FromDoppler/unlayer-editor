@@ -123,6 +123,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
     color: '#000',
     textAlign: 'center',
     width: '100%',
+    wordBreak: 'break-word',
   } as const;
 
   const slides = values.wheelList;
