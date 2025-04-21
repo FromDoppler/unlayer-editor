@@ -116,12 +116,14 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
   } as const;
 
   const giftCodeStyle = {
-    display: 'flex',
-    textAlign: 'center',
+    display: 'inline-block',
     fontSize: '18px',
     fontFamily: 'inherit',
     fontWeight: '900',
     color: '#000',
+    textAlign: 'center',
+    width: '100%',
+    wordBreak: 'break-word',
   } as const;
 
   const slides = values.wheelList;
@@ -296,6 +298,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
               backgroundColor: '#fff',
               margin: '10px',
               padding: '10px',
+              gap: '10px',
             }}
           >
             <span style={giftCodeStyle}>[[GIFT CODE]]</span>
@@ -303,7 +306,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
               className="dp-roulette-congrats-copy-icon"
               style={{
                 display: 'flex',
-                position: 'relative',
+                flexShrink: 0,
                 cursor: 'pointer',
               }}
             >
