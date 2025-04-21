@@ -168,7 +168,7 @@ export const wheelListWidget: WidgetComponent<WheelSlice[], void> = ({
             },
           }}
           content={
-            <div style={{ maxHeight: '400px', overflow: 'hidden auto' }}>
+            <div style={{ maxHeight: '40vh', overflow: 'hidden auto' }}>
               <form id="slideFom" ref={formRef}>
                 <table className="table ">
                   <thead>
@@ -279,7 +279,7 @@ export const wheelListWidget: WidgetComponent<WheelSlice[], void> = ({
                 </table>
                 <div
                   style={{
-                    display: value.length < MAX_SLICES ? 'flex' : 'none',
+                    display: slices.length < MAX_SLICES ? 'flex' : 'none',
                     justifyContent: 'end',
                     marginTop: '30px',
                     paddingTop: '10px',
