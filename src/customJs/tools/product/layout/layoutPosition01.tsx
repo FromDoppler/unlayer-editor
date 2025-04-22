@@ -37,14 +37,14 @@ export const ProductLayoutViewer01 = ({ values }: { values: any }) => {
             style={values.prices.default.style}
             dangerouslySetInnerHTML={{ __html: values.prices.default.value }}
             {...(values.prices.default.isDynamic && {
-              'data-dc-type': 'DC:PRICES_DEFAULT',
+              'data-dc-type': 'DC:PRICE',
             })}
           />
           <span
             style={values.prices.discount.style}
             dangerouslySetInnerHTML={{ __html: values.prices.discount.value }}
             {...(values.prices.discount.isDynamic && {
-              'data-dc-type': 'DC:PRICES_DISCOUNT',
+              'data-dc-type': 'DC:PRICE_DISCOUNT',
             })}
           />
         </span>

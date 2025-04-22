@@ -651,10 +651,10 @@ describe('Dynamic values', () => {
       );
       expect(
         screen.getByText(values.prices.default.value).closest('span'),
-      ).toHaveAttribute('data-dc-type', 'DC:PRICES_DEFAULT');
+      ).toHaveAttribute('data-dc-type', 'DC:PRICE');
       expect(
         screen.getByText(values.prices.discount.value).closest('span'),
-      ).toHaveAttribute('data-dc-type', 'DC:PRICES_DISCOUNT');
+      ).toHaveAttribute('data-dc-type', 'DC:PRICE_DISCOUNT');
       expect(
         screen.getByText(values.discount.value).closest('span'),
       ).toHaveAttribute('data-dc-type', 'DC:DISCOUNT');
