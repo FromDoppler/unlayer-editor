@@ -72,6 +72,7 @@ const transformValuesBasedOnProductGallery: (
     descriptionHtml,
     infoHtml,
     reference,
+    source,
   }: ProductGalleryValue,
 ) => ({
   ...productValues,
@@ -101,6 +102,7 @@ const transformValuesBasedOnProductGallery: (
   infoHtml: infoHtml,
   infoShown: !!infoHtml,
   reference: reference,
+  source: source,
 });
 
 export const getProductToolDefinition: (
@@ -324,6 +326,11 @@ export const getProductToolDefinition: (
           label: 'Referencia del producto',
           enabled: false,
         }),
+        source: textProperty({
+          defaultValue: 'Source',
+          label: 'Fuente del producto',
+          enabled: false,
+        }),
       },
     };
   }
@@ -346,7 +353,7 @@ export const getProductToolDefinition: (
         .replace(
           /^.[div]*/,
           // <dynamiccontent action="refresh_product" items="1" reference="VT-118558"
-          `<DynamicContent action="refresh_product" items="1" reference="${values.reference}"`,
+          `<DynamicContent source="${values.source}" action="refresh_product" items="1" reference="${values.reference}"`,
         )
         .replace(/<\/div>$/, '</DynamicContent>');
       return htmlDynamicComponent;

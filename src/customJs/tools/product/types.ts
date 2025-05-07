@@ -104,6 +104,7 @@ export type ProductDynamicInfo = Readonly<{
     infoFontSize?: string;
     infoHtml: string;
     reference: string;
+    source: string;
   };
 }>;
 
