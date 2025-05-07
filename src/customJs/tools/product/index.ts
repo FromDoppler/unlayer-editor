@@ -349,8 +349,6 @@ export const getProductToolDefinition: (
       return values;
     },
     createDynamicContet(htmlComponent: string, values: any) {
-      debugger;
-      console.log('VALUES: ', values);
       const htmlDynamicComponent = htmlComponent
         .replace(
           /^.[div]*/,
