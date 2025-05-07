@@ -353,7 +353,7 @@ export const getProductToolDefinition: (
         .replace(
           /^.[div]*/,
           // <dynamiccontent action="refresh_product" items="1" reference="VT-118558"
-          `<DynamicContent source="${values.store}" action="refresh_product" items="1" reference="${values.reference}"`,
+          `<DynamicContent source="${values.source}" action="refresh_product" items="1" reference="${values.reference}"`,
         )
         .replace(/<\/div>$/, '</DynamicContent>');
       return htmlDynamicComponent;
