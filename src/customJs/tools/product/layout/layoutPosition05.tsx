@@ -123,7 +123,7 @@ export const ProductLayoutViewer05 = ({ values }: { values: any }) => {
         </div>
         <div style={footerChildButtonStyle}>
           <a
-            style={values.button.style}
+            style={buttonStyleOverwrite}
             role="link"
             href={values.product.url.value}
             target="_blank"
