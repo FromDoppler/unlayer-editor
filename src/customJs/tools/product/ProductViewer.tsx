@@ -124,6 +124,12 @@ export const ProductViewer: ViewerComponent<
     values.image?.url || `${ASSETS_BASE_URL}/product_transparent.svg`;
 
   const productToolElement = {
+    product: {
+      url: {
+        value: values.productUrl ? values.productUrl : '#',
+        isDynamic: values.productUrlIsDynamic,
+      },
+    },
     section: {
       image: {
         style: imageSectionStyle,
@@ -167,7 +173,6 @@ export const ProductViewer: ViewerComponent<
     },
     button: {
       value: values.buttonText,
-      href: values.productUrl ? values.productUrl : '#',
       style: buttonStyle,
     },
     info: {
