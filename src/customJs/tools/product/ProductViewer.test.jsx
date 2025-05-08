@@ -509,6 +509,12 @@ describe(ProductViewer.name, () => {
 });
 
 const createDynamicValuesToTest = (isDynamic) => ({
+  product: {
+    url: {
+      value: 'https://www.google.com',
+      isDynamic,
+    },
+  },
   section: {
     image: {
       style: {
@@ -666,6 +672,10 @@ describe('Dynamic values', () => {
       expect(
         screen.getByText(values.info.value, { exact: false }).closest('span'),
       ).toHaveAttribute('data-dc-type', 'DC:INFO');
+      expect(screen.getByRole('link')).toHaveAttribute(
+        'data-dc-type',
+        'DC:URL',
+      );
     });
 
     it('should NOT render data-dc-type attributes when fields are not dynamic', () => {
@@ -693,6 +703,7 @@ describe('Dynamic values', () => {
       expect(
         screen.getByText(values.info.value, { exact: false }).closest('span'),
       ).not.toHaveAttribute('data-dc-type');
+      expect(screen.getByRole('link')).not.toHaveAttribute('data-dc-type');
     });
   });
 });
