@@ -18,12 +18,15 @@ export const urlPropertyEditorDefinition: ReactPropertyDefinition<
 export const urlProperty = ({
   label,
   help,
+  enabled,
 }: {
   label?: string;
   help?: ReactNode;
+  enabled?: boolean;
 } = {}) =>
   ({
     label,
     widget: urlPropertyEditor,
     data: { help },
+    enabled,
   }) as const;

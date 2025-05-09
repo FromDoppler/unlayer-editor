@@ -67,9 +67,10 @@ export const ProductLayoutViewer04 = ({ values }: { values: any }) => {
         <a
           style={values.button.style}
           role="link"
-          href={values.button.href}
+          href={values.product.url.value}
           target="_blank"
           rel="noreferrer"
+          {...(values.product.url.isDynamic && { 'data-dc-type': 'DC:URL' })}
         >
           {values.button.value}
         </a>

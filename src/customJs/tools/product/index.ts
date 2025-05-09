@@ -115,8 +115,14 @@ export const getProductToolDefinition: (
       title: $t('_dp.product'),
       options: {
         productGallery: productGalleryProperty(),
+        productUrlIsDynamic: toggleShowProperty({
+          defaultValue: true,
+          label: $t('_dp.product_dynamic_shown') + ' link',
+          enabled: isProductTypeDynamic,
+        }),
         productUrl: urlProperty({
           label: $t('_dp.product_link'),
+          enabled: true,
         }),
       },
     },
@@ -314,7 +320,7 @@ export const getProductToolDefinition: (
         }),
         infoHtml: textProperty({
           defaultValue: 'Prueba',
-          label: 'Información del producto',
+          label: $t('_dp.product_infoHtml'),
           enabled: !isProductTypeDynamic,
         }),
         infoFont: fontFamilyProperty(),
@@ -323,12 +329,12 @@ export const getProductToolDefinition: (
         infoColor: colorProperty(),
         reference: textProperty({
           defaultValue: 'Reference',
-          label: 'Referencia del producto',
+          label: $t('_dp.product_reference'),
           enabled: false,
         }),
         source: textProperty({
           defaultValue: 'Source',
-          label: 'Fuente del producto',
+          label: $t('_dp.product_source'),
           enabled: false,
         }),
       },
@@ -359,6 +365,9 @@ export const getProductToolDefinition: (
       return htmlDynamicComponent;
     },
     propertyStates: (values: ProductValues | ProductDynamicValues) => ({
+      productUrl: {
+        enabled: !values.productUrlIsDynamic,
+      },
       image: {
         enabled: !values.imageIsDynamic,
       },

@@ -27,6 +27,7 @@ export type ProductArrangement =
 export type ProductBase = Readonly<{
   product: {
     productGallery: ProductGalleryValue | undefined;
+    productUrlIsDynamic: boolean;
     productUrl: string;
   };
   layout: {
