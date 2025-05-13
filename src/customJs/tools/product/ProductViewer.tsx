@@ -180,7 +180,7 @@ export const ProductViewer: ViewerComponent<
   if ('infoIsDynamic' in values) {
     (productToolElement as any).info = {
       value: 'infoHtml' in values ? values.infoHtml : '',
-      isDynamic: 'infoIsDynamic' in values ? values.infoIsDynamic : false,
+      isDynamic: values.infoIsDynamic,
       style: infoStyle,
     };
   }
