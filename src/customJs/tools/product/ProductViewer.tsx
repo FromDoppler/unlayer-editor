@@ -123,7 +123,7 @@ export const ProductViewer: ViewerComponent<
   const image =
     values.image?.url || `${ASSETS_BASE_URL}/product_transparent.svg`;
 
-  const productToolElement = {
+  let productToolElement = {
     product: {
       url: {
         value: values.productUrl ? values.productUrl : '#',
@@ -175,12 +175,15 @@ export const ProductViewer: ViewerComponent<
       value: values.buttonText,
       style: buttonStyle,
     },
-    info: {
-      value: 'infoHtml' in values ? values.infoHtml : '',
-      isDynamic: 'infoIsDynamic' in values ? values.infoIsDynamic : '',
-      style: infoStyle,
-    },
   };
+
+  if ('infoIsDynamic' in values) {
+    (productToolElement as any).info = {
+      value: 'infoHtml' in values ? values.infoHtml : '',
+      isDynamic: 'infoIsDynamic' in values ? values.infoIsDynamic : false,
+      style: infoStyle,
+    };
+  }
 
   const getLayout = () => {
     switch (values.arrangement) {
