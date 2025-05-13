@@ -123,7 +123,7 @@ export const ProductViewer: ViewerComponent<
   const image =
     values.image?.url || `${ASSETS_BASE_URL}/product_transparent.svg`;
 
-  let productToolElement = {
+  const productToolElement = {
     product: {
       url: {
         value: values.productUrl ? values.productUrl : '#',
