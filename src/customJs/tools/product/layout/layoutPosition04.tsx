@@ -55,7 +55,7 @@ export const ProductLayoutViewer04 = ({ values }: { values: any }) => {
         />
         <span
           style={values.info.style}
-          dangerouslySetInnerHTML={{ __html: values.info.value }}
+          dangerouslySetInnerHTML={{ __html: values.info.value ?? '' }}
           {...(values.info.isDynamic && { 'data-dc-type': 'DC:INFO' })}
         />
         <span
