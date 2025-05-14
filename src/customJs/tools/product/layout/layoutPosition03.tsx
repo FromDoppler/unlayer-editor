@@ -34,11 +34,13 @@ export const ProductLayoutViewer03 = ({ values }: { values: any }) => {
             'data-dc-type': 'DC:DESCRIPTION',
           })}
         />
-        <span
-          style={values.info.style}
-          dangerouslySetInnerHTML={{ __html: values.info.value }}
-          {...(values.info.isDynamic && { 'data-dc-type': 'DC:INFO' })}
-        />
+        {values.info && (
+          <span
+            style={values.info.style}
+            dangerouslySetInnerHTML={{ __html: values.info.value ?? '' }}
+            {...(values.info.isDynamic && { 'data-dc-type': 'DC:INFO' })}
+          />
+        )}
         <span
           style={values.discount.style}
           {...(values.discount.isDynamic && { 'data-dc-type': 'DC:DISCOUNT' })}

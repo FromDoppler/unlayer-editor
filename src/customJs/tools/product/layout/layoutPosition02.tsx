@@ -23,11 +23,13 @@ export const ProductLayoutViewer02 = ({ values }: { values: any }) => {
             'data-dc-type': 'DC:DESCRIPTION',
           })}
         />
-        <span
-          style={values.info.style}
-          dangerouslySetInnerHTML={{ __html: values.info.value }}
-          {...(values.info.isDynamic && { 'data-dc-type': 'DC:INFO' })}
-        />
+        {values.info && (
+          <span
+            style={values.info.style}
+            dangerouslySetInnerHTML={{ __html: values.info.value ?? '' }}
+            {...(values.info.isDynamic && { 'data-dc-type': 'DC:INFO' })}
+          />
+        )}
         <span style={values.prices.style} data-testid="prices-container">
           <span
             style={values.prices.default.style}
