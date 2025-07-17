@@ -303,7 +303,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
           >
             <span style={giftCodeStyle}>[[GIFT CODE]]</span>
             <i
-              className="dp-roulette-congrats-copy-icon"
+              className="dp-roulette-congrats-copy-icon dp-button-click"
               style={{
                 display: 'flex',
                 flexShrink: 0,
@@ -329,7 +329,11 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
             </i>
           </div>
           <div style={{ display: 'flex' }}>
-            <button type="button" style={congratysBtnStyle}>
+            <button
+              type="button"
+              className="dp-button-click"
+              style={congratysBtnStyle}
+            >
               {values.congratsButtonText}
             </button>
           </div>
