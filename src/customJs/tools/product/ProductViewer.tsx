@@ -39,6 +39,7 @@ export const ProductViewer: ViewerComponent<
     verticalAlign: 'top',
   };
 
+  // test
   const imageStyle = {
     width: values.image?.maxWidth || '100%',
     objectFit: 'contain',
