@@ -199,7 +199,6 @@ Unlayer have file storage support built-in with Amazon S3 that can be configured
   ```
 
 - Enable CORS for your S3 Bucket: Your S3 Bucket must have CORS (cross-origin resource sharing) enabled. Follow these steps:
-
   - Go to your S3 Bucket in AWS Console
 
   - Click the Permissions tab
@@ -220,7 +219,6 @@ Unlayer have file storage support built-in with Amazon S3 that can be configured
   ```
 
 - Add Credentials in your Unlayer Project: Simply enter your information of S3 storage against your project. For this:
-
   - Login to Unlayer dashboard
 
   - Select your Project
