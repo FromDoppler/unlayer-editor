@@ -19,7 +19,7 @@
     "@typescript-eslint/eslint-plugin": "7.18.0",
     "@typescript-eslint/parser": "7.18.0",
     "babel-jest": "29.7.0",
-    "dotenv": "17.2.1",
+    "dotenv": "17.2.2",
     "dotenv-flow-webpack": "2.0.0",
     "eclint": "2.8.1",
     "eslint": "8.57.1",
