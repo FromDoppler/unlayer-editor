@@ -156,7 +156,10 @@ export const getPromoCodeToolDefinition: () =>
           values.type !== 'shipping',
       },
       first_consumer_purchase: {
-        enabled: values.isDynamic && values.advanced_options,
+        enabled:
+          values.isDynamic &&
+          values.advanced_options &&
+          values.store !== 'WooCommerce',
       },
       combines_with_other_discounts: {
         enabled: values.isDynamic && values.advanced_options,
