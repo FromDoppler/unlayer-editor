@@ -21,6 +21,8 @@ export const getPromoCodeToolDefinition: () =>
   const storesWithPromoCode = stores.filter(
     ({ promotionCodeEnabled }) => promotionCodeEnabled,
   );
+  //TODO: Replace this by a proper store property when more stores support this feature
+  const storesWithFirstConsumerPurchase = ['Tiendanube'];
 
   const storesWithPromoCodeDynamic = stores.filter(
     ({ promotionCodeDynamicEnabled }) => promotionCodeDynamicEnabled,
@@ -156,7 +158,10 @@ export const getPromoCodeToolDefinition: () =>
           values.type !== 'shipping',
       },
       first_consumer_purchase: {
-        enabled: values.isDynamic && values.advanced_options,
+        enabled:
+          values.isDynamic &&
+          values.advanced_options &&
+          storesWithFirstConsumerPurchase.includes(values.store as string),
       },
       combines_with_other_discounts: {
         enabled: values.isDynamic && values.advanced_options,
