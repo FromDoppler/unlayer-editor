@@ -23,6 +23,7 @@ export const DynamicPromoCodeWidget: WidgetComponent<
     includes_shipping,
     first_consumer_purchase,
     combines_with_other_discounts,
+    store,
   },
 }) => {
   useEffect(() => {
@@ -37,6 +38,7 @@ export const DynamicPromoCodeWidget: WidgetComponent<
       includes_shipping: includes_shipping,
       first_consumer_purchase: first_consumer_purchase,
       combines_with_other_discounts: combines_with_other_discounts,
+      store: store,
     };
 
     const getData = setTimeout(() => {
@@ -58,6 +60,7 @@ export const DynamicPromoCodeWidget: WidgetComponent<
     includes_shipping,
     first_consumer_purchase,
     combines_with_other_discounts,
+    store,
   ]);
 
   return <></>;
