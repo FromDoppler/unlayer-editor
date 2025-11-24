@@ -15,7 +15,7 @@
     "@types/react": "18.3.27",
     "@types/react-dom": "18.3.7",
     "@types/react-email-editor": "1.7.0",
-    "@types/styled-components": "5.1.35",
+    "@types/styled-components": "5.1.36",
     "@typescript-eslint/eslint-plugin": "7.18.0",
     "@typescript-eslint/parser": "7.18.0",
     "babel-jest": "29.7.0",
