@@ -1,6 +1,6 @@
 import { $t } from '../../localization';
 import { PromoCodeViewer } from './PromoCodeViewer';
-import { ReactToolDefinitionFrom, UnlayerProperty } from '../../types';
+import { ReactToolDefinitionFrom, Store } from '../../types';
 import { PromoCodeBase, PromoCodeValues, PromoCodeTypes } from './types';
 import { getConfiguration } from '../../configuration';
 import { ASSETS_BASE_URL, EMPTY_SELECTION } from '../../constants';
@@ -32,16 +32,29 @@ export const getPromoCodeToolDefinition: () =>
     return undefined;
   }
 
-  const PromoCodeTypeProperty: () => UnlayerProperty<PromoCodeTypes> = () =>
-    dropdownProperty({
+  const PromoCodeTypeProperty = ({ stores }: { stores: Store[] }) => {
+    const options = [
+      { label: $t('_dp.promo_code_type_percent'), value: 'percent' as const },
+      { label: $t('_dp.promo_code_type_amount'), value: 'money' as const },
+      ...(stores.some((s) => s.name !== 'WooCommerce')
+        ? [
+            {
+              label: $t('_dp.promo_code_type_shipping'),
+              value: 'shipping' as const,
+            },
+          ]
+        : []),
+    ] as [
+      { label: string; value: PromoCodeTypes },
+      ...{ label: string; value: PromoCodeTypes }[],
+    ];
+
+    return dropdownProperty({
       label: $t('_dp.promo_code_type'),
       defaultValue: 'percent',
-      options: [
-        { label: $t('_dp.promo_code_type_percent'), value: 'percent' },
-        { label: $t('_dp.promo_code_type_amount'), value: 'money' },
-        { label: $t('_dp.promo_code_type_shipping'), value: 'shipping' },
-      ],
-    } as const);
+      options,
+    });
+  };
 
   return {
     name: 'promo_code',
@@ -69,7 +82,7 @@ export const getPromoCodeToolDefinition: () =>
       dynamic_code: {
         title: $t('_dp.promo_code_dynamic_type_title'),
         options: {
-          type: PromoCodeTypeProperty(),
+          type: PromoCodeTypeProperty({ stores: storesWithPromoCode }),
           amount: textProperty({
             label: $t('_dp.promo_code_dynamic_value'),
             defaultValue: '5',
@@ -155,7 +168,8 @@ export const getPromoCodeToolDefinition: () =>
         enabled:
           values.isDynamic &&
           values.advanced_options &&
-          values.type !== 'shipping',
+          values.type !== 'shipping' &&
+          storesWithFirstConsumerPurchase.includes(values.store as string),
       },
       first_consumer_purchase: {
         enabled:
