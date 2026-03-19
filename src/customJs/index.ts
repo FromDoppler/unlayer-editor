@@ -21,6 +21,7 @@ import { getQrToolDefinition } from './tools/qr';
 import { qrPropertyEditorDefinition } from './properties/qr';
 import { dynamicPromoCodePropertyEditorDefinition } from './properties/dynamic_promo_code';
 import { getSmartFormToolDefinition } from './tools/smartforms';
+import { getPromotionalToolDefinition } from './tools/promotional';
 import { subscriptionListPropertyEditorDefinition } from './properties/subscription_list';
 import { getWheelFortuneToolDefinition } from './tools/wheel';
 import { wheelListPropertyEditorDefinition } from './properties/wheel_list';
@@ -45,6 +46,7 @@ const {
   product,
   qrCode,
   smartForm,
+  promotional,
   roulette,
   productDynamic,
 } = getConfiguration();
@@ -85,6 +87,9 @@ if (roulette) {
 
 if (smartForm) {
   registerReactTool(getSmartFormToolDefinition());
+}
+if (promotional) {
+  registerReactTool(getPromotionalToolDefinition());
 }
 if (qrCode) {
   registerReactTool(getQrToolDefinition());

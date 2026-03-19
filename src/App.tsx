@@ -260,6 +260,7 @@ const App: React.FC = () => {
         rssCampaign: true,
         rssShowPreview: true,
         smartForm: true,
+        promotional: true,
         roulette: true,
         productDynamic: true,
         stores: [
