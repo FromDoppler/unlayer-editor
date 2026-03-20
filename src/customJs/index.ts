@@ -26,6 +26,7 @@ import { subscriptionListPropertyEditorDefinition } from './properties/subscript
 import { getWheelFortuneToolDefinition } from './tools/wheel';
 import { wheelListPropertyEditorDefinition } from './properties/wheel_list';
 import { buttonGroupPropertyEditorDefinition } from './properties/button_group';
+import { labeledAutoWidthPropertyEditorDefinition } from './properties/labeled_auto_width';
 
 const {
   locale,
@@ -76,12 +77,13 @@ registerPropertyEditor(qrPropertyEditorDefinition);
 registerPropertyEditor(dynamicPromoCodePropertyEditorDefinition);
 registerPropertyEditor(subscriptionListPropertyEditorDefinition);
 registerPropertyEditor(wheelListPropertyEditorDefinition);
+registerPropertyEditor(buttonGroupPropertyEditorDefinition);
+registerPropertyEditor(labeledAutoWidthPropertyEditorDefinition);
 
 // Register Tools
 
 if (roulette) {
   registerPropertyEditor(wheelListPropertyEditorDefinition);
-  registerPropertyEditor(buttonGroupPropertyEditorDefinition);
   registerReactTool(getWheelFortuneToolDefinition());
 }
 
