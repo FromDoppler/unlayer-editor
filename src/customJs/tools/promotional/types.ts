@@ -1,4 +1,3 @@
-import { UrlValue } from '../../properties/url/UrlValue';
 import {
   Alignment,
   AutoWidth,
@@ -12,13 +11,9 @@ import {
   PropertyGroupsFrom,
   ToolValuesFrom,
 } from '../../types';
+import { UnlayerField } from '../smartforms/types';
 
 export type PromotionalBase = {
-  content: {
-    badgeText: string;
-    titleText: string;
-    descriptionHtml: string;
-  };
   layout: {
     cardWidth: AutoWidth;
     cardAlign: Alignment;
@@ -27,18 +22,12 @@ export type PromotionalBase = {
     cardBorderRadius: BorderRadius;
     cardPadding: Padding;
   };
-  title: {
-    titleColor: Color;
-    titleFontSize: PixelSize;
-    titleFontWeight: FontWeight;
-  };
-  description: {
-    descriptionColor: Color;
-    descriptionFontSize: PixelSize;
-  };
-  button: {
+  messages: {
+    viewPanel: string;
+    descriptionHtml: string;
+    list: string;
+    fields: UnlayerField[];
     buttonText: string;
-    buttonUrl: UrlValue;
     buttonBackgroundColor: Color;
     buttonColor: Color;
     buttonFontWeight: FontWeight;
@@ -49,6 +38,19 @@ export type PromotionalBase = {
     buttonBorderRadius: BorderRadius;
     buttonPadding: Padding;
     buttonMargin: Margin;
+    congratsHtml: string;
+    discountCode: string;
+    congratsButtonText: string;
+    congratsButtonBackgroundColor: Color;
+    congratsButtonColor: Color;
+    congratsButtonFontWeight: FontWeight;
+    congratsButtonAlign: Alignment;
+    congratsButtonWidth: AutoWidth;
+    congratsButtonFontSize: PixelSize;
+    congratsButtonBorder: Border;
+    congratsButtonBorderRadius: BorderRadius;
+    congratsButtonPadding: Padding;
+    congratsButtonMargin: Margin;
   };
 };
 
