@@ -194,24 +194,31 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
           data-action-on-finish-url={congratUrlEncode}
         >
           <div color="#000">
-            {values.fields.map((field) => (
-              <div
-                style={fieldContentStyle}
-                key={field.meta_data.name}
-                id={`fieldset_${field.meta_data.name}`}
-              >
-                <div style={labelStyle}>
-                  <label>
-                    {field.show_label ? field.label : ''}{' '}
-                    {field.required ? '*' : ''}
-                  </label>
+            {values.fields.map((field) =>
+              (() => {
+                const fieldLabel = field.show_label
+                  ? `${field.label}${field.required ? ' *' : ''}`
+                  : '';
+
+                return (
                   <div
-                    style={{ position: 'relative' }}
-                    dangerouslySetInnerHTML={{ __html: renderSwitch(field) }}
-                  ></div>
-                </div>
-              </div>
-            ))}
+                    style={fieldContentStyle}
+                    key={field.meta_data.name}
+                    id={`fieldset_${field.meta_data.name}`}
+                  >
+                    <div style={labelStyle}>
+                      {fieldLabel ? <label>{fieldLabel}</label> : null}
+                      <div
+                        style={{ position: 'relative' }}
+                        dangerouslySetInnerHTML={{
+                          __html: renderSwitch(field),
+                        }}
+                      ></div>
+                    </div>
+                  </div>
+                );
+              })(),
+            )}
           </div>
           <div
             className="v-button-align-text-align"
