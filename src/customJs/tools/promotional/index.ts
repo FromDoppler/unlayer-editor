@@ -68,7 +68,7 @@ export const getPromotionalToolDefinition: () =>
   return {
     name: 'promotional',
     label: $t('_dp.promotional.label'),
-    icon: `${ASSETS_BASE_URL}/promotion_code_v2.svg`,
+    icon: `${ASSETS_BASE_URL}/promotion_code_audit1.svg`,
     usageLimit: 1,
     Component: PromotionalViewer,
     values: {
@@ -402,13 +402,26 @@ export const getPromotionalToolDefinition: () =>
       if (values.list === '-1') {
         defaultErrors.push({
           id: 'PROMOTIONAL_TARGET_LIST_REQUIRED_ERROR',
-          icon: `${ASSETS_BASE_URL}/promotion_code_v2.svg`,
+          icon: `${ASSETS_BASE_URL}/promotion_code_audit1.svg`,
           severity: 'ERROR',
           title: $t(
             'tabs.audit.rules.smart_form.subscription_list_undefined.title',
           ),
           description: $t(
             'tabs.audit.rules.smart_form.subscription_list_undefined.description',
+          ),
+        });
+      }
+      if (!values.discountCode || values.discountCode.trim() === '') {
+        defaultErrors.push({
+          id: 'PROMOTIONAL_DISCOUNT_CODE_REQUIRED_ERROR',
+          icon: `${ASSETS_BASE_URL}/promotion_code_audit1.svg`,
+          severity: 'ERROR',
+          title: $t(
+            'tabs.audit.rules.promotional.discount_code_undefined.title',
+          ),
+          description: $t(
+            'tabs.audit.rules.promotional.discount_code_undefined.description',
           ),
         });
       }
