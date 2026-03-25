@@ -695,6 +695,8 @@ export const messages_es = {
   'tabs.audit.rules.payu_button.empty_links.title': `Los enlaces de solicitud de pago en los botones de pago PayU están vacíos`,
   'tabs.audit.rules.promo_code.id_undefined.description': `Las automatizaciones necesitan que se encuentre correctamente configurado el código dinámico`,
   'tabs.audit.rules.promo_code.id_undefined.title': `El código de promoción dinámico requiere configurarse.`,
+  'tabs.audit.rules.promotional.discount_code_undefined.description': `Para continuar, debes ingresar un código de descuento para el widget Promocional.`,
+  'tabs.audit.rules.promotional.discount_code_undefined.title': `Ingresa un código de descuento`,
   'tabs.audit.rules.roulette.wheel_list_incomplete.description': `Para continuar debe completar los datos de las casillas`,
   'tabs.audit.rules.roulette.wheel_list_incomplete.title': `Ruleta incompleta`,
   'tabs.audit.rules.smart_form.congrats_message_undefined.description': `Para continuar, debes elaborar un Mensaje de Agradecimiento, que verán tus clientes al completar el Formulario.`,
