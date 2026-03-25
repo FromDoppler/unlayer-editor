@@ -125,7 +125,7 @@ export const PromotionalViewer: ViewerComponent<PromotionalValues> = (rest) => {
         }}
         role="container"
       >
-        <section style={cardStyle}>
+        <section style={cardStyle} data-giftcode={values.discountCode}>
           <section style={descriptionContainerStyle}>
             <span
               style={{ display: 'block', marginBottom: '10px' }}
