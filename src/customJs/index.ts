@@ -21,10 +21,12 @@ import { getQrToolDefinition } from './tools/qr';
 import { qrPropertyEditorDefinition } from './properties/qr';
 import { dynamicPromoCodePropertyEditorDefinition } from './properties/dynamic_promo_code';
 import { getSmartFormToolDefinition } from './tools/smartforms';
+import { getPromotionalToolDefinition } from './tools/promotional';
 import { subscriptionListPropertyEditorDefinition } from './properties/subscription_list';
 import { getWheelFortuneToolDefinition } from './tools/wheel';
 import { wheelListPropertyEditorDefinition } from './properties/wheel_list';
 import { buttonGroupPropertyEditorDefinition } from './properties/button_group';
+import { labeledAutoWidthPropertyEditorDefinition } from './properties/labeled_auto_width';
 
 const {
   locale,
@@ -45,6 +47,7 @@ const {
   product,
   qrCode,
   smartForm,
+  promotional,
   roulette,
   productDynamic,
 } = getConfiguration();
@@ -74,17 +77,21 @@ registerPropertyEditor(qrPropertyEditorDefinition);
 registerPropertyEditor(dynamicPromoCodePropertyEditorDefinition);
 registerPropertyEditor(subscriptionListPropertyEditorDefinition);
 registerPropertyEditor(wheelListPropertyEditorDefinition);
+registerPropertyEditor(buttonGroupPropertyEditorDefinition);
+registerPropertyEditor(labeledAutoWidthPropertyEditorDefinition);
 
 // Register Tools
 
 if (roulette) {
   registerPropertyEditor(wheelListPropertyEditorDefinition);
-  registerPropertyEditor(buttonGroupPropertyEditorDefinition);
   registerReactTool(getWheelFortuneToolDefinition());
 }
 
 if (smartForm) {
   registerReactTool(getSmartFormToolDefinition());
+}
+if (promotional) {
+  registerReactTool(getPromotionalToolDefinition());
 }
 if (qrCode) {
   registerReactTool(getQrToolDefinition());
