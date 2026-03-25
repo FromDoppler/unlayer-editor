@@ -1,3 +1,4 @@
+import { React } from '../../unlayer-react';
 import { ViewerComponent } from '../../types';
 import { SmartFormViewer } from '../smartforms/smartFormViewer';
 import { PromotionalValues } from './types';
