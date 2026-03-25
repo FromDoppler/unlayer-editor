@@ -1,4 +1,3 @@
-import { React } from '../../unlayer-react';
 import { ViewerComponent } from '../../types';
 import { SmartFormViewer } from '../smartforms/smartFormViewer';
 import { PromotionalValues } from './types';
@@ -158,9 +157,7 @@ export const PromotionalViewer: ViewerComponent<PromotionalValues> = (rest) => {
                 padding: '10px',
               }}
             >
-              <span style={discountCodeStyle}>
-                {values.discountCode}
-              </span>
+              <span style={discountCodeStyle}>{values.discountCode}</span>
               <i
                 className="dp-promotional-copy-icon dp-click-button"
                 style={{

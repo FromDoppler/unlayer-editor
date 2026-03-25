@@ -117,6 +117,14 @@ export const getPromotionalToolDefinition: () =>
             ],
             widget: 'fields',
           },
+          fieldBackgroundColor: colorProperty({
+            label: $t('_dp.promotional.field.background_color'),
+            defaultValue: DEFAULT_FIELD_BACKGROUND_COLOR,
+          }),
+          fieldColor: colorProperty({
+            label: $t('_dp.promotional.field.text_color'),
+            defaultValue: DEFAULT_FIELD_TEXT_COLOR,
+          }),
           buttonText: {
             label: $t('_dp.promotional.button.text'),
             defaultValue: $t('_dp.promotional.button.text_default'),
@@ -125,63 +133,59 @@ export const getPromotionalToolDefinition: () =>
           buttonBackgroundColor: colorProperty({
             label: $t('_dp.promotional.button.background_color'),
             defaultValue: DEFAULT_INITIAL_BUTTON_COLOR,
-            hidden: !0,
           }),
           buttonColor: colorProperty({
             label: $t('_dp.promotional.button.text_color'),
             defaultValue: '#FFF',
-            hidden: !0,
-          }),
-          fieldBackgroundColor: colorProperty({
-            label: $t('_dp.promotional.field.background_color'),
-            defaultValue: DEFAULT_FIELD_BACKGROUND_COLOR,
-            hidden: !0,
-          }),
-          fieldColor: colorProperty({
-            label: $t('_dp.promotional.field.text_color'),
-            defaultValue: DEFAULT_FIELD_TEXT_COLOR,
-            hidden: !0,
           }),
           buttonAlign: {
             label: $t('_dp.promotional.button.align'),
             defaultValue: 'center',
+            hidden: true,
             widget: 'alignment',
           },
           buttonFontWeight: fontWeightProperty({
             label: $t('_dp.promotional.button.font_weight'),
             defaultValue: 700,
+            hidden: true,
           }),
           buttonWidth: labeledAutoWidthProperty({
             label: $t('_dp.promotional.button.width'),
             defaultValue: '100%',
             autoWidth: true,
+            hidden: true,
           }),
           buttonFontSize: {
             label: $t('_dp.promotional.button.font_size'),
             defaultValue: '16px',
+            hidden: true,
             widget: 'font_size',
-            overrideAllowed: !0,
+            overrideAllowed: true,
           },
           buttonBorder: {
             ...borderProperty({
               defaultValue: '0px',
+              hidden: true,
             }),
             label: $t('_dp.promotional.button.border'),
           },
           buttonBorderRadius: {
             label: $t('_dp.promotional.button.border_radius'),
             defaultValue: '3px',
+            hidden: true,
             widget: 'border_radius',
-            overrideAllowed: !0,
+            overrideAllowed: true,
           },
           buttonPadding: {
             label: $t('_dp.promotional.button.padding'),
             defaultValue: '14px 16px 14px 16px',
+            hidden: true,
             widget: 'padding',
           },
           buttonMargin: {
             label: $t('_dp.promotional.button.margin'),
             defaultValue: '8px 0px 0px 0px',
+            hidden: true,
             widget: 'margin',
           },
           congratsHtml: richTextProperty({
@@ -200,53 +204,59 @@ export const getPromotionalToolDefinition: () =>
           congratsButtonBackgroundColor: colorProperty({
             label: $t('_dp.promotional.button.background_color'),
             defaultValue: DEFAULT_FINAL_BUTTON_COLOR,
-            hidden: !0,
           }),
           congratsButtonColor: colorProperty({
             label: $t('_dp.promotional.button.text_color'),
             defaultValue: '#FFF',
-            hidden: !0,
           }),
           congratsButtonAlign: {
             label: $t('_dp.promotional.button.align'),
             defaultValue: 'center',
+            hidden: true,
             widget: 'alignment',
           },
           congratsButtonFontWeight: fontWeightProperty({
             label: $t('_dp.promotional.button.font_weight'),
             defaultValue: 700,
+            hidden: true,
           }),
           congratsButtonWidth: labeledAutoWidthProperty({
             label: $t('_dp.promotional.button.width'),
             defaultValue: '100%',
             autoWidth: true,
+            hidden: true,
           }),
           congratsButtonFontSize: {
             label: $t('_dp.promotional.button.font_size'),
             defaultValue: '14px',
+            hidden: true,
             widget: 'font_size',
-            overrideAllowed: !0,
+            overrideAllowed: true,
           },
           congratsButtonBorder: {
             ...borderProperty({
               defaultValue: '0px',
+              hidden: true,
             }),
             label: $t('_dp.promotional.button.border'),
           },
           congratsButtonBorderRadius: {
             label: $t('_dp.promotional.button.border_radius'),
             defaultValue: '4px',
+            hidden: true,
             widget: 'border_radius',
-            overrideAllowed: !0,
+            overrideAllowed: true,
           },
           congratsButtonPadding: {
             label: $t('_dp.promotional.button.padding'),
             defaultValue: '10px',
+            hidden: true,
             widget: 'padding',
           },
           congratsButtonMargin: {
             label: $t('_dp.promotional.button.margin'),
             defaultValue: '0px',
+            hidden: true,
             widget: 'margin',
           },
         },
