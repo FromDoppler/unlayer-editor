@@ -22,6 +22,8 @@ import { UnlayerField } from '../smartforms/types';
 const DEFAULT_PROMOTIONAL_BACKGROUND = '#FFFFFF';
 const DEFAULT_INITIAL_BUTTON_COLOR = '#2A75DB';
 const DEFAULT_FINAL_BUTTON_COLOR = '#2A75DB';
+const DEFAULT_FIELD_BACKGROUND_COLOR = '#FFFFFF';
+const DEFAULT_FIELD_TEXT_COLOR = '#000000';
 const DEFAULT_INIT_DESCRIPTION = `
   <p style="text-align: center; margin: 0 0 10px;">
     <span style="font-size: 34px;"><strong>¡No te vayas sin obtener tu descuento!</strong></span>
@@ -128,6 +130,16 @@ export const getPromotionalToolDefinition: () =>
           buttonColor: colorProperty({
             label: $t('_dp.promotional.button.text_color'),
             defaultValue: '#FFF',
+            hidden: !0,
+          }),
+          fieldBackgroundColor: colorProperty({
+            label: $t('_dp.promotional.field.background_color'),
+            defaultValue: DEFAULT_FIELD_BACKGROUND_COLOR,
+            hidden: !0,
+          }),
+          fieldColor: colorProperty({
+            label: $t('_dp.promotional.field.text_color'),
+            defaultValue: DEFAULT_FIELD_TEXT_COLOR,
             hidden: !0,
           }),
           buttonAlign: {
@@ -257,6 +269,12 @@ export const getPromotionalToolDefinition: () =>
         enabled: values.viewPanel === 'init',
       },
       buttonColor: {
+        enabled: values.viewPanel === 'init',
+      },
+      fieldBackgroundColor: {
+        enabled: values.viewPanel === 'init',
+      },
+      fieldColor: {
         enabled: values.viewPanel === 'init',
       },
       buttonAlign: {

@@ -109,6 +109,8 @@ export const messages_en: IntlMessages = {
   '_dp.promotional.content.title_default': `Exclusive discount for a limited time`,
   '_dp.promotional.content.title_text': `Title`,
   '_dp.promotional.discount_code.label': `Discount code`,
+  '_dp.promotional.field.background_color': `Field color`,
+  '_dp.promotional.field.text_color': `Field text color`,
   '_dp.promotional.label': `Promotional`,
   '_dp.promotional.messages': `Messages`,
   '_dp.promotional.messages.description': `Description`,

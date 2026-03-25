@@ -30,6 +30,8 @@ export type PromotionalBase = {
     buttonText: string;
     buttonBackgroundColor: Color;
     buttonColor: Color;
+    fieldBackgroundColor: Color;
+    fieldColor: Color;
     buttonFontWeight: FontWeight;
     buttonAlign: Alignment;
     buttonWidth: AutoWidth;

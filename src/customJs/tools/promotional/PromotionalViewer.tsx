@@ -19,26 +19,6 @@ const DEFAULT_FORM_BORDER = {
   borderTopWidth: '1px',
 } as const;
 
-const DEFAULT_BUTTON_BORDER = {
-  borderBottomColor: '#CCCCCC',
-  borderBottomStyle: 'solid',
-  borderBottomWidth: '0px',
-  borderLeftColor: '#CCCCCC',
-  borderLeftStyle: 'solid',
-  borderLeftWidth: '0px',
-  borderRightColor: '#CCCCCC',
-  borderRightStyle: 'solid',
-  borderRightWidth: '0px',
-  borderTopColor: '#CCCCCC',
-  borderTopStyle: 'solid',
-  borderTopWidth: '0px',
-} as const;
-
-const DEFAULT_BUTTON_WIDTH = {
-  autoWidth: false,
-  width: '100%',
-} as const;
-
 export const PromotionalViewer: ViewerComponent<PromotionalValues> = (rest) => {
   const { values } = rest;
 
@@ -46,10 +26,10 @@ export const PromotionalViewer: ViewerComponent<PromotionalValues> = (rest) => {
     ...rest,
     values: {
       ...rest.values,
-      fieldBackgroundColor: '#FFF',
+      fieldBackgroundColor: values.fieldBackgroundColor,
       fieldBorder: DEFAULT_FORM_BORDER,
       fieldBorderRadius: '2px',
-      fieldColor: '#000',
+      fieldColor: values.fieldColor,
       fieldDistance: '12px',
       fieldFontSize: '16px',
       fieldPadding: '14px 16px',
@@ -59,14 +39,14 @@ export const PromotionalViewer: ViewerComponent<PromotionalValues> = (rest) => {
       labelColor: '#444',
       labelFontSize: '14px',
       labelPadding: '0px',
-      buttonAlign: values.buttonAlign || 'center',
-      buttonBorder: values.buttonBorder || DEFAULT_BUTTON_BORDER,
-      buttonBorderRadius: values.buttonBorderRadius || '3px',
-      buttonFontSize: values.buttonFontSize || '16px',
-      buttonFontWeight: values.buttonFontWeight || 700,
-      buttonMargin: values.buttonMargin || '8px 0px 0px 0px',
-      buttonPadding: values.buttonPadding || '14px 16px 14px 16px',
-      buttonWidth: values.buttonWidth || DEFAULT_BUTTON_WIDTH,
+      buttonAlign: values.buttonAlign,
+      buttonBorder: values.buttonBorder,
+      buttonBorderRadius: values.buttonBorderRadius,
+      buttonFontSize: values.buttonFontSize,
+      buttonFontWeight: values.buttonFontWeight,
+      buttonMargin: values.buttonMargin,
+      buttonPadding: values.buttonPadding,
+      buttonWidth: values.buttonWidth,
     },
   };
 
@@ -88,23 +68,23 @@ export const PromotionalViewer: ViewerComponent<PromotionalValues> = (rest) => {
 
   const congratsButtonStyle = {
     backgroundColor: values.congratsButtonBackgroundColor,
-    borderColor: `${values.congratsButtonBorder?.borderTopColor || DEFAULT_BUTTON_BORDER.borderTopColor} ${values.congratsButtonBorder?.borderRightColor || DEFAULT_BUTTON_BORDER.borderRightColor} ${values.congratsButtonBorder?.borderBottomColor || DEFAULT_BUTTON_BORDER.borderBottomColor} ${values.congratsButtonBorder?.borderLeftColor || DEFAULT_BUTTON_BORDER.borderLeftColor}`,
-    borderRadius: values.congratsButtonBorderRadius || '4px',
-    borderStyle: `${values.congratsButtonBorder?.borderTopStyle || DEFAULT_BUTTON_BORDER.borderTopStyle} ${values.congratsButtonBorder?.borderRightStyle || DEFAULT_BUTTON_BORDER.borderRightStyle} ${values.congratsButtonBorder?.borderBottomStyle || DEFAULT_BUTTON_BORDER.borderBottomStyle} ${values.congratsButtonBorder?.borderLeftStyle || DEFAULT_BUTTON_BORDER.borderLeftStyle}`,
-    borderWidth: `${values.congratsButtonBorder?.borderTopWidth || DEFAULT_BUTTON_BORDER.borderTopWidth} ${values.congratsButtonBorder?.borderRightWidth || DEFAULT_BUTTON_BORDER.borderRightWidth} ${values.congratsButtonBorder?.borderBottomWidth || DEFAULT_BUTTON_BORDER.borderBottomWidth} ${values.congratsButtonBorder?.borderLeftWidth || DEFAULT_BUTTON_BORDER.borderLeftWidth}`,
+    borderColor: `${values.congratsButtonBorder.borderTopColor} ${values.congratsButtonBorder.borderRightColor} ${values.congratsButtonBorder.borderBottomColor} ${values.congratsButtonBorder.borderLeftColor}`,
+    borderRadius: values.congratsButtonBorderRadius,
+    borderStyle: `${values.congratsButtonBorder.borderTopStyle} ${values.congratsButtonBorder.borderRightStyle} ${values.congratsButtonBorder.borderBottomStyle} ${values.congratsButtonBorder.borderLeftStyle}`,
+    borderWidth: `${values.congratsButtonBorder.borderTopWidth} ${values.congratsButtonBorder.borderRightWidth} ${values.congratsButtonBorder.borderBottomWidth} ${values.congratsButtonBorder.borderLeftWidth}`,
     color: values.congratsButtonColor,
     cursor: 'pointer',
     display: 'inline-block',
-    fontSize: values.congratsButtonFontSize || '14px',
-    fontWeight: values.congratsButtonFontWeight || 700,
-    margin: values.congratsButtonMargin || '0px',
+    fontSize: values.congratsButtonFontSize,
+    fontWeight: values.congratsButtonFontWeight,
+    margin: values.congratsButtonMargin,
     overflow: 'hidden',
-    padding: values.congratsButtonPadding || '10px',
-    textAlign: values.congratsButtonAlign || 'center',
+    padding: values.congratsButtonPadding,
+    textAlign: values.congratsButtonAlign,
     textDecoration: 'none',
-    width: values.congratsButtonWidth?.autoWidth
+    width: values.congratsButtonWidth.autoWidth
       ? '100%'
-      : values.congratsButtonWidth?.width || '100%',
+      : values.congratsButtonWidth.width,
   } as const;
 
   const discountCodeStyle = {
@@ -210,7 +190,7 @@ export const PromotionalViewer: ViewerComponent<PromotionalValues> = (rest) => {
 
             <div
               style={{
-                textAlign: values.congratsButtonAlign || 'center',
+                textAlign: values.congratsButtonAlign,
               }}
             >
               <button

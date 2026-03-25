@@ -109,6 +109,8 @@ export const messages_es = {
   '_dp.promotional.content.title_default': `Descuento exclusivo por tiempo limitado`,
   '_dp.promotional.content.title_text': `Titulo`,
   '_dp.promotional.discount_code.label': `Código de descuento`,
+  '_dp.promotional.field.background_color': `Color del campo`,
+  '_dp.promotional.field.text_color': `Color del texto del campo`,
   '_dp.promotional.label': `Promocional`,
   '_dp.promotional.messages': `Mensajes`,
   '_dp.promotional.messages.description': `Descripción`,
