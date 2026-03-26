@@ -116,22 +116,8 @@ export const PromotionalViewer: ViewerComponent<PromotionalValues> = (rest) => {
 
   const viewerOnlyCss = rest.isViewer
     ? `
-      .u-popup-header,
-      .u-popup-content,
-      #u_body {
-        box-sizing: border-box;
-        padding-right: 16px;
-      }
-
-      .u-popup-content,
-      .u-popup-main,
-      #u_body {
+      .u-popup-content {
         overflow-x: hidden !important;
-      }
-
-      .u-close-button {
-        right: 16px !important;
-        margin-right: 0 !important;
       }
     `
     : '';
