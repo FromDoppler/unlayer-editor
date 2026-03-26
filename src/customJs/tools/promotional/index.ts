@@ -25,19 +25,19 @@ const DEFAULT_FINAL_BUTTON_COLOR = '#2A75DB';
 const DEFAULT_FIELD_BACKGROUND_COLOR = '#FFFFFF';
 const DEFAULT_FIELD_TEXT_COLOR = '#000000';
 const DEFAULT_INIT_DESCRIPTION = `
-  <p style="text-align: center; margin: 0 0 10px;">
-    <span style="font-size: 34px;"><strong>¡No te vayas sin obtener tu descuento!</strong></span>
+  <p style="text-align: center; margin: 0 0 6px; line-height: 1.15;">
+    <span style="font-size: 34px; font-weight: 400;">&iexcl;No te vayas sin obtener tu descuento!</span>
   </p>
-  <p style="text-align: center; margin: 0;">
-    <span style="font-size: 16px;">Ingresa tu Email y accede a un 20% OFF en tu próxima compra.</span>
+  <p style="text-align: center; margin: 0; line-height: 1.35;">
+    <span style="font-size: 16px; font-weight: 400;">Ingresa tu Email y accede a un 20% OFF en tu pr&oacute;xima compra.</span>
   </p>`;
 
 const DEFAULT_END_DESCRIPTION = `
-  <p style="text-align: center; margin: 0 0 10px;">
-    <span style="font-size: 34px;"><strong>El descuento ya es tuyo</strong></span>
+  <p style="text-align: center; margin: 0 0 6px; line-height: 1.15;">
+    <span style="font-size: 34px; font-weight: 400;">El descuento ya es tuyo</span>
   </p>
-  <p style="text-align: center; margin: 0;">
-    <span style="font-size: 16px;">Copia el siguiente código de descuento y úsalo en tu próxima compra.</span>
+  <p style="text-align: center; margin: 0; line-height: 1.35;">
+    <span style="font-size: 16px; font-weight: 400;">Copia el siguiente c&oacute;digo de descuento y &uacute;salo en tu pr&oacute;xima compra.</span>
   </p>`;
 
 export const getPromotionalToolDefinition: () =>

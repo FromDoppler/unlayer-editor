@@ -126,9 +126,9 @@ export const PromotionalViewer: ViewerComponent<PromotionalValues> = (rest) => {
         role="container"
       >
         <section style={cardStyle} data-giftcode={values.discountCode}>
-          <section style={descriptionContainerStyle}>
+          <section id="dp_promotional_init" style={descriptionContainerStyle}>
             <span
-              style={{ display: 'block', marginBottom: '10px' }}
+              style={{ display: 'block' }}
               dangerouslySetInnerHTML={{ __html: values.descriptionHtml }}
             />
             <div id="dp_promotional_form">
@@ -137,12 +137,13 @@ export const PromotionalViewer: ViewerComponent<PromotionalValues> = (rest) => {
           </section>
 
           <section
+            id="dp_promotional_congrats"
             style={{
               display: values.viewPanel === 'end' ? 'block' : 'none',
             }}
           >
             <span
-              style={{ display: 'block', marginBottom: '10px' }}
+              style={{ display: 'block' }}
               dangerouslySetInnerHTML={{ __html: values.congratsHtml }}
             />
 
