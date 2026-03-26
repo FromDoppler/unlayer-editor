@@ -82,13 +82,26 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
     padding: values.labelPadding,
   };
 
+  const submitWidth = values.buttonWidth.autoWidth
+    ? '100%'
+    : values.buttonWidth.width;
+  const isFullWidthSubmit = submitWidth === '100%';
+  const submitContainerStyle = {
+    display: 'block',
+    margin: 0,
+    padding: 0,
+    textAlign: isFullWidthSubmit ? 'left' : values.buttonAlign || 'left',
+    width: '100%',
+  } as const;
+
   const submitStyle = {
     borderStyle: `${values.buttonBorder?.borderTopStyle} ${values.buttonBorder?.borderRightStyle} ${values.buttonBorder?.borderBottomStyle} ${values.buttonBorder?.borderLeftStyle}`,
     borderColor: `${values.buttonBorder?.borderTopColor} ${values.buttonBorder?.borderRightColor} ${values.buttonBorder?.borderBottomColor} ${values.buttonBorder?.borderLeftColor}`,
     borderWidth: `${values.buttonBorder?.borderTopWidth} ${values.buttonBorder?.borderRightWidth} ${values.buttonBorder?.borderBottomWidth} ${values.buttonBorder?.borderLeftWidth}`,
     borderRadius: values.buttonBorderRadius,
-    display: 'inline-block',
-    textAlign: values.buttonAlign,
+    boxSizing: 'border-box',
+    display: isFullWidthSubmit ? 'block' : 'inline-block',
+    textAlign: 'center',
     overflow: 'hidden',
     cursor: 'pointer',
     textDecoration: 'none',
@@ -96,7 +109,9 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
     padding: values.buttonPadding,
     margin: values.buttonMargin,
     fontSize: values.buttonFontSize,
-    width: values.buttonWidth.autoWidth ? '100%' : values.buttonWidth.width,
+    lineHeight: '20px',
+    minHeight: '20px',
+    width: submitWidth,
     color: values.buttonColor,
     backgroundColor: values.buttonBackgroundColor,
   } as const;
@@ -222,7 +237,7 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
           </div>
           <div
             className="v-button-align-text-align"
-            style={{ textAlign: 'center' }}
+            style={submitContainerStyle}
           >
             <button type="submit" style={submitStyle}>
               {values.buttonText}
