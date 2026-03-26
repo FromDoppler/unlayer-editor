@@ -50,26 +50,6 @@ export const getPromotionalToolDefinition: () =>
     usageLimit: 1,
     Component: PromotionalViewer,
     options: {
-      layout: {
-        title: $t('_dp.layout'),
-        options: {
-          cardWidth: autoWidthProperty(),
-          cardAlign: alignmentProperty(),
-          cardBackgroundColor: colorProperty({
-            label: $t('editor.background_color.label'),
-            defaultValue: DEFAULT_PROMOTIONAL_BACKGROUND,
-          }),
-          cardBorder: borderProperty({
-            defaultValue: '1px',
-          }),
-          cardBorderRadius: borderRadiusProperty(),
-          cardPadding: {
-            label: 'Padding',
-            defaultValue: '24px 18px 22px',
-            widget: 'padding',
-          },
-        },
-      },
       messages: {
         title: $t('_dp.promotional.messages'),
         options: {
@@ -258,6 +238,26 @@ export const getPromotionalToolDefinition: () =>
             defaultValue: '0px',
             hidden: true,
             widget: 'margin',
+          },
+        },
+      },
+      layout: {
+        title: $t('_dp.layout'),
+        options: {
+          cardWidth: autoWidthProperty(),
+          cardAlign: alignmentProperty(),
+          cardBackgroundColor: colorProperty({
+            label: $t('editor.background_color.label'),
+            defaultValue: DEFAULT_PROMOTIONAL_BACKGROUND,
+          }),
+          cardBorder: borderProperty({
+            defaultValue: '1px',
+          }),
+          cardBorderRadius: borderRadiusProperty(),
+          cardPadding: {
+            label: 'Padding',
+            defaultValue: '24px 18px 22px',
+            widget: 'padding',
           },
         },
       },
