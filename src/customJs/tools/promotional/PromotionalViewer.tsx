@@ -120,18 +120,9 @@ export const PromotionalViewer: ViewerComponent<PromotionalValues> = (rest) => {
     }
   `;
 
-  const viewerOnlyCss = rest.isViewer
-    ? `
-      .u-popup-content {
-        overflow-x: hidden !important;
-      }
-    `
-    : '';
-
   return (
     <div>
       <style>{customCss}</style>
-      <style>{viewerOnlyCss}</style>
       <section
         style={{
           display: 'block',
