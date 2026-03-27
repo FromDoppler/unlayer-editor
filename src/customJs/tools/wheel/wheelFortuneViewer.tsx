@@ -346,6 +346,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
               borderBottom: '1px solid #abc9f9',
               borderRight: '1px solid #abc9f9',
               borderLeft: '4px solid #669df3',
+              color: '#000',
               margin: '10px',
               padding: '10px',
               fontFamily: '"proxima-nova", Helvetica, Arial, sans-serif',

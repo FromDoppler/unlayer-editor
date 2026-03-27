@@ -216,6 +216,7 @@ export const PromotionalViewer: ViewerComponent<PromotionalValues> = (rest) => {
                 borderLeft: '4px solid #669df3',
                 borderRight: '1px solid #abc9f9',
                 borderTop: '1px solid #abc9f9',
+                color: '#000',
                 display: 'none',
                 fontFamily: '"proxima-nova", Helvetica, Arial, sans-serif',
                 fontSize: '15px',
