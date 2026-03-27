@@ -54,6 +54,12 @@ export const PromotionalViewer: ViewerComponent<PromotionalValues> = (rest) => {
     display: values.viewPanel === 'init' ? 'block' : 'none',
   } as const;
 
+  const richTextContentStyle = {
+    display: 'block',
+    fontFamily: 'inherit',
+    fontWeight: 400,
+  } as const;
+
   const cardStyle = {
     backgroundColor: values.cardBackgroundColor,
     borderColor: `${values.cardBorder.borderTopColor} ${values.cardBorder.borderRightColor} ${values.cardBorder.borderBottomColor} ${values.cardBorder.borderLeftColor}`,
@@ -137,7 +143,7 @@ export const PromotionalViewer: ViewerComponent<PromotionalValues> = (rest) => {
         <section style={cardStyle} data-giftcode={values.discountCode}>
           <section id="dp_promotional_init" style={descriptionContainerStyle}>
             <span
-              style={{ display: 'block' }}
+              style={richTextContentStyle}
               dangerouslySetInnerHTML={{ __html: values.descriptionHtml }}
             />
             <div id="dp_promotional_form">
@@ -152,7 +158,7 @@ export const PromotionalViewer: ViewerComponent<PromotionalValues> = (rest) => {
             }}
           >
             <span
-              style={{ display: 'block' }}
+              style={richTextContentStyle}
               dangerouslySetInnerHTML={{ __html: values.congratsHtml }}
             />
 
