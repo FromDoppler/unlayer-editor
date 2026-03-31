@@ -5,9 +5,7 @@ import { PromotionalBase, PromotionalValues } from './types';
 import { ASSETS_BASE_URL } from '../../constants';
 import {
   alignmentProperty,
-  autoWidthProperty,
   borderProperty,
-  borderRadiusProperty,
   colorProperty,
   fontWeightProperty,
   richTextProperty,
@@ -18,27 +16,51 @@ import { subscriptionListProperty } from '../../properties/subscription_list';
 import { buttonGroupProperty } from '../../properties/button_group';
 import { labeledAutoWidthProperty } from '../../properties/labeled_auto_width';
 import { UnlayerField } from '../smartforms/types';
+import { Border } from '../../types';
 
-const DEFAULT_PROMOTIONAL_BACKGROUND = '#FFFFFF';
-const DEFAULT_INITIAL_BUTTON_COLOR = '#2A75DB';
-const DEFAULT_FINAL_BUTTON_COLOR = '#2A75DB';
+const DEFAULT_PROMOTIONAL_BACKGROUND = '#620071';
+const DEFAULT_INITIAL_BUTTON_COLOR = '#620071';
+const DEFAULT_FINAL_BUTTON_COLOR = '#620071';
 const DEFAULT_FIELD_BACKGROUND_COLOR = '#FFFFFF';
-const DEFAULT_FIELD_TEXT_COLOR = '#000000';
+const DEFAULT_FIELD_TEXT_COLOR = '#333333';
 const DEFAULT_INIT_DESCRIPTION = `
-  <p style="text-align: center; margin: 0 0 6px; line-height: 1.15;">
-    <span style="font-size: 34px; font-weight: 400;">&iexcl;No te vayas sin obtener tu descuento!</span>
-  </p>
-  <p style="text-align: center; margin: 0; line-height: 1.35;">
-    <span style="font-size: 16px; font-weight: 400;">Ingresa tu Email y accede a un 20% OFF en tu pr&oacute;xima compra.</span>
-  </p>`;
+  <p style="text-align: center; margin: 0 0 6px; line-height: 1.15;"><span style="color: rgb(255, 255, 255);"><strong><span style="font-size: 32px; font-family: 'Open Sans', sans-serif;"><span style="color: rgb(254, 230, 0);"><span style="font-size: 28px;">&iexcl;No te vayas sin obtener tu descuento</span>!<br></span></span></strong></span><span style="font-size: 16px; color: rgb(255, 255, 255);"><br>Ingresa tu Email y accede a un 20% OFF </span></p>
+  <p style="text-align: center; margin: 0 0 6px; line-height: 1.15;"><span style="font-size: 16px; color: rgb(255, 255, 255);">en tu pr&oacute;xima compra.<br><br></span></p>`;
 
 const DEFAULT_END_DESCRIPTION = `
-  <p style="text-align: center; margin: 0 0 6px; line-height: 1.15;">
-    <span style="font-size: 34px; font-weight: 400;">El descuento ya es tuyo</span>
-  </p>
-  <p style="text-align: center; margin: 0; line-height: 1.35;">
-    <span style="font-size: 16px; font-weight: 400;">Copia el siguiente c&oacute;digo de descuento y &uacute;salo en tu pr&oacute;xima compra.</span>
-  </p>`;
+  <p style="text-align: center; margin: 0 0 6px; line-height: 1.15;"><span style="color: rgb(254, 230, 0); font-size: 28px;"><strong><span style="font-family: 'Open Sans', sans-serif;">&iexcl;El descuento es tuyo!</span></strong></span></p>
+  <p style="text-align: center; margin: 0; line-height: 1.35;"><span style="font-size: 16px; font-weight: 400; font-family: 'Open Sans', sans-serif;">Copia el siguiente c&oacute;digo de descuento </span></p>
+  <p style="text-align: center; margin: 0; line-height: 1.35;"><span style="font-size: 16px; font-weight: 400; font-family: 'Open Sans', sans-serif;">y &uacute;salo en tu pr&oacute;xima compra.<br><br></span></p>`;
+
+const DEFAULT_BUTTON_BORDER: Border = {
+  borderTopWidth: '2px',
+  borderTopStyle: 'solid',
+  borderTopColor: '#FEE600',
+  borderLeftWidth: '2px',
+  borderLeftStyle: 'solid',
+  borderLeftColor: '#FEE600',
+  borderRightWidth: '2px',
+  borderRightStyle: 'solid',
+  borderRightColor: '#FEE600',
+  borderBottomWidth: '2px',
+  borderBottomStyle: 'solid',
+  borderBottomColor: '#FEE600',
+};
+
+const DEFAULT_CARD_BORDER: Border = {
+  borderTopWidth: '0px',
+  borderTopStyle: 'solid',
+  borderTopColor: '#CCC',
+  borderLeftWidth: '0px',
+  borderLeftStyle: 'solid',
+  borderLeftColor: '#CCC',
+  borderRightWidth: '0px',
+  borderRightStyle: 'solid',
+  borderRightColor: '#CCC',
+  borderBottomWidth: '0px',
+  borderBottomStyle: 'solid',
+  borderBottomColor: '#CCC',
+};
 
 export const getPromotionalToolDefinition: () =>
   | ReactToolDefinitionFrom<PromotionalBase>
@@ -49,6 +71,9 @@ export const getPromotionalToolDefinition: () =>
     icon: `${ASSETS_BASE_URL}/promotion_code_v2.svg`,
     usageLimit: 1,
     Component: PromotionalViewer,
+    values: {
+      containerPadding: '0px',
+    },
     options: {
       messages: {
         title: $t('_dp.promotional.messages'),
@@ -116,7 +141,7 @@ export const getPromotionalToolDefinition: () =>
           }),
           buttonColor: colorProperty({
             label: $t('_dp.promotional.button.text_color'),
-            defaultValue: '#FFF',
+            defaultValue: '#FEE600',
           }),
           buttonAlign: {
             label: $t('_dp.promotional.button.align'),
@@ -144,27 +169,27 @@ export const getPromotionalToolDefinition: () =>
           },
           buttonBorder: {
             ...borderProperty({
-              defaultValue: '0px',
               hidden: true,
             }),
             label: $t('_dp.promotional.button.border'),
+            defaultValue: DEFAULT_BUTTON_BORDER,
           },
           buttonBorderRadius: {
             label: $t('_dp.promotional.button.border_radius'),
-            defaultValue: '3px',
+            defaultValue: '40px',
             hidden: true,
             widget: 'border_radius',
             overrideAllowed: true,
           },
           buttonPadding: {
             label: $t('_dp.promotional.button.padding'),
-            defaultValue: '14px 16px 14px 16px',
+            defaultValue: '15px',
             hidden: true,
             widget: 'padding',
           },
           buttonMargin: {
             label: $t('_dp.promotional.button.margin'),
-            defaultValue: '8px 0px 0px 0px',
+            defaultValue: '12px 0px 0px',
             hidden: true,
             widget: 'margin',
           },
@@ -187,7 +212,7 @@ export const getPromotionalToolDefinition: () =>
           }),
           congratsButtonColor: colorProperty({
             label: $t('_dp.promotional.button.text_color'),
-            defaultValue: '#FFF',
+            defaultValue: '#FEE600',
           }),
           congratsButtonAlign: {
             label: $t('_dp.promotional.button.align'),
@@ -215,27 +240,27 @@ export const getPromotionalToolDefinition: () =>
           },
           congratsButtonBorder: {
             ...borderProperty({
-              defaultValue: '0px',
               hidden: true,
             }),
             label: $t('_dp.promotional.button.border'),
+            defaultValue: DEFAULT_BUTTON_BORDER,
           },
           congratsButtonBorderRadius: {
             label: $t('_dp.promotional.button.border_radius'),
-            defaultValue: '4px',
+            defaultValue: '40px',
             hidden: true,
             widget: 'border_radius',
             overrideAllowed: true,
           },
           congratsButtonPadding: {
             label: $t('_dp.promotional.button.padding'),
-            defaultValue: '10px',
+            defaultValue: '15px',
             hidden: true,
             widget: 'padding',
           },
           congratsButtonMargin: {
             label: $t('_dp.promotional.button.margin'),
-            defaultValue: '0px',
+            defaultValue: '12px 0px 12px 0px',
             hidden: true,
             widget: 'margin',
           },
@@ -244,19 +269,27 @@ export const getPromotionalToolDefinition: () =>
       layout: {
         title: $t('_dp.layout'),
         options: {
-          cardWidth: autoWidthProperty(),
+          cardWidth: {
+            defaultValue: { autoWidth: false, width: '100%' },
+            widget: 'auto_width',
+          },
           cardAlign: alignmentProperty(),
           cardBackgroundColor: colorProperty({
             label: $t('editor.background_color.label'),
             defaultValue: DEFAULT_PROMOTIONAL_BACKGROUND,
           }),
-          cardBorder: borderProperty({
-            defaultValue: '1px',
-          }),
-          cardBorderRadius: borderRadiusProperty(),
+          cardBorder: {
+            ...borderProperty(),
+            defaultValue: DEFAULT_CARD_BORDER,
+          },
+          cardBorderRadius: {
+            label: $t('editor.rounded_border.label'),
+            defaultValue: '0px',
+            widget: 'border_radius',
+          },
           cardPadding: {
             label: 'Padding',
-            defaultValue: '24px 18px 22px',
+            defaultValue: '22px 18px 22px',
             widget: 'padding',
           },
         },
