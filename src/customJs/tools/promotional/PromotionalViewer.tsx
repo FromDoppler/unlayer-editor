@@ -105,20 +105,22 @@ export const PromotionalViewer: ViewerComponent<PromotionalValues> = (rest) => {
   } as const;
 
   const customCss = `
-    #dp_promotional_form input,
-    #dp_promotional_form select,
-    #dp_promotional_form textarea,
-    #dp_promotional_form button {
-      box-sizing: border-box;
-      font-family: inherit;
-    }
+  #dp_promotional_form input,
+  #dp_promotional_form select,
+  #dp_promotional_form textarea,
+  #dp_promotional_form button {
+    box-sizing: border-box;
+    font-family: inherit;
+  }
 
-    #dp_promotional_form input::placeholder,
-    #dp_promotional_form textarea::placeholder {
-      color: #a8a8a8;
-      font-size: 16px;
-    }
-  `;
+  #dp_promotional_form input::placeholder,
+  #dp_promotional_form textarea::placeholder {
+    color: #a8a8a8;
+    font-size: 16px;
+    font-weight: 400;
+    opacity: 1;
+  }
+`;
 
   return (
     <div>
