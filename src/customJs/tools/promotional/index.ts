@@ -68,7 +68,7 @@ export const getPromotionalToolDefinition: () =>
   return {
     name: 'promotional',
     label: $t('_dp.promotional.label'),
-    icon: `${ASSETS_BASE_URL}/promotion_code_audit1.svg`,
+    icon: `${ASSETS_BASE_URL}/promotion_code_v2.svg`,
     usageLimit: 1,
     Component: PromotionalViewer,
     values: {
