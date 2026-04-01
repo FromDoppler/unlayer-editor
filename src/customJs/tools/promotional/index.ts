@@ -288,7 +288,7 @@ export const getPromotionalToolDefinition: () =>
             widget: 'border_radius',
           },
           cardPadding: {
-            label: 'Padding',
+            label: $t('editor.padding.label'),
             defaultValue: '22px 18px 22px',
             widget: 'padding',
           },
