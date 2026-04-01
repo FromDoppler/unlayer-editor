@@ -90,9 +90,11 @@ if (roulette) {
 if (smartForm) {
   registerReactTool(getSmartFormToolDefinition());
 }
+
 if (promotional) {
   registerReactTool(getPromotionalToolDefinition());
 }
+
 if (qrCode) {
   registerReactTool(getQrToolDefinition());
 }
