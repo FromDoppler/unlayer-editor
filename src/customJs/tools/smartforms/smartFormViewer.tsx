@@ -73,7 +73,9 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values, isViewer }) => {
     padding:  ${values.fieldPadding};
     color: ${values.fieldColor};
     background-color: ${values.fieldBackgroundColor};
+    font-family: inherit;
     font-size:  ${values.fieldFontSize};
+    font-weight: 400;
     width: 100%;
   `;
 

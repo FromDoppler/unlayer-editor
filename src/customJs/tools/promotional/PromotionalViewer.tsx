@@ -117,6 +117,8 @@ export const PromotionalViewer: ViewerComponent<PromotionalValues> = (rest) => {
     #dp_promotional_form textarea::placeholder {
       color: #a8a8a8;
       font-size: 16px;
+      font-weight: 400;
+      opacity: 1;
     }
   `;
 
