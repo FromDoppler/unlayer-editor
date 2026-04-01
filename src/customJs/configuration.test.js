@@ -36,6 +36,7 @@ const expectedDefaultConfiguration = {
   product: true,
   qrCode: true,
   smartForm: false,
+  promotional: false,
   roulette: false,
   productCompletedEnabled: false,
   recommendedProductsEnabled: false,
@@ -93,6 +94,7 @@ describe(parseConfigurationDTO.name, () => {
     const product = false;
     const qrCode = false;
     const smartForm = false;
+    const promotional = false;
     const roulette = false;
     const productCompletedEnabled = false;
     const productDynamic = true;
@@ -115,6 +117,7 @@ describe(parseConfigurationDTO.name, () => {
       product,
       qrCode,
       smartForm,
+      promotional,
       roulette,
       productDynamic,
       productCompletedEnabled,
@@ -145,6 +148,7 @@ describe(parseConfigurationDTO.name, () => {
       product: false,
       qrCode: false,
       smartForm: false,
+      promotional: false,
       roulette: false,
       productCompletedEnabled: false,
       recommendedProductsEnabled: false,
