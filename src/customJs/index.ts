@@ -76,7 +76,6 @@ registerPropertyEditor(productArrangementPropertyEditorDefinition);
 registerPropertyEditor(qrPropertyEditorDefinition);
 registerPropertyEditor(dynamicPromoCodePropertyEditorDefinition);
 registerPropertyEditor(subscriptionListPropertyEditorDefinition);
-registerPropertyEditor(wheelListPropertyEditorDefinition);
 registerPropertyEditor(buttonGroupPropertyEditorDefinition);
 registerPropertyEditor(labeledAutoWidthPropertyEditorDefinition);
 
