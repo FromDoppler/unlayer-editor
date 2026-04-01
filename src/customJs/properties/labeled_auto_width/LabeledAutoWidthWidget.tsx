@@ -1,4 +1,5 @@
 import { React } from '../../unlayer-react';
+import type { ChangeEvent } from 'react';
 import { AutoWidth, WidgetComponent } from '../../types';
 import { $t } from '../../localization';
 
@@ -85,7 +86,9 @@ export const labeledAutoWidthWidget: WidgetComponent<
             step={step}
             value={currentWidth}
             disabled={autoWidth}
-            onChange={(e: any) => updateWidth(Number(e.target.value))}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              updateWidth(Number(e.currentTarget.value))
+            }
             style={{ width: '100%' }}
           />
         </div>
