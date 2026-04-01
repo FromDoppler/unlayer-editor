@@ -34,7 +34,9 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values, isViewer }) => {
     }, '');
   };
 
-  const congratUrlEncode = encodeURI(values.congratUrl);
+  const congratUrlEncode = values.congratUrl
+    ? encodeURI(values.congratUrl)
+    : undefined;
   const getCheboxList = (field: UnlayerField): string => {
     const labelStyle = `
       display: block; text-align: left; vertical-align: middle; color: rgb(68, 68, 68); font-size: 14px;
