@@ -247,6 +247,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
         style={{
           backgroundColor: values.wheelBackgroudColor,
           borderRadius: '10px',
+          width: '100%',
         }}
       >
         <section style={wheelContainerStyle} className="dp-wheel-roulette">
