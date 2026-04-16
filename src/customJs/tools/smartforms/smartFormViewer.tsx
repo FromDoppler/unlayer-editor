@@ -2,7 +2,7 @@ import { React } from '../../unlayer-react';
 import { ViewerComponent } from '../../types';
 import { UnlayerField } from './types';
 
-export const SmartFormViewer: ViewerComponent<any> = ({ values, isViewer }) => {
+export const SmartFormViewer: ViewerComponent<any> = ({ values }) => {
   const formSectionStyle = {
     display: 'block',
     textAlign: values.formAlign,
@@ -197,17 +197,8 @@ export const SmartFormViewer: ViewerComponent<any> = ({ values, isViewer }) => {
     }
   };
 
-  const viewerOnlyCss = isViewer
-    ? `
-      .u-popup-content {
-        overflow-x: hidden !important;
-      }
-    `
-    : '';
-
   return (
     <div>
-      <style>{viewerOnlyCss}</style>
       <section style={formSectionStyle} role="container">
         <form
           id="dp_sf"
