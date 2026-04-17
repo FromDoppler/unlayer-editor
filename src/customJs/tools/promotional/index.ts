@@ -29,8 +29,8 @@ const DEFAULT_INIT_DESCRIPTION = `
 
 const DEFAULT_END_DESCRIPTION = `
   <p style="text-align: center; margin: 0 0 6px; line-height: 1.15;"><span style="color: rgb(254, 230, 0); font-size: 28px;"><strong><span style="font-family: 'Open Sans', sans-serif;">&iexcl;El descuento es tuyo!</span></strong></span></p>
-  <p style="text-align: center; margin: 0; line-height: 1.35;"><span style="font-size: 16px; font-weight: 400; font-family: 'Open Sans', sans-serif;">Copia el siguiente c&oacute;digo de descuento </span></p>
-  <p style="text-align: center; margin: 0; line-height: 1.35;"><span style="font-size: 16px; font-weight: 400; font-family: 'Open Sans', sans-serif;">y &uacute;salo en tu pr&oacute;xima compra.<br><br></span></p>`;
+  <p style="text-align: center; margin: 0; line-height: 1.35;"><span style="font-size: 16px; font-weight: 400; font-family: 'Open Sans', sans-serif; color: rgb(255, 255, 255);">Copia el siguiente c&oacute;digo de descuento </span></p>
+  <p style="text-align: center; margin: 0; line-height: 1.35;"><span style="font-size: 16px; font-weight: 400; font-family: 'Open Sans', sans-serif; color: rgb(255, 255, 255);">y &uacute;salo en tu pr&oacute;xima compra.<br><br></span></p>`;
 
 const DEFAULT_BUTTON_BORDER: Border = {
   borderTopWidth: '2px',
