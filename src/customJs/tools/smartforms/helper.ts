@@ -1,7 +1,7 @@
 import { $t } from '../../localization';
 import { dropdownProperty } from '../../properties/helpers';
 import { UnlayerProperty } from '../../types';
-import { CustomField, SmartFormAction } from './types';
+import { CustomField, SmartFormAction, UnlayerField } from './types';
 
 export const behaviorListProperty: () => UnlayerProperty<string> = () =>
   dropdownProperty({
@@ -89,4 +89,55 @@ export const isValidUrl = (url: string) => {
     /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{0,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/g,
   );
   return URL_VALID_REGEX.test(url);
+};
+
+export const updateFieldsWidgetModal = (event: any) => {
+  if (event.target.className != 'col-12') {
+    return;
+  }
+
+  const modalBody = document.querySelectorAll(
+    '.blockbuilder-fields-widget-modal > div > div ',
+  )[1] as HTMLElement | undefined;
+  if (!modalBody) {
+    return;
+  }
+
+  const modalfooter = document.querySelectorAll(
+    '.blockbuilder-fields-widget-modal > div > div ',
+  )[2] as HTMLElement | undefined;
+  if (!modalfooter) {
+    return;
+  }
+
+  const forms = modalBody.getElementsByTagName('form');
+  const inputs = modalBody.getElementsByTagName('input');
+  const inputName = inputs[0]?.value;
+  const currentField = availableFields.find((field: UnlayerField) => {
+    return field.name == inputName;
+  });
+
+  if (!currentField) {
+    return;
+  }
+
+  // disabled change type update
+  const buttonType = modalBody.getElementsByTagName('button')[0];
+  if (buttonType) {
+    buttonType['disabled'] = currentField.type !== 'text';
+  }
+
+  // disabled dropdown values update
+  const inputOption = modalBody.getElementsByTagName('textarea')[0];
+  if (inputOption) {
+    inputOption['disabled'] = currentField.type !== 'text';
+  }
+
+  const buttonEliminate = modalfooter.getElementsByTagName('button')[1];
+  if (buttonEliminate) {
+    buttonEliminate['disabled'] = inputName === 'EMAIL';
+  }
+
+  // remove name fieldset
+  forms[0]?.remove();
 };
