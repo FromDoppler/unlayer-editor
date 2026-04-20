@@ -91,7 +91,7 @@ export const isValidUrl = (url: string) => {
   return URL_VALID_REGEX.test(url);
 };
 
-export const updateFieldsWidgetModal = (event: any) => {
+export const applyFieldsWidgetModalRestrictions = (event: any) => {
   if (event.target.className != 'col-12') {
     return;
   }

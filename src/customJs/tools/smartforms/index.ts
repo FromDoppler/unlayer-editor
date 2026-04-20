@@ -14,11 +14,11 @@ import {
   richTextProperty,
 } from '../../properties/helpers';
 import {
+  applyFieldsWidgetModalRestrictions,
   behaviorListProperty,
   congratsBehaviorListProperty,
   availableFields,
   isValidUrl,
-  updateFieldsWidgetModal,
 } from './helper';
 import { urlProperty } from '../../properties/url';
 import { subscriptionListProperty } from '../../properties/subscription_list';
@@ -33,7 +33,11 @@ export const getSmartFormToolDefinition: () =>
     label: $t('_dp.smart_forms.label'),
     icon: `${ASSETS_BASE_URL}/form1.svg`,
     usageLimit: 1,
-    modalUpdate: addEventListener('click', updateFieldsWidgetModal, true),
+    modalUpdate: addEventListener(
+      'click',
+      applyFieldsWidgetModalRestrictions,
+      true,
+    ),
     Component: SmartFormViewer,
     options: {
       behavior: {

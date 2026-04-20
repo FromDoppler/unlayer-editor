@@ -11,7 +11,10 @@ import {
   richTextProperty,
   textProperty,
 } from '../../properties/helpers';
-import { availableFields, updateFieldsWidgetModal } from '../smartforms/helper';
+import {
+  applyFieldsWidgetModalRestrictions,
+  availableFields,
+} from '../smartforms/helper';
 import { subscriptionListProperty } from '../../properties/subscription_list';
 import { buttonGroupProperty } from '../../properties/button_group';
 import { labeledAutoWidthProperty } from '../../properties/labeled_auto_width';
@@ -70,7 +73,11 @@ export const getPromotionalToolDefinition: () =>
     label: $t('_dp.promotional.label'),
     icon: `${ASSETS_BASE_URL}/promotion_code_v2.svg`,
     usageLimit: 1,
-    modalUpdate: addEventListener('click', updateFieldsWidgetModal, true),
+    modalUpdate: addEventListener(
+      'click',
+      applyFieldsWidgetModalRestrictions,
+      true,
+    ),
     Component: PromotionalViewer,
     values: {
       containerPadding: '0px',

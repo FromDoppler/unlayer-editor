@@ -8,7 +8,10 @@ import {
 } from '../../properties/helpers';
 import { subscriptionListProperty } from '../../properties/subscription_list';
 import { wheelListProperty } from '../../properties/wheel_list';
-import { availableFields, updateFieldsWidgetModal } from '../smartforms/helper';
+import {
+  applyFieldsWidgetModalRestrictions,
+  availableFields,
+} from '../smartforms/helper';
 import { WheelFortuneValues, WheelSlice } from './types';
 import { buttonGroupProperty } from '../../properties/button_group';
 
@@ -71,7 +74,11 @@ export const getWheelFortuneToolDefinition: () =>
     label: $t('_dp.wheel_fortune.label'),
     icon: `${ASSETS_BASE_URL}/roulette2.svg`,
     usageLimit: 1,
-    modalUpdate: addEventListener('click', updateFieldsWidgetModal, true),
+    modalUpdate: addEventListener(
+      'click',
+      applyFieldsWidgetModalRestrictions,
+      true,
+    ),
 
     Component: WheelFortuneViewer,
     options: {
