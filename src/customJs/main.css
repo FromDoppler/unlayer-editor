@@ -99,3 +99,7 @@
   background: rgba(0, 0, 0, 0);
   color: #302100;
 }
+
+.u-popup-overlay {
+  pointer-events: none !important;
+}
