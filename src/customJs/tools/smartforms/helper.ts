@@ -92,53 +92,52 @@ export const isValidUrl = (url: string) => {
   return URL_VALID_REGEX.test(url);
 };
 
-export const applyFieldsWidgetModalRestrictions = (event: any) => {
-  if (event.target.className != 'col-12') {
-    return;
-  }
+export const applyFieldsWidgetModalRestrictions = () => {
+  window.requestAnimationFrame(() => {
+    const modal = document.querySelector('.blockbuilder-fields-widget-modal');
+    if (!(modal instanceof HTMLElement)) {
+      return;
+    }
 
-  const modalBody = document.querySelectorAll(
-    '.blockbuilder-fields-widget-modal > div > div ',
-  )[1] as HTMLElement | undefined;
-  if (!modalBody) {
-    return;
-  }
+    const modalBody = modal.querySelector('.modal-content');
+    const modalFooter = modal.querySelector('.modal-footer');
+    if (
+      !(modalBody instanceof HTMLElement) ||
+      !(modalFooter instanceof HTMLElement)
+    ) {
+      return;
+    }
 
-  const modalfooter = document.querySelectorAll(
-    '.blockbuilder-fields-widget-modal > div > div ',
-  )[2] as HTMLElement | undefined;
-  if (!modalfooter) {
-    return;
-  }
+    const typeButton = modalBody.querySelector('button.dropdown-button');
+    const fieldNameInput = modalBody.querySelector('input[name="name"]');
+    const inputOption = modalBody.querySelector('textarea');
+    const fieldName =
+      fieldNameInput instanceof HTMLInputElement
+        ? fieldNameInput.value
+        : undefined;
+    const currentField = availableFields.find(
+      (field: UnlayerField) => field.name === fieldName,
+    );
 
-  const forms = modalBody.getElementsByTagName('form');
-  const inputs = modalBody.getElementsByTagName('input');
-  const inputName = inputs[0]?.value;
-  const currentField = availableFields.find((field: UnlayerField) => {
-    return field.name == inputName;
+    if (typeButton instanceof HTMLButtonElement && currentField) {
+      typeButton.disabled = currentField.type !== 'text';
+    }
+
+    if (inputOption instanceof HTMLTextAreaElement && currentField) {
+      inputOption.disabled = currentField.type !== 'text';
+    }
+
+    const footerButtons = modalFooter.querySelectorAll('button');
+    const buttonEliminate = footerButtons[1];
+    if (
+      buttonEliminate instanceof HTMLButtonElement &&
+      fieldNameInput instanceof HTMLInputElement
+    ) {
+      buttonEliminate.disabled = fieldNameInput.value === 'EMAIL';
+    }
+
+    if (fieldNameInput instanceof HTMLInputElement) {
+      fieldNameInput.closest('form')?.remove();
+    }
   });
-
-  if (!currentField) {
-    return;
-  }
-
-  // disabled change type update
-  const buttonType = modalBody.getElementsByTagName('button')[0];
-  if (buttonType) {
-    buttonType['disabled'] = currentField.type !== 'text';
-  }
-
-  // disabled dropdown values update
-  const inputOption = modalBody.getElementsByTagName('textarea')[0];
-  if (inputOption) {
-    inputOption['disabled'] = currentField.type !== 'text';
-  }
-
-  const buttonEliminate = modalfooter.getElementsByTagName('button')[1];
-  if (buttonEliminate) {
-    buttonEliminate['disabled'] = inputName === 'EMAIL';
-  }
-
-  // remove name fieldset
-  forms[0]?.remove();
 };
