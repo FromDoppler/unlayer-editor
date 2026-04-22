@@ -1,7 +1,7 @@
 import { $t } from '../../localization';
 import { SmartFormViewer } from './smartFormViewer';
 import { ReactToolDefinitionFrom } from '../../types';
-import { SmartFormBase, SmartFormValues, UnlayerField } from './types';
+import { SmartFormBase, SmartFormValues } from './types';
 import { ASSETS_BASE_URL } from '../../constants';
 import {
   alignmentProperty,
@@ -14,6 +14,7 @@ import {
   richTextProperty,
 } from '../../properties/helpers';
 import {
+  applyFieldsWidgetModalRestrictions,
   behaviorListProperty,
   congratsBehaviorListProperty,
   availableFields,
@@ -32,7 +33,11 @@ export const getSmartFormToolDefinition: () =>
     label: $t('_dp.smart_forms.label'),
     icon: `${ASSETS_BASE_URL}/form1.svg`,
     usageLimit: 1,
-    modalUpdate: addEventListener('click', getClick, true),
+    modalUpdate: addEventListener(
+      'click',
+      applyFieldsWidgetModalRestrictions,
+      true,
+    ),
     Component: SmartFormViewer,
     options: {
       behavior: {
@@ -299,39 +304,4 @@ export const getSmartFormToolDefinition: () =>
       return defaultErrors;
     },
   };
-};
-
-/* Note: temporal function for manipulating UNLAYER field edit modal */
-const getClick = (event: any) => {
-  if (event.target.className == 'col-12') {
-    const modalBody = document.querySelectorAll(
-      '.blockbuilder-fields-widget-modal > div > div ',
-    )[1];
-    if (!modalBody) {
-      return;
-    }
-    const modalfooter = document.querySelectorAll(
-      '.blockbuilder-fields-widget-modal > div > div ',
-    )[2];
-    const forms = modalBody.getElementsByTagName('form');
-    const inputs = modalBody.getElementsByTagName('input');
-    const inputName = inputs[0].value;
-    const currentField = availableFields.find((field: UnlayerField) => {
-      return field.name == inputName;
-    });
-
-    //disabled change type update
-    const buttonType = modalBody.getElementsByTagName('button')[0];
-    buttonType['disabled'] = currentField.type !== 'text';
-
-    //disabled dropdown values update
-    const inputOption = modalBody.getElementsByTagName('textarea')[0];
-    if (inputOption) inputOption['disabled'] = currentField.type !== 'text';
-
-    const buttonEliminate = modalfooter.getElementsByTagName('button')[1];
-    buttonEliminate['disabled'] = inputName === 'EMAIL';
-
-    //remove name fieldset
-    forms[0].remove();
-  }
 };

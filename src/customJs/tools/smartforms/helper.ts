@@ -1,7 +1,7 @@
 import { $t } from '../../localization';
 import { dropdownProperty } from '../../properties/helpers';
 import { UnlayerProperty } from '../../types';
-import { CustomField, SmartFormAction } from './types';
+import { CustomField, SmartFormAction, UnlayerField } from './types';
 
 export const behaviorListProperty: () => UnlayerProperty<string> = () =>
   dropdownProperty({
@@ -69,19 +69,20 @@ const optionToString = (options: string[] | undefined) => {
     ?.slice(0, -1);
 };
 
-export const availableFields = userData.fields?.map((field: CustomField) => {
-  return {
-    meta_data: {
-      ...field,
-    },
-    name: field.name,
-    type: getFieldCompatibleType(field.type),
-    label: field.name,
-    required: field.required,
-    show_label: true,
-    options: optionToString(field.allowedValues),
-  };
-});
+export const availableFields: UnlayerField[] =
+  userData.fields?.map((field: CustomField) => {
+    return {
+      meta_data: {
+        ...field,
+      },
+      name: field.name,
+      type: getFieldCompatibleType(field.type),
+      label: field.name,
+      required: field.required,
+      show_label: true,
+      options: optionToString(field.allowedValues),
+    };
+  }) ?? [];
 
 export const isValidUrl = (url: string) => {
   /* eslint-disable no-useless-escape */
@@ -89,4 +90,54 @@ export const isValidUrl = (url: string) => {
     /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{0,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/g,
   );
   return URL_VALID_REGEX.test(url);
+};
+
+export const applyFieldsWidgetModalRestrictions = () => {
+  window.requestAnimationFrame(() => {
+    const modal = document.querySelector('.blockbuilder-fields-widget-modal');
+    if (!(modal instanceof HTMLElement)) {
+      return;
+    }
+
+    const modalBody = modal.querySelector('.modal-content');
+    const modalFooter = modal.querySelector('.modal-footer');
+    if (
+      !(modalBody instanceof HTMLElement) ||
+      !(modalFooter instanceof HTMLElement)
+    ) {
+      return;
+    }
+
+    const typeButton = modalBody.querySelector('button.dropdown-button');
+    const fieldNameInput = modalBody.querySelector('input[name="name"]');
+    const inputOption = modalBody.querySelector('textarea');
+    const fieldName =
+      fieldNameInput instanceof HTMLInputElement
+        ? fieldNameInput.value
+        : undefined;
+    const currentField = availableFields.find(
+      (field: UnlayerField) => field.name === fieldName,
+    );
+
+    if (typeButton instanceof HTMLButtonElement && currentField) {
+      typeButton.disabled = currentField.type !== 'text';
+    }
+
+    if (inputOption instanceof HTMLTextAreaElement && currentField) {
+      inputOption.disabled = currentField.type !== 'text';
+    }
+
+    const footerButtons = modalFooter.querySelectorAll('button');
+    const buttonEliminate = footerButtons[1];
+    if (
+      buttonEliminate instanceof HTMLButtonElement &&
+      fieldNameInput instanceof HTMLInputElement
+    ) {
+      buttonEliminate.disabled = fieldNameInput.value === 'EMAIL';
+    }
+
+    if (fieldNameInput instanceof HTMLInputElement) {
+      fieldNameInput.closest('form')?.remove();
+    }
+  });
 };
