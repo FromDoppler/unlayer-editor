@@ -22,6 +22,20 @@ You will also see any lint errors in the console.
 
 **Note:** For local run, make sure to set Unlayer Account data (`PROJECT_ID`, `USERID`, `USER_SIGNATURE`) in `.env.development.local`
 
+#### Local customJS/customCSS with Unlayer (`editor.unlayer.com`)
+
+If Unlayer blocks `http://localhost:3000/customJs/*` with a loopback/CORS error, it is due to browser Private Network Access rules for public origins (`https://editor.unlayer.com`) calling local addresses.
+
+Default strategy (recommended):
+
+- Inline mode: the app fetches `customJs/main.css` and `customJs/index.js` from its own origin and injects them as source code into Unlayer, avoiding iframe calls to loopback.
+
+Only if you explicitly need URL mode, disable inline mode:
+
+```env
+REACT_APP_UNLAYER_INLINE_CUSTOM_ASSETS=false
+```
+
 #### `yarn test`
 
 Launches the test runner in the interactive watch mode.\

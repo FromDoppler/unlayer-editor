@@ -16,6 +16,15 @@ module.exports = function (env) {
         devServer: {
             historyApiFallback: true,
             port: 3000,
+            host: '0.0.0.0',
+            allowedHosts: 'all',
+            headers: {
+                'Access-Control-Allow-Origin': 'https://editor.unlayer.com',
+                'Access-Control-Allow-Methods': 'GET, OPTIONS',
+                'Access-Control-Allow-Headers': '*',
+                'Access-Control-Allow-Private-Network': 'true',
+                'Cross-Origin-Resource-Policy': 'cross-origin',
+            },
             setupMiddlewares: (middlewares) => {
                 return middlewares.filter(middleware => middleware.name !== "cross-origin-header-check");
             }

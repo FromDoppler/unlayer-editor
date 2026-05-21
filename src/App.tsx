@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import mergeTags from './external/merge.tags';
 import styled from 'styled-components';
 import { ASSETS_BASE_URL } from './customJs/constants';
@@ -36,6 +36,77 @@ const Bar = styled.div`
 
 const App: React.FC = () => {
   const emailEditorRef = useRef<EditorRef>(null);
+  const shouldInlineCustomAssets =
+    process.env.REACT_APP_UNLAYER_INLINE_CUSTOM_ASSETS !== 'false';
+  const [customCssSource, setCustomCssSource] = useState<string | null>(null);
+  const [customJsSource, setCustomJsSource] = useState<string | null>(null);
+  const unlayerAssetsBaseUrl = (
+    process.env.REACT_APP_UNLAYER_ASSETS_URL ||
+    window.location.origin ||
+    process.env.PUBLIC_URL ||
+    ''
+  ).replace(/\/$/, '');
+
+  useEffect(() => {
+    if (!shouldInlineCustomAssets) {
+      return;
+    }
+
+    let canceled = false;
+
+    const fetchAssetAsText = async (url: string) => {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch ${url}: ${response.status}`);
+      }
+      return response.text();
+    };
+
+    const loadCustomAssets = async () => {
+      const cssUrl = `${unlayerAssetsBaseUrl}/customJs/main.css`;
+      const jsUrl = `${unlayerAssetsBaseUrl}/customJs/index.js`;
+
+      const maxAttempts = 20;
+      const delayMs = 1000;
+
+      for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+        try {
+          const [cssText, jsText] = await Promise.all([
+            fetchAssetAsText(cssUrl),
+            fetchAssetAsText(jsUrl),
+          ]);
+
+          if (canceled) {
+            return;
+          }
+
+          setCustomCssSource(cssText);
+          setCustomJsSource(jsText);
+          return;
+        } catch (error) {
+          if (canceled) {
+            return;
+          }
+
+          if (attempt === maxAttempts) {
+            console.error(
+              'Could not load custom assets for inline injection',
+              error,
+            );
+            return;
+          }
+
+          await new Promise((resolve) => setTimeout(resolve, delayMs));
+        }
+      }
+    };
+
+    loadCustomAssets();
+
+    return () => {
+      canceled = true;
+    };
+  }, [shouldInlineCustomAssets, unlayerAssetsBaseUrl]);
   const projectId: number = parseInt(
     process.env.REACT_APP_PROJECT_ID as string,
     10,
@@ -46,6 +117,30 @@ const App: React.FC = () => {
     id: userId,
     signature: userSignature,
   } as User;
+  const customCss = shouldInlineCustomAssets
+    ? []
+    : [`${unlayerAssetsBaseUrl}/customJs/main.css`];
+
+  const customJsExtension =
+    shouldInlineCustomAssets && customCssSource && customJsSource
+      ? [
+          `(() => {
+            if (window.__dopplerCustomCssInjected) return;
+            const style = document.createElement("style");
+            style.setAttribute("data-doppler-custom-css", "true");
+            style.textContent = ${JSON.stringify(customCssSource)};
+            document.head.appendChild(style);
+            window.__dopplerCustomCssInjected = true;
+          })();`,
+          customJsSource,
+        ]
+      : shouldInlineCustomAssets
+        ? []
+        : [`${unlayerAssetsBaseUrl}/customJs/index.js`];
+  const inlineAssetsReady =
+    !shouldInlineCustomAssets ||
+    (customCssSource !== null && customJsSource !== null);
+
   const UnlayerOptionsExtended = {
     projectId,
     displayMode: 'email',
@@ -74,7 +169,7 @@ const App: React.FC = () => {
     },
     mergeTags,
     user: userExtend,
-    customCSS: [`${process.env.PUBLIC_URL}/customJs/main.css`],
+    customCSS: customCss,
     customJS: [
       `window["user-data"] = {
         fields : [
@@ -278,7 +373,7 @@ const App: React.FC = () => {
         integrations: "https://webappqa.fromdoppler.net/integrations"
         },
     };`,
-      `${process.env.PUBLIC_URL}/customJs/index.js`,
+      ...customJsExtension,
     ],
   } as UnlayerOptions;
 
@@ -302,11 +397,15 @@ const App: React.FC = () => {
         <button onClick={saveDesign}>Save Design</button>
         <button onClick={exportHtml}>Export HTML</button>
       </Bar>
-      <EmailEditor
-        key="email-editor-test"
-        ref={emailEditorRef}
-        options={UnlayerOptionsExtended}
-      />
+      {inlineAssetsReady ? (
+        <EmailEditor
+          key="email-editor-test"
+          ref={emailEditorRef}
+          options={UnlayerOptionsExtended}
+        />
+      ) : (
+        <p>Loading Unlayer custom assets...</p>
+      )}
     </div>
   );
 };
