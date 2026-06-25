@@ -54,7 +54,7 @@ const App: React.FC = () => {
         icon: `${ASSETS_BASE_URL}/button.svg`,
       },
     },
-    version: 'latest',
+    version: '1.402.0',
     features: {
       audit: true,
       preheaderText: false,
