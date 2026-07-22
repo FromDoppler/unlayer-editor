@@ -25,7 +25,7 @@
     "eslint": "8.57.1",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-jest": "29.15.5",
-    "eslint-plugin-prettier": "5.5.5",
+    "eslint-plugin-prettier": "5.5.6",
     "eslint-plugin-react": "7.37.5",
     "jest": "29.7.0",
     "mini-css-extract-plugin": "2.10.1",
