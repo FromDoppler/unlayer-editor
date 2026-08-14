@@ -66,8 +66,7 @@ const DEFAULT_CARD_BORDER: Border = {
 };
 
 export const getPromotionalToolDefinition: () =>
-  | ReactToolDefinitionFrom<PromotionalBase>
-  | undefined = () => {
+  ReactToolDefinitionFrom<PromotionalBase> | undefined = () => {
   return {
     name: 'promotional',
     label: $t('_dp.promotional.label'),

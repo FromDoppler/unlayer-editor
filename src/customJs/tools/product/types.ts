@@ -18,11 +18,7 @@ import {
 
 export type ProductLayout = '00_horizontal' | '01_vertical';
 export type ProductArrangement =
-  | '01_layout'
-  | '02_layout'
-  | '03_layout'
-  | '04_layout'
-  | '05_layout';
+  '01_layout' | '02_layout' | '03_layout' | '04_layout' | '05_layout';
 
 export type ProductBase = Readonly<{
   product: {

@@ -15,8 +15,7 @@ import {
 import { dynamicIdProperty } from '../../properties/dynamic_promo_code';
 
 export const getPromoCodeToolDefinition: () =>
-  | ReactToolDefinitionFrom<PromoCodeBase>
-  | undefined = () => {
+  ReactToolDefinitionFrom<PromoCodeBase> | undefined = () => {
   const { stores } = getConfiguration();
   const storesWithPromoCode = stores.filter(
     ({ promotionCodeEnabled }) => promotionCodeEnabled,

@@ -28,8 +28,7 @@ const dateFortmatProperty: () => UnlayerProperty<DateFormat> = () =>
   } as const);
 
 export const getRssHeaderToolDefinition: () =>
-  | RssToolDefinition
-  | undefined = () => {
+  RssToolDefinition | undefined = () => {
   return {
     name: 'rss',
     label: 'Rss',
