@@ -165,9 +165,9 @@ then
 else
   latestEnvironmentManifest="$(
     find "${manifestDir}" -maxdepth 1 -type f -name "asset-manifest-${environment}-*.json" \
-      -printf '%T@ %f\n' \
+      -exec stat -c '%Y %n' {} \; \
       | sort -rn \
-      | sed -n '1s#^[^ ]* ##p'
+      | sed -n '1s#^[^ ]* .*/##p'
   )"
 
   grep -E "^asset-manifest-${environment}-.*\\.json$" "${allManifests}" \
