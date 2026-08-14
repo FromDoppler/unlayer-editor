@@ -26,8 +26,7 @@ import { subscriptionListProperty } from '../../properties/subscription_list';
 const DEFAULT_GREEN_COLOR = '#64BF91';
 
 export const getSmartFormToolDefinition: () =>
-  | ReactToolDefinitionFrom<SmartFormBase>
-  | undefined = () => {
+  ReactToolDefinitionFrom<SmartFormBase> | undefined = () => {
   return {
     name: 'smart_form',
     label: $t('_dp.smart_forms.label'),
