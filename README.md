@@ -137,6 +137,22 @@ For example, currently for tag `v1.0.0`:
 
 All the static files referenced in the `asset-manifest-*` files are stored in `http://cdn.fromdoppler.com/unlayer-editor/static`.
 
+## CDN cleanup during deployment
+
+The Jenkins publishing pipeline runs a CDN cleanup after uploading mutable packages such as `main`,
+`INT`, and pull request builds. If the pipeline needs to run faster or the cleanup has to be skipped
+temporarily, pass `--skip-clean` to `build-n-publish.sh`.
+
+Example:
+
+```sh
+sh build-n-publish.sh \
+  --package=hello-webapp \
+  --commit=${GIT_COMMIT} \
+  --name=INT \
+  --skip-clean
+```
+
 ## Embed the editor
 
 To use the editor, you should include a reference to the desired `asset-manifest-*` file. For example:
