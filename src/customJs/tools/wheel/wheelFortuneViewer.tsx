@@ -163,6 +163,7 @@ export const WheelFortuneViewer: ViewerComponent<any> = (rest) => {
   const congratysBtnStyle = {
     border: 'none',
     borderRadius: formRest.values.buttonBorderRadius,
+    boxSizing: 'border-box',
     display: 'inline-block',
     textAlign: formRest.values.buttonAlign,
     overflow: 'hidden',
