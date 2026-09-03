@@ -2302,6 +2302,11 @@
   resolved "https://registry.npmjs.org/@ungap/structured-clone/-/structured-clone-1.2.0.tgz"
   integrity sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==
 
+"@unlayer/types@latest":
+  version "1.478.0"
+  resolved "https://registry.yarnpkg.com/@unlayer/types/-/types-1.478.0.tgz#f2ad0ee11f803905a35eced26c1bdd2ae364a0f1"
+  integrity sha512-jxiV02yyy2hNZKUkllDKm48zFAK1SXnuMpNzWjN5jf2Y7ithdA3vxLoPd8ipjN40oclPB1Iw9bN0RiBNIj0wTw==
+
 "@webassemblyjs/ast@1.14.1", "@webassemblyjs/ast@^1.14.1":
   version "1.14.1"
   resolved "https://registry.npmjs.org/@webassemblyjs/ast/-/ast-1.14.1.tgz"
@@ -7906,12 +7911,19 @@ react-dom@18.3.1:
     loose-envify "^1.1.0"
     scheduler "^0.23.2"
 
-react-email-editor@*, react-email-editor@1.7.11:
+react-email-editor@*:
   version "1.7.11"
   resolved "https://registry.npmjs.org/react-email-editor/-/react-email-editor-1.7.11.tgz"
   integrity sha512-AyoKKtMEPhKdqUxFX1hyJMvEO+E5fzk88uNVGHhK1ymhLpcghYLkz1+pXKLcByjR6LHkfEbrCmoYFG8zyripug==
   dependencies:
     unlayer-types latest
+
+react-email-editor@1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/react-email-editor/-/react-email-editor-1.8.0.tgz#512f3bfd8412d7a5b4a456ea9916e82883235378"
+  integrity sha512-wauG/fES4k3VueIYVvsnxL+6+AAOw8oG3r1QlQclnC2aErpsjJSDmYgQRmDBhkts0QTKJf4uPiXOd3OxPv50OA==
+  dependencies:
+    "@unlayer/types" latest
 
 react-is@^16.12.0, react-is@^16.13.1, react-is@^16.7.0, react-is@^16.8.6:
   version "16.13.1"
